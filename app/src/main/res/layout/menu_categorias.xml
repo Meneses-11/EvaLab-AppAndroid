@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MenuCategorias"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Categorias"
+        android:textSize="50dp"
+        android:gravity="center"
+        android:textColor="#000000"
+    />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/layoutPrincipalCategorias" >
+
+                <ImageView
+                    style="@style/iconoMenuCategorias"
+                    android:src="@drawable/prueba_sangre" />
+                <TextView
+                    style="@style/txtMenúCategorias"
+                    android:text="@string/strSangre" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/layoutPrincipalCategorias">
+
+                <ImageView
+                    style="@style/iconoMenuCategorias"
+                    android:src="@drawable/examen_orina" />
+                <TextView
+                    style="@style/txtMenúCategorias"
+                    android:text="@string/strOrina" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/layoutPrincipalCategorias">
+
+                <ImageView
+                    style="@style/iconoMenuCategorias"
+                    android:src="@drawable/chequeo" />
+                <TextView
+                    style="@style/txtMenúCategorias"
+                    android:text="@string/strHepatica" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/layoutPrincipalCategorias">
+
+                <ImageView
+                    style="@style/iconoMenuCategorias"
+                    android:src="@drawable/tiroides" />
+                <TextView
+                    style="@style/txtMenúCategorias"
+                    android:text="@string/strTiroides" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/layoutPrincipalCategorias">
+
+                <ImageView
+                    style="@style/iconoMenuCategorias"
+                    android:src="@drawable/rinon" />
+                <TextView
+                    style="@style/txtMenúCategorias"
+                    android:text="@string/strRenal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/layoutPrincipalCategorias">
+
+                <ImageView
+                    style="@style/iconoMenuCategorias"
+                    android:src="@drawable/infeccioso" />
+                <TextView
+                    style="@style/txtMenúCategorias"
+                    android:text="@string/strInfecciosas" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

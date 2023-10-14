@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Para darle el sombreado al escoger alguna opcion del menú Categorias-->
+
+    <!-- Color al darle click -->
+    <item android:drawable="@android:color/darker_gray" android:state_pressed="true">
+        <set>  <!-- Darle una duración al fondo al darle click -->
+            <objectAnimator
+                android:propertyName="alpha"
+                android:duration="2000"
+                android:valueTo="1.0" />
+        </set>
+    </item>
+
+    <item android:drawable="@android:color/transparent" />
+
+</selector>

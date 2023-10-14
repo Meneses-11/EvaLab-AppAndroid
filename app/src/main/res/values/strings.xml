@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">EvaLab_ResultAnalisisClinicos</string>
+
+    <!-- Nombre de la Aplicaión -->
+    <string name="strNameApp">EvaLab</string>
+
+    <!-- Texto Botones menú principal -->
+    <string name="strInterpre">Interpretar Análisis</string>
+    <string name="strResults">Resultados</string>
+    <string name="strTipExa">Tipos de Examenes</string>
+    <string name="strInfo">Información</string>
+
+    <!-- Texto Botones menú Tipos Analisis -->
+    <string name="strSangre">Exámenes de Sangre</string>
+    <string name="strOrina">Exámenes de Orina</string>
+    <string name="strHepatica">Exámenes de Función Hepática</string>
+    <string name="strRenal">Exámenes de Función Renal</string>
+    <string name="strTiroides">Exámenes de Tiroides</string>
+    <string name="strInfecciosas">Enfermedades Infecciosas</string>
+</resources>

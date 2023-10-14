@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Estilo para los botones del menú Principal -->
+    <style name="btnMenuPrincipal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:layout_marginBottom">15dp</item>
+        <item name="android:textSize">25dp</item>
+        <item name="fontFamily">@font/onesans_medium</item>
+    </style>
+
+
+    <!-- Estilo para la lista del menú de Categorias -->
+    <!-- Layout principal de cada opción-->
+    <style name="layoutPrincipalCategorias">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">75dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">false</item>
+        <item name="android:background">@drawable/menu_option_background</item>
+    </style>
+    <!-- Ícono para cada opción del menú-->
+    <style name="iconoMenuCategorias">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:layout_marginStart">10dp</item>
+    </style>
+    <!-- Texto para cada opción del Menú -->
+    <style name="txtMenúCategorias">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:fontFamily">@font/onest_medium</item>
+    </style>
+
+
+    <!-- Estilo para el menú de los organos del cuerpo -->
+    <!-- Fila que contendrá 2 opciones -->
+    <style name="filaPrincipalMenuOrganos">
+        
+    </style>
+    <!-- Layout que le dara forma a las opciones-->
+    <style name="formaOpcionMenuOrganos">
+        <item name="android:layout_width">170dp</item>
+        <item name="android:layout_height">170dp</item>
+        <item name="android:background">@drawable/fondo_opt_menu_organos</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+    </style>
+    <!-- Fila del semaforo y titulo -->
+    <style name="fila1OpcionMenuOrganos">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <!-- Contenedor de la primera fila -->
+    <style name="layoutFila1OpcionMenuOrganos">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+    </style>
+    <!-- Imagen del semaforo -->
+    <style name="imgEstadoMenuOrganos">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+    </style>
+    <!-- Titulo de la Opcion -->
+    <style name="txtNombreOpcionMenuOrganos">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:paddingLeft">15dp</item>
+    </style>
+    <!-- Fila de la imagen principal -->
+    <style name="fila2OpcionMenuOrganos">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <!-- Imagen princial -->
+    <style name="imgPrincipalOpcionMenuOrganos">
+        <item name="android:layout_width">90dp</item>
+        <item name="android:layout_height">90dp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <!-- Fila del estado de la opcion -->
+    <style name="fila3OpcionMenuOrganos">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <!-- Texto del Estado de la opcion -->
+    <style name="txtEstadoOpcionMenuOrganos">
+        <item name="android:gravity">center</item>
+    </style>
+
+</resources>
