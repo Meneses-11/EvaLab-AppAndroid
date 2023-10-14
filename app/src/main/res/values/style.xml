@@ -19,7 +19,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">75dp</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginTop">30dp</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">false</item>
         <item name="android:background">@drawable/menu_option_background</item>
@@ -36,8 +36,9 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">30dp</item>
-        <item name="android:textColor">#000</item>
+        <item name="android:textColor">@color/black</item>
         <item name="android:fontFamily">@font/onest_medium</item>
+        <item name="android:layout_marginRight">15dp</item>
     </style>
 
 
@@ -76,7 +77,10 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center</item>
-        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:fontFamily">@font/dmsans_medium</item>
     </style>
     <!-- Fila de la imagen principal -->
     <style name="fila2OpcionMenuOrganos">
@@ -99,6 +103,9 @@
     <!-- Texto del Estado de la opcion -->
     <style name="txtEstadoOpcionMenuOrganos">
         <item name="android:gravity">center</item>
+        <item name="android:fontFamily">@font/dmsans_semibolditalic</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">20dp</item>
     </style>
 
 </resources>

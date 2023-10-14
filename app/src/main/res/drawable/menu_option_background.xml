@@ -3,7 +3,7 @@
     <!-- Para darle el sombreado al escoger alguna opcion del menú Categorias-->
 
     <!-- Color al darle click -->
-    <item android:drawable="@android:color/darker_gray" android:state_pressed="true">
+    <item android:drawable="@color/colorFondoObscuro" android:state_pressed="true">
         <set>  <!-- Darle una duración al fondo al darle click -->
             <objectAnimator
                 android:propertyName="alpha"
@@ -12,6 +12,6 @@
         </set>
     </item>
 
-    <item android:drawable="@android:color/transparent" />
+    <item android:drawable="@color/colorFondoClaro" />
 
 </selector>

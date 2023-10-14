@@ -11,10 +11,27 @@
     <string name="strInfo">Información</string>
 
     <!-- Texto Botones menú Tipos Analisis -->
-    <string name="strSangre">Exámenes de Sangre</string>
-    <string name="strOrina">Exámenes de Orina</string>
-    <string name="strHepatica">Exámenes de Función Hepática</string>
-    <string name="strRenal">Exámenes de Función Renal</string>
-    <string name="strTiroides">Exámenes de Tiroides</string>
-    <string name="strInfecciosas">Enfermedades Infecciosas</string>
+    <string name="strTituloCateg">Categorias</string>
+    <string name="strExaSangre">Exámenes de Sangre</string>
+    <string name="strExaOrina">Exámenes de Orina</string>
+    <string name="strExaHepatica">Exámenes de Función Hepática</string>
+    <string name="strExaRenal">Exámenes de Función Renal</string>
+    <string name="strExaTiroides">Exámenes de Tiroides</string>
+    <string name="strExaInfecciosas">Enfermedades Infecciosas</string>
+
+    <!-- Texto Opciones menú Estado de Salud -->
+    <string name="strTituloEstSalud">Estado de Salud</string>
+    <string name="strCorazon">Corazón</string>
+    <string name="strRinion">Riñones</string>
+    <string name="strHigado">Hígado</string>
+    <string name="strPancreas">Pancreas</string>
+    <string name="strMeduOse">M. Ósea</string>
+    <string name="strTiroides">Tiroides</string>
+    <string name="strInfeccion">Infecciones</string>
+    <!-- Estado del organo -->
+    <string name="strVerde">Normal</string>
+    <string name="strAmarillo">Preocupante</string>
+    <string name="strRojo">Mal</string>
+    <string name="strDesconocido">Sin Información</string>
+
 </resources>

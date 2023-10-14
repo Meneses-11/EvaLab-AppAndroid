@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="red">#FF0000</color>
+    <color name="green">#2FFF00</color>
+    <color name="yellow">#FFFB00</color>
+
+
+    <color name="colorFondoClaro">#C9E5FCF4</color>
+    <color name="colorFondoObscuro">#b3d8d2</color>
+
+
     <!-- COLORES PARA EL TEMA DE LA APP -->
     <color name="seed">#6bc327</color>
     <color name="md_theme_light_primary">#336B00</color>

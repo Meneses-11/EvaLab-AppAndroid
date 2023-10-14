@@ -6,21 +6,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MenuCategorias"
-    android:gravity="center">
+    android:background="@drawable/fondoprincipal">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Categorias"
-        android:textSize="50dp"
+        android:text="@string/strTituloCateg"
+        android:textSize="60dp"
         android:gravity="center"
-        android:textColor="#000000"
+        android:textColor="@color/black"
+        android:fontFamily="@font/gabarito_variablefont"
+        android:layout_marginTop="20dp"
     />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,7 +37,7 @@
                     android:src="@drawable/prueba_sangre" />
                 <TextView
                     style="@style/txtMenúCategorias"
-                    android:text="@string/strSangre" />
+                    android:text="@string/strExaSangre" />
 
             </LinearLayout>
 
@@ -47,7 +49,7 @@
                     android:src="@drawable/examen_orina" />
                 <TextView
                     style="@style/txtMenúCategorias"
-                    android:text="@string/strOrina" />
+                    android:text="@string/strExaOrina" />
 
             </LinearLayout>
 
@@ -59,7 +61,7 @@
                     android:src="@drawable/chequeo" />
                 <TextView
                     style="@style/txtMenúCategorias"
-                    android:text="@string/strHepatica" />
+                    android:text="@string/strExaHepatica" />
 
             </LinearLayout>
 
@@ -71,7 +73,7 @@
                     android:src="@drawable/tiroides" />
                 <TextView
                     style="@style/txtMenúCategorias"
-                    android:text="@string/strTiroides" />
+                    android:text="@string/strExaTiroides" />
 
             </LinearLayout>
 
@@ -83,7 +85,7 @@
                     android:src="@drawable/rinon" />
                 <TextView
                     style="@style/txtMenúCategorias"
-                    android:text="@string/strRenal" />
+                    android:text="@string/strExaRenal" />
 
             </LinearLayout>
 
@@ -95,7 +97,7 @@
                     android:src="@drawable/infeccioso" />
                 <TextView
                     style="@style/txtMenúCategorias"
-                    android:text="@string/strInfecciosas" />
+                    android:text="@string/strExaInfecciosas" />
 
             </LinearLayout>
 
