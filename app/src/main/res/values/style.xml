@@ -21,7 +21,7 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:layout_marginTop">30dp</item>
         <item name="android:clickable">true</item>
-        <item name="android:focusable">false</item>
+        <item name="android:focusable">true</item>
         <item name="android:background">@drawable/menu_option_background</item>
     </style>
     <!-- Ícono para cada opción del menú-->
@@ -106,6 +106,33 @@
         <item name="android:fontFamily">@font/dmsans_semibolditalic</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">20dp</item>
+    </style>
+
+
+    <!-- Estilo del Titulo de los Diferentes tipos de Examenes -->
+    <!-- Layout que contendra el titulo y el ícono -->
+    <style name="layoutTituloExamenes">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@color/colorFondoClaro</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingBottom">15dp</item>
+    </style>
+    <!-- Ícono que acompañará al Titulo -->
+    <style name="iconoTituloExamenes">
+        <item name="android:layout_width">70dp</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:layout_marginStart">10dp</item>
+    </style>
+    <!-- Titulo de los Diferentes Tipos de Examenes -->
+    <style name="txtTituloExamenes">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">40dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/youngserif_regular</item>
     </style>
 
 </resources>

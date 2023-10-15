@@ -30,7 +30,8 @@
             android:orientation="vertical">
 
             <LinearLayout
-                style="@style/layoutPrincipalCategorias" >
+                style="@style/layoutPrincipalCategorias"
+                android:onClick="viewExamSangre">
 
                 <ImageView
                     style="@style/iconoMenuCategorias"
