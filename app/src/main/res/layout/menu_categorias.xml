@@ -43,7 +43,8 @@
             </LinearLayout>
 
             <LinearLayout
-                style="@style/layoutPrincipalCategorias">
+                style="@style/layoutPrincipalCategorias"
+                android:onClick="viewExamOrina" >
 
                 <ImageView
                     style="@style/iconoMenuCategorias"
@@ -55,7 +56,8 @@
             </LinearLayout>
 
             <LinearLayout
-                style="@style/layoutPrincipalCategorias">
+                style="@style/layoutPrincipalCategorias"
+                android:onClick="viewExamFunHepatica" >
 
                 <ImageView
                     style="@style/iconoMenuCategorias"
@@ -67,7 +69,8 @@
             </LinearLayout>
 
             <LinearLayout
-                style="@style/layoutPrincipalCategorias">
+                style="@style/layoutPrincipalCategorias"
+                android:onClick="viewExamTiroides" >
 
                 <ImageView
                     style="@style/iconoMenuCategorias"
@@ -79,7 +82,8 @@
             </LinearLayout>
 
             <LinearLayout
-                style="@style/layoutPrincipalCategorias">
+                style="@style/layoutPrincipalCategorias"
+                android:onClick="viewExamFunRenal" >
 
                 <ImageView
                     style="@style/iconoMenuCategorias"
@@ -91,7 +95,8 @@
             </LinearLayout>
 
             <LinearLayout
-                style="@style/layoutPrincipalCategorias">
+                style="@style/layoutPrincipalCategorias"
+                android:onClick="viewExamInfecciosa" >
 
                 <ImageView
                     style="@style/iconoMenuCategorias"

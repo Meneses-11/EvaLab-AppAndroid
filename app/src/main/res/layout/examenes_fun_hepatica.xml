@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ExamenesSangre"
+    tools:context=".ExamenesFunHepatica"
     android:background="@drawable/fondoprincipal" >
 
     <ImageView
@@ -20,10 +20,10 @@
 
             <ImageView
                 style="@style/iconoTituloExamenes"
-                android:src="@drawable/prueba_sangre" />
+                android:src="@drawable/chequeo" />
             <TextView
                 style="@style/txtTituloExamenes"
-                android:text="@string/strExaSangre" />
+                android:text="@string/strExaHepatica" />
 
         </LinearLayout>
 
@@ -32,30 +32,17 @@
 
             <View
                 style="@style/separadorContenidoExamenes" />
-
             <TextView
                 style="@style/txtContenidoExamenes"
-                android:text="@string/strHemograma" />
-
+                android:text="@string/strALT" />
             <View
                 style="@style/separador2ContenidoExamenes"/>
 
             <View
                 style="@style/separadorContenidoExamenes" />
-
             <TextView
                 style="@style/txtContenidoExamenes"
-                android:text="@string/strPerLipi" />
-
-            <View
-                style="@style/separador2ContenidoExamenes" />
-
-            <View
-                style="@style/separadorContenidoExamenes" />
-
-            <TextView
-                style="@style/txtContenidoExamenes"
-                android:text="@string/strGlucosa" />
+                android:text="@string/strAST" />
             <View
                 style="@style/separador2ContenidoExamenes" />
 
@@ -63,9 +50,10 @@
                 style="@style/separadorContenidoExamenes" />
             <TextView
                 style="@style/txtContenidoExamenes"
-                android:text="@string/strElecSer" />
+                android:text="@string/strBilirrubina" />
             <View
-                style="@style/separador2ContenidoExamenes" />
+                style="@style/separadorContenidoExamenes" />
+
 
         </LinearLayout>
 

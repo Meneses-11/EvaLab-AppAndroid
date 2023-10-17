@@ -34,4 +34,23 @@
     <string name="strRojo">Mal</string>
     <string name="strDesconocido">Sin Información</string>
 
+    <!-- Todos los Examenes -->
+    <string name="strHemograma">Hemograma Completo</string>
+    <string name="strPerLipi">Perfil Lipídico</string>
+    <string name="strGlucosa">Glucosa (en ayunas)</string>
+    <string name="strElecSer">Electrolitos Séricos</string>
+    <string name="strEGO">Examen General de Orina (EGO)</string>
+    <string name="strUrocultivo">Urocultivo</string>
+    <string name="strALT">Alanina Aminotransferasa (ALT)</string>
+    <string name="strAST">Aspartato Aminotransferasa (AST)</string>
+    <string name="strBilirrubina">Bilirrubina</string>
+    <string name="strCreaSerica">Creatinina Sérica</string>
+    <string name="strBUN">Nitrógeno Ureico en Sangre (BUN)</string>
+    <string name="strTSH">Hormona Estimulante de la Tiroides (TSH)</string>
+    <string name="strT4">T4 (Tiroxina)</string>
+    <string name="strVIH">Prueba de VIH</string>
+    <string name="strHepatitisBC">Prueba de Hepatitis B y C</string>
+    <string name="strSifilis">Prueba de Sífilis</string>
+
+
 </resources>
