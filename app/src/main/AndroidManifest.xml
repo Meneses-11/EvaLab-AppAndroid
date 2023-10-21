@@ -13,6 +13,13 @@
         android:theme="@style/Theme.EvaLab_ResultAnalisisClinicos"
         tools:targetApi="31">
         <activity
+            android:name=".HemogramaCompleto"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ExamenesInfecciones"
             android:exported="false">
             <meta-data
