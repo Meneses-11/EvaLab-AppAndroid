@@ -179,4 +179,88 @@
         <item name="android:src">@drawable/laboratoriopruebas</item>
     </style>
 
+
+    <!-- Seccion de estilos para los formularios de todos los diferentes Examenes Clínicos -->
+    <!-- Estilo para el título del Examen clínico -->
+    <style name="txtTituloExamenEspecifico">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">35dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginBottom">30dp</item>
+        <item name="android:fontFamily">@font/tiltneon_regular</item>
+    </style>
+    <!-- Scroll que contiene todo el contenido -->
+    <style name="scrollExamenEspecifico">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+    </style>
+    <!-- Layout que contendrá cada opción-->
+    <style name="layoutOpcionExamenEspecifico">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@color/white</item>
+    </style>
+    <!-- Texto nombre de cada opcion -->
+    <style name="txtNombreOpcionExamenEspecifico">
+        <item name="android:layout_width">165dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">25dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:fontFamily">@font/robotoslab_variablefont</item>
+    </style>
+    <!-- Contenedor del EditText -->
+    <style name="txtFieldNumOpcionExamenEspecifico">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:hint">Dato</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:textColorHint">@color/gray</item>
+        <item name="boxStrokeColor">@drawable/border_color_opc_exam_especif</item>
+    </style>
+    <!-- EditText donde se introduciran los datos -->
+    <style name="editTxtNumOpcionExamenEspecifico">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:inputType">numberDecimal</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">25dp</item>
+        <item name="android:fontFamily">@font/robotoslab_variablefont</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <!-- Texto que indica la unidad de medida -->
+    <style name="txtUnidadMedidaOpcionExamenEspecifico">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">25dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:fontFamily">@font/robotoslab_variablefont</item>
+    </style>
+    <style name="txtUnidadMedida2OpcionExamenEspecifico">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:fontFamily">@font/robotoslab_variablefont</item>
+    </style>
+    <!-- Linea que divide cada opción -->
+    <style name="lineaDivOpcionesExamenEspecifico">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/md_theme_light_primary</item>
+        <item name="android:layout_marginTop">5dp</item>
+    </style>
+
 </resources>
