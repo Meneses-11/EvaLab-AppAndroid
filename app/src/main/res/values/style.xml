@@ -167,7 +167,7 @@
         <item name="android:paddingTop">10dp</item>
         <item name="android:paddingBottom">10dp</item>
         <item name="android:clickable">true</item>
-        <item name="android:focusable">false</item>
+        <item name="android:focusable">true</item>
         <item name="android:background">@drawable/menu_option_background</item>
         <item name="android:drawableStart">@drawable/vinieta</item>
     </style>
@@ -200,13 +200,14 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginLeft">15dp</item>
         <item name="android:layout_marginRight">15dp</item>
+        <item name="android:layout_marginBottom">15dp</item>
     </style>
     <!-- Layout que contendrá cada opción-->
     <style name="layoutOpcionExamenEspecifico">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:background">@color/white</item>
+        <item name="android:background">@color/whiteTransparent</item>
     </style>
     <!-- Texto nombre de cada opcion -->
     <style name="txtNombreOpcionExamenEspecifico">
@@ -261,6 +262,21 @@
         <item name="android:layout_height">1dp</item>
         <item name="android:background">@color/md_theme_light_primary</item>
         <item name="android:layout_marginTop">5dp</item>
+    </style>
+    <style name="lineaDiv2OpcionesExamenEspecifico">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/md_theme_light_primary</item>
+    </style>
+    <!-- Boton Analizar -->
+    <style name="btnAnalizar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:text">@string/strBtnAnali</item>
+        <item name="android:fontFamily">@font/robotoslab_variablefont</item>
     </style>
 
 </resources>

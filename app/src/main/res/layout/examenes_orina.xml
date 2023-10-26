@@ -34,7 +34,8 @@
                 style="@style/separadorContenidoExamenes" />
             <TextView
                 style="@style/txtContenidoExamenes"
-                android:text="@string/strEGO" />
+                android:text="@string/strEGO"
+                android:onClick="viewExamenGeneralOrina"/>
             <View
                 style="@style/separador2ContenidoExamenes"/>
 

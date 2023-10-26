@@ -9,6 +9,7 @@
     <string name="strResults">Resultados</string>
     <string name="strTipExa">Tipos de Examenes</string>
     <string name="strInfo">Información</string>
+    <string name="strBtnAnali">Analizar</string>
 
     <!-- Texto Botones menú Tipos Analisis -->
     <string name="strTituloCateg">Categorias</string>
@@ -54,6 +55,7 @@
 
 
     <!-- Todos los datos que hay en los diferentes examenes -->
+    <!-- Sangre -->
     <string name="strHemoglobina">Hemoglobina</string>
     <string name="strHematocrito">Hematocrito</string>
     <string name="strGloRojos">Globulos Rojos (Eritrocitos)</string>
@@ -68,6 +70,28 @@
     <string name="strMonocitos">Monocitos</string>
     <string name="strPlaquetas">Plaquetas</string>
     <string name="strVolPlaquetas">Volumen plaquetario Medio</string>
+    <!-- Orina -->
+    <string name="strVolum">Volumen</string>
+    <string name="strOlor">Olor</string>
+    <string name="strColor">Color</string>
+    <string name="strAspecto">Aspecto</string>
+    <string name="strSedimento">Sedimento</string>
+    <string name="strCelulas">Celulas</string>
+    <string name="strCilindros">Cilindros</string>
+    <string name="strBacterias">Bacterias</string>
+    <string name="strParasitos">Parásitos</string>
+    <string name="strPiocitos">Piocitos</string>
+    <string name="strComunIntracelar">Comunidad Intracelar Bacteriana</string>
+    <string name="strBlastoconidios">Blastoconidios</string>
+    <string name="strFilMucina">Filamentos de Mucina</string>
+    <string name="strPH">PH</string>
+    <string name="strDensidad">Densidad</string>
+    <string name="strProteinas">Proteinas</string>
+    <string name="strGlucos">Glucosa</string>
+    <string name="strCuerCetonicos">Cuerpos Cetónicos</string>
+    <string name="strNitritos">Nitritos</string>
+    <string name="strUrobilinogeno">Urobilinogeno</string>
+    <string name="strEsteLeucoci">Estereasa Leucocitaria</string>
 
 
     <!-- Todos las unidades de medidas de los datos que hay en los diferentes examenes -->
@@ -78,5 +102,7 @@
     <string name="strNLeucocitos">x10^3 / μL</string>
     <string name="strNHeritrocitos">x10^6 / μL</string>
     <string name="strMicrolitros">μL</string>
+    <string name="strMililitros">ml</string>
+    <string name="strMiligramosDesilitros">mg / dL</string>
 
 </resources>

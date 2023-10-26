@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".HemogramaCompleto"
+    android:layout_height="match_parent"
+    tools:context=".ExamenGeneralOrina"
     android:orientation="vertical"
     android:background="@drawable/fondoprincipal">
 
     <TextView
         style="@style/txtTituloExamenEspecifico"
-        android:text="@string/strHemograma" />
+        android:text="@string/strEGO" />
 
     <ScrollView
         style="@style/scrollExamenEspecifico">
@@ -26,12 +26,12 @@
 
                 <TextView
                     style="@style/txtNombreOpcionExamenEspecifico"
-                    android:text="@string/strHemoglobina" />
+                    android:text="@string/strVolum" />
 
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/txtFieldNumOpcionExamenEspecifico"
-                     >
+                    >
 
                     <com.google.android.material.textfield.TextInputEditText
                         style="@style/editTxtNumOpcionExamenEspecifico"
@@ -52,12 +52,12 @@
 
                 <TextView
                     style="@style/txtNombreOpcionExamenEspecifico"
-                    android:text="@string/strHematocrito" />
+                    android:text="@string/strOlor" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/txtFieldNumOpcionExamenEspecifico"
 
-                     >
+                    >
 
                     <com.google.android.material.textfield.TextInputEditText
                         style="@style/editTxtNumOpcionExamenEspecifico"
@@ -78,8 +78,8 @@
 
                 <TextView
                     style="@style/txtNombreOpcionExamenEspecifico"
-                    android:text="@string/strGloRojos"
-                     />
+                    android:text="@string/strColor"
+                    />
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/txtFieldNumOpcionExamenEspecifico" >
@@ -103,8 +103,8 @@
 
                 <TextView
                     style="@style/txtNombreOpcionExamenEspecifico"
-                    android:text="@string/strVMG"
-                     />
+                    android:text="@string/strAspecto"
+                    />
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/txtFieldNumOpcionExamenEspecifico" >
@@ -128,8 +128,8 @@
 
                 <TextView
                     style="@style/txtNombreOpcionExamenEspecifico"
-                    android:text="@string/strHCM"
-                     />
+                    android:text="@string/strSedimento"
+                    />
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/txtFieldNumOpcionExamenEspecifico"
@@ -154,8 +154,8 @@
 
                 <TextView
                     style="@style/txtNombreOpcionExamenEspecifico"
-                    android:text="@string/strReticulocitos"
-                     />
+                    android:text="@string/strCelulas"
+                    />
 
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -182,7 +182,7 @@
                 <TextView
                     style="@style/txtNombreOpcionExamenEspecifico"
                     android:text="@string/strLeucocitos"
-                     />
+                    />
 
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -208,8 +208,8 @@
 
                 <TextView
                     style="@style/txtNombreOpcionExamenEspecifico"
-                    android:text="@string/strNeutrofilos"
-                     />
+                    android:text="@string/strGloRojos"
+                    />
 
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -235,8 +235,8 @@
 
                 <TextView
                     style="@style/txtNombreOpcionExamenEspecifico"
-                    android:text="@string/strLinfocitos"
-                     />
+                    android:text="@string/strCilindros"
+                    />
 
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -262,8 +262,8 @@
 
                 <TextView
                     style="@style/txtNombreOpcionExamenEspecifico"
-                    android:text="@string/strEosinofilos"
-                     />
+                    android:text="@string/strBacterias"
+                    />
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/txtFieldNumOpcionExamenEspecifico"
@@ -288,35 +288,8 @@
 
                 <TextView
                     style="@style/txtNombreOpcionExamenEspecifico"
-                    android:text="@string/strBasofilos"
-                     />
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/txtFieldNumOpcionExamenEspecifico"
-                    >
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        style="@style/editTxtNumOpcionExamenEspecifico"
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    style="@style/txtUnidadMedidaOpcionExamenEspecifico"
-                    android:text="@string/strPorcentaje"/>
-
-            </LinearLayout>
-            <View style="@style/lineaDiv2OpcionesExamenEspecifico"/>
-
-            <View style="@style/lineaDivOpcionesExamenEspecifico"/>
-            <LinearLayout
-                style="@style/layoutOpcionExamenEspecifico" >
-
-                <TextView
-                    style="@style/txtNombreOpcionExamenEspecifico"
-                    android:text="@string/strMonocitos"
-                     />
+                    android:text="@string/strParasitos"
+                    />
 
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -342,8 +315,35 @@
 
                 <TextView
                     style="@style/txtNombreOpcionExamenEspecifico"
-                    android:text="@string/strPlaquetas"
-                     />
+                    android:text="@string/strPiocitos"
+                    />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/txtFieldNumOpcionExamenEspecifico"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/editTxtNumOpcionExamenEspecifico"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    style="@style/txtUnidadMedidaOpcionExamenEspecifico"
+                    android:text="@string/strPorcentaje"/>
+
+            </LinearLayout>
+            <View style="@style/lineaDiv2OpcionesExamenEspecifico"/>
+
+            <View style="@style/lineaDivOpcionesExamenEspecifico"/>
+            <LinearLayout
+                style="@style/layoutOpcionExamenEspecifico" >
+
+                <TextView
+                    style="@style/txtNombreOpcionExamenEspecifico"
+                    android:text="@string/strComunIntracelar"
+                    />
 
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -369,8 +369,316 @@
 
                 <TextView
                     style="@style/txtNombreOpcionExamenEspecifico"
-                    android:text="@string/strVolPlaquetas"
-                     />
+                    android:text="@string/strBlastoconidios"
+                    />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/txtFieldNumOpcionExamenEspecifico"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/editTxtNumOpcionExamenEspecifico"
+                        />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    style="@style/txtUnidadMedidaOpcionExamenEspecifico"
+                    android:text="@string/strFentolitros"/>
+
+            </LinearLayout>
+            <View style="@style/lineaDiv2OpcionesExamenEspecifico"/>
+
+            <View style="@style/lineaDivOpcionesExamenEspecifico"/>
+            <LinearLayout
+                style="@style/layoutOpcionExamenEspecifico" >
+
+                <TextView
+                    style="@style/txtNombreOpcionExamenEspecifico"
+                    android:text="@string/strFilMucina"
+                    />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/txtFieldNumOpcionExamenEspecifico"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/editTxtNumOpcionExamenEspecifico"
+                        />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    style="@style/txtUnidadMedidaOpcionExamenEspecifico"
+                    android:text="@string/strFentolitros"/>
+
+            </LinearLayout>
+            <View style="@style/lineaDiv2OpcionesExamenEspecifico"/>
+
+            <View style="@style/lineaDivOpcionesExamenEspecifico"/>
+            <LinearLayout
+                style="@style/layoutOpcionExamenEspecifico" >
+
+                <TextView
+                    style="@style/txtNombreOpcionExamenEspecifico"
+                    android:text="@string/strPH"
+                    />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/txtFieldNumOpcionExamenEspecifico"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/editTxtNumOpcionExamenEspecifico"
+                        />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    style="@style/txtUnidadMedidaOpcionExamenEspecifico"
+                    android:text="@string/strFentolitros"/>
+
+            </LinearLayout>
+            <View style="@style/lineaDiv2OpcionesExamenEspecifico"/>
+
+            <View style="@style/lineaDivOpcionesExamenEspecifico"/>
+            <LinearLayout
+                style="@style/layoutOpcionExamenEspecifico" >
+
+                <TextView
+                    style="@style/txtNombreOpcionExamenEspecifico"
+                    android:text="@string/strDensidad"
+                    />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/txtFieldNumOpcionExamenEspecifico"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/editTxtNumOpcionExamenEspecifico"
+                        />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    style="@style/txtUnidadMedidaOpcionExamenEspecifico"
+                    android:text="@string/strFentolitros"/>
+
+            </LinearLayout>
+            <View style="@style/lineaDiv2OpcionesExamenEspecifico"/>
+
+            <View style="@style/lineaDivOpcionesExamenEspecifico"/>
+            <LinearLayout
+                style="@style/layoutOpcionExamenEspecifico" >
+
+                <TextView
+                    style="@style/txtNombreOpcionExamenEspecifico"
+                    android:text="@string/strProteinas"
+                    />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/txtFieldNumOpcionExamenEspecifico"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/editTxtNumOpcionExamenEspecifico"
+                        />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    style="@style/txtUnidadMedidaOpcionExamenEspecifico"
+                    android:text="@string/strFentolitros"/>
+
+            </LinearLayout>
+            <View style="@style/lineaDiv2OpcionesExamenEspecifico"/>
+
+            <View style="@style/lineaDivOpcionesExamenEspecifico"/>
+            <LinearLayout
+                style="@style/layoutOpcionExamenEspecifico" >
+
+                <TextView
+                    style="@style/txtNombreOpcionExamenEspecifico"
+                    android:text="@string/strHemoglobina"
+                    />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/txtFieldNumOpcionExamenEspecifico"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/editTxtNumOpcionExamenEspecifico"
+                        />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    style="@style/txtUnidadMedidaOpcionExamenEspecifico"
+                    android:text="@string/strFentolitros"/>
+
+            </LinearLayout>
+            <View style="@style/lineaDiv2OpcionesExamenEspecifico"/>
+
+            <View style="@style/lineaDivOpcionesExamenEspecifico"/>
+            <LinearLayout
+                style="@style/layoutOpcionExamenEspecifico" >
+
+                <TextView
+                    style="@style/txtNombreOpcionExamenEspecifico"
+                    android:text="@string/strGlucos"
+                    />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/txtFieldNumOpcionExamenEspecifico"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/editTxtNumOpcionExamenEspecifico"
+                        />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    style="@style/txtUnidadMedidaOpcionExamenEspecifico"
+                    android:text="@string/strFentolitros"/>
+
+            </LinearLayout>
+            <View style="@style/lineaDiv2OpcionesExamenEspecifico"/>
+
+            <View style="@style/lineaDivOpcionesExamenEspecifico"/>
+            <LinearLayout
+                style="@style/layoutOpcionExamenEspecifico" >
+
+                <TextView
+                    style="@style/txtNombreOpcionExamenEspecifico"
+                    android:text="@string/strCuerCetonicos"
+                    />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/txtFieldNumOpcionExamenEspecifico"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/editTxtNumOpcionExamenEspecifico"
+                        />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    style="@style/txtUnidadMedidaOpcionExamenEspecifico"
+                    android:text="@string/strFentolitros"/>
+
+            </LinearLayout>
+            <View style="@style/lineaDiv2OpcionesExamenEspecifico"/>
+
+            <View style="@style/lineaDivOpcionesExamenEspecifico"/>
+            <LinearLayout
+                style="@style/layoutOpcionExamenEspecifico" >
+
+                <TextView
+                    style="@style/txtNombreOpcionExamenEspecifico"
+                    android:text="@string/strBilirrubina"
+                    />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/txtFieldNumOpcionExamenEspecifico"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/editTxtNumOpcionExamenEspecifico"
+                        />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    style="@style/txtUnidadMedidaOpcionExamenEspecifico"
+                    android:text="@string/strFentolitros"/>
+
+            </LinearLayout>
+            <View style="@style/lineaDiv2OpcionesExamenEspecifico"/>
+
+            <View style="@style/lineaDivOpcionesExamenEspecifico"/>
+            <LinearLayout
+                style="@style/layoutOpcionExamenEspecifico" >
+
+                <TextView
+                    style="@style/txtNombreOpcionExamenEspecifico"
+                    android:text="@string/strNitritos"
+                    />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/txtFieldNumOpcionExamenEspecifico"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/editTxtNumOpcionExamenEspecifico"
+                        />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    style="@style/txtUnidadMedidaOpcionExamenEspecifico"
+                    android:text="@string/strFentolitros"/>
+
+            </LinearLayout>
+            <View style="@style/lineaDiv2OpcionesExamenEspecifico"/>
+
+            <View style="@style/lineaDivOpcionesExamenEspecifico"/>
+            <LinearLayout
+                style="@style/layoutOpcionExamenEspecifico" >
+
+                <TextView
+                    style="@style/txtNombreOpcionExamenEspecifico"
+                    android:text="@string/strUrobilinogeno"
+                    />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/txtFieldNumOpcionExamenEspecifico"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/editTxtNumOpcionExamenEspecifico"
+                        />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    style="@style/txtUnidadMedidaOpcionExamenEspecifico"
+                    android:text="@string/strFentolitros"/>
+
+            </LinearLayout>
+            <View style="@style/lineaDiv2OpcionesExamenEspecifico"/>
+
+            <View style="@style/lineaDivOpcionesExamenEspecifico"/>
+            <LinearLayout
+                style="@style/layoutOpcionExamenEspecifico" >
+
+                <TextView
+                    style="@style/txtNombreOpcionExamenEspecifico"
+                    android:text="@string/strEsteLeucoci"
+                    />
 
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -392,8 +700,7 @@
             <View style="@style/lineaDiv2OpcionesExamenEspecifico"/>
 
             <Button
-                style="@style/btnAnalizar" />
-
+                style="@style/btnAnalizar"/>
 
         </LinearLayout>
 
