@@ -2,13 +2,58 @@ package com.adrmeneses.evalab_resultanalisisclinicos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 
 public class ExamenGeneralOrina extends AppCompatActivity {
 
+    private String[] colorOrina = {"Amarillo (todos)","Rojo", "Marrón","Negro"}, olorOrina = {"Lig. Ácido","Lig. Amoniaco", "Acetona/Fruta", "Fetido (Mal)"}, aspectoOrina = {"Claro", "Lig. Turbio", "Turbio"}, leucocitosOrina = {"0","1-3","4-6","7-10","más de 10","más de 50", "más de 100"}, PosNegOrina = {"Positivo","Negativo"};
+    AutoCompleteTextView listaColorOrina, listaOlorOrina, listaAspectoOrina, listaLeucocitosOrina, listaCelulasOrina, listaCilindrosOrina, listaProteinasOrina, listaHemoglobinaOrina, listaGlucosaOrina, listaCetonaOrina, listaBilirrubinaOrina, listaNitritosOrina;
+    ArrayAdapter<String> adaptadorColor, adaptadorOlor, adaptadorAspecto, adaptadorLeucocitos, adaptadorPosNeg;
+    EditText textFieldColorOrina;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.examen_general_orina);
+
+        opcionesListas(listaOlorOrina, adaptadorOlor, R.id.txtFieldOlorOrina, olorOrina);
+        opcionesListas(listaColorOrina, adaptadorColor, R.id.txtFieldColorOrina, colorOrina);
+        opcionesListas(listaAspectoOrina, adaptadorAspecto, R.id.txtFieldAspectoOrina, aspectoOrina);
+        opcionesListas(listaLeucocitosOrina, adaptadorLeucocitos, R.id.txtFieldLeucocitosOrina, leucocitosOrina);
+        opcionesListas(listaCelulasOrina, adaptadorPosNeg, R.id.txtFieldCelulasOrina, PosNegOrina);
+        opcionesListas(listaCilindrosOrina, adaptadorPosNeg, R.id.txtFieldCilindrosOrina, PosNegOrina);
+        opcionesListas(listaProteinasOrina, adaptadorPosNeg, R.id.txtFieldProteinasOrina, PosNegOrina);
+        opcionesListas(listaHemoglobinaOrina, adaptadorPosNeg, R.id.txtFieldHemoglobinaOrina, PosNegOrina);
+        opcionesListas(listaGlucosaOrina, adaptadorPosNeg, R.id.txtFieldGlucosaOrina, PosNegOrina);
+        opcionesListas(listaCetonaOrina, adaptadorPosNeg, R.id.txtFieldCetonaOrina, PosNegOrina);
+        opcionesListas(listaBilirrubinaOrina, adaptadorPosNeg, R.id.txtFieldBilirrubinaOrina, PosNegOrina);
+        opcionesListas(listaNitritosOrina, adaptadorPosNeg, R.id.txtFieldNitritosOrina, PosNegOrina);
+
     }
+
+    public void opcionesListas(AutoCompleteTextView lista, ArrayAdapter<String> adaptador, int id, String[] arreglo){
+        lista = findViewById(id);
+        lista.setDropDownBackgroundResource(R.color.white);
+        adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, arreglo);
+        lista.setAdapter(adaptador);
+
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String item = adapterView.getItemAtPosition(i).toString();
+                Toast.makeText(getApplicationContext(), "Select: "+item, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 }

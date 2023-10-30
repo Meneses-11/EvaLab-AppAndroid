@@ -92,7 +92,7 @@
     <string name="strNitritos">Nitritos</string>
     <string name="strUrobilinogeno">Urobilinogeno</string>
     <string name="strEsteLeucoci">Estereasa Leucocitaria</string>
-
+    <string name="strExamenHint">Dato</string>
 
     <!-- Todos las unidades de medidas de los datos que hay en los diferentes examenes -->
     <string name="strGramosDesilitros">gr/dL</string>
@@ -104,5 +104,6 @@
     <string name="strMicrolitros">μL</string>
     <string name="strMililitros">ml</string>
     <string name="strMiligramosDesilitros">mg / dL</string>
+    <string name="strSobreCampo">/campo</string>
 
 </resources>

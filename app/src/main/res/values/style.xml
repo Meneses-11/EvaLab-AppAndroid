@@ -222,10 +222,21 @@
     <style name="txtFieldNumOpcionExamenEspecifico">
         <item name="android:layout_width">100dp</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:hint">Dato</item>
+        <item name="android:hint">@string/strExamenHint</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:textColorHint">@color/gray</item>
+        <item name="boxStrokeColor">@drawable/border_color_opc_exam_especif</item>
+    </style>
+    <!-- Contenedor del EditText tipo Lista-->
+    <style name="txtFieldListaOpcionExamenEspecifico" parent="Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
         <item name="android:textColorHint">@color/gray</item>
         <item name="boxStrokeColor">@drawable/border_color_opc_exam_especif</item>
     </style>
@@ -236,6 +247,15 @@
         <item name="android:inputType">numberDecimal</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">25dp</item>
+        <item name="android:fontFamily">@font/robotoslab_variablefont</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <!-- EditText donde se escogerán los datos de la lista -->
+    <style name="editTxtListaOpcionExamenEspecifico">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:inputType">none</item>
+        <item name="android:textSize">20dp</item>
         <item name="android:fontFamily">@font/robotoslab_variablefont</item>
         <item name="android:textColor">@color/black</item>
     </style>
