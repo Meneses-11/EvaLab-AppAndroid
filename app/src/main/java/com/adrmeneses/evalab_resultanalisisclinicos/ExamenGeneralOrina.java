@@ -15,7 +15,7 @@ import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 
 public class ExamenGeneralOrina extends AppCompatActivity {
 
-    private String[] colorOrina = {"Amarillo (todos)","Rojo", "Marrón","Negro"}, olorOrina = {"Lig. Ácido","Lig. Amoniaco", "Acetona/Fruta", "Fetido (Mal)"}, aspectoOrina = {"Claro", "Lig. Turbio", "Turbio"}, leucocitosOrina = {"0","1-3","4-6","7-10","más de 10","más de 50", "más de 100"}, PosNegOrina = {"Positivo","Negativo"};
+    private String[] colorOrina = {"Amarillo (todos)","Rojo", "Marrón","Negro"}, olorOrina = {"Lig. Ácido","Lig. Amoniaco", "Acetona/Fruta", "Fetido (Mal)"}, aspectoOrina = {"Claro", "Lig. Turbio", "Turbio"}, leucocitosOrina = {"0","1-6","7-20","más de 20"}, PosNegOrina = {"Positivo","Negativo"};
     AutoCompleteTextView listaColorOrina, listaOlorOrina, listaAspectoOrina, listaLeucocitosOrina, listaCelulasOrina, listaCilindrosOrina, listaProteinasOrina, listaHemoglobinaOrina, listaGlucosaOrina, listaCetonaOrina, listaBilirrubinaOrina, listaNitritosOrina;
     ArrayAdapter<String> adaptadorColor, adaptadorOlor, adaptadorAspecto, adaptadorLeucocitos, adaptadorPosNeg;
     EditText textFieldColorOrina;

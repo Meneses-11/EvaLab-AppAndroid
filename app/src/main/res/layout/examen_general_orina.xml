@@ -117,32 +117,6 @@
 
                 <TextView
                     style="@style/txtNombreOpcionExamenEspecifico"
-                    android:text="@string/strSedimento"
-                    />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/txtFieldNumOpcionExamenEspecifico"
-                    >
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        style="@style/editTxtNumOpcionExamenEspecifico"
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    style="@style/txtUnidadMedidaOpcionExamenEspecifico"
-                    android:text="@string/strPicogramos"/>
-
-            </LinearLayout>
-            <View style="@style/lineaDiv2OpcionesExamenEspecifico"/>
-
-            <View style="@style/lineaDivOpcionesExamenEspecifico"/>
-            <LinearLayout
-                style="@style/layoutOpcionExamenEspecifico" >
-
-                <TextView
-                    style="@style/txtNombreOpcionExamenEspecifico"
                     android:text="@string/strCelulas"
                     />
 
