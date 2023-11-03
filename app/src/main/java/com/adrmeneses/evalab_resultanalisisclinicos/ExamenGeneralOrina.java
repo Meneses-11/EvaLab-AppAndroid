@@ -3,15 +3,20 @@ package com.adrmeneses.evalab_resultanalisisclinicos;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.MyDBHelper;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
+
+import java.sql.SQLData;
 
 public class ExamenGeneralOrina extends AppCompatActivity {
 
@@ -19,12 +24,15 @@ public class ExamenGeneralOrina extends AppCompatActivity {
     AutoCompleteTextView listaColorOrina, listaOlorOrina, listaAspectoOrina, listaLeucocitosOrina, listaCelulasOrina, listaCilindrosOrina, listaProteinasOrina, listaHemoglobinaOrina, listaGlucosaOrina, listaCetonaOrina, listaBilirrubinaOrina, listaNitritosOrina;
     ArrayAdapter<String> adaptadorColor, adaptadorOlor, adaptadorAspecto, adaptadorLeucocitos, adaptadorPosNeg;
     EditText textFieldColorOrina;
+    Button btnAnalizar;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.examen_general_orina);
+
+        btnAnalizar = findViewById(R.id.btnEGOAnalizar);
 
         opcionesListas(listaOlorOrina, adaptadorOlor, R.id.txtFieldOlorOrina, olorOrina);
         opcionesListas(listaColorOrina, adaptadorColor, R.id.txtFieldColorOrina, colorOrina);
@@ -38,6 +46,19 @@ public class ExamenGeneralOrina extends AppCompatActivity {
         opcionesListas(listaCetonaOrina, adaptadorPosNeg, R.id.txtFieldCetonaOrina, PosNegOrina);
         opcionesListas(listaBilirrubinaOrina, adaptadorPosNeg, R.id.txtFieldBilirrubinaOrina, PosNegOrina);
         opcionesListas(listaNitritosOrina, adaptadorPosNeg, R.id.txtFieldNitritosOrina, PosNegOrina);
+
+        btnAnalizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MyDBHelper myDBhelper = new MyDBHelper(ExamenGeneralOrina.this);
+                SQLiteDatabase bd = myDBhelper.getWritableDatabase();
+                if (bd != null){
+                    Toast.makeText(ExamenGeneralOrina.this, "BASE DE DATOS CREADA EXITOSAMENTE", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(ExamenGeneralOrina.this, "HUBO UN ERROR AL CREAR LA BASE DE DATOS", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
     }
 

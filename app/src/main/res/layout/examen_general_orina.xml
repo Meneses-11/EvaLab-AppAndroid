@@ -616,6 +616,7 @@
             <View style="@style/lineaDiv2OpcionesExamenEspecifico"/>
 
             <Button
+                android:id="@+id/btnEGOAnalizar"
                 style="@style/btnAnalizar"/>
 
         </LinearLayout>
