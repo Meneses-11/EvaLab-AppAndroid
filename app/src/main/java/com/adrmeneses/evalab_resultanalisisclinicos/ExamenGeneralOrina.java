@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.MyDBHelper;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 
+import java.io.File;
 import java.sql.SQLData;
 
 public class ExamenGeneralOrina extends AppCompatActivity {
@@ -50,13 +51,7 @@ public class ExamenGeneralOrina extends AppCompatActivity {
         btnAnalizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MyDBHelper myDBhelper = new MyDBHelper(ExamenGeneralOrina.this);
-                SQLiteDatabase bd = myDBhelper.getWritableDatabase();
-                if (bd != null){
-                    Toast.makeText(ExamenGeneralOrina.this, "BASE DE DATOS CREADA EXITOSAMENTE", Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(ExamenGeneralOrina.this, "HUBO UN ERROR AL CREAR LA BASE DE DATOS", Toast.LENGTH_SHORT).show();
-                }
+
             }
         });
 
