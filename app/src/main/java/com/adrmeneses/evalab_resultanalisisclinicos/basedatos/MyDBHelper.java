@@ -10,7 +10,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
     //Declara las constantes para el nombre, la versión y las tablas de la BD
     private static final int DATABASE_VERSION = 1;
     public static final String DTABASE_NOMBRE = "EvaLabDB";
-    public static final String TABLE_TIPO_EXAMEN = "ExamenTipo", TABLE_PARAMETROS_EXAMEN = "ExamenParametros", TABLE_VALORES_REFERENCIA = "ReferenciaValores", TABLE_RESULTADOS = "ResultadosTabla";
+    public static final String TABLE_TIPO_EXAMEN = "ExamenTipo", TABLE_PARAMETROS_EXAMEN = "ExamenParametros", TABLE_VALORES_REFERENCIA = "ReferenciaValores", TABLE_RESULTADOS = "ResultadosTabla", TABLE_USUARIOS = "Usuarios";
 
     //Constructor
     public MyDBHelper(@Nullable Context context) {
@@ -19,6 +19,16 @@ public class MyDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        //Crea la tabla Usuario
+        sqLiteDatabase.execSQL("CREATE TABLE "+TABLE_USUARIOS+" (" +
+                "idUsuario INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "nombre VARCHAR NOT NULL, " +
+                "apellido VARCHAR NOT NULL, " +
+                "fechaNacimiento DATE NOT NULL," +
+                "sexo VARCHAR NOT NULL," +
+                "estatura DOUBLE NOT NULL," +
+                "peso DOUBLE NOT NULL)");
+
         //Crea la tabla ExamenTipo
         sqLiteDatabase.execSQL("CREATE TABLE "+TABLE_TIPO_EXAMEN+" (" +
                 "idTipExam INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -37,17 +47,27 @@ public class MyDBHelper extends SQLiteOpenHelper {
                 "idRefVal INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "idTipExam INTEGER," +
                 "idParametro INTEGER," +
-                "valorMinimo VARCHAR," +
-                "valorMaximo VARCHAR," +
+                "valorMin VARCHAR," +
+                "valorMax VARCHAR," +
+                "valorMinHombre VARCHAR," +
+                "valorMaxHombre VARCHAR," +
+                "valorMinMujer VARCHAR," +
+                "valorMaxMujer VARCHAR," +
+                "valorMinAdult VARCHAR," +
+                "valorMaxAdult VARCHAR," +
+                "valorMinCh VARCHAR," +
+                "valorMaxCh VARCHAR," +
                 "FOREIGN KEY(idTipExam) REFERENCES " + TABLE_TIPO_EXAMEN + "(idTipExam)," +
                 "FOREIGN KEY(idParametro) REFERENCES " + TABLE_PARAMETROS_EXAMEN + "(idParametro))");
 
         //Crea la tabla Resultados
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_RESULTADOS + " (" +
                 "idResultado INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "idUsuario INTEGER," +
                 "idTipExam INTEGER," +
                 "idParametro INTEGER," +
                 "valorObtenido VARCHAR," +
+                "FOREIGN KEY(idUsuario) REFERENCES " + TABLE_USUARIOS + "(idUsuario)," +
                 "FOREIGN KEY(idTipExam) REFERENCES " + TABLE_TIPO_EXAMEN + "(idTipExam)," +
                 "FOREIGN KEY(idParametro) REFERENCES " + TABLE_PARAMETROS_EXAMEN + "(idParametro))");
 
