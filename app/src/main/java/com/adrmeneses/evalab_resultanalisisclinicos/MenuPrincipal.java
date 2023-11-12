@@ -1,10 +1,13 @@
 package com.adrmeneses.evalab_resultanalisisclinicos;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -18,30 +21,37 @@ public class MenuPrincipal extends AppCompatActivity {
     MyDBHelper myDBhelper;
     DBExamenTipo dbExamenTipo;
     File dbFile;
+    //Declara la variable que almacenará el intent
+    Intent activityFormPrin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_principal);
 
-        //Instanciam de las clases para la BD
+        //Instancias de las clases para la BD
         myDBhelper = new MyDBHelper(MenuPrincipal.this);
         dbExamenTipo = new DBExamenTipo(MenuPrincipal.this);
         dbFile = getApplicationContext().getDatabasePath(MyDBHelper.DTABASE_NOMBRE);
+        //Asigna la activity al intent
+        activityFormPrin = new Intent(MenuPrincipal.this, FormularioPrincipal.class);
 
         //Condicional que revisa si ya fue creada la bd
-        if (dbFile.exists()){
-            Toast.makeText(MenuPrincipal.this, "La BD ya existe", Toast.LENGTH_SHORT).show();
-        }else {//Si aun no se ha creado, entra y la crea
+        if (!dbFile.exists()){
             //Crea la BD
             SQLiteDatabase bd = myDBhelper.getWritableDatabase();
             //Si no hubo ningun error entra
             if (bd != null) {
                 datosTablaExamenTipo(dbExamenTipo); //Manda a llamar al método que agregará datos a la primera tabla
-                Toast.makeText(MenuPrincipal.this, "BASE DE DATOS CREADA EXITOSAMENTE", Toast.LENGTH_SHORT).show();
+                startActivity(activityFormPrin);
+                finish();
+                Log.d(TAG, "BD creada exitosamente");
+
             } else {
-                Toast.makeText(MenuPrincipal.this, "HUBO UN ERROR AL CREAR LA BASE DE DATOS", Toast.LENGTH_SHORT).show();
+                Log.e(TAG, "Hubo un Error al crear la BD");
             }
+        }else{
+            Log.d(TAG, "La bd ya existe");
         }
     }
 
@@ -79,9 +89,9 @@ public class MenuPrincipal extends AppCompatActivity {
 
         //Evalúa si todos los id son mayores que 0, es decir, que se hayan creado exitosamente
         if (id>0 && id1>0 && id2>0 && id3>0 && id4>0 && id5>0 && id6>0 && id7>0 && id8>0 && id9>0 && id10>0 && id11>0 && id12>0 && id13>0 && id14>0 && id15>0){
-            Toast.makeText(this, "Registros guardados exitosamente", Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "Registros guardados exitosamente");
         }else{//si un id no es mayor que 0, quiere decir que hubo un error y no se pudo hacer ese registro
-            Toast.makeText(this, "Hubo un ERROR", Toast.LENGTH_SHORT).show();
+            Log.e(TAG, "Hubo un ERROR");
         }
 
     }

@@ -22,7 +22,7 @@ public class DBExamenTipo extends MyDBHelper{
         try {
             //Objeto de la clase MYDBHelper
             MyDBHelper myDBHelper = new MyDBHelper(context);             //Le pasa lo que hay en contexto
-            SQLiteDatabase db = myDBHelper.getWritableDatabase();        //Creamos un objeto y le asignamos el método de la clase MyDBHelper
+            SQLiteDatabase db = myDBHelper.getWritableDatabase();        //Crea un objeto y le asignamos el método de la clase MyDBHelper
 
             //Crea un objeto que puede almacenar varios valores
             ContentValues values = new ContentValues();
