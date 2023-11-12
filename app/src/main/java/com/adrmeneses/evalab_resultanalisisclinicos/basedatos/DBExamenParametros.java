@@ -3,8 +3,9 @@ package com.adrmeneses.evalab_resultanalisisclinicos.basedatos;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-
+import android.database.Cursor;
 import androidx.annotation.Nullable;
+
 
 import java.util.Date;
 
@@ -37,6 +38,26 @@ public class DBExamenParametros extends MyDBHelper{
         }
         //Retorna el id
         return id;
+    }
+
+    // Método para verificar si existen registros con un idTipExam específico
+    public boolean existeConIdTipExam(long idTipExam) {
+        int count = 0;
+        SQLiteDatabase db = getReadableDatabase();  //Instancía la bd
+        //Declara la consulta
+        String query = "SELECT COUNT(*) FROM " + TABLE_PARAMETROS_EXAMEN +
+                " WHERE idTipExam = ?";
+        //Ejecuta la consulta y le pasa el idTipExam
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idTipExam)});
+
+        //Evalua si el cursor se creó bien
+        if (cursor.moveToFirst()) {
+            count = cursor.getInt(0);
+        }
+        //Cierra el cursor
+        cursor.close();
+
+        return count > 0; //Retorna true si el contador tiene de 1 registro en adelante y falso si no tiene ni siquiera 1
     }
 
 }
