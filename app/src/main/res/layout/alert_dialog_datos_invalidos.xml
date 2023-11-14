@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+                <ImageView
+                    android:id="@+id/imgDialogo"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/msj_error"/>
+                <TextView
+                    android:id="@+id/txtTituloDialogo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Datos Erroneos"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/onest_extrabold"
+                    android:textStyle="bold"
+                    android:gravity="center"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtMensajeDialogo"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Introduzca datos válidos"
+            android:textColor="@color/black"
+            android:fontFamily="@font/onesans_medium"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_marginTop="16dp"/>
+
+        <Button
+            android:id="@+id/btnAceptarDialogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Aceptar"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="16dp"
+            android:gravity="center"/>
+
+</LinearLayout>

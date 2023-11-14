@@ -18,6 +18,8 @@ import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.MyDBHelper;
 import java.io.File;
 
 public class PaginaCarga extends AppCompatActivity {
+    //Declara la variable en la que se instanciara la clase UsuarioActivo
+    UsuarioActivo userActv;
     //Declara los objetos de las clases que se usaran para la BD
     MyDBHelper myDBhelper;
     DBExamenTipo dbExamenTipo;
@@ -29,6 +31,9 @@ public class PaginaCarga extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pagina_carga);
+
+        //Instancia la clase UsuarioActivo
+        userActv = UsuarioActivo.getInstance();
 
         //Constante para la duración de la pantalla
         final int DURACION = 2500;
@@ -52,6 +57,7 @@ public class PaginaCarga extends AppCompatActivity {
                         startActivity(activityFormuPrin);
                         finish();
                     }else {
+                        if(userActv.getIdUsuario() == 0){userActv.setIdUsuario(obtenerIdUsuario());}
                         startActivity(activityMenuPrin);
                         finish();
                     }
@@ -88,5 +94,20 @@ public class PaginaCarga extends AppCompatActivity {
             }
         }
         return true;  // En caso de error o si no se pudo abrir la base de datos
+    }
+
+    private long obtenerIdUsuario(){
+        SQLiteDatabase db = myDBhelper.getReadableDatabase();
+        if(db != null){
+            String query1 = "SELECT idUsuario FROM Usuarios ORDER BY idUsuario ASC LIMIT 1;";
+            Cursor cursor = db.rawQuery(query1, null);
+            if(cursor != null){
+                cursor.moveToFirst();
+                int datoCursor = cursor.getInt(0);
+                return datoCursor;
+            }
+        }
+
+        return 0;
     }
 }

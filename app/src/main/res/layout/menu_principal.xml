@@ -41,6 +41,7 @@
         android:id="@+id/btnInformación"
         style="@style/btnMenuPrincipal"
         android:text="@string/strInfo"
+        android:onClick="funPrueba"
         />
 
 

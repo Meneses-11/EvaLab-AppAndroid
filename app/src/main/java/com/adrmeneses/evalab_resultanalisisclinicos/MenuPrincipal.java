@@ -18,6 +18,7 @@ import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.MyDBHelper;
 import java.io.File;
 
 public class MenuPrincipal extends AppCompatActivity {
+    UsuarioActivo userActv;
     //Declara los objetos de las clases que usaremos para la BD
     MyDBHelper myDBhelper;
     DBExamenTipo dbExamenTipo;
@@ -29,6 +30,8 @@ public class MenuPrincipal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_principal);
+
+        userActv = UsuarioActivo.getInstance();
 
         //Instancias de las clases para la BD
         myDBhelper = new MyDBHelper(MenuPrincipal.this);
@@ -130,5 +133,8 @@ public class MenuPrincipal extends AppCompatActivity {
         Intent lanzar3 = new Intent(this, InformacionActivity.class);
     }
     */
-
+    public void funPrueba(View view){
+        Intent lanzarfj = new Intent(this, FormularioPrincipal.class);
+        startActivity(lanzarfj);
+    }
 }

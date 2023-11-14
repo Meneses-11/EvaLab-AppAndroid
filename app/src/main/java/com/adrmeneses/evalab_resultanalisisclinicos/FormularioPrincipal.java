@@ -30,6 +30,8 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 public class FormularioPrincipal extends AppCompatActivity {
+    //Declara la variable en la que se instanciara la clase UsuarioActivo
+    UsuarioActivo userActv;
     //Declara las variables que se usaran para los componentes gráficos
     RadioGroup radioGroupSexo;
     LinearLayout contenedorFechaNacimiento, ventana1, ventana2, ventana3;
@@ -56,7 +58,8 @@ public class FormularioPrincipal extends AppCompatActivity {
 
         //Asigna a la variable la clase DBUsuarios
         dbUsuarios = new DBUsuarios(this);
-
+        //Instancia la clase UsuarioActivo
+        userActv = UsuarioActivo.getInstance();
         //Asigna la activity MenuPrincipal al Intent
         activityMenuPrin = new Intent(FormularioPrincipal.this, MenuPrincipal.class);
 
@@ -220,10 +223,10 @@ public class FormularioPrincipal extends AppCompatActivity {
         long id;
 
         id = dbUsuarios.insertaUsuario(nombreUsr, apellidoUsr, sexoUsr, fechNaciUsr, alturaUsr, pesoUsr);
-        Log.d(TAG, "datos: "+nombreUsr+" "+apellidoUsr+" "+sexoUsr+" "+fechNaciUsr+" "+alturaUsr+" "+pesoUsr);
 
         if(id>0){
             //Toast.makeText(this, "Agregado con Éxito", Toast.LENGTH_SHORT).show();
+            userActv.setIdUsuario(id); //Le manda el usuario a la clase UsuarioActivo
             startActivity(activityMenuPrin);
             finish();
         }else {
