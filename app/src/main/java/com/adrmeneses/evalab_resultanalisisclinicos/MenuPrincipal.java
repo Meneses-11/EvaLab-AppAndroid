@@ -57,7 +57,7 @@ public class MenuPrincipal extends AppCompatActivity {
         }else{
             Log.d(TAG, "La bd ya existe");
             //Evalua si está o no vacía la tabla ExamenTipo
-            if(estaVaciaTablaExamenTipo()){
+            if(dbExamenTipo.estaVaciaTablaExamenTipo()){
                 datosTablaExamenTipo(dbExamenTipo); //Manda a llamar al método que agregará datos a la tabla
                 Log.d(TAG, "Tabla ExamenTipo llenado con éxito");
             }else {
@@ -106,24 +106,6 @@ public class MenuPrincipal extends AppCompatActivity {
         }
 
     }
-
-    // Método para verificar si la tabla Usuarios está vacía
-    private boolean estaVaciaTablaExamenTipo() {
-        SQLiteDatabase db = myDBhelper.getReadableDatabase();
-        if (db != null) {
-            String query = "SELECT COUNT(*) FROM ExamenTipo";      // Ejecuta la consulta para contar la cantidad de filas en la tabla ExamenTipo
-            Cursor cursor = db.rawQuery(query, null);   // Crea objeto Cursor que ejecuta la consulta y apunta a los resultados
-            //Verifica si el cursor se creo correctamente
-            if (cursor != null) {
-                cursor.moveToFirst();
-                int count = cursor.getInt(0);   //Obtiene el valor del primer campo en la fila actual, que es el resultado de la función de agregación COUNT(*)
-                cursor.close();                   //Cierra el cursor
-                return count == 0;                //Retorna true si la tabla está vacía, false si tiene al menos una fila
-            }
-        }
-        return true;  // En caso de error o si no se pudo abrir la base de datos
-    }
-
     /*
     public void viewTiposAnalisis(View view){
         Intent lanzar2 = new Intent(this, TipAnalisisActivity.class);

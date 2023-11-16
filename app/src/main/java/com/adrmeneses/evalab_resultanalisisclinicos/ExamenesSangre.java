@@ -37,22 +37,6 @@ public class ExamenesSangre extends AppCompatActivity {
         startActivity(lanzar);
     }
 
-    //Método que obtiene el id del Tipo de Examen que es (Sangre)
-    @SuppressLint("Range")
-    public long obtenerIdTipExam(String nombreExamen){
-        long idTipExam = -1; //Valor predeterminado si no encuentra el id
-        //Realiza la consulta
-        String query = "SELECT idTipExam FROM " + MyDBHelper.TABLE_TIPO_EXAMEN +
-                " WHERE nombreExamenTipo = ?";
-        Cursor cursor = database.rawQuery(query, new String[]{nombreExamen});
-        //Verifica siencontró un resultado
-        if(cursor.moveToFirst()){
-            idTipExam = cursor.getLong(cursor.getColumnIndex("idTipExam"));
-        }
-        //Cierra el cursor
-        cursor.close();
-        return idTipExam;
-    }
 
     //Método que agregará datos a la tabla Resultados
     public void llenarTablaResultados(DBResultadosTabla dbResultadosTabla, int usuarioId, int examenId, int parameterId, double valor){
@@ -67,21 +51,6 @@ public class ExamenesSangre extends AppCompatActivity {
             Log.e(TAG, "Hubo un ERROR");
         }
 
-    }
-
-    public long obtenerIdParametro(String parametro){
-        long parametroId = 0;
-        SQLiteDatabase db = myDBHelper.getReadableDatabase();
-        if(db != null){
-            String query = "SELECT idParametro FROM ExamenParametros WHERE nombreParametro = ?";
-            Cursor cursor = db.rawQuery(query, new String[]{parametro});
-            if (cursor != null){
-                cursor.moveToFirst();
-                parametroId = cursor.getInt(0);
-            }
-        }
-
-        return parametroId;
     }
 
 }

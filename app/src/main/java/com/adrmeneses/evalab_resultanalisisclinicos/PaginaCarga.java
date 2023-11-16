@@ -13,6 +13,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBExamenTipo;
+import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBUsuarios;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.MyDBHelper;
 
 import java.io.File;
@@ -23,6 +24,7 @@ public class PaginaCarga extends AppCompatActivity {
     //Declara los objetos de las clases que se usaran para la BD
     MyDBHelper myDBhelper;
     DBExamenTipo dbExamenTipo;
+    DBUsuarios dbUsuarios;
     File dbFile;
     //Declara las variables de los Intents
     Intent activityMenuPrin, activityFormuPrin;
@@ -41,6 +43,7 @@ public class PaginaCarga extends AppCompatActivity {
         //Instancias de las clases para la BD
         myDBhelper = new MyDBHelper(PaginaCarga.this);
         dbExamenTipo = new DBExamenTipo(PaginaCarga.this);
+        dbUsuarios = new DBUsuarios(PaginaCarga.this);
         dbFile = getApplicationContext().getDatabasePath(MyDBHelper.DTABASE_NOMBRE);
 
         //Asigna la activity a la variable correspondiente
@@ -53,11 +56,11 @@ public class PaginaCarga extends AppCompatActivity {
             public void run() {
                 //Evalúa si existe la bd
                 if(dbFile.exists()){//Si existe manda a la activity MenuPrincipal
-                    if(estaVaciaTablaUsuarios()){
+                    if(dbUsuarios.estaVaciaTablaUsuarios()){
                         startActivity(activityFormuPrin);
                         finish();
                     }else {
-                        if(userActv.getIdUsuario() == 0){userActv.setIdUsuario(obtenerIdUsuario());}
+                        if(userActv.getIdUsuario() == 0){userActv.setIdUsuario(dbUsuarios.obtenerIdUsuario());}
                         startActivity(activityMenuPrin);
                         finish();
                     }
@@ -73,41 +76,8 @@ public class PaginaCarga extends AppCompatActivity {
                     startActivity(activityFormuPrin);
                     finish();
                 }
-
             }
         }, DURACION);
-
     }
 
-    // Método para verificar si la tabla Usuarios está vacía
-    private boolean estaVaciaTablaUsuarios() {
-        SQLiteDatabase db = myDBhelper.getReadableDatabase();
-        if (db != null) {
-            String query = "SELECT COUNT(*) FROM Usuarios";      // Ejecuta la consulta para contar la cantidad de filas en la tabla Usuarios
-            Cursor cursor = db.rawQuery(query, null); // Crea objeto Cursor que ejecuta la consulta y apunta a los resultados
-            //Verifica si el cursor se creo correctamente
-            if (cursor != null) {
-                cursor.moveToFirst();
-                int count = cursor.getInt(0);   //Obtiene el valor del primer campo en la fila actual, que es el resultado de la función de agregación COUNT(*)
-                cursor.close();                   //Cierra el cursor
-                return count == 0;                //Retorna true si la tabla está vacía, false si tiene al menos una fila
-            }
-        }
-        return true;  // En caso de error o si no se pudo abrir la base de datos
-    }
-
-    private long obtenerIdUsuario(){
-        SQLiteDatabase db = myDBhelper.getReadableDatabase();
-        if(db != null){
-            String query1 = "SELECT idUsuario FROM Usuarios ORDER BY idUsuario ASC LIMIT 1;";
-            Cursor cursor = db.rawQuery(query1, null);
-            if(cursor != null){
-                cursor.moveToFirst();
-                int datoCursor = cursor.getInt(0);
-                return datoCursor;
-            }
-        }
-
-        return 0;
-    }
 }

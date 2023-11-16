@@ -33,6 +33,7 @@ public class HemogramaCompleto extends ExamenesSangre {
     //Declara la variable de la clase DBExamenParametros y DBResultadosTabla
     DBExamenParametros dbExamenParametros;
     DBResultadosTabla dbResultadosTabla;
+    DBExamenTipo dbExamenTipo;
     //Arreglo que almacena todos los parámetros
     String[] parametros= {"Hemoglobina","Hematocrito","Eritrocitos","VMG","HCM","Reticulocitos","Leocucitos","Neutrofilos","Linfocitos","Eosinofilos","Basofilos","Monocitos","Plaquetas","Volumen Plaquetario Medio"};
     //Arreglo que contiene todos los editText
@@ -55,13 +56,14 @@ public class HemogramaCompleto extends ExamenesSangre {
         for (int j=0; j<componentes.length; j++){
             textInputs[j] = findViewById(componentes[j]);
         }
-        
+
         //Asigna la clase a la variable correspondiente
         dbExamenParametros = new DBExamenParametros(this);
         dbResultadosTabla = new DBResultadosTabla(this);
+        dbExamenTipo = new DBExamenTipo(this);
 
         //Almacena el id del TipoExamen en este caso, de Sangre
-        idTipExam = obtenerIdTipExam(NAME_EXAM); //manda a llamar el mpetodo que retorna el id
+        idTipExam = dbExamenTipo.obtenerIdTipExam(NAME_EXAM); //manda a llamar el mpetodo que retorna el id
 
 
         if (dbExamenParametros.existeConIdTipExam(idTipExam)){
@@ -94,7 +96,7 @@ public class HemogramaCompleto extends ExamenesSangre {
         if(CamposLLenos(textInputs)){
             for(int a=0; a<textInputs.length; a++){
                 llenarTablaResultados(dbResultadosTabla, Integer.parseInt(String.valueOf(idUsuario)),
-                        Integer.parseInt(String.valueOf(idTipExam)), Integer.parseInt(String.valueOf(obtenerIdParametro(parametros[a]))),
+                        Integer.parseInt(String.valueOf(idTipExam)), Integer.parseInt(String.valueOf(dbExamenParametros.obtenerIdParametro(parametros[a]))),
                         Double.parseDouble(textInputs[a].getText().toString()));
             }
         }else {

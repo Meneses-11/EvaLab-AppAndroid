@@ -60,4 +60,21 @@ public class DBExamenParametros extends MyDBHelper{
         return count > 0; //Retorna true si el contador tiene de 1 registro en adelante y falso si no tiene ni siquiera 1
     }
 
+    //Método que obtiene el id del parametro solicitado
+    public long obtenerIdParametro(String parametro){
+        long parametroId = 0;
+        MyDBHelper myDBHelper = new MyDBHelper(context);
+        SQLiteDatabase db = myDBHelper.getReadableDatabase();
+        if(db != null){
+            String query = "SELECT idParametro FROM "+TABLE_PARAMETROS_EXAMEN+" WHERE nombreParametro = ?";
+            Cursor cursor = db.rawQuery(query, new String[]{parametro});
+            if (cursor != null){
+                cursor.moveToFirst();
+                parametroId = cursor.getInt(0);
+            }
+        }
+
+        return parametroId;
+    }
+
 }
