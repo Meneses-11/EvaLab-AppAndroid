@@ -72,7 +72,7 @@ public class MenuPrincipal extends AppCompatActivity {
         startActivity(lanzar);
     }
     public void viewResultados(View view){
-        Intent lanzar1 = new Intent(this, MenuOrganos.class);
+        Intent lanzar1 = new Intent(this, VentanaResultados.class);
         startActivity(lanzar1);
     }
 

@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ResultEstado">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/fondocuerpo"
+        android:layout_marginTop="120dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <!--
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/tiltneon_regular"
+            android:gravity="center"
+            android:text="@string/strTituloEstSalud"
+            android:textColor="#000000"
+            android:textSize="50dp" />
+        -->
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <!-- Layout que le dará la forma general al menú -->
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- Primera fila de la tabla que tendrá 2 Opciones -->
+                <TableRow>
+
+                    <!-- Opción 1 -->
+                    <!-- Tomamos el Layout como tabla -->
+                    <TableLayout style="@style/formaOpcionMenuOrganos">
+                        <!-- Primer fila que contendrá el semaforo y el nombre-->
+                        <TableRow style="@style/fila1OpcionMenuOrganos">
+
+                            <LinearLayout style="@style/layoutFila1OpcionMenuOrganos">
+
+                                <ImageView
+                                    style="@style/imgEstadoMenuOrganos"
+                                    android:src="@drawable/verde" />
+
+                                <TextView
+                                    style="@style/txtNombreOpcionMenuOrganos"
+                                    android:text="@string/strTiroides" />
+                            </LinearLayout>
+                        </TableRow>
+                        <!-- Segunda fila que contedrá la imagen -->
+                        <TableRow style="@style/fila2OpcionMenuOrganos">
+
+                            <ImageView
+                                style="@style/imgPrincipalOpcionMenuOrganos"
+                                android:src="@drawable/tiroidesimg" />
+                        </TableRow>
+                        <!-- Tercer fila que contedrá el estado -->
+                        <TableRow style="@style/fila3OpcionMenuOrganos">
+
+                            <TextView
+                                style="@style/txtEstadoOpcionMenuOrganos"
+                                android:text="Normal"
+                                android:textColor="@color/green"/>
+                        </TableRow>
+                    </TableLayout>
+
+                    <!-- Opción 2 -->
+                    <!-- Tomamos el Layout como tabla -->
+                    <TableLayout style="@style/formaOpcionMenuOrganos">
+                        <!-- Primer fila que contendrá el semaforo y el nombre-->
+                        <TableRow style="@style/fila1OpcionMenuOrganos">
+
+                            <LinearLayout style="@style/layoutFila1OpcionMenuOrganos">
+
+                                <ImageView
+                                    style="@style/imgEstadoMenuOrganos"
+                                    android:src="@drawable/interrogante" />
+
+                                <TextView
+                                    style="@style/txtNombreOpcionMenuOrganos"
+                                    android:text="@string/strCorazon" />
+                            </LinearLayout>
+                        </TableRow>
+                        <!-- Segunda fila que contedrá la imagen -->
+                        <TableRow style="@style/fila2OpcionMenuOrganos">
+
+                            <ImageView
+                                style="@style/imgPrincipalOpcionMenuOrganos"
+                                android:src="@drawable/corazon" />
+                        </TableRow>
+                        <!-- Tercer fila que contedrá el estado -->
+                        <TableRow style="@style/fila3OpcionMenuOrganos">
+
+                            <TextView
+                                style="@style/txtEstadoOpcionMenuOrganos"
+                                android:text="Sin Información"
+                                android:textColor="@color/black"/>
+                        </TableRow>
+                    </TableLayout>
+
+                </TableRow>
+
+                <!-- Segunda fila de la tabla que tendrá 2 Opciones -->
+                <TableRow>
+
+                    <!-- Opción 1 -->
+                    <!-- Tomamos el Layout como tabla -->
+                    <TableLayout style="@style/formaOpcionMenuOrganos">
+                        <!-- Primer fila que contendrá el semaforo y el nombre-->
+                        <TableRow style="@style/fila1OpcionMenuOrganos">
+
+                            <LinearLayout style="@style/layoutFila1OpcionMenuOrganos">
+
+                                <ImageView
+                                    style="@style/imgEstadoMenuOrganos"
+                                    android:src="@drawable/amarillo" />
+
+                                <TextView
+                                    style="@style/txtNombreOpcionMenuOrganos"
+                                    android:text="@string/strRinion" />
+                            </LinearLayout>
+                        </TableRow>
+                        <!-- Segunda fila que contedrá la imagen -->
+                        <TableRow style="@style/fila2OpcionMenuOrganos">
+
+                            <ImageView
+                                style="@style/imgPrincipalOpcionMenuOrganos"
+                                android:src="@drawable/rinones" />
+                        </TableRow>
+                        <!-- Tercer fila que contedrá el estado -->
+                        <TableRow style="@style/fila3OpcionMenuOrganos">
+
+                            <TextView
+                                style="@style/txtEstadoOpcionMenuOrganos"
+                                android:text="Preocupante"
+                                android:textColor="@color/yellow"/>
+                        </TableRow>
+                    </TableLayout>
+
+                    <!-- Opción 2 -->
+                    <!-- Tomamos el Layout como tabla -->
+                    <TableLayout style="@style/formaOpcionMenuOrganos">
+                        <!-- Primer fila que contendrá el semaforo y el nombre-->
+                        <TableRow style="@style/fila1OpcionMenuOrganos">
+
+                            <LinearLayout style="@style/layoutFila1OpcionMenuOrganos">
+
+                                <ImageView
+                                    style="@style/imgEstadoMenuOrganos"
+                                    android:src="@drawable/rojo" />
+
+                                <TextView
+                                    style="@style/txtNombreOpcionMenuOrganos"
+                                    android:text="@string/strHigado" />
+                            </LinearLayout>
+                        </TableRow>
+                        <!-- Segunda fila que contedrá la imagen -->
+                        <TableRow style="@style/fila2OpcionMenuOrganos">
+
+                            <ImageView
+                                style="@style/imgPrincipalOpcionMenuOrganos"
+                                android:src="@drawable/higado" />
+                        </TableRow>
+                        <!-- Tercer fila que contedrá el estado -->
+                        <TableRow style="@style/fila3OpcionMenuOrganos">
+
+                            <TextView
+                                style="@style/txtEstadoOpcionMenuOrganos"
+                                android:text="Mal"
+                                android:textColor="@color/red" />
+                        </TableRow>
+                    </TableLayout>
+
+                </TableRow>
+
+                <!-- Tercera fila de la tabla que tendrá 2 Opciones -->
+                <TableRow>
+
+                    <!-- Opción 1 -->
+                    <!-- Tomamos el Layout como tabla -->
+                    <TableLayout style="@style/formaOpcionMenuOrganos">
+                        <!-- Primer fila que contendrá el semaforo y el nombre-->
+                        <TableRow style="@style/fila1OpcionMenuOrganos">
+
+                            <LinearLayout style="@style/layoutFila1OpcionMenuOrganos">
+
+                                <ImageView
+                                    style="@style/imgEstadoMenuOrganos"
+                                    android:src="@drawable/interrogante" />
+
+                                <TextView
+                                    style="@style/txtNombreOpcionMenuOrganos"
+                                    android:text="@string/strPancreas" />
+                            </LinearLayout>
+                        </TableRow>
+                        <!-- Segunda fila que contedrá la imagen -->
+                        <TableRow style="@style/fila2OpcionMenuOrganos">
+
+                            <ImageView
+                                style="@style/imgPrincipalOpcionMenuOrganos"
+                                android:src="@drawable/pancreas" />
+                        </TableRow>
+                        <!-- Tercer fila que contedrá el estado -->
+                        <TableRow style="@style/fila3OpcionMenuOrganos">
+
+                            <TextView
+                                style="@style/txtEstadoOpcionMenuOrganos"
+                                android:text="Sin Información" />
+                        </TableRow>
+                    </TableLayout>
+
+                    <!-- Opción 2 -->
+                    <!-- Tomamos el Layout como tabla -->
+                    <TableLayout style="@style/formaOpcionMenuOrganos">
+                        <!-- Primer fila que contendrá el semaforo y el nombre-->
+                        <TableRow style="@style/fila1OpcionMenuOrganos">
+
+                            <LinearLayout style="@style/layoutFila1OpcionMenuOrganos">
+
+                                <ImageView
+                                    style="@style/imgEstadoMenuOrganos"
+                                    android:src="@drawable/interrogante" />
+
+                                <TextView
+                                    style="@style/txtNombreOpcionMenuOrganos"
+                                    android:text="@string/strMeduOse" />
+                            </LinearLayout>
+                        </TableRow>
+                        <!-- Segunda fila que contedrá la imagen -->
+                        <TableRow style="@style/fila2OpcionMenuOrganos">
+
+                            <ImageView
+                                style="@style/imgPrincipalOpcionMenuOrganos"
+                                android:src="@drawable/medula" />
+                        </TableRow>
+                        <!-- Tercer fila que contedrá el estado -->
+                        <TableRow style="@style/fila3OpcionMenuOrganos">
+
+                            <TextView
+                                style="@style/txtEstadoOpcionMenuOrganos"
+                                android:text="Sin Información" />
+                        </TableRow>
+                    </TableLayout>
+
+                </TableRow>
+
+                <!-- Cuarta fila de la tabla que tendrá 1 Opcion -->
+                <TableRow>
+
+                    <!-- Opción -->
+                    <!-- Tomamos el Layout como tabla -->
+                    <TableLayout style="@style/formaOpcionMenuOrganos">
+                        <!-- Primer fila que contendrá el semaforo y el nombre-->
+                        <TableRow style="@style/fila1OpcionMenuOrganos">
+
+                            <LinearLayout style="@style/layoutFila1OpcionMenuOrganos">
+
+                                <ImageView
+                                    style="@style/imgEstadoMenuOrganos"
+                                    android:src="@drawable/interrogante" />
+
+                                <TextView
+                                    style="@style/txtNombreOpcionMenuOrganos"
+                                    android:text="@string/strInfeccion" />
+                            </LinearLayout>
+                        </TableRow>
+                        <!-- Segunda fila que contedrá la imagen -->
+                        <TableRow style="@style/fila2OpcionMenuOrganos">
+
+                            <ImageView
+                                style="@style/imgPrincipalOpcionMenuOrganos"
+                                android:src="@drawable/bacterias" />
+                        </TableRow>
+                        <!-- Tercer fila que contedrá el estado -->
+                        <TableRow style="@style/fila3OpcionMenuOrganos">
+
+                            <TextView
+                                style="@style/txtEstadoOpcionMenuOrganos"
+                                android:text="Sin Información" />
+                        </TableRow>
+                    </TableLayout>
+
+                </TableRow>
+
+            </TableLayout>
+
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</FrameLayout>

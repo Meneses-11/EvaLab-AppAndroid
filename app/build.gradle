@@ -25,6 +25,7 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+
     }
 }
 
@@ -34,10 +35,15 @@ dependencies {
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.google.firebase:firebase-firestore:24.9.1'
+    implementation 'androidx.annotation:annotation-jvm:1.7.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    implementation 'com.google.android.material:material:1.9.0'
     implementation 'com.airbnb.android:lottie:3.0.1'              //Libreria para usar animaciones con Lottie
+    //implementation 'androidx.fragment:fragment:1.6.2'
+    //implementation 'androidx.viewpager2:viewpager2:1.0.0'
+    // Asegúrate de tener la misma versión para annotation y annotation-jvm
+    implementation "androidx.annotation:annotation:1.7.0"
+    implementation "androidx.annotation:annotation-jvm:1.7.0"
 }
