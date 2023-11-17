@@ -1,9 +1,13 @@
-package com.adrmeneses.evalab_resultanalisisclinicos;
+package com.adrmeneses.evalab_resultanalisisclinicos.adaptadores;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
+
+import com.adrmeneses.evalab_resultanalisisclinicos.ResultEnfermedades;
+import com.adrmeneses.evalab_resultanalisisclinicos.ResultEstado;
+import com.adrmeneses.evalab_resultanalisisclinicos.ResultResultados;
 
 public class AdaptadorTabLayout extends FragmentStateAdapter {
 
