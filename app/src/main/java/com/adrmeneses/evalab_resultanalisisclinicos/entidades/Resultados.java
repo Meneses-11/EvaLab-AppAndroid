@@ -1,44 +1,13 @@
 package com.adrmeneses.evalab_resultanalisisclinicos.entidades;
 
 public class Resultados {
-    private int idResultado;
-    private int idUsuario;
-    private int idTipExamen;
-    private int idParametro;
     private double valorObtenido;
+    private String parametroNombre;
+    private String minValor;
+    private String maxValor;
+    private String medidaUnidad;
 
 
-    public int getIdResultado() {
-        return idResultado;
-    }
-
-    public void setIdResultado(int idResultado) {
-        this.idResultado = idResultado;
-    }
-
-    public int getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public int getIdTipExamen() {
-        return idTipExamen;
-    }
-
-    public void setIdTipExamen(int idTipExamen) {
-        this.idTipExamen = idTipExamen;
-    }
-
-    public int getIdParametro() {
-        return idParametro;
-    }
-
-    public void setIdParametro(int idParametro) {
-        this.idParametro = idParametro;
-    }
 
     public double getValorObtenido() {
         return valorObtenido;
@@ -46,5 +15,37 @@ public class Resultados {
 
     public void setValorObtenido(double valorObtenido) {
         this.valorObtenido = valorObtenido;
+    }
+
+    public String getParametroNombre() {
+        return parametroNombre;
+    }
+
+    public void setParametroNombre(String parametroNombre) {
+        this.parametroNombre = parametroNombre;
+    }
+
+    public String getMinValor() {
+        return minValor;
+    }
+
+    public void setMinValor(String minValor) {
+        this.minValor = minValor;
+    }
+
+    public String getMaxValor() {
+        return maxValor;
+    }
+
+    public void setMaxValor(String maxValor) {
+        this.maxValor = maxValor;
+    }
+
+    public String getMedidaUnidad() {
+        return medidaUnidad;
+    }
+
+    public void setMedidaUnidad(String medidaUnidad) {
+        this.medidaUnidad = medidaUnidad;
     }
 }

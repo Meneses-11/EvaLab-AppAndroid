@@ -18,7 +18,9 @@ import java.util.ArrayList;
 
 public class ResultResultados extends Fragment {
 
-
+    //Declara la variable en la que se instanciara la clase UsuarioActivo
+    UsuarioActivo userActv;
+    int idUsuario;
     RecyclerView viewListaResultado;
     ArrayList<Resultados> listArrayResultados;
     int identificadorExamen, identificadorTipExamen;
@@ -28,6 +30,9 @@ public class ResultResultados extends Fragment {
                              Bundle savedInstanceState) {
         identificadorExamen = getArguments().getInt("idExamen", 0);
         identificadorTipExamen = getArguments().getInt("idTipExamen", 0);
+        //Instancia la clase UsuarioActivo
+        userActv = UsuarioActivo.getInstance();
+        idUsuario = (int)userActv.getIdUsuario();
 
         View rootView = inflater.inflate(R.layout.fragment_result_resultados, container, false);
 
@@ -37,7 +42,7 @@ public class ResultResultados extends Fragment {
         DBResultadosTabla dbResultadosTabla = new DBResultadosTabla(getContext());
 
         listArrayResultados = new ArrayList<>();
-        AdaptadorListaResultados adaptador = new AdaptadorListaResultados(dbResultadosTabla.leerResultados(identificadorTipExamen, identificadorExamen));
+        AdaptadorListaResultados adaptador = new AdaptadorListaResultados(dbResultadosTabla.leerResultados(identificadorTipExamen, identificadorExamen, idUsuario));
         viewListaResultado.setAdapter(adaptador);
 
         return rootView;

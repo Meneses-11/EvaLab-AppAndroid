@@ -32,9 +32,9 @@ public class AdaptadorListaResultados extends RecyclerView.Adapter<AdaptadorList
 
     @Override //Asigna los datos que tendrá
     public void onBindViewHolder(@NonNull ResultadoViewHolder holder, int position) {
-        holder.viewNombreParametro.setText(String.valueOf(listaResultados.get(position).getIdParametro()));
-        holder.viewResultado.setText(String.valueOf(listaResultados.get(position).getValorObtenido()));
-        holder.viewValReferencia.setText(String.valueOf(listaResultados.get(position).getIdParametro()));
+        holder.viewNombreParametro.setText(String.valueOf(listaResultados.get(position).getParametroNombre()));
+        holder.viewResultado.setText(String.valueOf(listaResultados.get(position).getValorObtenido())+String.valueOf(listaResultados.get(position).getMedidaUnidad()));
+        holder.viewValReferencia.setText(String.valueOf(listaResultados.get(position).getMinValor())+"-"+String.valueOf(listaResultados.get(position).getMaxValor()));
         holder.viewSemafor.setImageResource(R.drawable.semaf_amar);
         holder.viewEstado.setText("Demasiado bajo");
     }

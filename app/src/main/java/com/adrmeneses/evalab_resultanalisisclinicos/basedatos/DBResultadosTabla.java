@@ -44,25 +44,29 @@ public class DBResultadosTabla extends MyDBHelper{
         return id;
     }
 
-    public ArrayList<Resultados> leerResultados(int idTipExamen, int idExamen){
+    public ArrayList<Resultados> leerResultados(int idTipExamen, int idExamen, int idUser){
         MyDBHelper myDBhelper = new MyDBHelper(context);
         SQLiteDatabase db = myDBhelper.getReadableDatabase();
 
         ArrayList<Resultados> listaResultados = new ArrayList<>();
         Resultados resultado = null;
 
-        String query = "SELECT * FROM "+TABLE_RESULTADOS+" WHERE idTipExam = ? AND idExamen = ?";
+        //String query = "SELECT * FROM "+TABLE_RESULTADOS+" WHERE idTipExam = ? AND idExamen = ?";
+        String query = "SELECT ExamenParametros.nombreParametro, ResultadosTabla.valorObtenido, ReferenciaValores.valorMin, " +
+                       "ReferenciaValores.valorMax, ReferenciaValores.unidadMedida " +
+                       "From ((ResultadosTabla NATURAL JOIN ExamenParametros) NATURAL JOIN ReferenciaValores) " +
+                       "WHERE idTipExam = ? AND idExamen = ? AND idUsuario = ?";
 
-        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idTipExamen), String.valueOf(idExamen)});
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idTipExamen), String.valueOf(idExamen), String.valueOf(idUser)});
 
         if(cursor.moveToFirst()){
             do{
                 resultado = new Resultados();
-                resultado.setIdResultado(cursor.getInt(0));
-                resultado.setIdUsuario(cursor.getInt(1));
-                resultado.setIdTipExamen(cursor.getInt(2));
-                resultado.setIdParametro(cursor.getInt(3));
-                resultado.setValorObtenido(cursor.getDouble(4));
+                resultado.setParametroNombre(cursor.getString(0));
+                resultado.setValorObtenido(cursor.getDouble(1));
+                resultado.setMinValor(cursor.getString(2));
+                resultado.setMaxValor(cursor.getString(3));
+                resultado.setMedidaUnidad(cursor.getString(4));
 
                 listaResultados.add(resultado);
             }while (cursor.moveToNext());
