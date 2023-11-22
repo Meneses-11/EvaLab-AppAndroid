@@ -39,7 +39,7 @@ public class AdaptadorListaResultados extends RecyclerView.Adapter<AdaptadorList
         holder.viewEstado.setText("Demasiado bajo");
     }
 
-    @Override //Especifica el tammaño de la lista
+    @Override //Especifica el tamaño de la lista
     public int getItemCount() {
         return listaResultados.size();
     }

@@ -25,6 +25,7 @@ public class VentanaResultados extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ventana_resultados);
 
+        //Obtiene los datos que se le envió en intent.putExtra()
         Intent intent = getIntent();
         examenId = intent.getIntExtra("idExamen", 0);
         tipExamenId = intent.getIntExtra("idTipExamen", 0);
