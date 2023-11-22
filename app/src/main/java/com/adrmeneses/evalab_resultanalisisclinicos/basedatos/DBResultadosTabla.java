@@ -1,5 +1,6 @@
 package com.adrmeneses.evalab_resultanalisisclinicos.basedatos;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -20,7 +21,7 @@ public class DBResultadosTabla extends MyDBHelper{
     }
 
     //Método para insertar un registro en la tabla ResultadosTabla
-    public long insertarResultado(int idUser, int idExam, int idParameter, double value){
+    public long insertarResultado(int idUser, int idTipExam, int idParameter, double value, int idExamen){
         long id = 0;
 
         try{
@@ -29,9 +30,10 @@ public class DBResultadosTabla extends MyDBHelper{
 
             ContentValues datos = new ContentValues();
             datos.put("idUsuario", idUser);
-            datos.put("idTipExam", idExam);
+            datos.put("idTipExam", idTipExam);
             datos.put("idParametro", idParameter);
             datos.put("valorObtenido", value);
+            datos.put("idExamen", idExamen);
 
             id = db.insert(TABLE_RESULTADOS, null, datos);
 
@@ -68,5 +70,23 @@ public class DBResultadosTabla extends MyDBHelper{
 
         cursor.close();
         return listaResultados;
+    }
+
+    //Método que obtiene el ultimo idExamen del Tipo de Examen que recive
+    public long ultimoIdExamen(int idTipExamen){
+        MyDBHelper myDBhelper = new MyDBHelper(context);
+        SQLiteDatabase db = myDBhelper.getReadableDatabase();
+        long idExamen = 0; //Valor predeterminado si no encuentra el id
+        //Realiza la consulta
+        String query = "SELECT idExamen FROM " + TABLE_RESULTADOS +
+                " WHERE idTipExam = ? ORDER BY idExamen DESC";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idTipExamen)});
+        //Verifica siencontró un resultado
+        if(cursor.moveToFirst()){
+            idExamen = cursor.getInt(0);
+        }
+        //Cierra el cursor
+        cursor.close();
+        return idExamen;
     }
 }

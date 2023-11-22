@@ -39,11 +39,12 @@ public class ExamenesSangre extends AppCompatActivity {
 
 
     //Método que agregará datos a la tabla Resultados
-    public void llenarTablaResultados(DBResultadosTabla dbResultadosTabla, int usuarioId, int examenId, int parameterId, double valor){
+    public void llenarTablaResultados(DBResultadosTabla dbResultadosTabla, int usuarioId, int examenTipId, int parameterId, double valor, int examenId){
         long id;
+        //int identExamen = ((int) dbResultadosTabla.ultimoIdExamen(examenId))+1;
 
         //Todos los registros que tendrá nuestra tabla
-        id = dbResultadosTabla.insertarResultado(usuarioId,examenId,parameterId,valor);
+        id = dbResultadosTabla.insertarResultado(usuarioId,examenTipId,parameterId,valor,examenId);
 
         //Evalúa si todos los id son mayores que 0, es decir, que se hayan creado exitosamente
         if (id>0){

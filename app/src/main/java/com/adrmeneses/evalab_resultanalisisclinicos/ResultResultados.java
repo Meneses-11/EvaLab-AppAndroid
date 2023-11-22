@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 public class ResultResultados extends Fragment {
 
+
     RecyclerView viewListaResultado;
     ArrayList<Resultados> listArrayResultados;
 

@@ -94,10 +94,11 @@ public class HemogramaCompleto extends ExamenesSangre {
     //Se ejcuta al presionar el boton Analizar
     public void analizarHemograma(View view){
         if(CamposLLenos(textInputs)){
+            int identExamen = ((int) dbResultadosTabla.ultimoIdExamen(Integer.parseInt(String.valueOf(idTipExam))))+1;
             for(int a=0; a<textInputs.length; a++){
                 llenarTablaResultados(dbResultadosTabla, Integer.parseInt(String.valueOf(idUsuario)),
                         Integer.parseInt(String.valueOf(idTipExam)), Integer.parseInt(String.valueOf(dbExamenParametros.obtenerIdParametro(parametros[a]))),
-                        Double.parseDouble(textInputs[a].getText().toString()));
+                        Double.parseDouble(textInputs[a].getText().toString()),identExamen);
             }
         }else {
             ventanaDialogo();

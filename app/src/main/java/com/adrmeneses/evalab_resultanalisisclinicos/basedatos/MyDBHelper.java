@@ -67,6 +67,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
                 "idTipExam INTEGER," +
                 "idParametro INTEGER," +
                 "valorObtenido VARCHAR," +
+                "idExamen INTEGER NOT NULL," +
                 "FOREIGN KEY(idUsuario) REFERENCES " + TABLE_USUARIOS + "(idUsuario)," +
                 "FOREIGN KEY(idTipExam) REFERENCES " + TABLE_TIPO_EXAMEN + "(idTipExam)," +
                 "FOREIGN KEY(idParametro) REFERENCES " + TABLE_PARAMETROS_EXAMEN + "(idParametro))");
