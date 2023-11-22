@@ -44,16 +44,16 @@ public class DBResultadosTabla extends MyDBHelper{
         return id;
     }
 
-    public ArrayList<Resultados> leerResultados(int idExamen){
+    public ArrayList<Resultados> leerResultados(int idTipExamen, int idExamen){
         MyDBHelper myDBhelper = new MyDBHelper(context);
         SQLiteDatabase db = myDBhelper.getReadableDatabase();
 
         ArrayList<Resultados> listaResultados = new ArrayList<>();
         Resultados resultado = null;
 
-        String query = "SELECT * FROM "+TABLE_RESULTADOS+" WHERE idTipExam = ?";
+        String query = "SELECT * FROM "+TABLE_RESULTADOS+" WHERE idTipExam = ? AND idExamen = ?";
 
-        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idExamen)});
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idTipExamen), String.valueOf(idExamen)});
 
         if(cursor.moveToFirst()){
             do{

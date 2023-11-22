@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Html;
@@ -63,7 +64,7 @@ public class HemogramaCompleto extends ExamenesSangre {
         dbExamenTipo = new DBExamenTipo(this);
 
         //Almacena el id del TipoExamen en este caso, de Sangre
-        idTipExam = dbExamenTipo.obtenerIdTipExam(NAME_EXAM); //manda a llamar el mpetodo que retorna el id
+        idTipExam = dbExamenTipo.obtenerIdTipExam(NAME_EXAM); //manda a llamar el metodo que retorna el id
 
 
         if (dbExamenParametros.existeConIdTipExam(idTipExam)){
@@ -100,6 +101,12 @@ public class HemogramaCompleto extends ExamenesSangre {
                         Integer.parseInt(String.valueOf(idTipExam)), Integer.parseInt(String.valueOf(dbExamenParametros.obtenerIdParametro(parametros[a]))),
                         Double.parseDouble(textInputs[a].getText().toString()),identExamen);
             }
+            Intent lanzar = new Intent(this,VentanaResultados.class);
+            lanzar.putExtra("idExamen", identExamen);
+            lanzar.putExtra("idTipExamen", (int) idTipExam);
+            startActivity(lanzar);
+            Log.d(TAG, "Hemograma: "+identExamen+" "+(int)idTipExam);
+            finish();
         }else {
             ventanaDialogo();
         }
