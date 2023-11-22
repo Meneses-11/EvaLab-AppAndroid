@@ -57,6 +57,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
                 "valorMaxAdult VARCHAR," +
                 "valorMinCh VARCHAR," +
                 "valorMaxCh VARCHAR," +
+                "unidadMedida VARCHAR," +
                 "FOREIGN KEY(idTipExam) REFERENCES " + TABLE_TIPO_EXAMEN + "(idTipExam)," +
                 "FOREIGN KEY(idParametro) REFERENCES " + TABLE_PARAMETROS_EXAMEN + "(idParametro))");
 

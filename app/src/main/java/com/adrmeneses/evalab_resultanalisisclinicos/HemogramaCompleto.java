@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBExamenParametros;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBExamenTipo;
+import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBReferenciaValores;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBResultadosTabla;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -35,8 +36,12 @@ public class HemogramaCompleto extends ExamenesSangre {
     DBExamenParametros dbExamenParametros;
     DBResultadosTabla dbResultadosTabla;
     DBExamenTipo dbExamenTipo;
+    DBReferenciaValores dbReferenciaValores;
     //Arreglo que almacena todos los parámetros
     String[] parametros= {"Hemoglobina","Hematocrito","Eritrocitos","VMG","HCM","Reticulocitos","Leocucitos","Neutrofilos","Linfocitos","Eosinofilos","Basofilos","Monocitos","Plaquetas","Volumen Plaquetario Medio"};
+    String[][] unidades={{"12","18"},{"36","52"},{"4.5","6.5"},{"80","100"},{"27","33"},{"0.5","1.5"},{"4","11"},{"40","75"},{"20","45"},{"0","6"},{"0","2"},{"2","10"},{"150","450"},{"7.2","11.1"}};
+    //String[][] parametrosx={["Hemoglobina"][""],["Hematocrito"][""],["Eritrocitos"][""],["VMG"][""],["HCM"][""],["Reticulocitos"][""],["Leocucitos"][""],["Neutrofilos"][""],["Linfocitos"][""],["Eosinofilos"][""],["Basofilos"][""],["Monocitos"][""],["Plaquetas"][""],["Volumen Plaquetario Medio"][""]};
+    String[][] parametro2 = {{"Hemoglobina","12","18","g/dL"},{"Hematocrito","36","52","%"},{"Eritrocitos", "4.5","6.5","x10^6/uL"},{"VMG", "80","100","fL"},{"HCM", "27","33","pg"},{"Reticulocitos", "0.5","1.5","%"},{"Leocucitos", "4","11","x10^3/uL"}, {"Neutrofilos", "40","75","%"}, {"Linfocitos", "20","45","%"},{"Eosinofilos", "0","6","%"}, {"Basofilos", "0","2","%"}, {"Monocitos", "2","10","%"}, {"Plaquetas", "150","450","x10^3/uL"},{"Volumen Plaquetario Medio", "7.2","11.1","fL"}};
     //Arreglo que contiene todos los editText
     TextInputEditText[] textInputs = { txtHemoglobina, txtHematocrito, txtEritrocitos, txtVMG, txtHCM, txtReticulocitos, txtLeucocitos, txtNeutrofilos, txtLinfocitos, txtEosinofilos, txtBasofilos, txtMonocitos, txtPlaquetas, txtVolPlaquetario };
     //Arreglo que contiene el id de todos los componentes
@@ -62,15 +67,26 @@ public class HemogramaCompleto extends ExamenesSangre {
         dbExamenParametros = new DBExamenParametros(this);
         dbResultadosTabla = new DBResultadosTabla(this);
         dbExamenTipo = new DBExamenTipo(this);
+        dbReferenciaValores = new DBReferenciaValores(this);
 
         //Almacena el id del TipoExamen en este caso, de Sangre
         idTipExam = dbExamenTipo.obtenerIdTipExam(NAME_EXAM); //manda a llamar el metodo que retorna el id
 
 
         if (dbExamenParametros.existeConIdTipExam(idTipExam)){
-            Log.d(TAG, "Ya fueron creados los registros con id: "+idTipExam);
+            Log.d(TAG, "Ya fueron creados los registros en ExamenParametros con id: "+idTipExam);
+            if(dbReferenciaValores.existeConIdTipExam(idTipExam)){
+                Log.d(TAG, "Ya fueron creados los registros en Valores Referencia con id: "+idTipExam);
+            }else {
+                llenadoTablaReferenciaValores(dbExamenParametros);
+            }
         }else{
             llenadoTablaExamenParametro(dbExamenParametros);
+            if(dbReferenciaValores.existeConIdTipExam(idTipExam)){
+                Log.d(TAG, "Ya fueron creados los registros en Valores Referencia con id: "+idTipExam);
+            }else {
+                llenadoTablaReferenciaValores(dbExamenParametros);
+            }
         }
 
     }
@@ -82,6 +98,22 @@ public class HemogramaCompleto extends ExamenesSangre {
         //For que recorre el arreglo y va llenando la tabla
         for(int i=0; i<parametros.length; i++){
             id = dbExamenParametros.insertaParametro(Integer.parseInt(String.valueOf(idTipExam)), parametros[i]);
+            //Evalúa si todos los id son mayores que 0, es decir, que se hayan creado exitosamente
+            if(id > 0){
+                Log.d(TAG, "Registro guardado con éxtio");
+            }else{
+                Log.e(TAG, "Hubo un error en: "+i);
+            }
+        }
+
+    }
+    //Método que agregará datos a la tabla ReferenciaValores
+    public void llenadoTablaReferenciaValores(DBExamenParametros dbExamenParametros){
+        long id;
+
+        //For que recorre el arreglo y va llenando la tabla
+        for(int i=0; i<parametro2.length; i++){
+            id = dbReferenciaValores.insertaReferenciaValores((int)idTipExam, (int) dbExamenParametros.obtenerIdParametro(parametro2[i][0]),parametro2[i][1],parametro2[i][2],null,null,null,null,null,null,null,null,parametro2[i][3]);
             //Evalúa si todos los id son mayores que 0, es decir, que se hayan creado exitosamente
             if(id > 0){
                 Log.d(TAG, "Registro guardado con éxtio");
