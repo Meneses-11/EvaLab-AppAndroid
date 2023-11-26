@@ -104,7 +104,14 @@
     <string name="strMililitros">ml</string>
     <string name="strMiligramosDesilitros">mg / dL</string>
     <string name="strSobreCampo">/campo</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Opciones de la ventana de Resultados -->
+    <string name="strResultResultados">Resultados</string>
+    <string name="strResultEnfer">Enfermedades</string>
+    <string name="strResultEstado">Estado</string>
+
+    <!-- Texto que hay en la lista de Resultados -->
+    <string name="strListResResult">Resultado</string>
+    <string name="strListResValores">Valores Referencia</string>
 
 </resources>

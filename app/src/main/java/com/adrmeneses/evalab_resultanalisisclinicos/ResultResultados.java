@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.adrmeneses.evalab_resultanalisisclinicos.adaptadores.AdaptadorListaResultados;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBResultadosTabla;
 import com.adrmeneses.evalab_resultanalisisclinicos.entidades.Resultados;
+import com.adrmeneses.evalab_resultanalisisclinicos.usuarios.UsuarioActivo;
 
 import java.util.ArrayList;
 

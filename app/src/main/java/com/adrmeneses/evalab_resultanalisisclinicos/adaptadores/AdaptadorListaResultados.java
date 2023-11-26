@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.adrmeneses.evalab_resultanalisisclinicos.R;
 import com.adrmeneses.evalab_resultanalisisclinicos.entidades.Resultados;
+import com.adrmeneses.evalab_resultanalisisclinicos.evaluadores.EvaluadorResultado;
 
 import java.util.ArrayList;
 
@@ -32,11 +33,17 @@ public class AdaptadorListaResultados extends RecyclerView.Adapter<AdaptadorList
 
     @Override //Asigna los datos que tendrá
     public void onBindViewHolder(@NonNull ResultadoViewHolder holder, int position) {
+        Resultados resultado = listaResultados.get(position);
+
+        EvaluadorResultado evaluador = new EvaluadorResultado();
+        evaluador.evaluar(resultado);
+
+        holder.viewEstado.setText(resultado.getEstado());
+        holder.viewSemafor.setImageResource(resultado.getSemaf());
         holder.viewNombreParametro.setText(String.valueOf(listaResultados.get(position).getParametroNombre()));
         holder.viewResultado.setText(String.valueOf(listaResultados.get(position).getValorObtenido())+String.valueOf(listaResultados.get(position).getMedidaUnidad()));
         holder.viewValReferencia.setText(String.valueOf(listaResultados.get(position).getMinValor())+"-"+String.valueOf(listaResultados.get(position).getMaxValor()));
-        holder.viewSemafor.setImageResource(R.drawable.semaf_amar);
-        holder.viewEstado.setText("Demasiado bajo");
+
     }
 
     @Override //Especifica el tamaño de la lista

@@ -6,6 +6,8 @@ public class Resultados {
     private String minValor;
     private String maxValor;
     private String medidaUnidad;
+    private String estado;
+    private int semaf;
 
 
 
@@ -47,5 +49,21 @@ public class Resultados {
 
     public void setMedidaUnidad(String medidaUnidad) {
         this.medidaUnidad = medidaUnidad;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public int getSemaf() {
+        return semaf;
+    }
+
+    public void setSemaf(int semaf) {
+        this.semaf = semaf;
     }
 }

@@ -3,14 +3,10 @@ package com.adrmeneses.evalab_resultanalisisclinicos;
 import static android.content.ContentValues.TAG;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -21,9 +17,8 @@ import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBExamenParametros
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBExamenTipo;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBReferenciaValores;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBResultadosTabla;
+import com.adrmeneses.evalab_resultanalisisclinicos.usuarios.UsuarioActivo;
 import com.google.android.material.textfield.TextInputEditText;
-
-import java.util.Timer;
 
 public class HemogramaCompleto extends ExamenesSangre {
     //Declara la variable en la que se instanciara la clase UsuarioActivo
