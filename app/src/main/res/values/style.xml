@@ -305,6 +305,28 @@
         <item name="textAllCaps">false</item>
     </style>
 
+    <!-- Contenedor del EditText tipo Lista-->
+    <style name="txtFieldBuscarExamen" parent="Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:textColorHint">@color/gray</item>
+        <item name="android:background">@color/whiteTransparent</item>
+        <item name="boxStrokeColor">@drawable/border_color_opc_exam_especif</item>
+    </style>
+    <!-- EditText donde se escogerán los datos de la lista -->
+    <style name="editTxtBuscarExamen">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:inputType">none</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:fontFamily">@font/robotoslab_variablefont</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <!-- Estilos para la lista de Resultados -->
     <style name="listResultTextoFijoCard">
         <item name="android:layout_width">120dp</item>

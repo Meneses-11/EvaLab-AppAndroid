@@ -109,6 +109,7 @@
     <string name="strResultResultados">Resultados</string>
     <string name="strResultEnfer">Enfermedades</string>
     <string name="strResultEstado">Estado</string>
+    <string name="strFragResultBuscar">Seleccione Examen</string>
 
     <!-- Texto que hay en la lista de Resultados -->
     <string name="strListResResult">Resultado</string>

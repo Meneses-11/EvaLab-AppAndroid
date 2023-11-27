@@ -93,4 +93,91 @@ public class DBResultadosTabla extends MyDBHelper{
         cursor.close();
         return idExamen;
     }
+
+    // Método para verificar si noy hay ningun registro del usuario
+    public boolean noHayResultados(int userId) {
+        MyDBHelper myDBHelper = new MyDBHelper(context);
+        SQLiteDatabase db = myDBHelper.getReadableDatabase();
+        if (db != null) {
+            String query = "SELECT COUNT(*) FROM "+TABLE_RESULTADOS+" WHERE idUsuario = ?";      // Ejecuta la consulta para contar la cantidad de filas en la tabla Resultados
+            Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(userId)}); // Crea objeto Cursor que ejecuta la consulta y apunta a los resultados
+            //Verifica si el cursor se creo correctamente
+            if (cursor != null) {
+                cursor.moveToFirst();
+                int count = cursor.getInt(0);   //Obtiene el valor del primer campo en la fila actual, que es el resultado de la función de agregación COUNT(*)
+                cursor.close();                   //Cierra el cursor
+                return count == 0;                //Retorna true si la tabla está vacía, false si tiene al menos una fila
+            }
+        }
+        return true;  // En caso de error o si no se pudo abrir la base de datos
+    }
+
+    public int[] obtenerTiposExamenes(int userId) {
+        int[] listaId;
+        MyDBHelper myDBHelper = new MyDBHelper(context);
+        SQLiteDatabase db = myDBHelper.getReadableDatabase();
+
+        if (db != null) {
+            String query = "SELECT DISTINCT idTipExam FROM " + TABLE_RESULTADOS + " WHERE idUsuario = ?";
+            Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(userId)});
+
+            if (cursor.moveToFirst()) {
+                int count = cursor.getCount();
+                listaId = new int[count];
+                int i = 0;
+                do {
+                    listaId[i] = cursor.getInt(0);
+                    i++;
+                } while (cursor.moveToNext());
+            } else {
+                // No hay resultados
+                listaId = new int[0];
+            }
+            cursor.close();
+        } else {
+            // Error al abrir la base de datos
+            listaId = new int[0];
+        }
+        return listaId;
+    }
+
+    public String[][] obtenerIdNombreTipoExamen(int[] idTipExam, int userId) {
+        String[][] listaExamenes;
+        MyDBHelper myDBHelper = new MyDBHelper(context);
+        SQLiteDatabase db = myDBHelper.getReadableDatabase();
+
+        // Inicializa la lista global antes de comenzar el bucle
+        ArrayList<String[]> listaResultados = new ArrayList<>();
+
+        if (db != null) {
+            for (int j = 0; j < idTipExam.length; j++) {
+                //SELECT DISTINCT ResultadosTabla.idTipExam,ExamenTipo.nombreExamenTipo,ResultadosTabla.idExamen FROM ResultadosTabla NATURAL JOIN ExamenTipo WHERE idUsuario = 1;
+                String query = "SELECT DISTINCT ResultadosTabla.idTipExam,ExamenTipo.nombreExamenTipo,ResultadosTabla.idExamen FROM " + TABLE_RESULTADOS + " NATURAL JOIN " + TABLE_TIPO_EXAMEN + " WHERE idUsuario = ? AND idTipExam = ?";
+                Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(userId), String.valueOf(idTipExam[j])});
+
+                if (cursor.moveToFirst()) {
+                    do {
+                        // Agregamos cada resultado a la lista global
+                        String[] resultado = new String[3];
+                        resultado[0] = cursor.getString(0);
+                        resultado[1] = cursor.getString(1);
+                        resultado[2] = cursor.getString(2);
+                        listaResultados.add(resultado);
+                    } while (cursor.moveToNext());
+                }
+                cursor.close();
+            }
+            // Convertimos la lista global a una matriz antes de retornarla
+            listaExamenes = new String[listaResultados.size()][3];
+            listaExamenes = listaResultados.toArray(listaExamenes);
+        } else {
+            // Error al abrir la base de datos
+            listaExamenes = new String[0][0];
+        }
+        return listaExamenes;
+    }
+
+
+
+
 }

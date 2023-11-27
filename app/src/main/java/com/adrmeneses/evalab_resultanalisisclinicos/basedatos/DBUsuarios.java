@@ -50,7 +50,7 @@ public class DBUsuarios extends MyDBHelper{
         MyDBHelper myDBHelper = new MyDBHelper(context);
         SQLiteDatabase db = myDBHelper.getReadableDatabase();
         if (db != null) {
-            String query = "SELECT COUNT(*) FROM Usuarios";      // Ejecuta la consulta para contar la cantidad de filas en la tabla Usuarios
+            String query = "SELECT COUNT(*) FROM "+TABLE_USUARIOS;      // Ejecuta la consulta para contar la cantidad de filas en la tabla Usuarios
             Cursor cursor = db.rawQuery(query, null); // Crea objeto Cursor que ejecuta la consulta y apunta a los resultados
             //Verifica si el cursor se creo correctamente
             if (cursor != null) {
@@ -68,7 +68,7 @@ public class DBUsuarios extends MyDBHelper{
         MyDBHelper myDBhelper = new MyDBHelper(context);
         SQLiteDatabase db = myDBhelper.getReadableDatabase();
         if(db != null){
-            String query1 = "SELECT idUsuario FROM Usuarios ORDER BY idUsuario ASC LIMIT 1;";
+            String query1 = "SELECT idUsuario FROM "+TABLE_USUARIOS+" ORDER BY idUsuario ASC LIMIT 1;";
             Cursor cursor = db.rawQuery(query1, null);
             if(cursor != null){
                 cursor.moveToFirst();

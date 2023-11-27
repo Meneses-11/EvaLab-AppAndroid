@@ -3,7 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ResultResultados">
+    tools:context=".ResultResultados"
+    android:orientation="vertical">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtFieldBuscarExamen"
+        style="@style/txtFieldBuscarExamen"
+        android:hint="@string/strFragResultBuscar" >
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompletBuscarExamen"
+            style="@style/editTxtBuscarExamen" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <ScrollView
         android:layout_width="match_parent"
