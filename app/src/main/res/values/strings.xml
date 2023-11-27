@@ -115,4 +115,8 @@
     <string name="strListResResult">Resultado</string>
     <string name="strListResValores">Valores Referencia</string>
 
+    <!-- Texto cuando no hay ningun Resultado-->
+    <string name="strSinResResultTxtView">Por favor ingrese algún resultado de un Análisis Clínico</string>
+    <string name="strSinResResultBtn">Registrar Análisis</string>
+
 </resources>

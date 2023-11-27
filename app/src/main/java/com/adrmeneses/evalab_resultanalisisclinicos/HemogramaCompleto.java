@@ -132,7 +132,6 @@ public class HemogramaCompleto extends ExamenesSangre {
             lanzar.putExtra("idExamen", identExamen);
             lanzar.putExtra("idTipExamen", (int) idTipExam);
             startActivity(lanzar);
-            Log.d(TAG, "Hemograma: "+identExamen+" "+(int)idTipExam);
             finish();
         }else {
             ventanaDialogo();

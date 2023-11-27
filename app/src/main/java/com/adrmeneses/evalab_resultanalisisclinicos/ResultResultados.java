@@ -3,8 +3,12 @@ package com.adrmeneses.evalab_resultanalisisclinicos;
 import static android.content.ContentValues.TAG;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,7 +20,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.adrmeneses.evalab_resultanalisisclinicos.adaptadores.AdaptadorListaResultados;
@@ -42,6 +49,9 @@ public class ResultResultados extends Fragment {
     ArrayList<Resultados> listArrayResultados;
     AutoCompleteTextView autoCompletBuscarExamen;
     TextInputLayout editTextBuscarExamen;
+    LinearLayout contenedorBoton;
+    ScrollView contenedorLista;
+    Button botonRegistrar;
     ArrayAdapter<String> adaptadorBuscarEx;
     AdaptadorListaResultados adaptadorLista;
     DBResultadosTabla dbResultadosTabla;
@@ -51,7 +61,7 @@ public class ResultResultados extends Fragment {
     String[][] listaExamenes;
     String[] opcionesExamenes;
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint({"MissingInflatedId", "ResourceAsColor"})
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -67,42 +77,63 @@ public class ResultResultados extends Fragment {
         //Intancia los componentes gráficos
         autoCompletBuscarExamen = rootView.findViewById(R.id.autoCompletBuscarExamen);
         editTextBuscarExamen = rootView.findViewById(R.id.txtFieldBuscarExamen);
+        contenedorLista = rootView.findViewById(R.id.vistaListaResultados);
+        contenedorBoton = rootView.findViewById(R.id.vistaBtnRegisExam);
+        botonRegistrar = rootView.findViewById(R.id.btnRegisExam);
+
         viewListaResultado = rootView.findViewById(R.id.viewListaResultResultados);
         viewListaResultado.setLayoutManager(new LinearLayoutManager(getContext()));
         dbResultadosTabla = new DBResultadosTabla(getContext());
         dbExamenTipo = new DBExamenTipo(getContext());
         listArrayResultados = new ArrayList<>();
 
+
+        //Evalua si no existen registros en la bd
+        if(dbResultadosTabla.noHayResultados(idUsuario)){
+            editTextBuscarExamen.setHint("No hay Examenes registrados");
+            editTextBuscarExamen.setEnabled(false);
+
+            contenedorBoton.setVisibility(View.VISIBLE);
+            contenedorLista.setVisibility(View.INVISIBLE);
+
+        }else{//Si hay registros en la bd hace las consultas necesarias y crea la lista
+            contenedorBoton.setVisibility(View.INVISIBLE);
+            contenedorLista.setVisibility(View.VISIBLE);
+
+            editTextBuscarExamen.setHint(R.string.strFragResultBuscar);
+            listaTipExa = dbResultadosTabla.obtenerTiposExamenes(idUsuario);                    //Lista que contiene lis id's de TipoExamen que hay de un Usuario especifico
+            listaExamenes = dbResultadosTabla.obtenerIdNombreTipoExamen(listaTipExa, idUsuario);//Lista con los nombres y id del TipExamen, y los id de los examenes
+            opcionesExamenes = new String[listaExamenes.length];                                //Inicializa el arreglo
+
+            //Recorre el arreglo listaExamenes y llena la lista con las opciones de Examenes
+            for (int m=0; m<listaExamenes.length; m++){
+                opcionesExamenes[m]=listaExamenes[m][1]+"-"+listaExamenes[m][2];
+            }
+
+            opcionesListas(autoCompletBuscarExamen,adaptadorBuscarEx,R.id.autoCompletBuscarExamen,opcionesExamenes,rootView);
+
+        }
+
         //Evalua si los id's son 0
         if(identificadorExamen == 0 && identificadorExamen == 0){
-            //Evalua si no existen registros en la bd
-            if(dbResultadosTabla.noHayResultados(idUsuario)){
-                editTextBuscarExamen.setHint("No hay registros");
-                editTextBuscarExamen.setEnabled(false);
-            }else{//Si hay registros en la bd hace las consultas necesarias y crea la lista
-                editTextBuscarExamen.setHint(R.string.strFragResultBuscar);
-                listaTipExa = dbResultadosTabla.obtenerTiposExamenes(idUsuario);                    //Lista que contiene lis id's de TipoExamen que hay de un Usuario especifico
-                listaExamenes = dbResultadosTabla.obtenerIdNombreTipoExamen(listaTipExa, idUsuario);//Lista con los nombres y id del TipExamen, y los id de los examenes
-                opcionesExamenes = new String[listaExamenes.length];                                //Inicializa el arreglo
-                // Imprime cada elemento de la matriz
-                /*for (String[] resultado : listaExamenes) {
-                    opcionesExamenes[]
-                    Log.d(TAG, "idTipExam: " + resultado[0] + ", nombreExamen: " + resultado[1] + ", idExamen: " + resultado[2]);
-                }*/
-                //Recorre el arreglo listaExamenes y llena la lista con las opciones de Examenes
-                for (int m=0; m<listaExamenes.length; m++){
-                    opcionesExamenes[m]=listaExamenes[m][1]+"-"+listaExamenes[m][2];
-                    Log.d(TAG, "ListaFin: "+opcionesExamenes[m]);
-                }
-
-                opcionesListas(autoCompletBuscarExamen,adaptadorBuscarEx,R.id.autoCompletBuscarExamen,opcionesExamenes,rootView);
-                //Log.d(TAG, "idTipExam: " + listaExamenes[0][0] + ", nombreExamen: " + listaExamenes[0][1] + ", idExamen: " + listaExamenes[0][2]);
-
-            }
+            //
         }else{//si los id's son diferente de 0 pone la lista que corresponda a los id's
-            adaptadorLista = new AdaptadorListaResultados(dbResultadosTabla.leerResultados(identificadorTipExamen, identificadorExamen, idUsuario));
-            viewListaResultado.setAdapter(adaptadorLista);
+            autoCompletBuscarExamen.setText(opcionesExamenes[opcionesExamenes.length-1], false);
         }
+
+        adaptadorLista = new AdaptadorListaResultados(dbResultadosTabla.leerResultados(identificadorTipExamen, identificadorExamen, idUsuario));
+        viewListaResultado.setAdapter(adaptadorLista);
+
+        botonRegistrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent lanzar = new Intent(getContext(), MenuCategorias.class);
+                startActivity(lanzar);
+                if (getActivity() != null){
+                    getActivity().finish();
+                }
+            }
+        });
 
         return rootView;
     }
@@ -117,16 +148,12 @@ public class ResultResultados extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String item = adapterView.getItemAtPosition(i).toString();
-                //Toast.makeText(getContext(), "Select: "+item+" int: "+i+" long: "+l, Toast.LENGTH_SHORT).show();
-                //Log.d(TAG, "El id es: "+obtenerIdOpcion(item));
                 int[] ides = obtenerIdOpcion(item);
                 identificadorTipExamen = ides[0];
                 identificadorExamen = ides[1];
 
                 adaptadorLista = new AdaptadorListaResultados(dbResultadosTabla.leerResultados(identificadorTipExamen, identificadorExamen, idUsuario));
                 viewListaResultado.setAdapter(adaptadorLista);
-
-                Log.d(TAG, "idTipExam: "+identificadorTipExamen+" idEx: "+identificadorExamen+" idUser: "+idUsuario);
             }
         });
     }
@@ -154,6 +181,5 @@ public class ResultResultados extends Fragment {
 
         return new int[]{idTipEx,idEx};
     }
-
 
 }

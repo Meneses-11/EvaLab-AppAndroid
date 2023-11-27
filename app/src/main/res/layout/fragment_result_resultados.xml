@@ -17,21 +17,57 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <ScrollView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_gravity="center">
+        android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/viewListaResultResultados"
-            android:layout_width="wrap_content"
+        <ScrollView
+            android:id="@+id/vistaListaResultados"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            >
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:visibility="invisible">
 
-        </androidx.recyclerview.widget.RecyclerView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/viewListaResultResultados"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                >
 
-    </ScrollView>
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/vistaBtnRegisExam"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="55dp"
+                android:textSize="25dp"
+                android:fontFamily="@font/dmsans_medium"
+                android:textAlignment="center"
+                android:text="@string/strSinResResultTxtView"
+                android:background="@color/whiteTransparent"/>
+
+            <Button
+                android:id="@+id/btnRegisExam"
+                android:layout_width="wrap_content"
+                android:layout_height="75dp"
+                android:text="@string/strSinResResultBtn"
+                android:textSize="30dp"
+                android:fontFamily="@font/dmsans_medium"
+                />
+
+        </LinearLayout>
+
+    </FrameLayout>
 
 </LinearLayout>
