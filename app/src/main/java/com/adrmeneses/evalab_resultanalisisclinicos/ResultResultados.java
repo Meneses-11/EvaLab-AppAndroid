@@ -47,8 +47,8 @@ public class ResultResultados extends Fragment {
     int identificadorExamen, identificadorTipExamen;
     RecyclerView viewListaResultado;
     ArrayList<Resultados> listArrayResultados;
-    AutoCompleteTextView autoCompletBuscarExamen;
-    TextInputLayout editTextBuscarExamen;
+    AutoCompleteTextView autoCompletBuscarExamenResult;
+    TextInputLayout textInputBuscarExamenResult;
     LinearLayout contenedorBoton;
     ScrollView contenedorLista;
     Button botonRegistrar;
@@ -75,11 +75,11 @@ public class ResultResultados extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_result_resultados, container, false);
 
         //Intancia los componentes gráficos
-        autoCompletBuscarExamen = rootView.findViewById(R.id.autoCompletBuscarExamen);
-        editTextBuscarExamen = rootView.findViewById(R.id.txtFieldBuscarExamen);
+        autoCompletBuscarExamenResult = rootView.findViewById(R.id.autoCompletBuscarExamenResultados);
+        textInputBuscarExamenResult = rootView.findViewById(R.id.txtFieldBuscarExamenResultados);
         contenedorLista = rootView.findViewById(R.id.vistaListaResultados);
-        contenedorBoton = rootView.findViewById(R.id.vistaBtnRegisExam);
-        botonRegistrar = rootView.findViewById(R.id.btnRegisExam);
+        contenedorBoton = rootView.findViewById(R.id.vistaBtnRegisExamResult);
+        botonRegistrar = rootView.findViewById(R.id.btnRegisExamResult);
 
         viewListaResultado = rootView.findViewById(R.id.viewListaResultResultados);
         viewListaResultado.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -90,8 +90,8 @@ public class ResultResultados extends Fragment {
 
         //Evalua si no existen registros en la bd
         if(dbResultadosTabla.noHayResultados(idUsuario)){
-            editTextBuscarExamen.setHint("No hay Examenes registrados");
-            editTextBuscarExamen.setEnabled(false);
+            textInputBuscarExamenResult.setHint("No hay Examenes registrados");
+            textInputBuscarExamenResult.setEnabled(false);
 
             contenedorBoton.setVisibility(View.VISIBLE);
             contenedorLista.setVisibility(View.INVISIBLE);
@@ -100,7 +100,7 @@ public class ResultResultados extends Fragment {
             contenedorBoton.setVisibility(View.INVISIBLE);
             contenedorLista.setVisibility(View.VISIBLE);
 
-            editTextBuscarExamen.setHint(R.string.strFragResultBuscar);
+            textInputBuscarExamenResult.setHint(R.string.strFragResultBuscar);
             listaTipExa = dbResultadosTabla.obtenerTiposExamenes(idUsuario);                    //Lista que contiene lis id's de TipoExamen que hay de un Usuario especifico
             listaExamenes = dbResultadosTabla.obtenerIdNombreTipoExamen(listaTipExa, idUsuario);//Lista con los nombres y id del TipExamen, y los id de los examenes
             opcionesExamenes = new String[listaExamenes.length];                                //Inicializa el arreglo
@@ -110,7 +110,7 @@ public class ResultResultados extends Fragment {
                 opcionesExamenes[m]=listaExamenes[m][1]+"-"+listaExamenes[m][2];
             }
 
-            opcionesListas(autoCompletBuscarExamen,adaptadorBuscarEx,R.id.autoCompletBuscarExamen,opcionesExamenes,rootView);
+            opcionesListas(autoCompletBuscarExamenResult,adaptadorBuscarEx,R.id.autoCompletBuscarExamenResultados,opcionesExamenes,rootView);
 
         }
 
@@ -118,7 +118,7 @@ public class ResultResultados extends Fragment {
         if(identificadorExamen == 0 && identificadorExamen == 0){
             //
         }else{//si los id's son diferente de 0 pone la lista que corresponda a los id's
-            autoCompletBuscarExamen.setText(opcionesExamenes[opcionesExamenes.length-1], false);
+            autoCompletBuscarExamenResult.setText(opcionesExamenes[opcionesExamenes.length-1], false);
         }
 
         adaptadorLista = new AdaptadorListaResultados(dbResultadosTabla.leerResultados(identificadorTipExamen, identificadorExamen, idUsuario));

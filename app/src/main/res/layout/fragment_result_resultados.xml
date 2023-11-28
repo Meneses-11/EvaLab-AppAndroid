@@ -7,12 +7,12 @@
     android:orientation="vertical">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txtFieldBuscarExamen"
+        android:id="@+id/txtFieldBuscarExamenResultados"
         style="@style/txtFieldBuscarExamen"
-        android:hint="@string/strFragResultBuscar" >
+        >
 
         <AutoCompleteTextView
-            android:id="@+id/autoCompletBuscarExamen"
+            android:id="@+id/autoCompletBuscarExamenResultados"
             style="@style/editTxtBuscarExamen" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -41,29 +41,18 @@
         </ScrollView>
 
         <LinearLayout
-            android:id="@+id/vistaBtnRegisExam"
+            android:id="@+id/vistaBtnRegisExamResult"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center">
 
             <TextView
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="55dp"
-                android:textSize="25dp"
-                android:fontFamily="@font/dmsans_medium"
-                android:textAlignment="center"
-                android:text="@string/strSinResResultTxtView"
-                android:background="@color/whiteTransparent"/>
+                style="@style/txtFragResultNoHayDatos"/>
 
             <Button
-                android:id="@+id/btnRegisExam"
-                android:layout_width="wrap_content"
-                android:layout_height="75dp"
-                android:text="@string/strSinResResultBtn"
-                android:textSize="30dp"
-                android:fontFamily="@font/dmsans_medium"
+                android:id="@+id/btnRegisExamResult"
+                style="@style/btnFragResultNoHayDatos"
                 />
 
         </LinearLayout>

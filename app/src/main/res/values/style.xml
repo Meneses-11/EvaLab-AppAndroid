@@ -305,6 +305,7 @@
         <item name="textAllCaps">false</item>
     </style>
 
+    <!-- Estilos para el Fragment de Resultados -->
     <!-- Contenedor del EditText tipo Lista-->
     <style name="txtFieldBuscarExamen" parent="Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
         <item name="android:layout_width">match_parent</item>
@@ -316,6 +317,7 @@
         <item name="android:textColorHint">@color/gray</item>
         <item name="android:background">@color/whiteTransparent</item>
         <item name="boxStrokeColor">@drawable/border_color_opc_exam_especif</item>
+        <item name="android:hint">@string/strFragResultBuscar</item>
     </style>
     <!-- EditText donde se escogerán los datos de la lista -->
     <style name="editTxtBuscarExamen">
@@ -326,8 +328,28 @@
         <item name="android:fontFamily">@font/robotoslab_variablefont</item>
         <item name="android:textColor">@color/black</item>
     </style>
+    <!-- Texto a mostrar cuando no hay registros -->
+    <style name="txtFragResultNoHayDatos">
+        <item name="android:layout_width">350dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">55dp</item>
+        <item name="android:textSize">25dp</item>
+        <item name="android:fontFamily">@font/dmsans_medium</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:text">@string/strSinResResultTxtView</item>
+        <item name="android:background">@color/whiteTransparent</item>
+    </style>
+    <!-- Boton a mostrar cuando no hay registros -->
+    <style name="btnFragResultNoHayDatos">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">75dp</item>
+        <item name="android:text">@string/strSinResResultBtn</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:fontFamily">@font/dmsans_medium</item>
+    </style>
 
     <!-- Estilos para la lista de Resultados -->
+    <!-- Estilo para el texto que no cambiará en las cards-->
     <style name="listResultTextoFijoCard">
         <item name="android:layout_width">120dp</item>
         <item name="android:layout_height">match_parent</item>
@@ -337,6 +359,7 @@
         <item name="android:textAlignment">center</item>
         <item name="android:gravity">center</item>
     </style>
+    <!-- Estilo para el texto que cambiará en las cards-->
     <style name="listResultTextoVariaCard">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>

@@ -1,14 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ResultEnfermedades">
+    tools:context=".ResultEnfermedades"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtFieldBuscarExamenEnfermedades"
+        style="@style/txtFieldBuscarExamen"
+        >
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompletBuscarExamenEnfermedades"
+            style="@style/editTxtBuscarExamen" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="I'm fragment Enfermedades" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <ScrollView
+            android:id="@+id/vistaListaEnfermedades"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:visibility="invisible">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/viewListaResultEnfermedades"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                >
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/vistaBtnRegisExamEnferm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                style="@style/txtFragResultNoHayDatos"/>
+
+            <Button
+                android:id="@+id/btnRegisExamEnferm"
+                style="@style/btnFragResultNoHayDatos"
+                />
+
+        </LinearLayout>
+    </FrameLayout>
+
+
+
+
+</LinearLayout>
