@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBEnfermedades;
+import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBEnfermedadesParametros;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBExamenParametros;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBExamenTipo;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBReferenciaValores;
@@ -32,11 +34,12 @@ public class HemogramaCompleto extends ExamenesSangre {
     DBResultadosTabla dbResultadosTabla;
     DBExamenTipo dbExamenTipo;
     DBReferenciaValores dbReferenciaValores;
+    DBEnfermedades dbEnfermedades;
+    DBEnfermedadesParametros dbEnfermedadesParametros;
     //Arreglo que almacena todos los parámetros
     String[] parametros= {"Hemoglobina","Hematocrito","Eritrocitos","VMG","HCM","Reticulocitos","Leocucitos","Neutrofilos","Linfocitos","Eosinofilos","Basofilos","Monocitos","Plaquetas","Volumen Plaquetario Medio"};
-    String[][] unidades={{"12","18"},{"36","52"},{"4.5","6.5"},{"80","100"},{"27","33"},{"0.5","1.5"},{"4","11"},{"40","75"},{"20","45"},{"0","6"},{"0","2"},{"2","10"},{"150","450"},{"7.2","11.1"}};
-    //String[][] parametrosx={["Hemoglobina"][""],["Hematocrito"][""],["Eritrocitos"][""],["VMG"][""],["HCM"][""],["Reticulocitos"][""],["Leocucitos"][""],["Neutrofilos"][""],["Linfocitos"][""],["Eosinofilos"][""],["Basofilos"][""],["Monocitos"][""],["Plaquetas"][""],["Volumen Plaquetario Medio"][""]};
     String[][] parametro2 = {{"Hemoglobina","12","18","g/dL"},{"Hematocrito","36","52","%"},{"Eritrocitos", "4.5","6.5","x10^6/uL"},{"VMG", "80","100","fL"},{"HCM", "27","33","pg"},{"Reticulocitos", "0.5","1.5","%"},{"Leocucitos", "4","11","x10^3/uL"}, {"Neutrofilos", "40","75","%"}, {"Linfocitos", "20","45","%"},{"Eosinofilos", "0","6","%"}, {"Basofilos", "0","2","%"}, {"Monocitos", "2","10","%"}, {"Plaquetas", "150","450","x10^3/uL"},{"Volumen Plaquetario Medio", "7.2","11.1","fL"}};
+    String[][] enfermedades = {{"Anemia","Hemoglobina","Eritrocitos"},{"Infeccion Bacteriana","Leocucitos","Neutrofilos"},{"Infeccion Viral","Leocucitos","Linfocitos"},{"Desordenes de Coagulacion","Plaquetas"},{"Problemas Renales","Hematocrito"},{ "Desordenes de la Medula Osea","Hemoglobina","Leocucitos","Plaquetas"},{ "Reacciones Alergicas o Asma","Eosinofilos"},{"Infecciones Parasitarias","Eosinofilos"}};
     //Arreglo que contiene todos los editText
     TextInputEditText[] textInputs = { txtHemoglobina, txtHematocrito, txtEritrocitos, txtVMG, txtHCM, txtReticulocitos, txtLeucocitos, txtNeutrofilos, txtLinfocitos, txtEosinofilos, txtBasofilos, txtMonocitos, txtPlaquetas, txtVolPlaquetario };
     //Arreglo que contiene el id de todos los componentes
@@ -63,10 +66,14 @@ public class HemogramaCompleto extends ExamenesSangre {
         dbResultadosTabla = new DBResultadosTabla(this);
         dbExamenTipo = new DBExamenTipo(this);
         dbReferenciaValores = new DBReferenciaValores(this);
+        dbEnfermedades = new DBEnfermedades(this);
+        dbEnfermedadesParametros = new DBEnfermedadesParametros(this);
 
         //Almacena el id del TipoExamen en este caso, de Sangre
         idTipExam = dbExamenTipo.obtenerIdTipExam(NAME_EXAM); //manda a llamar el metodo que retorna el id
 
+
+        llenadoTablaEnfermedades(dbEnfermedades);
 
         if (dbExamenParametros.existeConIdTipExam(idTipExam)){
             Log.d(TAG, "Ya fueron creados los registros en ExamenParametros con id: "+idTipExam);
@@ -82,6 +89,7 @@ public class HemogramaCompleto extends ExamenesSangre {
             }else {
                 llenadoTablaReferenciaValores(dbExamenParametros);
             }
+            llenadoTablaEnferParam(dbEnfermedadesParametros, dbExamenParametros, dbEnfermedades);
         }
 
     }
@@ -94,9 +102,7 @@ public class HemogramaCompleto extends ExamenesSangre {
         for(int i=0; i<parametros.length; i++){
             id = dbExamenParametros.insertaParametro(Integer.parseInt(String.valueOf(idTipExam)), parametros[i]);
             //Evalúa si todos los id son mayores que 0, es decir, que se hayan creado exitosamente
-            if(id > 0){
-                Log.d(TAG, "Registro guardado con éxtio");
-            }else{
+            if(id <= 0){
                 Log.e(TAG, "Hubo un error en: "+i);
             }
         }
@@ -110,9 +116,7 @@ public class HemogramaCompleto extends ExamenesSangre {
         for(int i=0; i<parametro2.length; i++){
             id = dbReferenciaValores.insertaReferenciaValores((int)idTipExam, (int) dbExamenParametros.obtenerIdParametro(parametro2[i][0]),parametro2[i][1],parametro2[i][2],null,null,null,null,null,null,null,null,parametro2[i][3]);
             //Evalúa si todos los id son mayores que 0, es decir, que se hayan creado exitosamente
-            if(id > 0){
-                Log.d(TAG, "Registro guardado con éxtio");
-            }else{
+            if(id <= 0){
                 Log.e(TAG, "Hubo un error en: "+i);
             }
         }
@@ -151,6 +155,39 @@ public class HemogramaCompleto extends ExamenesSangre {
             }
         }
         return todosCompletos;
+    }
+
+    public void llenadoTablaEnfermedades(DBEnfermedades dbEnfermedades){
+        long id = 0;
+
+        for (String[] enferm: enfermedades) {
+            if(!dbEnfermedades.existeEnfermedad(enferm[0])){
+                id = dbEnfermedades.insertaEnfermedad(enferm[0]);
+                if(id <= 0) {
+                    Log.e(TAG, "llenadoTablaEnferParam: Enfermedad no registrado");
+                }
+            }
+        }
+    }
+    public void llenadoTablaEnferParam(DBEnfermedadesParametros dbEnfermedadesParametros, DBExamenParametros dbExamenParametro, DBEnfermedades dbEnfermedades){
+        long id = 0;
+
+        for (String [] enfermedad : enfermedades) {
+            for (int j=1; j<enfermedad.length; j++) {
+                int parametroId=0, enfermedadId=0;
+                Log.d(TAG, "ObtenerIdParametro: "+enfermedad[j]);
+                parametroId = (int) dbExamenParametro.obtenerIdParametro(enfermedad[j]);
+                enfermedadId = (int) dbEnfermedades.obtenerIdEnfermedad(enfermedad[0]);
+                Log.e(TAG, "id's- param: "+parametroId+" enfer: "+enfermedadId);
+                id = dbEnfermedadesParametros.insertaEnfermParametro(parametroId, enfermedadId);
+                if(id <= 0) {
+                    Log.e(TAG, "llenadoTablaEnferParam: Datos no registrads");
+                }else{
+                    Log.d(TAG, "Registrado con exito");
+                }
+            }
+        }
+
     }
 
     private void ventanaDialogo(){

@@ -177,7 +177,4 @@ public class DBResultadosTabla extends MyDBHelper{
         return listaExamenes;
     }
 
-
-
-
 }

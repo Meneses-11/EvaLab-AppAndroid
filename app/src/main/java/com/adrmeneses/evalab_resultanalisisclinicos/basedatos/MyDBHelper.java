@@ -10,7 +10,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
     //Declara las constantes para el nombre, la versión y las tablas de la BD
     private static final int DATABASE_VERSION = 1;
     public static final String DTABASE_NOMBRE = "EvaLabDB";
-    public static final String TABLE_TIPO_EXAMEN = "ExamenTipo", TABLE_PARAMETROS_EXAMEN = "ExamenParametros", TABLE_VALORES_REFERENCIA = "ReferenciaValores", TABLE_RESULTADOS = "ResultadosTabla", TABLE_USUARIOS = "Usuarios";
+    public static final String TABLE_TIPO_EXAMEN = "ExamenTipo", TABLE_PARAMETROS_EXAMEN = "ExamenParametros", TABLE_VALORES_REFERENCIA = "ReferenciaValores", TABLE_RESULTADOS = "ResultadosTabla", TABLE_ENFERMEDADES = "Enfermedades", TABLE_PARAMETROS_ENFERMEDADES = "EnfermedadesParametros", TABLE_USUARIOS = "Usuarios";
 
     //Constructor
     public MyDBHelper(@Nullable Context context) {
@@ -73,16 +73,32 @@ public class MyDBHelper extends SQLiteOpenHelper {
                 "FOREIGN KEY(idTipExam) REFERENCES " + TABLE_TIPO_EXAMEN + "(idTipExam)," +
                 "FOREIGN KEY(idParametro) REFERENCES " + TABLE_PARAMETROS_EXAMEN + "(idParametro))");
 
+        //Crea la tabla Enfermedades
+        sqLiteDatabase.execSQL("CREATE TABLE "+TABLE_ENFERMEDADES+" (" +
+                "idEnfermedad INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "nombre VARCHAR NOT NULL)");
+
+        //Crea la tabla EnfermedadesParametros
+        sqLiteDatabase.execSQL("CREATE TABLE "+TABLE_PARAMETROS_ENFERMEDADES+" (" +
+                "idEnfPar INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "idParametro INTEGER," +
+                "idEnfermedad INTEGER," +
+                "descripcion VARCHAR," +
+                "FOREIGN KEY(idParametro) REFERENCES "+TABLE_PARAMETROS_EXAMEN+" (idParametro)," +
+                "FOREIGN KEY(idEnfermedad) REFERENCES "+TABLE_ENFERMEDADES+" (idEnfermedad))");
     }
 
     //Se ejecuta cuando cambie la versión de la BD
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         //Borra todas las tablas de la bd
+        sqLiteDatabase.execSQL("DROP TABLE "+TABLE_USUARIOS);
         sqLiteDatabase.execSQL("DROP TABLE "+TABLE_TIPO_EXAMEN);
         sqLiteDatabase.execSQL("DROP TABLE "+TABLE_PARAMETROS_EXAMEN);
         sqLiteDatabase.execSQL("DROP TABLE "+TABLE_VALORES_REFERENCIA);
         sqLiteDatabase.execSQL("DROP TABLE "+TABLE_RESULTADOS);
+        sqLiteDatabase.execSQL("DROP TABLE "+TABLE_ENFERMEDADES);
+        sqLiteDatabase.execSQL("DROP TABLE "+TABLE_PARAMETROS_ENFERMEDADES);
 
         //Manada a llamar al método onCreate pasandole el objeto SQLiteDatabase para que vuelva a crear todas las tablas
         onCreate(sqLiteDatabase);
