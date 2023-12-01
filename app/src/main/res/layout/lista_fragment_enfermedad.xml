@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    >
+
+    <LinearLayout
+        android:layout_width="340dp"
+        android:layout_height="215dp"
+        android:orientation="vertical"
+        android:background="@drawable/fondo_opc_result_resultados"
+        android:layout_gravity="center">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="5dp">
+            <TextView
+                android:layout_width="290dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:textSize="30dp"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:fontFamily="@font/gabarito_variablefont"
+                android:text="Probabilidad de tener:"/>
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="end"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/infor"/>
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="170dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textSize="25dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/onest_medium"
+                android:text="Desordenes de la Medula Osea"/>
+
+            <LinearLayout
+                android:layout_width="170dp"
+                android:layout_height="100dp"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/grafica1"/>
+            </LinearLayout>
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:fontFamily="@font/youngserif_regular"
+            android:text="Probabilidad Muy Alta"
+            />
+
+    </LinearLayout>
+
+</FrameLayout>
