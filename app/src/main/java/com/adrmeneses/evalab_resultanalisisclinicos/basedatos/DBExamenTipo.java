@@ -76,4 +76,20 @@ public class DBExamenTipo extends MyDBHelper{
         return idTipExam;
     }
 
+    public String obtenerNombreTipExam(int idTipExamn){
+        MyDBHelper myDBhelper = new MyDBHelper(context);
+        SQLiteDatabase db = myDBhelper.getReadableDatabase();
+        String nombre = null;
+
+        String query = "SELECT nombreExamenTipo FROM "+TABLE_TIPO_EXAMEN+" WHERE idTipExam = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idTipExamn)});
+
+        if(cursor.moveToFirst()){
+            nombre = cursor.getString(0);
+        }
+        cursor.close();
+
+        return nombre;
+    }
+
 }

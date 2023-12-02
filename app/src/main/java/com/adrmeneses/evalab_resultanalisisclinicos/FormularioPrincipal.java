@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBUsuarios;
-import com.adrmeneses.evalab_resultanalisisclinicos.usuarios.UsuarioActivo;
+import com.adrmeneses.evalab_resultanalisisclinicos.contenedore.UsuarioActivo;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.textfield.TextInputEditText;

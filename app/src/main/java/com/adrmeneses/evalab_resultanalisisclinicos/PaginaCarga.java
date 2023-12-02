@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBExamenTipo;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBUsuarios;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.MyDBHelper;
-import com.adrmeneses.evalab_resultanalisisclinicos.usuarios.UsuarioActivo;
+import com.adrmeneses.evalab_resultanalisisclinicos.contenedore.UsuarioActivo;
 
 import java.io.File;
 

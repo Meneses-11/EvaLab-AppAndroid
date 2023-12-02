@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.adrmeneses.evalab_resultanalisisclinicos.adaptadores.AdaptadorTabLayout;
+import com.adrmeneses.evalab_resultanalisisclinicos.contenedore.OpcionElegida;
+import com.adrmeneses.evalab_resultanalisisclinicos.contenedore.UsuarioActivo;
 import com.google.android.material.tabs.TabLayout;
 
 public class VentanaResultados extends AppCompatActivity {
@@ -19,22 +21,24 @@ public class VentanaResultados extends AppCompatActivity {
     ViewPager2 viewPager2;
     AdaptadorTabLayout adaptadorTLayout;
     int examenId, tipExamenId;
+    //Declara la variable en la que se instanciara la clase UsuarioActivo
+    OpcionElegida opcElegida;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ventana_resultados);
 
-        //Obtiene los datos que se le envió en intent.putExtra()
-        Intent intent = getIntent();
-        examenId = intent.getIntExtra("idExamen", 0);
-        tipExamenId = intent.getIntExtra("idTipExamen", 0);
+        //Instancia la clase UsuarioActivo
+        opcElegida = OpcionElegida.getInstance();
+        examenId = opcElegida.getExamenId();
+        tipExamenId =opcElegida.getExamenTipId();
 
         Log.d(TAG, "VentanaResultado: "+examenId+" "+tipExamenId);
 
         tabLayout = findViewById(R.id.tabLayout);
         viewPager2 = findViewById(R.id.viewPager);
-        adaptadorTLayout = new AdaptadorTabLayout(this, examenId, tipExamenId);
+        adaptadorTLayout = new AdaptadorTabLayout(this);
         viewPager2.setAdapter(adaptadorTLayout);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

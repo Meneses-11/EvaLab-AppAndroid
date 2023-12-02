@@ -1,5 +1,7 @@
 package com.adrmeneses.evalab_resultanalisisclinicos;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -7,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +24,9 @@ import com.adrmeneses.evalab_resultanalisisclinicos.adaptadores.AdaptadorListaEn
 import com.adrmeneses.evalab_resultanalisisclinicos.adaptadores.AdaptadorListaResultados;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBExamenTipo;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBResultadosTabla;
+import com.adrmeneses.evalab_resultanalisisclinicos.contenedore.OpcionElegida;
 import com.adrmeneses.evalab_resultanalisisclinicos.entidades.Enfermedades;
-import com.adrmeneses.evalab_resultanalisisclinicos.usuarios.UsuarioActivo;
+import com.adrmeneses.evalab_resultanalisisclinicos.contenedore.UsuarioActivo;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
@@ -30,9 +34,12 @@ import java.util.ArrayList;
 public class ResultEnfermedades extends Fragment {
     //Declara la variable en la que se instanciara la clase UsuarioActivo
     UsuarioActivo userActv;
+    //Declara la variable en la que se instanciara la clase OpcionElegida
+    OpcionElegida opcElegida;
     //Declara las variables para los id's
     int idUsuario;
     int identificadorExamen, identificadorTipExamen;
+    String nombreExaTip;
     //Declara las variables para los componentes gráficos
     RecyclerView vistaListaEnferm;
     AutoCompleteTextView autoCompletBuscarExamenEnferm;
@@ -59,12 +66,15 @@ public class ResultEnfermedades extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_result_enfermedades, container, false);
 
-        //Guarda los id en las variables correspondientes
-        identificadorExamen = getArguments().getInt("idExamen", 0);
-        identificadorTipExamen = getArguments().getInt("idTipExamen", 0);
         //Instancia la clase UsuarioActivo
         userActv = UsuarioActivo.getInstance();
         idUsuario = (int)userActv.getIdUsuario();
+
+        //Instancia la clase OpcionElegida
+        opcElegida = OpcionElegida.getInstance();
+        identificadorExamen = opcElegida.getExamenId();
+        identificadorTipExamen = opcElegida.getExamenTipId();
+        nombreExaTip = opcElegida.getNombreExamen();
 
 
         //Instancia los componentes gráficos
@@ -149,8 +159,10 @@ public class ResultEnfermedades extends Fragment {
                 //Instancia el adaptador de la Lista
                 adaptadorEnfer = new AdaptadorListaEnfermedades(dbResultadosTabla.leerEnfermedades(identificadorTipExamen,identificadorExamen,idUsuario));
                 vistaListaEnferm.setAdapter(adaptadorEnfer);  //Asigna el adaptador al RecyclerView
-                //adaptadorLista = new AdaptadorListaResultados(dbResultadosTabla.leerResultados(identificadorTipExamen, identificadorExamen, idUsuario));
-                //viewListaResultado.setAdapter(adaptadorLista);
+
+                opcElegida.setExamenId(identificadorExamen);
+                opcElegida.setExamenTipId(identificadorTipExamen);
+                opcElegida.setNombreExamen(dbExamenTipo.obtenerNombreTipExam(identificadorTipExamen));
             }
         });
     }
@@ -179,4 +191,21 @@ public class ResultEnfermedades extends Fragment {
         return new int[]{idTipEx,idEx};
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        identificadorExamen = opcElegida.getExamenId();
+        identificadorTipExamen = opcElegida.getExamenTipId();
+        nombreExaTip = opcElegida.getNombreExamen();
+
+        Log.d(TAG, "ResulEnfermedades onResume: ex: "+identificadorExamen+" tipEx: "+identificadorTipExamen);
+        //si los id's son diferente de 0 pone la lista que corresponda a los id's
+        if(identificadorExamen != 0 || identificadorExamen != 0){
+            autoCompletBuscarExamenEnferm.setText(nombreExaTip+"-"+identificadorExamen, false);
+        }
+
+        //Instancia el adaptador de la Lista
+        adaptadorEnfer = new AdaptadorListaEnfermedades(dbResultadosTabla.leerEnfermedades(identificadorTipExamen,identificadorExamen,idUsuario));
+        vistaListaEnferm.setAdapter(adaptadorEnfer);  //Asigna el adaptador al RecyclerView
+    }
 }

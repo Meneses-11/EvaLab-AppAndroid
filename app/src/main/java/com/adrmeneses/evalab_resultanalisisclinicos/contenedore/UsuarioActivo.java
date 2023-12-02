@@ -1,4 +1,4 @@
-package com.adrmeneses.evalab_resultanalisisclinicos.usuarios;
+package com.adrmeneses.evalab_resultanalisisclinicos.contenedore;
 //Clase que actúa como un contenedor global para el ID del usuario
 //Esta clase implementa el patrón singleton para asegurarse de que solo haya una instancia en toda la aplicación
 public class UsuarioActivo {

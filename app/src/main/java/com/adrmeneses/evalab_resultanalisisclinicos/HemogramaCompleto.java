@@ -19,12 +19,15 @@ import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBExamenParametros
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBExamenTipo;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBReferenciaValores;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBResultadosTabla;
-import com.adrmeneses.evalab_resultanalisisclinicos.usuarios.UsuarioActivo;
+import com.adrmeneses.evalab_resultanalisisclinicos.contenedore.OpcionElegida;
+import com.adrmeneses.evalab_resultanalisisclinicos.contenedore.UsuarioActivo;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class HemogramaCompleto extends ExamenesSangre {
     //Declara la variable en la que se instanciara la clase UsuarioActivo
     UsuarioActivo userActv;
+    //Declara la variable en la que se instanciara la clase Opcion Elejida
+    OpcionElegida opcElegida;
     //Declara los componentes visuales
     TextInputEditText txtHemoglobina, txtHematocrito, txtEritrocitos, txtVMG, txtHCM, txtReticulocitos, txtLeucocitos, txtNeutrofilos, txtLinfocitos, txtEosinofilos, txtBasofilos, txtMonocitos, txtPlaquetas, txtVolPlaquetario;
     final String NAME_EXAM = "hemograma";
@@ -55,6 +58,9 @@ public class HemogramaCompleto extends ExamenesSangre {
         //Instancia la clase UsuarioActivo
         userActv = UsuarioActivo.getInstance();
         idUsuario = userActv.getIdUsuario();
+
+        //Instancia la clase OpcionElegida
+        opcElegida = OpcionElegida.getInstance();
 
         //Asigna los componentes a su variable correspondiente
         for (int j=0; j<componentes.length; j++){
@@ -133,8 +139,9 @@ public class HemogramaCompleto extends ExamenesSangre {
                         Double.parseDouble(textInputs[a].getText().toString()),identExamen);
             }
             Intent lanzar = new Intent(this,VentanaResultados.class);
-            lanzar.putExtra("idExamen", identExamen);
-            lanzar.putExtra("idTipExamen", (int) idTipExam);
+            opcElegida.setExamenId(identExamen);
+            opcElegida.setExamenTipId((int) idTipExam);
+            opcElegida.setNombreExamen(dbExamenTipo.obtenerNombreTipExam((int) idTipExam));
             startActivity(lanzar);
             finish();
         }else {

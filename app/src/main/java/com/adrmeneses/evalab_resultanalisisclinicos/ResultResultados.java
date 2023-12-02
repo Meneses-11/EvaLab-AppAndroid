@@ -4,11 +4,8 @@ import static android.content.ContentValues.TAG;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.os.Bundle;
 
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,30 +18,29 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.Toast;
 
 import com.adrmeneses.evalab_resultanalisisclinicos.adaptadores.AdaptadorListaResultados;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBExamenTipo;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBResultadosTabla;
+import com.adrmeneses.evalab_resultanalisisclinicos.contenedore.OpcionElegida;
 import com.adrmeneses.evalab_resultanalisisclinicos.entidades.Resultados;
-import com.adrmeneses.evalab_resultanalisisclinicos.usuarios.UsuarioActivo;
-import com.google.android.material.textfield.TextInputEditText;
+import com.adrmeneses.evalab_resultanalisisclinicos.contenedore.UsuarioActivo;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
-
-import io.grpc.Context;
 
 public class ResultResultados extends Fragment {
 
     //Declara la variable en la que se instanciara la clase UsuarioActivo
     UsuarioActivo userActv;
+    //Declara la variable en la que se instanciara la clase OpcionElegida
+    OpcionElegida opcElegida;
     //Declara las variables para los id's
     int idUsuario;
     int identificadorExamen, identificadorTipExamen;
+    String nombreExaTip;
     RecyclerView viewListaResultado;
     ArrayList<Resultados> listArrayResultados;
     AutoCompleteTextView autoCompletBuscarExamenResult;
@@ -65,10 +61,14 @@ public class ResultResultados extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.d(TAG, "ResulResultado: Método onCreate");
-        //Guarda los id en las variables correspondientes
-        identificadorExamen = getArguments().getInt("idExamen", 0);
-        identificadorTipExamen = getArguments().getInt("idTipExamen", 0);
+
+        //Instancia la clase OpcionElegida
+        opcElegida = OpcionElegida.getInstance();
+        identificadorExamen = opcElegida.getExamenId();
+        identificadorTipExamen = opcElegida.getExamenTipId();
+        nombreExaTip = opcElegida.getNombreExamen();
+        Log.d(TAG, "ResulResultado: Método onCreate ex: "+identificadorExamen+" Tip: "+identificadorTipExamen);
+
         //Instancia la clase UsuarioActivo
         userActv = UsuarioActivo.getInstance();
         idUsuario = (int)userActv.getIdUsuario();
@@ -119,7 +119,8 @@ public class ResultResultados extends Fragment {
         if(identificadorExamen == 0 && identificadorExamen == 0){
             //
         }else{//si los id's son diferente de 0 pone la lista que corresponda a los id's
-            autoCompletBuscarExamenResult.setText(opcionesExamenes[opcionesExamenes.length-1], false);
+            autoCompletBuscarExamenResult.setText(nombreExaTip+"-"+identificadorExamen, false);
+            //autoCompletBuscarExamenResult.setText(opcionesExamenes[opcionesExamenes.length-1], false);
         }
 
         adaptadorLista = new AdaptadorListaResultados(dbResultadosTabla.leerResultados(identificadorTipExamen, identificadorExamen, idUsuario));
@@ -155,7 +156,9 @@ public class ResultResultados extends Fragment {
                 adaptadorLista = new AdaptadorListaResultados(dbResultadosTabla.leerResultados(identificadorTipExamen, identificadorExamen, idUsuario));
                 viewListaResultado.setAdapter(adaptadorLista);
 
-
+                opcElegida.setExamenId(identificadorExamen);
+                opcElegida.setExamenTipId(identificadorTipExamen);
+                opcElegida.setNombreExamen(dbExamenTipo.obtenerNombreTipExam(identificadorTipExamen));
             }
         });
     }
@@ -183,19 +186,23 @@ public class ResultResultados extends Fragment {
 
         return new int[]{idTipEx,idEx};
     }
-/*
+
     @Override
     public void onResume() {
         super.onResume();
 
-        Log.d(TAG, "ResulResultado: ex: "+identificadorExamen+" tipEx: "+identificadorTipExamen);
+        identificadorExamen = opcElegida.getExamenId();
+        identificadorTipExamen = opcElegida.getExamenTipId();
+        nombreExaTip = opcElegida.getNombreExamen();
+
+        Log.d(TAG, "ResulResultado onResume: ex: "+identificadorExamen+" tipEx: "+identificadorTipExamen);
         //si los id's son diferente de 0 pone la lista que corresponda a los id's
         if(identificadorExamen != 0 || identificadorExamen != 0){
-            autoCompletBuscarExamenResult.setText(opcionesExamenes[opcionesExamenes.length-1], false);
+            autoCompletBuscarExamenResult.setText(nombreExaTip+"-"+identificadorExamen, false);
         }
 
         adaptadorLista = new AdaptadorListaResultados(dbResultadosTabla.leerResultados(identificadorTipExamen, identificadorExamen, idUsuario));
         viewListaResultado.setAdapter(adaptadorLista);
 
-    }*/
+    }
 }
