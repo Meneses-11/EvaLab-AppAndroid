@@ -39,7 +39,7 @@ public class HemogramaCompleto extends ExamenesSangre {
     //Arreglo que almacena todos los parámetros
     String[] parametros= {"Hemoglobina","Hematocrito","Eritrocitos","VMG","HCM","Reticulocitos","Leocucitos","Neutrofilos","Linfocitos","Eosinofilos","Basofilos","Monocitos","Plaquetas","Volumen Plaquetario Medio"};
     String[][] parametro2 = {{"Hemoglobina","12","18","g/dL"},{"Hematocrito","36","52","%"},{"Eritrocitos", "4.5","6.5","x10^6/uL"},{"VMG", "80","100","fL"},{"HCM", "27","33","pg"},{"Reticulocitos", "0.5","1.5","%"},{"Leocucitos", "4","11","x10^3/uL"}, {"Neutrofilos", "40","75","%"}, {"Linfocitos", "20","45","%"},{"Eosinofilos", "0","6","%"}, {"Basofilos", "0","2","%"}, {"Monocitos", "2","10","%"}, {"Plaquetas", "150","450","x10^3/uL"},{"Volumen Plaquetario Medio", "7.2","11.1","fL"}};
-    String[][] enfermedades = {{"Anemia","Hemoglobina","Eritrocitos"},{"Infeccion Bacteriana","Leocucitos","Neutrofilos"},{"Infeccion Viral","Leocucitos","Linfocitos"},{"Desordenes de Coagulacion","Plaquetas"},{"Problemas Renales","Hematocrito"},{ "Desordenes de la Medula Osea","Hemoglobina","Leocucitos","Plaquetas"},{ "Reacciones Alergicas o Asma","Eosinofilos"},{"Infecciones Parasitarias","Eosinofilos"}};
+    String[][] enfermedades = {{"Anemia","bajo","Hemoglobina","Eritrocitos"},{"Infeccion Bacteriana","alto","Leocucitos","Neutrofilos"},{"Infeccion Viral","alto","Leocucitos","Linfocitos"},{"Desordenes de Coagulacion","bajo","Plaquetas"},{"Problemas Renales","ambos","Hematocrito"},{ "Desordenes de la Medula Osea","ambos","Hemoglobina","Leocucitos","Plaquetas"},{ "Reacciones Alergicas o Asma","alto","Eosinofilos"},{"Infecciones Parasitarias","alto","Eosinofilos"}};
     //Arreglo que contiene todos los editText
     TextInputEditText[] textInputs = { txtHemoglobina, txtHematocrito, txtEritrocitos, txtVMG, txtHCM, txtReticulocitos, txtLeucocitos, txtNeutrofilos, txtLinfocitos, txtEosinofilos, txtBasofilos, txtMonocitos, txtPlaquetas, txtVolPlaquetario };
     //Arreglo que contiene el id de todos los componentes
@@ -162,7 +162,7 @@ public class HemogramaCompleto extends ExamenesSangre {
 
         for (String[] enferm: enfermedades) {
             if(!dbEnfermedades.existeEnfermedad(enferm[0])){
-                id = dbEnfermedades.insertaEnfermedad(enferm[0]);
+                id = dbEnfermedades.insertaEnfermedad(enferm[0],enferm[1],null);
                 if(id <= 0) {
                     Log.e(TAG, "llenadoTablaEnferParam: Enfermedad no registrado");
                 }
@@ -173,17 +173,13 @@ public class HemogramaCompleto extends ExamenesSangre {
         long id = 0;
 
         for (String [] enfermedad : enfermedades) {
-            for (int j=1; j<enfermedad.length; j++) {
+            for (int j=2; j<enfermedad.length; j++) {
                 int parametroId=0, enfermedadId=0;
-                Log.d(TAG, "ObtenerIdParametro: "+enfermedad[j]);
                 parametroId = (int) dbExamenParametro.obtenerIdParametro(enfermedad[j]);
                 enfermedadId = (int) dbEnfermedades.obtenerIdEnfermedad(enfermedad[0]);
-                Log.e(TAG, "id's- param: "+parametroId+" enfer: "+enfermedadId);
                 id = dbEnfermedadesParametros.insertaEnfermParametro(parametroId, enfermedadId);
                 if(id <= 0) {
                     Log.e(TAG, "llenadoTablaEnferParam: Datos no registrads");
-                }else{
-                    Log.d(TAG, "Registrado con exito");
                 }
             }
         }

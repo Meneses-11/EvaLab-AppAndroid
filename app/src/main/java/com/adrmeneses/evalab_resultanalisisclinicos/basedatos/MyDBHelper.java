@@ -76,14 +76,15 @@ public class MyDBHelper extends SQLiteOpenHelper {
         //Crea la tabla Enfermedades
         sqLiteDatabase.execSQL("CREATE TABLE "+TABLE_ENFERMEDADES+" (" +
                 "idEnfermedad INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "nombre VARCHAR NOT NULL)");
+                "nombre VARCHAR NOT NULL," +
+                "referencia VARCHAR NOT NULL," +
+                "descripcion VARCHAR)");
 
         //Crea la tabla EnfermedadesParametros
         sqLiteDatabase.execSQL("CREATE TABLE "+TABLE_PARAMETROS_ENFERMEDADES+" (" +
                 "idEnfPar INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "idParametro INTEGER," +
                 "idEnfermedad INTEGER," +
-                "descripcion VARCHAR," +
                 "FOREIGN KEY(idParametro) REFERENCES "+TABLE_PARAMETROS_EXAMEN+" (idParametro)," +
                 "FOREIGN KEY(idEnfermedad) REFERENCES "+TABLE_ENFERMEDADES+" (idEnfermedad))");
     }

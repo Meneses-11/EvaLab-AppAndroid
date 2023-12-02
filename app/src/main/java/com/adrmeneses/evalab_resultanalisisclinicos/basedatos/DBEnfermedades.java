@@ -18,7 +18,7 @@ public class DBEnfermedades extends MyDBHelper{
     }
 
     //Método que inserta en la tabla Enferemedades
-    public long insertaEnfermedad(String name){
+    public long insertaEnfermedad(String name, String reference, String informacion){
         long id = 0;
 
         try{
@@ -28,6 +28,8 @@ public class DBEnfermedades extends MyDBHelper{
 
             ContentValues datos = new ContentValues();
             datos.put("nombre", name);
+            datos.put("referencia", reference);
+            datos.put("descripcion", informacion);
 
             id = db.insert(TABLE_ENFERMEDADES, null, datos);
         }catch (Exception ex){

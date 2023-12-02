@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
 
+import com.adrmeneses.evalab_resultanalisisclinicos.entidades.Enfermedades;
 import com.adrmeneses.evalab_resultanalisisclinicos.entidades.Resultados;
 
 import java.util.ArrayList;
@@ -74,6 +75,36 @@ public class DBResultadosTabla extends MyDBHelper{
 
         cursor.close();
         return listaResultados;
+    }
+
+    public ArrayList<Enfermedades> leerEnfermedades(int idTipExamen, int idExamen, int idUser){
+        MyDBHelper myDBhelper = new MyDBHelper(context);
+        SQLiteDatabase db = myDBhelper.getReadableDatabase();
+
+        ArrayList<Enfermedades> listaEnfermedades = new ArrayList<>();
+        Enfermedades enfermedad = null;
+
+        String query = "SELECT Enfermedades.nombre, ResultadosTabla.valorObtenido, ReferenciaValores.valorMin," +
+                "ReferenciaValores.valorMax, Enfermedades.referencia, Enfermedades.descripcion From " +
+                "((ResultadosTabla NATURAL JOIN "+TABLE_VALORES_REFERENCIA+") NATURAL JOIN ("+TABLE_ENFERMEDADES+" " +
+                "NATURAL JOIN "+TABLE_PARAMETROS_ENFERMEDADES+")) WHERE idTipExam = ? AND idExamen = ? AND idUsuario = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idTipExamen), String.valueOf(idExamen), String.valueOf(idUser)});
+
+        if(cursor.moveToFirst()){
+            do{
+                enfermedad = new Enfermedades();
+                enfermedad.setNombreEnf(cursor.getString(0));
+                enfermedad.setValorObtenido(cursor.getDouble(1));
+                enfermedad.setMinValor(cursor.getString(2));
+                enfermedad.setMaxValor(cursor.getString(3));
+                enfermedad.setReferencia(cursor.getString(4));
+                enfermedad.setInformacion(cursor.getString(5));
+
+                listaEnfermedades.add(enfermedad);
+            }while(cursor.moveToNext());
+        }
+        cursor.close();
+        return listaEnfermedades;
     }
 
     //Método que obtiene el ultimo idExamen del Tipo de Examen que recive
@@ -151,7 +182,6 @@ public class DBResultadosTabla extends MyDBHelper{
 
         if (db != null) {
             for (int j = 0; j < idTipExam.length; j++) {
-                //SELECT DISTINCT ResultadosTabla.idTipExam,ExamenTipo.nombreExamenTipo,ResultadosTabla.idExamen FROM ResultadosTabla NATURAL JOIN ExamenTipo WHERE idUsuario = 1;
                 String query = "SELECT DISTINCT ResultadosTabla.idTipExam,ExamenTipo.nombreExamenTipo,ResultadosTabla.idExamen FROM " + TABLE_RESULTADOS + " NATURAL JOIN " + TABLE_TIPO_EXAMEN + " WHERE idUsuario = ? AND idTipExam = ?";
                 Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(userId), String.valueOf(idTipExam[j])});
 

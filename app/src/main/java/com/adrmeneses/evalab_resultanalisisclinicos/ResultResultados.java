@@ -65,6 +65,7 @@ public class ResultResultados extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.d(TAG, "ResulResultado: Método onCreate");
         //Guarda los id en las variables correspondientes
         identificadorExamen = getArguments().getInt("idExamen", 0);
         identificadorTipExamen = getArguments().getInt("idTipExamen", 0);
@@ -80,9 +81,9 @@ public class ResultResultados extends Fragment {
         contenedorLista = rootView.findViewById(R.id.vistaListaResultados);
         contenedorBoton = rootView.findViewById(R.id.vistaBtnRegisExamResult);
         botonRegistrar = rootView.findViewById(R.id.btnRegisExamResult);
-
         viewListaResultado = rootView.findViewById(R.id.viewListaResultResultados);
-        viewListaResultado.setLayoutManager(new LinearLayoutManager(getContext()));
+        viewListaResultado.setLayoutManager(new LinearLayoutManager(getContext())); //Organiza los elementos en una lista vertical estándar
+
         dbResultadosTabla = new DBResultadosTabla(getContext());
         dbExamenTipo = new DBExamenTipo(getContext());
         listArrayResultados = new ArrayList<>();
@@ -110,7 +111,7 @@ public class ResultResultados extends Fragment {
                 opcionesExamenes[m]=listaExamenes[m][1]+"-"+listaExamenes[m][2];
             }
 
-            opcionesListas(autoCompletBuscarExamenResult,adaptadorBuscarEx,R.id.autoCompletBuscarExamenResultados,opcionesExamenes,rootView);
+            opcionesListas(autoCompletBuscarExamenResult,adaptadorBuscarEx,opcionesExamenes);
 
         }
 
@@ -138,8 +139,7 @@ public class ResultResultados extends Fragment {
         return rootView;
     }
 
-    public void opcionesListas(AutoCompleteTextView lista, ArrayAdapter<String> adaptador, int id, String[] arreglo, View view){
-        lista = view.findViewById(id);
+    public void opcionesListas(AutoCompleteTextView lista, ArrayAdapter<String> adaptador, String[] arreglo){
         lista.setDropDownBackgroundResource(R.color.white);
         adaptador = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line, arreglo);
         lista.setAdapter(adaptador);
@@ -154,6 +154,8 @@ public class ResultResultados extends Fragment {
 
                 adaptadorLista = new AdaptadorListaResultados(dbResultadosTabla.leerResultados(identificadorTipExamen, identificadorExamen, idUsuario));
                 viewListaResultado.setAdapter(adaptadorLista);
+
+
             }
         });
     }
@@ -181,5 +183,19 @@ public class ResultResultados extends Fragment {
 
         return new int[]{idTipEx,idEx};
     }
+/*
+    @Override
+    public void onResume() {
+        super.onResume();
 
+        Log.d(TAG, "ResulResultado: ex: "+identificadorExamen+" tipEx: "+identificadorTipExamen);
+        //si los id's son diferente de 0 pone la lista que corresponda a los id's
+        if(identificadorExamen != 0 || identificadorExamen != 0){
+            autoCompletBuscarExamenResult.setText(opcionesExamenes[opcionesExamenes.length-1], false);
+        }
+
+        adaptadorLista = new AdaptadorListaResultados(dbResultadosTabla.leerResultados(identificadorTipExamen, identificadorExamen, idUsuario));
+        viewListaResultado.setAdapter(adaptadorLista);
+
+    }*/
 }

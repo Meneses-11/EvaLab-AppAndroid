@@ -8,9 +8,6 @@ public class Resultados {
     private String medidaUnidad;
     private String estado;
     private int semaf;
-    private String enfermedadNombre;
-    private int probabilidad;
-    private String infProbabilidad;
 
 
 
@@ -70,27 +67,4 @@ public class Resultados {
         this.semaf = semaf;
     }
 
-    public String getEnfermedadNombre() {
-        return enfermedadNombre;
-    }
-
-    public void setEnfermedadNombre(String enfermedadNombre) {
-        this.enfermedadNombre = enfermedadNombre;
-    }
-
-    public int getProbabilidad() {
-        return probabilidad;
-    }
-
-    public void setProbabilidad(int probabilidad) {
-        this.probabilidad = probabilidad;
-    }
-
-    public String getInfProbabilidad() {
-        return infProbabilidad;
-    }
-
-    public void setInfProbabilidad(String infProbabilidad) {
-        this.infProbabilidad = infProbabilidad;
-    }
 }
