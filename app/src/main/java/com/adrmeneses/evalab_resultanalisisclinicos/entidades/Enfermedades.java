@@ -21,7 +21,6 @@ public class Enfermedades {
     public int getPorcentaje() {
         return porcentaje;
     }
-
     public void setPorcentaje(int porcentaje) {
         this.porcentaje = porcentaje;
     }
@@ -29,7 +28,6 @@ public class Enfermedades {
     public double getValorObtenido() {
         return valorObtenido;
     }
-
     public void setValorObtenido(double valorObtenido) {
         this.valorObtenido = valorObtenido;
     }
@@ -37,7 +35,6 @@ public class Enfermedades {
     public String getMinValor() {
         return minValor;
     }
-
     public void setMinValor(String minValor) {
         this.minValor = minValor;
     }
@@ -45,7 +42,6 @@ public class Enfermedades {
     public String getMaxValor() {
         return maxValor;
     }
-
     public void setMaxValor(String maxValor) {
         this.maxValor = maxValor;
     }
@@ -53,7 +49,6 @@ public class Enfermedades {
     public String getInformacion() {
         return informacion;
     }
-
     public void setInformacion(String informacion) {
         this.informacion = informacion;
     }
@@ -61,7 +56,6 @@ public class Enfermedades {
     public String getReferencia() {
         return referencia;
     }
-
     public void setReferencia(String referencia) {
         this.referencia = referencia;
     }

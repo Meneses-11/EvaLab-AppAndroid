@@ -41,9 +41,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     implementation 'com.airbnb.android:lottie:3.0.1'              //Libreria para usar animaciones con Lottie
-    //implementation 'androidx.fragment:fragment:1.6.2'
-    //implementation 'androidx.viewpager2:viewpager2:1.0.0'
-    // Asegúrate de tener la misma versión para annotation y annotation-jvm
     implementation "androidx.annotation:annotation:1.7.0"
     implementation "androidx.annotation:annotation-jvm:1.7.0"
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'     //Libreria para Gráficas
 }

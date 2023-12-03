@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -38,7 +39,8 @@ public class AdaptadorListaEnfermedades extends RecyclerView.Adapter<AdaptadorLi
 
         holder.nombreEnfermedad.setText(enfermedad.getNombreEnf());
         holder.textoProbabilidad.setText(enfermedad.getReferencia());
-        //holder.componentRef.setX(enfermedad.getPorcentaje());
+        holder.textoPorcentaje.setText((int) enfermedad.getValorObtenido()+"%");
+        holder.pbGrafica.setProgress((int) enfermedad.getValorObtenido());
     }
 
     @Override //Especifica el tamaño de la lista
@@ -47,13 +49,14 @@ public class AdaptadorListaEnfermedades extends RecyclerView.Adapter<AdaptadorLi
     }
 
     public class EnfermedadViewHolder extends RecyclerView.ViewHolder {
-        TextView nombreEnfermedad, textoProbabilidad;
-        ImageView componentRef;
+        TextView nombreEnfermedad, textoProbabilidad, textoPorcentaje;
+        ProgressBar pbGrafica;
         public EnfermedadViewHolder(@NonNull View itemView) {
             super(itemView);
             nombreEnfermedad = itemView.findViewById(R.id.textViewNombreEnfermedad);
             textoProbabilidad = itemView.findViewById(R.id.textViewResultadoEnfermedad);
-            componentRef = itemView.findViewById(R.id.referenciaProbabilidad);
+            pbGrafica = itemView.findViewById(R.id.progressBarPorcentEnfermedad);
+            textoPorcentaje = itemView.findViewById(R.id.textViewPorcentEnfermedad);
         }
     }
 }

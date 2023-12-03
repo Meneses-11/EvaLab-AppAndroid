@@ -48,16 +48,29 @@
                 android:fontFamily="@font/onest_medium"
                 android:text="Desordenes de la Medula Osea"/>
 
-            <LinearLayout
+            <FrameLayout
                 android:layout_width="170dp"
-                android:layout_height="100dp"
-                android:gravity="center">
-                <ImageView
-                    android:id="@+id/referenciaProbabilidad"
+                android:layout_height="100dp">
+                <ProgressBar
+                    android:id="@+id/progressBarPorcentEnfermedad"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/grafica1"/>
-            </LinearLayout>
+                    android:layout_gravity="center"
+                    android:indeterminateOnly="false"
+                    android:progressDrawable="@drawable/disenio_grafica"
+                    android:progress="10"
+                    />
+                <TextView
+                    android:id="@+id/textViewPorcentEnfermedad"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="10%"
+                    android:textSize="25dp"
+                    android:fontFamily="@font/onest_medium"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"/>
+            </FrameLayout>
 
         </LinearLayout>
         <TextView
