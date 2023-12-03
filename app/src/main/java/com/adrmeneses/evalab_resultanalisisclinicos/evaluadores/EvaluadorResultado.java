@@ -9,7 +9,7 @@ public class EvaluadorResultado {
     public int verde, amarillo, rojo;
     float valorRefMin, valorRefMax;
 
-    public void evaluar(Resultados resultado) {
+    public void evaluarResult(Resultados resultado) {
 
         valorRefMin = Float.valueOf(resultado.getMinValor());
         valorRefMax = Float.valueOf(resultado.getMaxValor());

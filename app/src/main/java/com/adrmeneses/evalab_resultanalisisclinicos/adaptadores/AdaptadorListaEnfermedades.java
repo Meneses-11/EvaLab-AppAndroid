@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.adrmeneses.evalab_resultanalisisclinicos.R;
 import com.adrmeneses.evalab_resultanalisisclinicos.entidades.Enfermedades;
+import com.adrmeneses.evalab_resultanalisisclinicos.evaluadores.EvaluadorEnfermedad;
 
 import java.util.ArrayList;
 
@@ -36,6 +37,8 @@ public class AdaptadorListaEnfermedades extends RecyclerView.Adapter<AdaptadorLi
 
         /*EvaluadorEnfermedad evaEnf = new EvaluadorEnfermedad();
         evaEnf.evaluarEnf(enfermedad);*/
+        EvaluadorEnfermedad evaEnferm = new EvaluadorEnfermedad();
+        evaEnferm.evaluarEnferm(enfermedad);
 
         holder.nombreEnfermedad.setText(enfermedad.getNombreEnf());
         holder.textoProbabilidad.setText(enfermedad.getReferencia());

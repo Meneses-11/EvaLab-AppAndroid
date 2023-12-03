@@ -36,7 +36,7 @@ public class AdaptadorListaResultados extends RecyclerView.Adapter<AdaptadorList
         Resultados resultado = listaResultados.get(position);
 
         EvaluadorResultado evaluador = new EvaluadorResultado();
-        evaluador.evaluar(resultado);
+        evaluador.evaluarResult(resultado);
 
         holder.viewEstado.setText(resultado.getEstado());
         holder.viewSemafor.setImageResource(resultado.getSemaf());
