@@ -3,11 +3,11 @@ package com.adrmeneses.evalab_resultanalisisclinicos.entidades;
 public class Enfermedades {
     private String nombreEnf;
     private int porcentaje;
-    private double valorObtenido;
-    private String minValor;
-    private String maxValor;
     private String referencia;
     private String informacion;
+    private String[][] valObtenidos;
+    private String infoPorcentaje;
+    private boolean mostrar;
 
 
     public String getNombreEnf() {
@@ -25,27 +25,6 @@ public class Enfermedades {
         this.porcentaje = porcentaje;
     }
 
-    public double getValorObtenido() {
-        return valorObtenido;
-    }
-    public void setValorObtenido(double valorObtenido) {
-        this.valorObtenido = valorObtenido;
-    }
-
-    public String getMinValor() {
-        return minValor;
-    }
-    public void setMinValor(String minValor) {
-        this.minValor = minValor;
-    }
-
-    public String getMaxValor() {
-        return maxValor;
-    }
-    public void setMaxValor(String maxValor) {
-        this.maxValor = maxValor;
-    }
-
     public String getInformacion() {
         return informacion;
     }
@@ -58,5 +37,26 @@ public class Enfermedades {
     }
     public void setReferencia(String referencia) {
         this.referencia = referencia;
+    }
+
+    public String[][] getValObtenidos() {
+        return valObtenidos;
+    }
+    public void setValObtenidos(String[][] valObtenidos) {
+        this.valObtenidos = valObtenidos;
+    }
+
+    public String getInfoPorcentaje() {
+        return infoPorcentaje;
+    }
+    public void setInfoPorcentaje(String infoPorcentaje) {
+        this.infoPorcentaje = infoPorcentaje;
+    }
+
+    public boolean isMostrar() {
+        return mostrar;
+    }
+    public void setMostrar(boolean mostrar) {
+        this.mostrar = mostrar;
     }
 }

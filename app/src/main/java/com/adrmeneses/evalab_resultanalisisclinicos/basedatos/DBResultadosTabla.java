@@ -1,10 +1,13 @@
 package com.adrmeneses.evalab_resultanalisisclinicos.basedatos;
 
+import static android.content.ContentValues.TAG;
+
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -80,25 +83,44 @@ public class DBResultadosTabla extends MyDBHelper{
     public ArrayList<Enfermedades> leerEnfermedades(int idTipExamen, int idExamen, int idUser){
         MyDBHelper myDBhelper = new MyDBHelper(context);
         SQLiteDatabase db = myDBhelper.getReadableDatabase();
+        String[][] datos;
 
         ArrayList<Enfermedades> listaEnfermedades = new ArrayList<>();
         Enfermedades enfermedad = null;
 
-        String query = "SELECT Enfermedades.nombre, ResultadosTabla.valorObtenido, ReferenciaValores.valorMin," +
+        /*String query = "SELECT Enfermedades.nombre, ResultadosTabla.valorObtenido, ReferenciaValores.valorMin," +
                 "ReferenciaValores.valorMax, Enfermedades.referencia, Enfermedades.descripcion From " +
                 "((ResultadosTabla NATURAL JOIN "+TABLE_VALORES_REFERENCIA+") NATURAL JOIN ("+TABLE_ENFERMEDADES+" " +
-                "NATURAL JOIN "+TABLE_PARAMETROS_ENFERMEDADES+")) WHERE idTipExam = ? AND idExamen = ? AND idUsuario = ?";
+                "NATURAL JOIN "+TABLE_PARAMETROS_ENFERMEDADES+")) WHERE idTipExam = ? AND idExamen = ? AND idUsuario = ?";*/
+        String query = "SELECT enf.nombre, enf.referencia, enf.descripcion," +
+                "GROUP_CONCAT(result.valorObtenido)," +
+                "GROUP_CONCAT(valRef.valorMin)," +
+                "GROUP_CONCAT(valRef.valorMax) " +
+                "FROM ((("+TABLE_RESULTADOS+" result JOIN "+TABLE_VALORES_REFERENCIA+" valRef ON result.idParametro = valRef.idParametro) " +
+                "JOIN "+TABLE_PARAMETROS_ENFERMEDADES+" enfPar ON result.idParametro = enfPar.idParametro) " +
+                "JOIN "+TABLE_ENFERMEDADES+" enf ON enfPar.idEnfermedad = enf.idEnfermedad) " +
+                "WHERE result.idTipExam = ? AND result.idExamen = ? AND result.idUsuario = ? " +
+                "GROUP BY enf.idEnfermedad, enf.nombre, enf.referencia, enf.descripcion";
         Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idTipExamen), String.valueOf(idExamen), String.valueOf(idUser)});
 
         if(cursor.moveToFirst()){
             do{
                 enfermedad = new Enfermedades();
                 enfermedad.setNombreEnf(cursor.getString(0));
-                enfermedad.setValorObtenido(cursor.getDouble(1));
-                enfermedad.setMinValor(cursor.getString(2));
-                enfermedad.setMaxValor(cursor.getString(3));
-                enfermedad.setReferencia(cursor.getString(4));
-                enfermedad.setInformacion(cursor.getString(5));
+                enfermedad.setReferencia(cursor.getString(1));
+                enfermedad.setInformacion(cursor.getString(2));
+
+                String[] valores = cursor.getString(3).split(",");
+                String[] valMin = cursor.getString(4).split(",");
+                String[] valMax = cursor.getString(5).split(",");
+                datos = new String[valores.length][3];
+                for(int i=0; i<valores.length; i++){
+                    datos[i][0] = valores[i];
+                    datos[i][1] = valMin[i];
+                    datos[i][2] = valMax[i];
+                    Log.d(TAG, "leerEnfermedades: nombre: "+enfermedad.getNombreEnf()+" "+datos[i][0]+" "+datos[i][1]+" "+datos[i][2]);
+                }
+                enfermedad.setValObtenidos(datos);
 
                 listaEnfermedades.add(enfermedad);
             }while(cursor.moveToNext());

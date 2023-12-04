@@ -6,8 +6,8 @@ import com.adrmeneses.evalab_resultanalisisclinicos.entidades.Resultados;
 public class EvaluadorResultado {
     private static final float PORC_MUY_BAJO = 0.788f;
     private static final float PORC_MUY_ALTO = 1.165f;
-    public int verde, amarillo, rojo;
-    float valorRefMin, valorRefMax;
+    private int verde, amarillo, rojo;
+    private float valorRefMin, valorRefMax;
 
     public void evaluarResult(Resultados resultado) {
 
