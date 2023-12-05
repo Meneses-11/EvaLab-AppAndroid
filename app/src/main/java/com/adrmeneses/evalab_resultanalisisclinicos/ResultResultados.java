@@ -67,7 +67,7 @@ public class ResultResultados extends Fragment {
         identificadorExamen = opcElegida.getExamenId();
         identificadorTipExamen = opcElegida.getExamenTipId();
         nombreExaTip = opcElegida.getNombreExamen();
-        Log.d(TAG, "ResulResultado: Método onCreate ex: "+identificadorExamen+" Tip: "+identificadorTipExamen);
+        //Log.d(TAG, "ResulResultado: Método onCreate ex: "+identificadorExamen+" Tip: "+identificadorTipExamen);
 
         //Instancia la clase UsuarioActivo
         userActv = UsuarioActivo.getInstance();
@@ -195,7 +195,7 @@ public class ResultResultados extends Fragment {
         identificadorTipExamen = opcElegida.getExamenTipId();
         nombreExaTip = opcElegida.getNombreExamen();
 
-        Log.d(TAG, "ResulResultado onResume: ex: "+identificadorExamen+" tipEx: "+identificadorTipExamen);
+        //Log.d(TAG, "ResulResultado onResume: ex: "+identificadorExamen+" tipEx: "+identificadorTipExamen);
         //si los id's son diferente de 0 pone la lista que corresponda a los id's
         if(identificadorExamen != 0 || identificadorExamen != 0){
             autoCompletBuscarExamenResult.setText(nombreExaTip+"-"+identificadorExamen, false);

@@ -50,12 +50,27 @@
             android:visibility="invisible">
 
             <TextView
-                style="@style/txtFragResultNoHayDatos"/>
+                style="@style/txtFragResultNoHayDatos"
+                android:text="@string/strSinResResultTxtView"/>
 
             <Button
                 android:id="@+id/btnRegisExamEnferm"
                 style="@style/btnFragResultNoHayDatos"
                 />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/vistaNoEnfermExamEnferm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="invisible">
+
+            <TextView
+                style="@style/txtFragResultNoHayDatos"
+                android:text="@string/strSinEnferResultTxtView"/>
 
         </LinearLayout>
     </FrameLayout>

@@ -118,5 +118,6 @@
     <!-- Texto cuando no hay ningun Resultado-->
     <string name="strSinResResultTxtView">Por favor ingrese algún resultado de un Análisis Clínico</string>
     <string name="strSinResResultBtn">Registrar Análisis</string>
+    <string name="strSinEnferResultTxtView">"¡Excelentes noticias! No se detectaron indicios de ninguna enfermedad en sus resultados. Sin embargo, le recomendamos que consulte a su médico para obtener una evaluación más completa de su salud."</string>
 
 </resources>

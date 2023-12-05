@@ -46,7 +46,7 @@ al valor max   probabilidad  | al valor min   probabilidad
                     valMax = Double.valueOf(resultAlt[2]);
                     contador += 1;
                     porcentRef = valObten * 100 / valMax;
-                    analizarArribaValMax(enfermedad);
+                    analizarArribaValMax();
                 }
                 break;
             case "bajo":
@@ -55,8 +55,7 @@ al valor max   probabilidad  | al valor min   probabilidad
                     valMin = Double.valueOf(resultBaj[1]);
                     contador += 1;
                     porcentRef = valObten * 100 / valMin;
-                    //Log.d(TAG, "evaluarEnferm: "+enfermedad.getNombreEnf()+" "+valObten+" "+valMin);
-                    analizarAbajoValMin(enfermedad);
+                    analizarAbajoValMin();
                 }
                 break;
             case "ambos":
@@ -70,10 +69,10 @@ al valor max   probabilidad  | al valor min   probabilidad
 
                     if (valObten > puntMedio){
                         porcentRef = valObten * 100 / valMax;
-                        analizarArribaValMax(enfermedad);
+                        analizarArribaValMax();
                     }else {
                         porcentRef = valObten * 100 / valMin;
-                        analizarAbajoValMin(enfermedad);
+                        analizarAbajoValMin();
                     }
                 }
                 break;
@@ -87,7 +86,7 @@ al valor max   probabilidad  | al valor min   probabilidad
         enfermedad.setInfoPorcentaje(textoPorcentaje);
     }
 
-    private void analizarArribaValMax(Enfermedades enfermedad){
+    private void analizarArribaValMax(){
         if(porcentRef > 150){//95
             acumPorcent += 95;
         }else if(porcentRef > 140){//86-90
@@ -104,8 +103,7 @@ al valor max   probabilidad  | al valor min   probabilidad
             acumPorcent += calcularPorcentaje(rangoPorcentajesMax[0][0],rangoPorcentajesMax[0][1],rangoPorcentajesMax[0][2],rangoPorcentajesMax[0][3],porcentRef);
         }
     }
-    private void analizarAbajoValMin(Enfermedades enfermedad){
-        Log.d(TAG, "analizarAbajoValMin: porcent: "+porcentRef);
+    private void analizarAbajoValMin(){
         if (porcentRef < 50){//95
             acumPorcent += 95;
         }else if (porcentRef < 60){//86-90

@@ -88,10 +88,6 @@ public class DBResultadosTabla extends MyDBHelper{
         ArrayList<Enfermedades> listaEnfermedades = new ArrayList<>();
         Enfermedades enfermedad = null;
 
-        /*String query = "SELECT Enfermedades.nombre, ResultadosTabla.valorObtenido, ReferenciaValores.valorMin," +
-                "ReferenciaValores.valorMax, Enfermedades.referencia, Enfermedades.descripcion From " +
-                "((ResultadosTabla NATURAL JOIN "+TABLE_VALORES_REFERENCIA+") NATURAL JOIN ("+TABLE_ENFERMEDADES+" " +
-                "NATURAL JOIN "+TABLE_PARAMETROS_ENFERMEDADES+")) WHERE idTipExam = ? AND idExamen = ? AND idUsuario = ?";*/
         String query = "SELECT enf.nombre, enf.referencia, enf.descripcion," +
                 "GROUP_CONCAT(result.valorObtenido)," +
                 "GROUP_CONCAT(valRef.valorMin)," +
@@ -118,7 +114,6 @@ public class DBResultadosTabla extends MyDBHelper{
                     datos[i][0] = valores[i];
                     datos[i][1] = valMin[i];
                     datos[i][2] = valMax[i];
-                    Log.d(TAG, "leerEnfermedades: nombre: "+enfermedad.getNombreEnf()+" "+datos[i][0]+" "+datos[i][1]+" "+datos[i][2]);
                 }
                 enfermedad.setValObtenidos(datos);
 

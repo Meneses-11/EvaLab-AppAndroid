@@ -44,30 +44,11 @@ public class AdaptadorListaEnfermedades extends RecyclerView.Adapter<AdaptadorLi
     public void onBindViewHolder(@NonNull EnfermedadViewHolder holder, int position) {
         Enfermedades enfermedad = listaEnfermedades.get(position);
 
-        EvaluadorEnfermedad evaEnferm = new EvaluadorEnfermedad();
-        evaEnferm.evaluarEnferm(enfermedad);
-
-        if(enfermedad.isMostrar()) {
             holder.nombreEnfermedad.setText(enfermedad.getNombreEnf());
             holder.textoProbabilidad.setText(enfermedad.getInfoPorcentaje());
             holder.textoPorcentaje.setText(enfermedad.getPorcentaje()+"%");
             holder.pbGrafica.setProgress(enfermedad.getPorcentaje());
 
-        }else{
-            //holder.contViewEnferm.setVisibility(View.INVISIBLE);
-            new Handler().postDelayed(() -> {
-                /*listaEnfermedades.remove(position);
-                notifyItemRemoved(position);*/
-                if (position < listaEnfermedades.size()) {
-                    listaEnfermedades.remove(position);
-                    notifyItemRemoved(position);
-                }else{
-                    Log.e(TAG, "onBindViewHolder: Entro y no eliminó");
-                }
-            }, 20);
-
-            //break;
-        }
     }
 
     @Override //Especifica el tamaño de la lista
