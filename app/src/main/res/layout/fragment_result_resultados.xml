@@ -49,7 +49,8 @@
             android:gravity="center">
 
             <TextView
-                style="@style/txtFragResultNoHayDatos"/>
+                style="@style/txtFragResultNoHayDatos"
+                android:text="@string/strSinResResultTxtView"/>
 
             <Button
                 android:id="@+id/btnRegisExamResult"
