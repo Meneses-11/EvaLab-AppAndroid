@@ -1,4 +1,4 @@
-package com.adrmeneses.evalab_resultanalisisclinicos;
+package com.adrmeneses.evalab_resultanalisisclinicos.examenes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.adrmeneses.evalab_resultanalisisclinicos.R;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.MyDBHelper;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 

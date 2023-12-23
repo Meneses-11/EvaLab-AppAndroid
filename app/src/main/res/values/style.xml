@@ -371,4 +371,37 @@
 
 
 
+    <!-- Estilos para la ventana de perfil de Usuario -->
+    <!-- TextView que contendrá el nombre del usuario-->
+    <style name="perfilUserTxtNombre">
+        <item name="android:layout_width">280dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="fontFamily">@font/robotoslab_variablefont</item>
+    </style>
+    <!-- Estilo para el fondo de los contenedores -->
+    <style name="perfilUserFondoContenedor">
+        <item name="android:layout_height">150dp</item>
+        <item name="android:background">@drawable/fondo_usuario_perfil</item>
+        <item name="android:elevation">8dp</item>
+    </style>
+    <!-- Estilo para el texto en general -->
+    <style name="perfilUserTxtNormal">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">25dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/robotoslab_variablefont</item>
+    </style>
+    <!-- Estilo para el texto de numeros -->
+    <style name="perfilUserTxtNumeros">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">25dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/gabarito_variablefont</item>
+    </style>
+
 </resources>

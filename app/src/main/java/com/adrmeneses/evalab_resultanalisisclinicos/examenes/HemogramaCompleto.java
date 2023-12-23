@@ -1,4 +1,4 @@
-package com.adrmeneses.evalab_resultanalisisclinicos;
+package com.adrmeneses.evalab_resultanalisisclinicos.examenes;
 
 import static android.content.ContentValues.TAG;
 
@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.adrmeneses.evalab_resultanalisisclinicos.R;
+import com.adrmeneses.evalab_resultanalisisclinicos.VentanaResultados;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBEnfermedades;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBEnfermedadesParametros;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBExamenParametros;
@@ -138,7 +140,7 @@ public class HemogramaCompleto extends ExamenesSangre {
                         Integer.parseInt(String.valueOf(idTipExam)), Integer.parseInt(String.valueOf(dbExamenParametros.obtenerIdParametro(parametros[a]))),
                         Double.parseDouble(textInputs[a].getText().toString()),identExamen);
             }
-            Intent lanzar = new Intent(this,VentanaResultados.class);
+            Intent lanzar = new Intent(this, VentanaResultados.class);
             opcElegida.setExamenId(identExamen);
             opcElegida.setExamenTipId((int) idTipExam);
             opcElegida.setNombreExamen(dbExamenTipo.obtenerNombreTipExam((int) idTipExam));

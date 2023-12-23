@@ -1,18 +1,13 @@
 package com.adrmeneses.evalab_resultanalisisclinicos.adaptadores;
 
-import static android.content.Intent.getIntent;
-
-import android.content.Intent;
-import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.adrmeneses.evalab_resultanalisisclinicos.ResultEnfermedades;
-import com.adrmeneses.evalab_resultanalisisclinicos.ResultEstado;
-import com.adrmeneses.evalab_resultanalisisclinicos.ResultResultados;
+import com.adrmeneses.evalab_resultanalisisclinicos.fragmentos.ResultEnfermedades;
+import com.adrmeneses.evalab_resultanalisisclinicos.fragmentos.ResultEstado;
+import com.adrmeneses.evalab_resultanalisisclinicos.fragmentos.ResultResultados;
 
 public class AdaptadorTabLayout extends FragmentStateAdapter {
 

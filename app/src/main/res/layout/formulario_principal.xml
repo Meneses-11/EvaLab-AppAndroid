@@ -54,7 +54,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Nombre:"
+                    android:text="@string/strInfUserNombre"
                     android:textSize="25dp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/robotoslab_variablefont"/>
@@ -63,7 +63,7 @@
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="30dp"
-                    android:hint="Ingrese su Nombre"
+                    android:hint="@string/strInfUserNombreHint"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:textColorHint="@color/gray"
@@ -87,7 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Apellidos:"
+                    android:text="@string/strInfUserApell"
                     android:textSize="25dp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/robotoslab_variablefont"/>
@@ -95,7 +95,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:hint="Ingrese sus Apellidos"
+                    android:hint="@string/strInfUserApellHint"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:textColorHint="@color/gray"
@@ -144,7 +144,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_gravity="center"
-                    android:text="Sexo:"
+                    android:text="@string/strInfUserSex"
                     android:textSize="30dp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/robotoslab_variablefont"/>
@@ -161,7 +161,7 @@
                     android:id="@+id/radBtnM"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Masculino"
+                    android:text="@string/strInfUserMasc"
                     android:textSize="25dp"
                     android:fontFamily="@font/robotoslab_variablefont"
                     android:textColor="@color/black"/>
@@ -169,7 +169,7 @@
                     android:id="@+id/radBtnF"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Femenino"
+                    android:text="@string/strInfUserFeme"
                     android:textSize="25dp"
                     android:fontFamily="@font/robotoslab_variablefont"
                     android:textColor="@color/black" />
@@ -181,7 +181,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
-                android:text="Fecha de Nacimiento:"
+                android:text="@string/strInfUserFecha"
                 android:textSize="25dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/robotoslab_variablefont"/>
@@ -216,7 +216,7 @@
                     android:textSize="25dp"
                     android:fontFamily="@font/robotoslab_variablefont"
                     android:textColor="@color/gray"
-                    android:text="dd-mm-yyyy"/>
+                    android:text="@string/strInfUserFechaHint"/>
 
             </LinearLayout>
 
@@ -247,7 +247,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_gravity="center"
-                    android:text="Estatura:"
+                    android:text="@string/strInfUserAltura"
                     android:textSize="30dp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/robotoslab_variablefont"/>
@@ -264,7 +264,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
-                    android:hint="Altura"
+                    android:hint="@string/strInfUserAlturaHint"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:textColorHint="@color/gray"
@@ -289,7 +289,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_gravity="center"
-                    android:text="m"
+                    android:text="@string/strMetro"
                     android:textSize="30dp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/robotoslab_variablefont"/>
@@ -314,7 +314,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_gravity="center"
-                    android:text="Peso:"
+                    android:text="@string/strInfUserPeso"
                     android:textSize="30dp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/robotoslab_variablefont"/>
@@ -331,7 +331,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
-                    android:hint="Peso"
+                    android:hint="@string/strInfUserPeso"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:textColorHint="@color/gray"
@@ -356,7 +356,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_gravity="center"
-                    android:text="Kg"
+                    android:text="@string/strKilogramo"
                     android:textSize="30dp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/robotoslab_variablefont"/>
@@ -380,7 +380,7 @@
             android:id="@+id/btnAnterior"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Anterior"
+            android:text="@string/strBtnAnter"
             android:textSize="25dp"
             android:fontFamily="@font/onesans_medium"/>
         <View
@@ -392,7 +392,7 @@
             android:id="@+id/btnSiguiente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Siguiente"
+            android:text="@string/strBtnSig"
             android:textSize="25dp"
             android:fontFamily="@font/onesans_medium"/>
 

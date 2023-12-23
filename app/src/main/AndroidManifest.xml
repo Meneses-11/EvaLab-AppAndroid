@@ -13,58 +13,64 @@
         android:theme="@style/Theme.EvaLab_ResultAnalisisClinicos"
         tools:targetApi="31">
         <activity
+            android:name=".usuarios.MenuUsuarios"
+            android:exported="false" />
+        <activity
+            android:name=".usuarios.InformacionPerfil"
+            android:exported="false" />
+        <activity
             android:name=".VentanaResultados"
             android:exported="false" />
         <activity
             android:name=".FormularioPrincipal"
             android:exported="false" />
         <activity
-            android:name=".ExamenGeneralOrina"
+            android:name=".examenes.ExamenGeneralOrina"
             android:exported="false" />
         <activity
-            android:name=".HemogramaCompleto"
+            android:name=".examenes.HemogramaCompleto"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ExamenesInfecciones"
+            android:name=".examenes.ExamenesInfecciones"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ExamenesFunRenal"
+            android:name=".examenes.ExamenesFunRenal"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ExamenesTiroides"
+            android:name=".examenes.ExamenesTiroides"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ExamenesFunHepatica"
+            android:name=".examenes.ExamenesFunHepatica"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ExamenesOrina"
+            android:name=".examenes.ExamenesOrina"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ExamenesSangre"
+            android:name=".examenes.ExamenesSangre"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

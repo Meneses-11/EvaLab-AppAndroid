@@ -35,13 +35,14 @@
         android:id="@+id/btnTiposExa"
         style="@style/btnMenuPrincipal"
         android:text="@string/strTipExa"
+        android:onClick="funPrueba"
         />
 
     <Button
         android:id="@+id/btnInformación"
         style="@style/btnMenuPrincipal"
         android:text="@string/strInfo"
-        android:onClick="funPrueba"
+        android:onClick="funPerfil"
         />
 
 

@@ -1,4 +1,4 @@
-package com.adrmeneses.evalab_resultanalisisclinicos;
+package com.adrmeneses.evalab_resultanalisisclinicos.fragmentos;
 
 import static android.content.ContentValues.TAG;
 
@@ -20,6 +20,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
+import com.adrmeneses.evalab_resultanalisisclinicos.MenuCategorias;
+import com.adrmeneses.evalab_resultanalisisclinicos.R;
 import com.adrmeneses.evalab_resultanalisisclinicos.adaptadores.AdaptadorListaEnfermedades;
 import com.adrmeneses.evalab_resultanalisisclinicos.adaptadores.AdaptadorListaResultados;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBExamenTipo;

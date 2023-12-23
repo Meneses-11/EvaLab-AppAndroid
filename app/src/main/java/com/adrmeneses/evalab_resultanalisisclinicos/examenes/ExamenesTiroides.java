@@ -1,8 +1,10 @@
-package com.adrmeneses.evalab_resultanalisisclinicos;
+package com.adrmeneses.evalab_resultanalisisclinicos.examenes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.adrmeneses.evalab_resultanalisisclinicos.R;
 
 public class ExamenesTiroides extends AppCompatActivity {
 

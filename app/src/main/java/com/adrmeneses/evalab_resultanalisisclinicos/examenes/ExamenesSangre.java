@@ -1,18 +1,16 @@
-package com.adrmeneses.evalab_resultanalisisclinicos;
+package com.adrmeneses.evalab_resultanalisisclinicos.examenes;
 
 import static android.content.ContentValues.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBExamenTipo;
+import com.adrmeneses.evalab_resultanalisisclinicos.R;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBResultadosTabla;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.MyDBHelper;
 

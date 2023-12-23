@@ -4,14 +4,22 @@
     <!-- Nombre de la Aplicaión -->
     <string name="strNameApp">EvaLab</string>
 
-    <!-- Texto Botones menú principal -->
+    <!-- Texto de los distintos botones en la app -->
+    <string name="strBtnAnali">Analizar</string>
+    <string name="strBtnAnter">Anterior</string>
+    <string name="strBtnSig">Siguiente</string>
+    <string name="strBtnAcept">Aceptar</string>
+    <string name="strBtnEdit">Editar</string>
+    <string name="strBtnCamb">Cambiar</string>
+    <string name="strBtnElimin">Eliminar</string>
+
+    <!-- Texto Opciones menú principal -->
     <string name="strInterpre">Interpretar Análisis</string>
     <string name="strResults">Resultados</string>
     <string name="strTipExa">Tipos de Examenes</string>
     <string name="strInfo">Información</string>
-    <string name="strBtnAnali">Analizar</string>
 
-    <!-- Texto Botones menú Tipos Analisis -->
+    <!-- Texto Opciones menú Tipos Analisis -->
     <string name="strTituloCateg">Categorias</string>
     <string name="strExaSangre">Exámenes de Sangre</string>
     <string name="strExaOrina">Exámenes de Orina</string>
@@ -104,6 +112,8 @@
     <string name="strMililitros">ml</string>
     <string name="strMiligramosDesilitros">mg / dL</string>
     <string name="strSobreCampo">/campo</string>
+    <string name="strMetro">m</string>
+    <string name="strKilogramo">Kg</string>
 
     <!-- Opciones de la ventana de Resultados -->
     <string name="strResultResultados">Resultados</string>
@@ -119,5 +129,19 @@
     <string name="strSinResResultTxtView">Por favor ingrese algún resultado de un Análisis Clínico</string>
     <string name="strSinResResultBtn">Registrar Análisis</string>
     <string name="strSinEnferResultTxtView">"¡Excelentes noticias! No se detectaron indicios de ninguna enfermedad en sus resultados. Sin embargo, le recomendamos que consulte a su médico para obtener una evaluación más completa de su salud."</string>
+
+    <!-- Texto vista Usuario- Informacion -->
+    <string name="strInfUserNombre">Nombre</string>
+    <string name="strInfUserNombreHint">Ingrese su Nombre</string>
+    <string name="strInfUserApell">Apellidos</string>
+    <string name="strInfUserApellHint">Ingrese sus Apellidos</string>
+    <string name="strInfUserSex">Sexo</string>
+    <string name="strInfUserMasc">Masculino</string>
+    <string name="strInfUserFeme">Femenino</string>
+    <string name="strInfUserFecha">Fecha de Nacimiento</string>
+    <string name="strInfUserFechaHint">dd-MM-YYYY</string>
+    <string name="strInfUserAltura">Estatura</string>
+    <string name="strInfUserAlturaHint">Altura</string>
+    <string name="strInfUserPeso">Peso</string>
 
 </resources>

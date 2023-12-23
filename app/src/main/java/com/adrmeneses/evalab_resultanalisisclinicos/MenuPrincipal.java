@@ -13,6 +13,7 @@ import android.view.View;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBExamenTipo;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.MyDBHelper;
 import com.adrmeneses.evalab_resultanalisisclinicos.contenedore.UsuarioActivo;
+import com.adrmeneses.evalab_resultanalisisclinicos.usuarios.InformacionPerfil;
 
 import java.io.File;
 
@@ -114,8 +115,13 @@ public class MenuPrincipal extends AppCompatActivity {
         Intent lanzar3 = new Intent(this, InformacionActivity.class);
     }
     */
+    public void funPerfil(View view){
+        Intent lanzarPerf = new Intent(this, InformacionPerfil.class);
+        startActivity(lanzarPerf);
+    }
+
     public void funPrueba(View view){
-        Intent lanzarfj = new Intent(this, FormularioPrincipal.class);
-        startActivity(lanzarfj);
+        Intent lanzarPru = new Intent(this, FormularioPrincipal.class);
+        startActivity(lanzarPru);
     }
 }

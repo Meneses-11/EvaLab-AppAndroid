@@ -6,6 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.adrmeneses.evalab_resultanalisisclinicos.examenes.ExamenesFunHepatica;
+import com.adrmeneses.evalab_resultanalisisclinicos.examenes.ExamenesFunRenal;
+import com.adrmeneses.evalab_resultanalisisclinicos.examenes.ExamenesInfecciones;
+import com.adrmeneses.evalab_resultanalisisclinicos.examenes.ExamenesOrina;
+import com.adrmeneses.evalab_resultanalisisclinicos.examenes.ExamenesSangre;
+import com.adrmeneses.evalab_resultanalisisclinicos.examenes.ExamenesTiroides;
+
 public class MenuCategorias extends AppCompatActivity {
 
     @Override
