@@ -78,4 +78,33 @@ public class DBUsuarios extends MyDBHelper{
         }
         return 0;
     }
+
+    public String[] obtenerInfUsuario(int idUsuario){
+        String[] infUsuario;
+        MyDBHelper myDBhelper = new MyDBHelper(context);
+        SQLiteDatabase db = myDBhelper.getReadableDatabase();
+        if (db != null){
+            String query = "SELECT * FROM "+TABLE_USUARIOS+" WHERE idUsuario = ?";
+            Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idUsuario)});
+
+            if(cursor.moveToFirst()){
+                infUsuario = new String[7];
+
+                infUsuario[0] = String.valueOf(cursor.getInt(0));
+                infUsuario[1] = cursor.getString(1);
+                infUsuario[2] = cursor.getString(2);
+                infUsuario[3] = cursor.getString(3);
+                infUsuario[4] = cursor.getString(4);
+                infUsuario[5] = String.valueOf(cursor.getDouble(5));
+                infUsuario[6] = String.valueOf(cursor.getDouble(6));
+            }else{
+                infUsuario = new String[0];
+            }
+            cursor.close();
+        }else {
+            infUsuario = new String[0];
+        }
+
+        return infUsuario;
+    }
 }
