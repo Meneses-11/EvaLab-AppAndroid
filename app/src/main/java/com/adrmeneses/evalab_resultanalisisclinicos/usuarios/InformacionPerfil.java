@@ -70,8 +70,7 @@ public class InformacionPerfil extends AppCompatActivity {
             public void onClick(View view) {
                 usuarios = new Usuarios();
 
-
-                Intent lanzarEdit = new Intent(InformacionPerfil.this, FormularioPrincipal.class);
+                Intent lanzarEdit = new Intent(InformacionPerfil.this, EditarUsuario.class);
                 startActivity(lanzarEdit);
 
             }

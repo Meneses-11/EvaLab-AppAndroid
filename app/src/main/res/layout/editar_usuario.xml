@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".usuarios.EditarUsuario"
+    android:orientation="vertical"
+    android:background="@drawable/fondoprincipal">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@color/colorFondoClaro">
+
+        <LinearLayout
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="280dp"
+                android:layout_height="50dp"
+                android:textAlignment="center"
+                android:textSize="40dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/gabarito_variablefont"
+                android:text="@string/strEditUsuarioTitulo"
+                />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/usuario"/>
+
+    </FrameLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <LinearLayout
+                style="@style/editarUserFondoContenedorLargo"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/strInfUserNombreHint"
+                    android:gravity="center"
+                    android:textColorHint="@color/gray"
+                    boxStrokeColor="@drawable/border_color_opc_exam_especif"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editarUsuarioTextFieldNombre"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textAlignment="viewStart"
+                        android:textSize="20dp"
+                        android:fontFamily="@font/robotoslab_variablefont"
+                        android:textColor="@color/black"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/strInfUserApellHint"
+                    android:gravity="center"
+                    android:textColorHint="@color/gray"
+                    boxStrokeColor="@drawable/border_color_opc_exam_especif"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editarUsuarioTextFieldApellido"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textAlignment="viewStart"
+                        android:textSize="20dp"
+                        android:fontFamily="@font/robotoslab_variablefont"
+                        android:textColor="@color/black"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:id="@+id/editarUsuarioLayoutSexoMasc"
+                    android:layout_gravity="center"
+                    style="@style/editarUserFondoContenedorCorto"
+                    android:layout_marginRight="25dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/hombre"
+                        />
+                    <TextView
+                        style="@style/editarUserTxtNormal"
+                        android:text="@string/strInfUserMasc"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/editarUsuarioLayoutSexoFeme"
+                    android:layout_gravity="center"
+                    style="@style/editarUserFondoContenedorCorto"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/mujer"
+                        />
+                    <TextView
+                        style="@style/editarUserTxtNormal"
+                        android:text="@string/strInfUserFeme"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/editarUserFondoContenedorLargo"
+                android:layout_height="140dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/perfilUserTxtNormal"
+                    android:text="@string/strInfUserFecha"
+                    />
+
+                <LinearLayout
+                    android:id="@+id/editarUsuarioLayoutFechaNacimiento"
+                    android:layout_width="260dp"
+                    android:layout_height="65dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/fondo_formu_prin_fecha"
+                    android:clickable="true">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/calendario"
+                        />
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:background="@color/black"
+                        />
+                    <TextView
+                        android:id="@+id/editarUsuarioTextViewFecha"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:textSize="25dp"
+                        android:fontFamily="@font/robotoslab_variablefont"
+                        android:textColor="@color/gray"
+                        android:text="@string/strInfUserFechaHint"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <LinearLayout
+                    style="@style/editarUserFondoContenedorCorto"
+                    android:layout_marginRight="25dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/altura1"
+                            android:layout_marginRight="10dp"/>
+
+                        <TextView
+                            style="@style/editarUserTxtNormal"
+                            android:text="@string/strInfUserAltura"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:gravity="center">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="80dp"
+                            android:layout_height="60dp"
+                            android:layout_marginRight="5dp"
+                            android:hint="@string/strInfUserAlturaHint"
+                            android:gravity="center"
+                            android:textColorHint="@color/gray"
+                            boxStrokeColor="@drawable/border_color_opc_exam_especif"
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/editarUsuarioTextFieldAltura"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="numberDecimal"
+                                android:textAlignment="textEnd"
+                                android:textSize="20dp"
+                                android:fontFamily="@font/robotoslab_variablefont"
+                                android:textColor="@color/black"
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            style="@style/perfilUserTxtNumeros"
+                            android:text="@string/strMetro"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/editarUserFondoContenedorCorto"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/bascula"
+                            android:layout_marginRight="10dp"/>
+
+                        <TextView
+                            style="@style/editarUserTxtNormal"
+                            android:text="@string/strInfUserPeso"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:gravity="center">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="80dp"
+                            android:layout_height="60dp"
+                            android:layout_marginRight="5dp"
+                            android:hint="@string/strInfUserPeso"
+                            android:gravity="center"
+                            android:textColorHint="@color/gray"
+                            boxStrokeColor="@drawable/border_color_opc_exam_especif"
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/editarUsuarioTextFieldPeso"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="numberDecimal"
+                                android:textAlignment="textEnd"
+                                android:textSize="20dp"
+                                android:fontFamily="@font/robotoslab_variablefont"
+                                android:textColor="@color/black"
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            style="@style/perfilUserTxtNumeros"
+                            android:text="@string/strKilogramo"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            <!--    <LinearLayout
+                    style="@style/editarUserFondoContenedorCorto"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        style="@style/perfilUserTxtNormal"
+                        android:layout_marginBottom="25dp"
+                        android:text="@string/strInfUserPeso"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/bascula"
+                            android:layout_marginRight="10dp"/>
+                        <TextView
+                            android:id="@+id/infPerfilTextViewPeso"
+                            style="@style/editarUserTxtNumeros"
+                            android:layout_width="40dp"
+                            android:layout_marginRight="5dp"
+                            android:textAlignment="textEnd"
+                            android:text="64"/>
+                        <TextView
+                            style="@style/perfilUserTxtNumeros"
+                            android:text="@string/strKilogramo"/>
+                    </LinearLayout>
+
+                </LinearLayout>  -->
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/infPerfilBotonEditar"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:contentDescription=""
+                android:text="@string/strBtnEdit"
+                android:textSize="20dp"
+                app:icon="@drawable/editar"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/infPerfilBotonCambiar"
+                android:layout_width="155dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:contentDescription=""
+                android:text="@string/strBtnCamb"
+                android:textSize="20dp"
+                app:icon="@drawable/cambio"
+                />
+
+        </LinearLayout>
+
+    </TableRow>
+
+</LinearLayout>

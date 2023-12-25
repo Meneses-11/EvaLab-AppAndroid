@@ -404,4 +404,37 @@
         <item name="android:fontFamily">@font/gabarito_variablefont</item>
     </style>
 
+
+    <!-- Estilos para la ventana de Editar Usuario -->
+    <!-- Estilo para el fondo de los contenedores largos-->
+    <style name="editarUserFondoContenedorLargo">
+        <item name="android:layout_height">150dp</item>
+        <item name="android:layout_width">305dp</item>
+        <item name="android:background">@drawable/fondo_usuario_perfil</item>
+        <item name="android:elevation">8dp</item>
+    </style>
+    <!-- Estilo para el fondo de los contenedores largos-->
+    <style name="editarUserFondoContenedorCorto">
+        <item name="android:layout_height">140dp</item>
+        <item name="android:layout_width">140dp</item>
+        <item name="android:background">@drawable/fondo_usuario_perfil</item>
+        <item name="android:elevation">8dp</item>
+    </style>
+    <!-- Estilo para el texto en general -->
+    <style name="editarUserTxtNormal">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/robotoslab_variablefont</item>
+    </style>
+    <!-- Estilo para el texto de numeros -->
+    <style name="editarUserTxtNumeros">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/gabarito_variablefont</item>
+    </style>
+
 </resources>
