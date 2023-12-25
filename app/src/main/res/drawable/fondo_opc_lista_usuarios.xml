@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true">
+        <shape>
+            <!-- Configura el fondo cuando se presiona -->
+            <solid android:color="@color/colorFondoObscuro" />
+            <corners android:radius="15dp"/>
+        </shape>
+    </item>
+    <item>
+        <!-- Configura el fondo predeterminado cuando no está presionado -->
+        <shape>
+            <solid android:color="#DCFFFFFF" />
+            <corners android:radius="18dp"/>
+        </shape>
+    </item>
+
+</selector>

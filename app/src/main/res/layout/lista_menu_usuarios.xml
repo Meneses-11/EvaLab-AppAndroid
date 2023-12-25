@@ -4,15 +4,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="15dp"
-    android:paddingBottom="5dp" >
+    android:paddingBottom="5dp">
 
     <LinearLayout
+        android:id="@+id/contenedorOpcionListaUsuarios"
         android:layout_width="350dp"
         android:layout_height="170dp"
-        android:background="@drawable/fondo_opc_result_resultados"
+        android:background="@drawable/fondo_opc_lista_usuarios"
         android:orientation="horizontal"
         android:layout_gravity="center"
-        android:elevation="5dp">
+        android:elevation="5dp"
+        android:clickable="true"
+        android:focusable="true">
 
         <LinearLayout
             android:layout_width="110dp"
@@ -20,6 +23,7 @@
             android:gravity="center">
 
             <ImageView
+                android:id="@+id/listaUsuarioImgView"
                 android:layout_width="90dp"
                 android:layout_height="120dp"
                 android:src="@drawable/usr_hombre"/>
@@ -33,29 +37,32 @@
             android:gravity="center">
 
             <TextView
+                android:id="@+id/listaUsuarioTextViewNombre"
                 android:layout_width="210dp"
                 android:layout_height="40dp"
                 android:text="Adrian Manuel"
                 android:fontFamily="@font/onest_medium"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="30dp"/>
+                android:textSize="26dp"/>
             <TextView
+                android:id="@+id/listaUsuarioTextViewApellido"
                 android:layout_width="210dp"
                 android:layout_height="40dp"
                 android:text="Meneses López"
                 android:fontFamily="@font/onest_medium"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="30dp"/>
+                android:textSize="26dp"/>
             <TextView
+                android:id="@+id/listaUsuarioTextViewFecha"
                 android:layout_width="210dp"
                 android:layout_height="40dp"
                 android:text="17-10-2001"
                 android:fontFamily="@font/onest_medium"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="30dp"/>
+                android:textSize="28dp"/>
 
         </LinearLayout>
 

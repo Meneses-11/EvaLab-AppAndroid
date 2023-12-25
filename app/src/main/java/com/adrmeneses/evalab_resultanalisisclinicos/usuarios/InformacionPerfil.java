@@ -5,17 +5,21 @@ import static android.content.ContentValues.TAG;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.adrmeneses.evalab_resultanalisisclinicos.FormularioPrincipal;
 import com.adrmeneses.evalab_resultanalisisclinicos.R;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBUsuarios;
 import com.adrmeneses.evalab_resultanalisisclinicos.contenedore.UsuarioActivo;
+import com.adrmeneses.evalab_resultanalisisclinicos.entidades.Usuarios;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -27,6 +31,7 @@ import java.util.TimeZone;
 
 public class InformacionPerfil extends AppCompatActivity {
     UsuarioActivo usuarioActivo;
+    Usuarios usuarios;
     private int idUsr;
     private TextView txtViewNombre, txtViewApellido, txtViewSexo, txtViewFecha, txtViewEdad, txtViewEstatura, txtViewPeso;
     private ImageView imgViewSexo;
@@ -52,32 +57,55 @@ public class InformacionPerfil extends AppCompatActivity {
         txtViewEstatura = findViewById(R.id.infPerfilTextViewAltura);
         txtViewPeso = findViewById(R.id.infPerfilTextViewPeso);
         imgViewSexo = findViewById(R.id.infPerfilImgViewSexo);
+        btnEditar = findViewById(R.id.infPerfilBotonEditar);
+        btnCambiar = findViewById(R.id.infPerfilBotonCambiar);
 
         imgMasculino = R.drawable.hombre;
         imgFemenino = R.drawable.mujer;
 
-        mostrarDatos(dbUsuarios.obtenerInfUsuario(idUsr));
+        mostrarDatos(dbUsuarios.verUsuario(idUsr));
+
+        btnEditar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                usuarios = new Usuarios();
+
+
+                Intent lanzarEdit = new Intent(InformacionPerfil.this, FormularioPrincipal.class);
+                startActivity(lanzarEdit);
+
+            }
+        });
+
+        btnCambiar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent lanzarCambio = new Intent(InformacionPerfil.this, MenuUsuarios.class);
+                startActivity(lanzarCambio);
+
+            }
+        });
 
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private void mostrarDatos(String[] datos){
-        String sexo = null;
+    private void mostrarDatos(Usuarios usuario){
 
-        if(datos != null){
-            txtViewNombre.setText(datos[1]);
-            txtViewApellido.setText(datos[2]);
-            if ("Masculino".equals(datos[4])){
+        if(usuario != null){
+            txtViewNombre.setText(usuario.getNombre());
+            txtViewApellido.setText(usuario.getApellido());
+            if ("Masculino".equals(usuario.getSexo())){
                 imgViewSexo.setImageResource(imgMasculino);
-                txtViewSexo.setText(datos[4]);
+                txtViewSexo.setText(usuario.getSexo());
             }else{
                 imgViewSexo.setImageResource(imgFemenino);
-                txtViewSexo.setText(datos[4]);
+                txtViewSexo.setText(usuario.getSexo());
             }
-            txtViewFecha.setText(convertirFecha(datos[3]));
-            txtViewEdad.setText(obtenerAnios(convertirFecha(datos[3])));
-            txtViewEstatura.setText(""+datos[5]);
-            txtViewPeso.setText(""+datos[6]);
+            txtViewFecha.setText(convertirFecha(usuario.getFecha()));
+            txtViewEdad.setText(obtenerAnios(convertirFecha(usuario.getFecha())));
+            txtViewEstatura.setText(""+usuario.getAltura());
+            txtViewPeso.setText(""+usuario.getPeso());
 
         }
     }
@@ -111,5 +139,13 @@ public class InformacionPerfil extends AppCompatActivity {
         return String.valueOf(periodo.getYears());
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+        idUsr = (int)usuarioActivo.getIdUsuario();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            mostrarDatos(dbUsuarios.verUsuario(idUsr));
+        }
+    }
 }

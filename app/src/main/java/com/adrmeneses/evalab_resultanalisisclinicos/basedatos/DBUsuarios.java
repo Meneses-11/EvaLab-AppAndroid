@@ -7,6 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
 
+import com.adrmeneses.evalab_resultanalisisclinicos.R;
+import com.adrmeneses.evalab_resultanalisisclinicos.entidades.Usuarios;
+
+import java.util.ArrayList;
 import java.util.Date;
 
 public class DBUsuarios extends MyDBHelper{
@@ -79,8 +83,8 @@ public class DBUsuarios extends MyDBHelper{
         return 0;
     }
 
-    public String[] obtenerInfUsuario(int idUsuario){
-        String[] infUsuario;
+    public Usuarios verUsuario(int idUsuario){
+        Usuarios usuario = null;
         MyDBHelper myDBhelper = new MyDBHelper(context);
         SQLiteDatabase db = myDBhelper.getReadableDatabase();
         if (db != null){
@@ -88,23 +92,50 @@ public class DBUsuarios extends MyDBHelper{
             Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idUsuario)});
 
             if(cursor.moveToFirst()){
-                infUsuario = new String[7];
+                usuario = new Usuarios();
 
-                infUsuario[0] = String.valueOf(cursor.getInt(0));
-                infUsuario[1] = cursor.getString(1);
-                infUsuario[2] = cursor.getString(2);
-                infUsuario[3] = cursor.getString(3);
-                infUsuario[4] = cursor.getString(4);
-                infUsuario[5] = String.valueOf(cursor.getDouble(5));
-                infUsuario[6] = String.valueOf(cursor.getDouble(6));
-            }else{
-                infUsuario = new String[0];
+                usuario.setId(cursor.getInt(0));
+                usuario.setNombre(cursor.getString(1));
+                usuario.setApellido(cursor.getString(2));
+                usuario.setFecha(cursor.getString(3));
+                usuario.setSexo(cursor.getString(4));
+                usuario.setAltura(cursor.getDouble(5));
+                usuario.setPeso(cursor.getDouble(6));
             }
             cursor.close();
-        }else {
-            infUsuario = new String[0];
         }
 
-        return infUsuario;
+        return usuario;
+    }
+
+    public ArrayList<Usuarios> leerUsuarios() {
+        MyDBHelper myDBhelper = new MyDBHelper(context);
+        SQLiteDatabase db = myDBhelper.getReadableDatabase();
+
+        ArrayList<Usuarios> listaUsuarios = new ArrayList<>();
+        Usuarios usuarios = null;
+
+        if(db != null) {
+            String query = "SELECT * FROM " + TABLE_USUARIOS;
+            Cursor cursor = db.rawQuery(query, null);
+
+            if(cursor.moveToFirst()) {
+                do {
+                    usuarios = new Usuarios();
+                    usuarios.setId(cursor.getInt(0));
+                    usuarios.setNombre(cursor.getString(1));
+                    usuarios.setApellido(cursor.getString(2));
+                    usuarios.setFecha(cursor.getString(3));
+                    if("Masculino".equals(cursor.getString(4))){
+                        usuarios.setIdImg(R.drawable.usr_hombre);
+                    }else {
+                        usuarios.setIdImg(R.drawable.usr_mujer);
+                    }
+                    listaUsuarios.add(usuarios);
+                } while (cursor.moveToNext());
+                cursor.close();
+            }
+        }
+        return listaUsuarios;
     }
 }
