@@ -1,5 +1,7 @@
 package com.adrmeneses.evalab_resultanalisisclinicos.entidades;
 
+import java.util.Date;
+
 public class Usuarios {
     private int id;
     private String nombre;
@@ -9,6 +11,7 @@ public class Usuarios {
     private String sexo;
     private Double altura;
     private Double peso;
+    private Date fechaDate;
 
 
     public int getId() {
@@ -65,5 +68,12 @@ public class Usuarios {
     }
     public void setPeso(Double peso) {
         this.peso = peso;
+    }
+
+    public Date getFechaDate() {
+        return fechaDate;
+    }
+    public void setFechaDate(Date fechaDate) {
+        this.fechaDate = fechaDate;
     }
 }

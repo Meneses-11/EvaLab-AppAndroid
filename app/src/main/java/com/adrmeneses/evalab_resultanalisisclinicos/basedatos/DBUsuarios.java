@@ -49,6 +49,27 @@ public class DBUsuarios extends MyDBHelper{
         return id;
     }
 
+    //Método que edita en la tabla Usuario
+    public boolean editaUsuario(int id, String nombreUsuario, String apellidoUsuario, String sexoUsuario, Date fechaNacimiento, Double alturaUsuario, Double pesoUsuario){
+        boolean correcto = false;
+
+        //Objeto de la clase MyDBHelper
+        MyDBHelper myDBHelper = new MyDBHelper(context);       //Le pasa los datos de contexto
+        SQLiteDatabase db = myDBHelper.getWritableDatabase();  //crea un objeto y le pasa un metodo para escribir en la bd
+
+        try{
+            db.execSQL("UPDATE "+TABLE_USUARIOS+" SET nombre = '"+nombreUsuario+"', apellido = '"+apellidoUsuario+"', fechaNacimiento = '"+fechaNacimiento.getTime()+"', sexo = '"+sexoUsuario+"', estatura = '"+alturaUsuario+"', peso = '"+pesoUsuario+"' WHERE idUsuario='"+id+"'");
+            correcto = true;
+        }catch (Exception ex){
+            ex.toString();
+            correcto = false;
+        } finally {
+            db.close();
+        }
+
+        return correcto;
+    }
+
     // Método para verificar si la tabla está vacía
     public boolean estaVaciaTablaUsuarios() {
         MyDBHelper myDBHelper = new MyDBHelper(context);
@@ -138,4 +159,6 @@ public class DBUsuarios extends MyDBHelper{
         }
         return listaUsuarios;
     }
+
+
 }

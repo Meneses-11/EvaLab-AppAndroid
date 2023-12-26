@@ -9,6 +9,7 @@
     <string name="strBtnAnter">Anterior</string>
     <string name="strBtnSig">Siguiente</string>
     <string name="strBtnAcept">Aceptar</string>
+    <string name="strBtnCancel">Cancelar</string>
     <string name="strBtnEdit">Editar</string>
     <string name="strBtnCamb">Cambiar</string>
     <string name="strBtnElimin">Eliminar</string>

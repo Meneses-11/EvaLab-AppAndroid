@@ -119,7 +119,8 @@
                     style="@style/editarUserFondoContenedorCorto"
                     android:layout_marginRight="25dp"
                     android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:clickable="true">
 
                     <ImageView
                         android:layout_width="80dp"
@@ -136,7 +137,8 @@
                     android:layout_gravity="center"
                     style="@style/editarUserFondoContenedorCorto"
                     android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:clickable="true">
 
                     <ImageView
                         android:layout_width="80dp"
@@ -194,7 +196,6 @@
                         android:layout_marginLeft="15dp"
                         android:textSize="25dp"
                         android:fontFamily="@font/robotoslab_variablefont"
-                        android:textColor="@color/gray"
                         android:text="@string/strInfUserFechaHint"/>
 
                 </LinearLayout>
@@ -374,15 +375,15 @@
             android:gravity="center">
 
             <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/infPerfilBotonEditar"
+                android:id="@+id/editarUsuarioBotonCancelar"
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
                 android:contentDescription=""
-                android:text="@string/strBtnEdit"
+                android:text="@string/strBtnCancel"
                 android:textSize="20dp"
-                app:icon="@drawable/editar"
+                app:icon="@drawable/cancelar"
                 />
 
         </LinearLayout>
@@ -394,15 +395,15 @@
             android:gravity="center">
 
             <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/infPerfilBotonCambiar"
+                android:id="@+id/editarUsuarioBotonAceptar"
                 android:layout_width="155dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
                 android:contentDescription=""
-                android:text="@string/strBtnCamb"
+                android:text="@string/strBtnAcept"
                 android:textSize="20dp"
-                app:icon="@drawable/cambio"
+                app:icon="@drawable/aceptar"
                 />
 
         </LinearLayout>
