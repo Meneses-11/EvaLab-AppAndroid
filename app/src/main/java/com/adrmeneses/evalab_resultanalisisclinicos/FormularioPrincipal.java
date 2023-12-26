@@ -24,6 +24,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -124,25 +125,33 @@ public class FormularioPrincipal extends AppCompatActivity {
         contenedorFechaNacimiento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MaterialDatePicker<Long> datePicker = MaterialDatePicker.Builder.datePicker().setTitleText("Select Date").setSelection(MaterialDatePicker.todayInUtcMilliseconds()).build();
+                long fechaLimite = MaterialDatePicker.todayInUtcMilliseconds() - 31536000000L;
+                // Obtiene la fecha de nacimiento actual del usuario o cualquier otra fecha que desees mostrar inicialmente
+                long fechaPredeterminada = obtenerFechaNacimiento();
+
+                MaterialDatePicker<Long> datePicker = MaterialDatePicker.Builder.datePicker().setTitleText("Seleccione su Fecha de Nacimiento").setSelection(fechaPredeterminada).build();
                 datePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener<Long>() {
                     @Override
                     public void onPositiveButtonClick(Long selection) {
 
-                        TimeZone zonaHoraria = TimeZone.getTimeZone("UTC");
-                        formatoFecha = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-                        formatoFecha.setTimeZone(zonaHoraria);
+                        if(selection > fechaLimite){
+                            Toast.makeText(FormularioPrincipal.this, "Fecha Invalida", Toast.LENGTH_SHORT).show();
+                        }else {
+                            TimeZone zonaHoraria = TimeZone.getTimeZone("UTC");
+                            formatoFecha = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+                            formatoFecha.setTimeZone(zonaHoraria);
 
-                        // Ajusta el tiempo de la selección con la zona horaria
-                        long utcTime = selection + zonaHoraria.getOffset(new Date().getTime());
-                        String date = formatoFecha.format(new Date(utcTime));
+                            // Ajusta el tiempo de la selección con la zona horaria
+                            long utcTime = selection + zonaHoraria.getOffset(new Date().getTime());
+                            String date = formatoFecha.format(new Date(utcTime));
 
-                        txtFechaNacimiento.setText(MessageFormat.format("{0}", date));
-                        txtFechaNacimiento.setTextColor(Color.BLACK);
-                        try {
-                            fechNaciUsr = formatoFecha.parse(date);
-                        } catch(Exception ex){
-                            Log.e(TAG, "Error al convertir la fecha");
+                            txtFechaNacimiento.setText(MessageFormat.format("{0}", date));
+                            txtFechaNacimiento.setTextColor(Color.BLACK);
+                            try {
+                                fechNaciUsr = formatoFecha.parse(date);
+                            } catch (Exception ex) {
+                                Log.e(TAG, "Error al convertir la fecha");
+                            }
                         }
                     }
                 });
@@ -234,6 +243,17 @@ public class FormularioPrincipal extends AppCompatActivity {
         }
     }
 
+    private long obtenerFechaNacimiento() {
+        // Utiliza la clase Calendar para establecer la fecha de nacimiento deseada
+        Calendar fechaNacimientoCal = Calendar.getInstance();
+        fechaNacimientoCal.set(1990, Calendar.JANUARY, 1); // Establece la fecha al 1 de enero de 1990
 
+        if(fechNaciUsr == null){
+            // Obtiene la fecha de nacimiento en milisegundos
+            return fechaNacimientoCal.getTimeInMillis();
+        }else {
+            return fechNaciUsr.getTime();
+        }
+    }
 
 }

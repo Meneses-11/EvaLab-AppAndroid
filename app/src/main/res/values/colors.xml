@@ -12,6 +12,7 @@
 
     <color name="colorFondoClaro">#C9E5FCF4</color>
     <color name="colorFondoObscuro">#b3d8d2</color>
+    <color name="colorFondoClaroNoTrasnparente">#E5FCF4</color>
 
 
     <!-- COLORES PARA EL TEMA DE LA APP -->

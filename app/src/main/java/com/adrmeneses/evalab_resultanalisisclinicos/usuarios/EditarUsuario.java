@@ -6,6 +6,7 @@ import static android.content.ContentValues.TAG;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,10 +19,14 @@ import com.adrmeneses.evalab_resultanalisisclinicos.R;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBUsuarios;
 import com.adrmeneses.evalab_resultanalisisclinicos.contenedore.UsuarioActivo;
 import com.adrmeneses.evalab_resultanalisisclinicos.entidades.Usuarios;
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.text.MessageFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -38,6 +43,7 @@ public class EditarUsuario extends AppCompatActivity {
     Boolean editado;
     DBUsuarios dbUsuarios;
     SimpleDateFormat formatoFecha;
+    Date fechaNaciDate;
 
 
 
@@ -95,7 +101,7 @@ public class EditarUsuario extends AppCompatActivity {
             public void onClick(View view) {
                 if(!txtFieldNombre.getText().toString().equals("") && !txtFieldApellido.getText().toString().equals("") && !txtFieldEstatura.getText().toString().equals("") && !txtFieldPeso.getText().toString().equals("") && !txtViewFecha.getText().toString().equals("")) {
 
-                    Date fechaDate = null;
+                    //Date fechaDate = null;
 
                     TimeZone zonaHoraria = TimeZone.getTimeZone("UTC");
                     formatoFecha = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
@@ -103,12 +109,12 @@ public class EditarUsuario extends AppCompatActivity {
 
                     try {
                         // Intenta parsear la cadena de fecha a un objeto Date
-                        fechaDate = formatoFecha.parse(fechaNacimien);
+                        fechaNaciDate = formatoFecha.parse(fechaNacimien);
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
 
-                    editado = dbUsuarios.editaUsuario(idUsr, txtFieldNombre.getText().toString(), txtFieldApellido.getText().toString(), sexo, fechaDate, Double.parseDouble(txtFieldEstatura.getText().toString()), Double.parseDouble(txtFieldPeso.getText().toString()));
+                    editado = dbUsuarios.editaUsuario(idUsr, txtFieldNombre.getText().toString(), txtFieldApellido.getText().toString(), sexo, fechaNaciDate, Double.parseDouble(txtFieldEstatura.getText().toString()), Double.parseDouble(txtFieldPeso.getText().toString()));
 
                     if (editado){
                         Toast.makeText(EditarUsuario.this, "Guardado con Éxito", Toast.LENGTH_SHORT).show();
@@ -120,6 +126,45 @@ public class EditarUsuario extends AppCompatActivity {
                     Toast.makeText(EditarUsuario.this, "Debe llenar los campos obligatorios", Toast.LENGTH_SHORT).show();
                 }
 
+            }
+        });
+
+        contFecha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                long fechaLimite = MaterialDatePicker.todayInUtcMilliseconds() - 31536000000L;
+                long fechaPredeterminada = obtenerFechaPredeterminada();
+                //Crea el calendario
+                MaterialDatePicker<Long> calendario = MaterialDatePicker.Builder.datePicker().setTitleText("Seleccione su Fecha de Nacimiento").setSelection(fechaPredeterminada).build();
+                calendario.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener<Long>() {
+                    @Override
+                    public void onPositiveButtonClick(Long selection) {
+
+                        if(selection > fechaLimite){
+                            Toast.makeText(EditarUsuario.this, "Fecha Invalida", Toast.LENGTH_SHORT).show();
+                        }else {
+                            TimeZone zonaHoraria = TimeZone.getTimeZone("UTC");
+                            formatoFecha = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+                            formatoFecha.setTimeZone(zonaHoraria);
+
+                            // Ajusta el tiempo de la selección con la zona horaria
+                            long utcTime = selection + zonaHoraria.getOffset(new Date().getTime());
+                            String date = formatoFecha.format(new Date(utcTime));
+
+                            txtViewFecha.setText(MessageFormat.format("{0}", date));
+                            txtViewFecha.setTextColor(Color.BLACK);
+                            fechaNacimien = date;
+
+                            try{
+                                fechaNaciDate = formatoFecha.parse(fechaNacimien);
+                            }catch (Exception ex){
+                                Log.e(TAG, "Hubo un Error");
+                            }
+                        }
+
+                    }
+                });
+                calendario.show(getSupportFragmentManager(), "tag");
             }
         });
 
@@ -153,16 +198,28 @@ public class EditarUsuario extends AppCompatActivity {
         // Convierte el String a long (milisegundos)
         long tiempoMilisegundos = Long.parseLong(fechaNacimiento);
         // Crea un objeto Date usando el valor de tiempo en milisegundos
-        Date fechaNaci = new Date(tiempoMilisegundos);
+        fechaNaciDate = new Date(tiempoMilisegundos);
         // Especifica la zona horaria deseada
         TimeZone zonaHoraria = TimeZone.getTimeZone("UTC");
 
         SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
         formato.setTimeZone(zonaHoraria);
 
-        String fecha = formato.format(fechaNaci);
+        String fecha = formato.format(fechaNaciDate);
 
         return fecha;
+    }
 
+    private long obtenerFechaPredeterminada() {
+        // Utiliza la clase Calendar para establecer la fecha de nacimiento deseada
+        Calendar fechaNacimientoCal = Calendar.getInstance();
+        fechaNacimientoCal.set(1990, Calendar.JANUARY, 1); // Establece la fecha al 1 de enero de 1990
+
+        if(fechaNaciDate == null){
+            // Obtiene la fecha de nacimiento en milisegundos
+            return fechaNacimientoCal.getTimeInMillis();
+        }else {
+            return fechaNaciDate.getTime();
+        }
     }
 }
