@@ -18,31 +18,27 @@
         />
 
     <Button
-        android:id="@+id/btnInterpretar"
+        android:id="@+id/menuPrincipalBtnInterpretar"
         style="@style/btnMenuPrincipal"
         android:text="@string/strInterpre"
-        android:onClick="viewMenuAnaliClinic"
         />
 
     <Button
-        android:id="@+id/btnResultados"
+        android:id="@+id/menuPrincipalBtnResultados"
         style="@style/btnMenuPrincipal"
         android:text="@string/strResults"
-        android:onClick="viewResultados"
         />
 
     <Button
-        android:id="@+id/btnTiposExa"
+        android:id="@+id/menuPrincipalBtnPerfil"
         style="@style/btnMenuPrincipal"
-        android:text="@string/strTipExa"
-        android:onClick="funPrueba"
+        android:text="@string/strVerPerfil"
         />
 
     <Button
-        android:id="@+id/btnInformación"
+        android:id="@+id/menuPrincipalBtnInformación"
         style="@style/btnMenuPrincipal"
         android:text="@string/strInfo"
-        android:onClick="funPerfil"
         />
 
 

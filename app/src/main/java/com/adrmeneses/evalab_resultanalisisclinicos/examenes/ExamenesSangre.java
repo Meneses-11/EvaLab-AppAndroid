@@ -4,11 +4,13 @@ import static android.content.ContentValues.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.adrmeneses.evalab_resultanalisisclinicos.R;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBResultadosTabla;
@@ -18,7 +20,9 @@ public class ExamenesSangre extends AppCompatActivity {
     //Declara las variables para la clase DBHelper y para la Base de Datos
     MyDBHelper myDBHelper;
     SQLiteDatabase database;
+    private TextView opcionHemograma;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,14 +31,17 @@ public class ExamenesSangre extends AppCompatActivity {
         //Instancía la clase MyDBHelper y la Base de Datos
         myDBHelper = new MyDBHelper(this);
         database = myDBHelper.getWritableDatabase();
-    }
 
-    //Se activa al presionar el boton Hemograma Completo
-    public void viewHemogramaCompleto(View view){
-        Intent lanzar = new Intent(this, HemogramaCompleto.class);
-        startActivity(lanzar);
-    }
+        opcionHemograma = findViewById(R.id.examSangreOpcHemograma);
 
+        opcionHemograma.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent lanzar = new Intent(ExamenesSangre.this, HemogramaCompleto.class);
+                startActivity(lanzar);
+            }
+        });
+    }
 
     //Método que agregará datos a la tabla Resultados
     public void llenarTablaResultados(DBResultadosTabla dbResultadosTabla, int usuarioId, int examenTipId, int parameterId, double valor, int examenId){

@@ -17,7 +17,7 @@
     <!-- Texto Opciones menú principal -->
     <string name="strInterpre">Interpretar Análisis</string>
     <string name="strResults">Resultados</string>
-    <string name="strTipExa">Tipos de Examenes</string>
+    <string name="strVerPerfil">Perfil</string>
     <string name="strInfo">Información</string>
 
     <!-- Texto Opciones menú Tipos Analisis -->

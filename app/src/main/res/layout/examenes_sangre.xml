@@ -34,9 +34,9 @@
                 style="@style/separadorContenidoExamenes" />
 
             <TextView
+                android:id="@+id/examSangreOpcHemograma"
                 style="@style/txtContenidoExamenes"
-                android:text="@string/strHemograma"
-                android:onClick="viewHemogramaCompleto"/>
+                android:text="@string/strHemograma"/>
 
             <View
                 style="@style/separador2ContenidoExamenes"/>

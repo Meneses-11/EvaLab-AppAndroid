@@ -4,11 +4,13 @@ import static android.content.ContentValues.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBExamenTipo;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.MyDBHelper;
@@ -25,13 +27,19 @@ public class MenuPrincipal extends AppCompatActivity {
     File dbFile;
     //Declara la variable que almacenará el intent
     Intent activityFormPrin;
+    private Button btnPerfil, btnInterpretar, btnResultados;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_principal);
 
         userActv = UsuarioActivo.getInstance();
+
+        btnInterpretar = findViewById(R.id.menuPrincipalBtnInterpretar);
+        btnResultados = findViewById(R.id.menuPrincipalBtnResultados);
+        btnPerfil = findViewById(R.id.menuPrincipalBtnPerfil);
 
         //Instancias de las clases para la BD
         myDBhelper = new MyDBHelper(MenuPrincipal.this);
@@ -64,16 +72,28 @@ public class MenuPrincipal extends AppCompatActivity {
                 Log.d(TAG, "La tabla ExamenTipo está llena");
             }
         }
-    }
 
-    // Metodos que crean Intents para lanzar las vistas correspondeintes
-    public void viewMenuAnaliClinic(View view){
-        Intent lanzar = new Intent(this, MenuCategorias.class);
-        startActivity(lanzar);
-    }
-    public void viewResultados(View view){
-        Intent lanzar1 = new Intent(this, VentanaResultados.class);
-        startActivity(lanzar1);
+        btnInterpretar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent lanzar = new Intent(MenuPrincipal.this, MenuCategorias.class);
+                startActivity(lanzar);
+            }
+        });
+        btnResultados.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent lanzar1 = new Intent(MenuPrincipal.this, VentanaResultados.class);
+                startActivity(lanzar1);
+            }
+        });
+        btnPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent lanzarPerf = new Intent(MenuPrincipal.this, InformacionPerfil.class);
+                startActivity(lanzarPerf);
+            }
+        });
     }
 
     //Método que agregará datos a la tabla ExamenTipo
@@ -105,23 +125,5 @@ public class MenuPrincipal extends AppCompatActivity {
             Log.e(TAG, "Hubo un ERROR");
         }
 
-    }
-    /*
-    public void viewTiposAnalisis(View view){
-        Intent lanzar2 = new Intent(this, TipAnalisisActivity.class);
-        startActivity(lanzar2);
-    }
-    public void viewInformacion(View view){
-        Intent lanzar3 = new Intent(this, InformacionActivity.class);
-    }
-    */
-    public void funPerfil(View view){
-        Intent lanzarPerf = new Intent(this, InformacionPerfil.class);
-        startActivity(lanzarPerf);
-    }
-
-    public void funPrueba(View view){
-        Intent lanzarPru = new Intent(this, FormularioPrincipal.class);
-        startActivity(lanzarPru);
     }
 }

@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBUsuarios;
 import com.adrmeneses.evalab_resultanalisisclinicos.contenedore.UsuarioActivo;
+import com.adrmeneses.evalab_resultanalisisclinicos.usuarios.InformacionPerfil;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.textfield.TextInputEditText;
@@ -49,6 +50,7 @@ public class FormularioPrincipal extends AppCompatActivity {
     DBUsuarios dbUsuarios;
     //Variable para el Intent
     Intent activityMenuPrin;
+    private Boolean primero = true;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -210,6 +212,12 @@ public class FormularioPrincipal extends AppCompatActivity {
                         alturaUsr = Double.parseDouble(straltura);
                         pesoUsr = Double.parseDouble(strpeso);
                         if (alturaUsr < 3) {
+                            Log.d(TAG, "funBtnVentanas: idUser: "+userActv.getIdUsuario());
+                            if(userActv.getIdUsuario() > 0) {
+                                primero = false;
+                            }else{
+                                primero = true;
+                            }
                             llenarUsuario(dbUsuarios);
                         }else {
                             Toast.makeText(this, "Ingrese un altura válida", Toast.LENGTH_SHORT).show();
@@ -235,8 +243,17 @@ public class FormularioPrincipal extends AppCompatActivity {
         if(id>0){
             //Toast.makeText(this, "Agregado con Éxito", Toast.LENGTH_SHORT).show();
             userActv.setIdUsuario(id); //Le manda el usuario a la clase UsuarioActivo
-            startActivity(activityMenuPrin);
-            finish();
+            if(primero){
+                Log.d(TAG, "Bienvenido: Usuario "+userActv.getIdUsuario());
+                startActivity(activityMenuPrin);
+                finish();
+            }else {
+                Intent intent = new Intent(this, InformacionPerfil.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                finish();
+
+            }
         }else {
             Log.e(TAG, "Hubo un ERROR");
             nVentana = 3;

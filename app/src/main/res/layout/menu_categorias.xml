@@ -30,8 +30,8 @@
             android:orientation="vertical">
 
             <LinearLayout
-                style="@style/layoutPrincipalCategorias"
-                android:onClick="viewExamSangre">
+                android:id="@+id/menuCategoriasBotonExamenSangre"
+                style="@style/layoutPrincipalCategorias">
 
                 <ImageView
                     style="@style/iconoMenuCategorias"
@@ -43,8 +43,8 @@
             </LinearLayout>
 
             <LinearLayout
-                style="@style/layoutPrincipalCategorias"
-                android:onClick="viewExamOrina" >
+                android:id="@+id/menuCategoriasBotonExamenOrina"
+                style="@style/layoutPrincipalCategorias">
 
                 <ImageView
                     style="@style/iconoMenuCategorias"
@@ -56,8 +56,8 @@
             </LinearLayout>
 
             <LinearLayout
-                style="@style/layoutPrincipalCategorias"
-                android:onClick="viewExamFunHepatica" >
+                android:id="@+id/menuCategoriasBotonExamenFunHepatica"
+                style="@style/layoutPrincipalCategorias">
 
                 <ImageView
                     style="@style/iconoMenuCategorias"
@@ -69,8 +69,8 @@
             </LinearLayout>
 
             <LinearLayout
-                style="@style/layoutPrincipalCategorias"
-                android:onClick="viewExamTiroides" >
+                android:id="@+id/menuCategoriasBotonExamenTiroides"
+                style="@style/layoutPrincipalCategorias">
 
                 <ImageView
                     style="@style/iconoMenuCategorias"
@@ -82,8 +82,8 @@
             </LinearLayout>
 
             <LinearLayout
-                style="@style/layoutPrincipalCategorias"
-                android:onClick="viewExamFunRenal" >
+                android:id="@+id/menuCategoriasBotonExamenFunRenal"
+                style="@style/layoutPrincipalCategorias">
 
                 <ImageView
                     style="@style/iconoMenuCategorias"
@@ -94,7 +94,7 @@
 
             </LinearLayout>
 
-            <LinearLayout
+       <!--     <LinearLayout
                 style="@style/layoutPrincipalCategorias"
                 android:onClick="viewExamInfecciosa" >
 
@@ -105,7 +105,7 @@
                     style="@style/txtMenúCategorias"
                     android:text="@string/strExaInfecciosas" />
 
-            </LinearLayout>
+            </LinearLayout> -->
 
         </LinearLayout>
 

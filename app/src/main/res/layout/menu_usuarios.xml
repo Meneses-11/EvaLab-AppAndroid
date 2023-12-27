@@ -1,47 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".usuarios.MenuUsuarios"
-    android:orientation="vertical"
     android:background="@drawable/fondoprincipal">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginBottom="10dp"
-        android:gravity="center_vertical"
-        android:background="@color/colorFondoClaro">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_margin="30dp"
-            android:src="@drawable/usuarios"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_vertical"
+            android:background="@color/colorFondoClaro">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Perfiles"
-            android:textSize="60dp"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:fontFamily="@font/gabarito_variablefont"/>
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_margin="30dp"
+                android:src="@drawable/usuarios"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Perfiles"
+                android:textSize="60dp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:fontFamily="@font/gabarito_variablefont"/>
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/menuUsuariosRecyclerView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"/>
+
+        </ScrollView>
 
     </LinearLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/menuUsuariosBotonAgregar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:contentDescription=""
+        app:srcCompat="@drawable/anadir" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/menuUsuariosRecyclerView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"/>
-
-    </ScrollView>
-
-</LinearLayout>
+</RelativeLayout>
