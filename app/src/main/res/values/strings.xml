@@ -52,6 +52,7 @@
     <string name="strExamenEGO">Examen General de Orina (EGO)</string>
     <string name="strExamenFunRenal">Examen Función Renal</string>
     <string name="strExamenFunHepatica">Examen Función Hepática</string>
+    <string name="strExamenFunTiroides">Examen Función Tiroidea</string>
     <string name="strExamenUrocultivo">Urocultivo</string>
     <string name="strExamenALT">Alanina Aminotransferasa (ALT)</string>
     <string name="strExamenAST">Aspartato Aminotransferasa (AST)</string>
@@ -112,6 +113,12 @@
     <string name="strBilirrubinaT">Bilirrubina Total</string>
     <string name="strBilirrubinaD">Bilirrubina Directa</string>
     <string name="strTiempoP">Tiempo de protrombina (TP)</string>
+    <!-- Funcion Tiorides -->
+    <string name="strHormonaT3L">T3 Libre</string>
+    <string name="strHormonaT3T">T3 Total</string>
+    <string name="strHormonaT4L">T4 Libre</string>
+    <string name="strHormonaT4T">T4 Total</string>
+    <string name="strHormonaTSH">TSH</string>
 
     <!-- Todos las unidades de medidas de los datos que hay en los diferentes examenes -->
     <string name="strGramosDesilitros">gr/dL</string>
@@ -127,8 +134,13 @@
     <string name="strMetro">m</string>
     <string name="strKilogramo">Kg</string>
     <string name="strUnidInterLitro">UI/L</string>
-    <string name="strUnidLitro">U/L</string>
+    <string name="strUnidLitro">U / L</string>
     <string name="strSegundos">seg</string>
+    <string name="strMiliUnidInterLitro">mUI / L</string>
+    <string name="strNanogramosDecilitro">μg / dL</string>
+    <string name="strNanogramosDecilitro2">ng / dL</string>
+    <string name="strNanogramosMililitro">ng / mL</string>
+    <string name="strPicogramosMililitro">pg / mL</string>
 
     <!-- Opciones de la ventana de Resultados -->
     <string name="strResultResultados">Resultados</string>

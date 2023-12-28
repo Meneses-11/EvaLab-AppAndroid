@@ -21,6 +21,7 @@ import com.adrmeneses.evalab_resultanalisisclinicos.examenes.ExamenesOrina;
 import com.adrmeneses.evalab_resultanalisisclinicos.examenes.ExamenesSangre;
 import com.adrmeneses.evalab_resultanalisisclinicos.examenes.ExamenesTiroides;
 import com.adrmeneses.evalab_resultanalisisclinicos.examenes.FuncionHepatica;
+import com.adrmeneses.evalab_resultanalisisclinicos.examenes.FuncionTiroidea;
 import com.adrmeneses.evalab_resultanalisisclinicos.examenes.HemogramaCompleto;
 
 public class MenuCategorias extends AppCompatActivity {
@@ -67,6 +68,8 @@ public class MenuCategorias extends AppCompatActivity {
             public void onClick(View view) {
                 /*Intent lanzar3 = new Intent(MenuCategorias.this, ExamenesTiroides.class);
                 startActivity(lanzar3);*/
+                Intent lanzar3 = new Intent(MenuCategorias.this, FuncionTiroidea.class);
+                startActivity(lanzar3);
             }
         });
         btnExamenFunRenal.setOnClickListener(new View.OnClickListener() {
