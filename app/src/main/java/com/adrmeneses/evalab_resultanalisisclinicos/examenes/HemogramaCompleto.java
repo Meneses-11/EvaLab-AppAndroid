@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.adrmeneses.evalab_resultanalisisclinicos.MenuCategorias;
 import com.adrmeneses.evalab_resultanalisisclinicos.R;
 import com.adrmeneses.evalab_resultanalisisclinicos.VentanaResultados;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBEnfermedades;
@@ -25,7 +26,7 @@ import com.adrmeneses.evalab_resultanalisisclinicos.contenedore.OpcionElegida;
 import com.adrmeneses.evalab_resultanalisisclinicos.contenedore.UsuarioActivo;
 import com.google.android.material.textfield.TextInputEditText;
 
-public class HemogramaCompleto extends ExamenesSangre {
+public class HemogramaCompleto extends MenuCategorias {
     //Declara la variable en la que se instanciara la clase UsuarioActivo
     UsuarioActivo userActv;
     //Declara la variable en la que se instanciara la clase Opcion Elejida

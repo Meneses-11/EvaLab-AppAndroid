@@ -45,19 +45,21 @@
     <string name="strDesconocido">Sin Información</string>
 
     <!-- Todos los Examenes -->
-    <string name="strHemograma">Hemograma Completo</string>
-    <string name="strPerLipi">Perfil Lipídico</string>
-    <string name="strGlucosa">Glucosa (en ayunas)</string>
-    <string name="strElecSer">Electrolitos Séricos</string>
-    <string name="strEGO">Examen General de Orina (EGO)</string>
-    <string name="strUrocultivo">Urocultivo</string>
-    <string name="strALT">Alanina Aminotransferasa (ALT)</string>
-    <string name="strAST">Aspartato Aminotransferasa (AST)</string>
-    <string name="strBilirrubina">Bilirrubina</string>
-    <string name="strCreaSerica">Creatinina Sérica</string>
-    <string name="strBUN">Nitrógeno Ureico en Sangre (BUN)</string>
-    <string name="strTSH">Hormona Estimulante de la Tiroides (TSH)</string>
-    <string name="strT4">T4 (Tiroxina)</string>
+    <string name="strExamenHemograma">Biometría Hemática / Hemograma Completo</string>
+    <string name="strExamenPerLipi">Perfil Lipídico</string>
+    <string name="strExamenGlucosa">Glucosa (en ayunas)</string>
+    <string name="strExamenElecSer">Electrolitos Séricos</string>
+    <string name="strExamenEGO">Examen General de Orina (EGO)</string>
+    <string name="strExamenFunRenal">Examen Función Renal</string>
+    <string name="strExamenFunHepatica">Examen Función Hepática</string>
+    <string name="strExamenUrocultivo">Urocultivo</string>
+    <string name="strExamenALT">Alanina Aminotransferasa (ALT)</string>
+    <string name="strExamenAST">Aspartato Aminotransferasa (AST)</string>
+    <string name="strExamenBilirrubina">Bilirrubina</string>
+    <string name="strExamenCreaSerica">Creatinina Sérica</string>
+    <string name="strExamenBUN">Nitrógeno Ureico en Sangre (BUN)</string>
+    <string name="strExamenTSH">Hormona Estimulante de la Tiroides (TSH)</string>
+    <string name="strExamenT4">T4 (Tiroxina)</string>
     <string name="strVIH">Prueba de VIH</string>
     <string name="strHepatitisBC">Prueba de Hepatitis B y C</string>
     <string name="strSifilis">Prueba de Sífilis</string>
@@ -101,6 +103,15 @@
     <string name="strUrobilinogeno">Urobilinogeno</string>
     <string name="strEsteLeucoci">Estereasa Leucocitaria</string>
     <string name="strExamenHint">Dato</string>
+    <!-- Funcion Hepática -->
+    <string name="strAlaninaT">Alanina Transaminasa (ALT o GOT)</string>
+    <string name="strAspartatoT">Aspartato Transaminasa (AST o GPT)</string>
+    <string name="strFosfatasaA">Fosfatasa Alcalina (ALP o FA)</string>
+    <string name="strAlbumina">Albúmina</string>
+    <string name="strGammaG">Gamma glutamil transferasa (GGT)</string>
+    <string name="strBilirrubinaT">Bilirrubina Total</string>
+    <string name="strBilirrubinaD">Bilirrubina Directa</string>
+    <string name="strTiempoP">Tiempo de protrombina (TP)</string>
 
     <!-- Todos las unidades de medidas de los datos que hay en los diferentes examenes -->
     <string name="strGramosDesilitros">gr/dL</string>
@@ -115,6 +126,9 @@
     <string name="strSobreCampo">/campo</string>
     <string name="strMetro">m</string>
     <string name="strKilogramo">Kg</string>
+    <string name="strUnidInterLitro">UI/L</string>
+    <string name="strUnidLitro">U/L</string>
+    <string name="strSegundos">seg</string>
 
     <!-- Opciones de la ventana de Resultados -->
     <string name="strResultResultados">Resultados</string>

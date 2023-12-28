@@ -38,7 +38,7 @@
                     android:src="@drawable/prueba_sangre" />
                 <TextView
                     style="@style/txtMenúCategorias"
-                    android:text="@string/strExaSangre" />
+                    android:text="@string/strExamenHemograma" />
 
             </LinearLayout>
 
@@ -51,7 +51,7 @@
                     android:src="@drawable/examen_orina" />
                 <TextView
                     style="@style/txtMenúCategorias"
-                    android:text="@string/strExaOrina" />
+                    android:text="@string/strExamenEGO" />
 
             </LinearLayout>
 

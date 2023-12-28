@@ -44,7 +44,7 @@ public class ExamenesSangre extends AppCompatActivity {
     }
 
     //Método que agregará datos a la tabla Resultados
-    public void llenarTablaResultados(DBResultadosTabla dbResultadosTabla, int usuarioId, int examenTipId, int parameterId, double valor, int examenId){
+  /*  public void llenarTablaResultados(DBResultadosTabla dbResultadosTabla, int usuarioId, int examenTipId, int parameterId, double valor, int examenId){
         long id;
         //int identExamen = ((int) dbResultadosTabla.ultimoIdExamen(examenId))+1;
 
@@ -57,6 +57,6 @@ public class ExamenesSangre extends AppCompatActivity {
             Log.e(TAG, "Hubo un ERROR");
         }
 
-    }
+    }*/
 
 }

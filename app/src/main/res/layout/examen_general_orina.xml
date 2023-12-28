@@ -10,7 +10,7 @@
 
     <TextView
         style="@style/txtTituloExamenEspecifico"
-        android:text="@string/strEGO" />
+        android:text="@string/strExamenEGO" />
 
     <ScrollView
         style="@style/scrollExamenEspecifico">
@@ -521,12 +521,12 @@
 
                 <TextView
                     style="@style/txtNombreOpcionExamenEspecifico"
-                    android:text="@string/strBilirrubina"
+                    android:text="@string/strExamenBilirrubina"
                     />
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/txtFieldListaOpcionExamenEspecifico"
-                    android:hint="@string/strBilirrubina">
+                    android:hint="@string/strExamenBilirrubina">
 
                     <AutoCompleteTextView
                         android:id="@+id/txtFieldBilirrubinaOrina"

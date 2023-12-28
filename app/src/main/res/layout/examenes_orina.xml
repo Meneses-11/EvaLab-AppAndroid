@@ -35,7 +35,7 @@
             <TextView
                 android:id="@+id/examOrinaOpcEGO"
                 style="@style/txtContenidoExamenes"
-                android:text="@string/strEGO" />
+                android:text="@string/strExamenEGO" />
             <View
                 style="@style/separador2ContenidoExamenes"/>
 
@@ -43,7 +43,7 @@
                 style="@style/separadorContenidoExamenes" />
             <TextView
                 style="@style/txtContenidoExamenes"
-                android:text="@string/strUrocultivo" />
+                android:text="@string/strExamenUrocultivo" />
             <View
                 style="@style/separadorContenidoExamenes" />
 

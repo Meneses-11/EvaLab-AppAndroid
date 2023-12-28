@@ -36,7 +36,7 @@
             <TextView
                 android:id="@+id/examSangreOpcHemograma"
                 style="@style/txtContenidoExamenes"
-                android:text="@string/strHemograma"/>
+                android:text="@string/strExamenHemograma"/>
 
             <View
                 style="@style/separador2ContenidoExamenes"/>
@@ -46,7 +46,7 @@
 
             <TextView
                 style="@style/txtContenidoExamenes"
-                android:text="@string/strPerLipi" />
+                android:text="@string/strExamenPerLipi" />
 
             <View
                 style="@style/separador2ContenidoExamenes" />
@@ -56,7 +56,7 @@
 
             <TextView
                 style="@style/txtContenidoExamenes"
-                android:text="@string/strGlucosa" />
+                android:text="@string/strExamenGlucosa" />
             <View
                 style="@style/separador2ContenidoExamenes" />
 
@@ -64,7 +64,7 @@
                 style="@style/separadorContenidoExamenes" />
             <TextView
                 style="@style/txtContenidoExamenes"
-                android:text="@string/strElecSer" />
+                android:text="@string/strExamenElecSer" />
             <View
                 style="@style/separador2ContenidoExamenes" />
 

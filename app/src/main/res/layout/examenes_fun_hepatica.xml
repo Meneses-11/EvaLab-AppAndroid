@@ -34,7 +34,7 @@
                 style="@style/separadorContenidoExamenes" />
             <TextView
                 style="@style/txtContenidoExamenes"
-                android:text="@string/strALT" />
+                android:text="@string/strExamenALT" />
             <View
                 style="@style/separador2ContenidoExamenes"/>
 
@@ -42,7 +42,7 @@
                 style="@style/separadorContenidoExamenes" />
             <TextView
                 style="@style/txtContenidoExamenes"
-                android:text="@string/strAST" />
+                android:text="@string/strExamenAST" />
             <View
                 style="@style/separador2ContenidoExamenes" />
 
@@ -50,7 +50,7 @@
                 style="@style/separadorContenidoExamenes" />
             <TextView
                 style="@style/txtContenidoExamenes"
-                android:text="@string/strBilirrubina" />
+                android:text="@string/strExamenBilirrubina" />
             <View
                 style="@style/separadorContenidoExamenes" />
 

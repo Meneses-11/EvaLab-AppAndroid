@@ -34,7 +34,7 @@
                 style="@style/separadorContenidoExamenes" />
             <TextView
                 style="@style/txtContenidoExamenes"
-                android:text="@string/strCreaSerica" />
+                android:text="@string/strExamenCreaSerica" />
             <View
                 style="@style/separador2ContenidoExamenes"/>
 
@@ -42,7 +42,7 @@
                 style="@style/separadorContenidoExamenes" />
             <TextView
                 style="@style/txtContenidoExamenes"
-                android:text="@string/strBUN" />
+                android:text="@string/strExamenBUN" />
             <View
                 style="@style/separadorContenidoExamenes" />
 

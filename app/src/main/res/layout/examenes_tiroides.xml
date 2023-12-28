@@ -34,7 +34,7 @@
                 style="@style/separadorContenidoExamenes" />
             <TextView
                 style="@style/txtContenidoExamenes"
-                android:text="@string/strTSH" />
+                android:text="@string/strExamenTSH" />
             <View
                 style="@style/separador2ContenidoExamenes"/>
 
@@ -42,7 +42,7 @@
                 style="@style/separadorContenidoExamenes" />
             <TextView
                 style="@style/txtContenidoExamenes"
-                android:text="@string/strT4" />
+                android:text="@string/strExamenT4" />
             <View
                 style="@style/separadorContenidoExamenes" />
 

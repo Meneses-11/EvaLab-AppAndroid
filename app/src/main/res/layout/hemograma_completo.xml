@@ -10,7 +10,7 @@
 
     <TextView
         style="@style/txtTituloExamenEspecifico"
-        android:text="@string/strHemograma" />
+        android:text="@string/strExamenHemograma" />
 
     <ScrollView
         style="@style/scrollExamenEspecifico">
@@ -405,13 +405,18 @@
             </LinearLayout>
             <View style="@style/lineaDiv2OpcionesExamenEspecifico"/>
 
-            <Button
-                style="@style/btnAnalizar"
-                android:onClick="analizarHemograma"/>
-
-
         </LinearLayout>
 
     </ScrollView>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center">
+
+        <Button
+            style="@style/btnAnalizar"
+            android:onClick="analizarHemograma"/>
+
+    </LinearLayout>
 </LinearLayout>

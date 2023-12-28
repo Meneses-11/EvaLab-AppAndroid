@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".examenes.FuncionRenal"
+    android:orientation="vertical"
+    android:background="@drawable/fondoprincipal">
+
+    <TextView
+        style="@style/txtTituloExamenEspecifico"
+        android:text="@string/strExamenFunRenal"/>
+
+    <ScrollView
+        style="@style/scrollExamenEspecifico">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View style="@style/lineaDiv2OpcionesExamenEspecifico"/>
+            <LinearLayout
+                style="@style/layoutOpcionExamenEspecifico" >
+
+                <TextView
+                    style="@style/txtNombreOpcionExamenEspecifico"
+                    android:text="@string/strHemoglobina" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/txtFieldNumOpcionExamenEspecifico"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/funRenalTextField"
+                        style="@style/editTxtNumOpcionExamenEspecifico"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    style="@style/txtUnidadMedidaOpcionExamenEspecifico"
+                    android:text="@string/strGramosDesilitros" />
+
+            </LinearLayout>
+            <View style="@style/lineaDiv2OpcionesExamenEspecifico"/>
+
+
+            <Button
+                style="@style/btnAnalizar"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
