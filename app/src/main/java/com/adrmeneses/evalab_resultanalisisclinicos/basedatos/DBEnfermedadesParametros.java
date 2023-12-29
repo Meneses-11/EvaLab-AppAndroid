@@ -36,4 +36,21 @@ public class DBEnfermedadesParametros extends MyDBHelper{
         return id;
     }
 
+    public boolean existeRegistrosConIdEnfermedad(long idEnfermedad){
+        int count = 0;
+        MyDBHelper myDBhelper = new MyDBHelper(context);
+        SQLiteDatabase db = myDBhelper.getReadableDatabase();
+
+        String query = "SELECT COUNT(*) FROM " + TABLE_PARAMETROS_ENFERMEDADES + " WHERE idEnfermedad = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idEnfermedad)});
+
+        if(cursor.moveToFirst()){
+            count = cursor.getInt(0);
+        }
+
+        cursor.close();
+
+        return count > 0;
+    }
+
 }

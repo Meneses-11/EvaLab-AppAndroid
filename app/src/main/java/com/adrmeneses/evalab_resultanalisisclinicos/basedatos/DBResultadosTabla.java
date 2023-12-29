@@ -125,14 +125,14 @@ public class DBResultadosTabla extends MyDBHelper{
     }
 
     //Método que obtiene el ultimo idExamen del Tipo de Examen que recive
-    public long ultimoIdExamen(int idTipExamen){
+    public long ultimoIdExamen(int idTipExamen, int idUsuario){
         MyDBHelper myDBhelper = new MyDBHelper(context);
         SQLiteDatabase db = myDBhelper.getReadableDatabase();
         long idExamen = 0; //Valor predeterminado si no encuentra el id
         //Realiza la consulta
         String query = "SELECT idExamen FROM " + TABLE_RESULTADOS +
-                " WHERE idTipExam = ? ORDER BY idExamen DESC";
-        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idTipExamen)});
+                " WHERE idTipExam = ? AND idUsuario = ? ORDER BY idExamen DESC";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idTipExamen), String.valueOf(idUsuario)});
         //Verifica siencontró un resultado
         if(cursor.moveToFirst()){
             idExamen = cursor.getInt(0);

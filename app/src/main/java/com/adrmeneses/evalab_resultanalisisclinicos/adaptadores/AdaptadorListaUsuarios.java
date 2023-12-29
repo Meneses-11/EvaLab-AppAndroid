@@ -9,12 +9,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.adrmeneses.evalab_resultanalisisclinicos.R;
+import com.adrmeneses.evalab_resultanalisisclinicos.contenedore.OpcionElegida;
 import com.adrmeneses.evalab_resultanalisisclinicos.contenedore.UsuarioActivo;
 import com.adrmeneses.evalab_resultanalisisclinicos.entidades.Usuarios;
 
@@ -51,8 +53,12 @@ public class AdaptadorListaUsuarios extends RecyclerView.Adapter<AdaptadorListaU
             @Override
             public void onClick(View view) {
                 holder.userActivo.setIdUsuario((long) usuarios.getId());
+                holder.opcElegida.setNombreExamen("");
+                holder.opcElegida.setExamenId(0);
+                holder.opcElegida.setExamenTipId(0);
                 // Finalizar la actividad
                 if (view.getContext() instanceof AppCompatActivity) {
+                    Toast.makeText(view.getContext(), "Bienvenido "+usuarios.getNombre(), Toast.LENGTH_SHORT).show();
                     ((AppCompatActivity) view.getContext()).finish();
                 } else {
                     Log.d(TAG, "El contexto no es una instancia de AppCompatActivity");
@@ -89,6 +95,7 @@ public class AdaptadorListaUsuarios extends RecyclerView.Adapter<AdaptadorListaU
         TextView txtViewNombre, txtViewApellido, txtViewFecha;
         ImageView imgViewPerfil;
         private LinearLayout contentOpcion;
+        private OpcionElegida opcElegida;
         UsuarioActivo userActivo;
         public UsuarioViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -99,6 +106,7 @@ public class AdaptadorListaUsuarios extends RecyclerView.Adapter<AdaptadorListaU
             contentOpcion = itemView.findViewById(R.id.contenedorOpcionListaUsuarios);
 
             userActivo = UsuarioActivo.getInstance();
+            opcElegida = OpcionElegida.getInstance();
         }
     }
 }

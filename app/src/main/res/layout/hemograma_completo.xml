@@ -34,7 +34,7 @@
                      >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtFieldHemoglobina"
+                        android:id="@+id/hemogramatxtFieldHemoglobina"
                         style="@style/editTxtNumOpcionExamenEspecifico"
                         />
 
@@ -61,7 +61,7 @@
                      >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtFieldHematocrito"
+                        android:id="@+id/hemogramatxtFieldHematocrito"
                         style="@style/editTxtNumOpcionExamenEspecifico"
                         />
 
@@ -87,7 +87,7 @@
                     style="@style/txtFieldNumOpcionExamenEspecifico" >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtFieldEritrocito"
+                        android:id="@+id/hemogramatxtFieldEritrocito"
                         style="@style/editTxtNumOpcionExamenEspecifico"
                         />
 
@@ -113,7 +113,7 @@
                     style="@style/txtFieldNumOpcionExamenEspecifico" >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtFieldVMG"
+                        android:id="@+id/hemogramatxtFieldVMG"
                         style="@style/editTxtNumOpcionExamenEspecifico"
                         />
 
@@ -140,7 +140,7 @@
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtFieldHCM"
+                        android:id="@+id/hemogramatxtFieldHCM"
                         style="@style/editTxtNumOpcionExamenEspecifico"
                         />
 
@@ -168,7 +168,7 @@
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtFieldReticulocitos"
+                        android:id="@+id/hemogramatxtFieldReticulocitos"
                         style="@style/editTxtNumOpcionExamenEspecifico"
                         />
 
@@ -196,7 +196,7 @@
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtFieldLeucocito"
+                        android:id="@+id/hemogramatxtFieldLeucocito"
                         style="@style/editTxtNumOpcionExamenEspecifico"
                         />
 
@@ -224,7 +224,7 @@
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtFieldNeutrofilo"
+                        android:id="@+id/hemogramatxtFieldNeutrofilo"
                         style="@style/editTxtNumOpcionExamenEspecifico"
                         />
 
@@ -252,7 +252,7 @@
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtFieldLinfocito"
+                        android:id="@+id/hemogramatxtFieldLinfocito"
                         style="@style/editTxtNumOpcionExamenEspecifico"
                         />
 
@@ -279,7 +279,7 @@
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtFieldEosinofilos"
+                        android:id="@+id/hemogramatxtFieldEosinofilos"
                         style="@style/editTxtNumOpcionExamenEspecifico"
                         />
 
@@ -307,7 +307,7 @@
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtFieldBasofilos"
+                        android:id="@+id/hemogramatxtFieldBasofilos"
                         style="@style/editTxtNumOpcionExamenEspecifico"
                         />
 
@@ -335,7 +335,7 @@
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtFieldMonocitos"
+                        android:id="@+id/hemogramatxtFieldMonocitos"
                         style="@style/editTxtNumOpcionExamenEspecifico"
                         />
 
@@ -363,7 +363,7 @@
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtFieldPlaquetas"
+                        android:id="@+id/hemogramatxtFieldPlaquetas"
                         style="@style/editTxtNumOpcionExamenEspecifico"
                         />
 
@@ -391,7 +391,7 @@
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtFieldVolPlaquetario"
+                        android:id="@+id/hemogramatxtFieldVolPlaquetario"
                         style="@style/editTxtNumOpcionExamenEspecifico"
                         />
 
@@ -415,8 +415,8 @@
         android:gravity="center">
 
         <Button
-            style="@style/btnAnalizar"
-            android:onClick="analizarHemograma"/>
+            android:id="@+id/hemogramaBotonAnalizar"
+            style="@style/btnAnalizar" />
 
     </LinearLayout>
 </LinearLayout>

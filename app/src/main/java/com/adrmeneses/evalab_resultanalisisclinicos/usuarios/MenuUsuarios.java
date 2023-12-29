@@ -18,6 +18,7 @@ import com.adrmeneses.evalab_resultanalisisclinicos.FormularioPrincipal;
 import com.adrmeneses.evalab_resultanalisisclinicos.R;
 import com.adrmeneses.evalab_resultanalisisclinicos.adaptadores.AdaptadorListaUsuarios;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBUsuarios;
+import com.adrmeneses.evalab_resultanalisisclinicos.contenedore.OpcionElegida;
 import com.adrmeneses.evalab_resultanalisisclinicos.contenedore.UsuarioActivo;
 import com.adrmeneses.evalab_resultanalisisclinicos.entidades.Usuarios;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

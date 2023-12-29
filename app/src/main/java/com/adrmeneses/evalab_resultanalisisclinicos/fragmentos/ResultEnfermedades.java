@@ -126,12 +126,20 @@ public class ResultEnfermedades extends Fragment {
             opcListas(autoCompletBuscarExamenEnferm,adapterBuscarExEnferm,opcionesExamenes);
         }
 
-        //si los id's son diferente de 0 pone la lista que corresponda a los id's
-        if(identificadorExamen != 0 || identificadorTipExamen != 0){
-            autoCompletBuscarExamenEnferm.setText(opcionesExamenes[opcionesExamenes.length-1], false);
-            enfermedadesArrayList = acomodarListaEnfermedades(dbResultadosTabla.leerEnfermedades(identificadorTipExamen,identificadorExamen,idUsuario));
-        } else {
+        if(opcionesExamenes != null) {
+            //si los id's son diferente de 0 pone la lista que corresponda a los id's
+            if (identificadorExamen != 0 || identificadorTipExamen != 0) {
+                autoCompletBuscarExamenEnferm.setText(opcionesExamenes[opcionesExamenes.length - 1], false);
+                enfermedadesArrayList = acomodarListaEnfermedades(dbResultadosTabla.leerEnfermedades(identificadorTipExamen, identificadorExamen, idUsuario));
+            } else {
 
+            }
+        }else{
+            textInputBuscarExamenEnferm.setHint("No hay Examenes registrados");
+            textInputBuscarExamenEnferm.setEnabled(false);
+            contBoton.setVisibility(View.VISIBLE);
+            contLista.setVisibility(View.INVISIBLE);
+            contSinEnferm.setVisibility(View.INVISIBLE);
         }
 
         //Instancia el adaptador de la Lista
@@ -239,16 +247,24 @@ public class ResultEnfermedades extends Fragment {
         /*adaptadorEnfer = new AdaptadorListaEnfermedades( acomodarListaEnfermedades(dbResultadosTabla.leerEnfermedades(identificadorTipExamen,identificadorExamen,idUsuario)));
         vistaListaEnferm.setAdapter(adaptadorEnfer);  //Asigna el adaptador al RecyclerView*/
         //enfermedadesArrayList = acomodarListaEnfermedades(dbResultadosTabla.leerEnfermedades(identificadorTipExamen,identificadorExamen,idUsuario));
-        if(enfermedadesArrayList != null) {
-            if (enfermedadesArrayList.isEmpty()) {
-                contSinEnferm.setVisibility(View.VISIBLE);
-                contLista.setVisibility(View.INVISIBLE);
-            } else {
-                contSinEnferm.setVisibility(View.INVISIBLE);
-                contLista.setVisibility(View.VISIBLE);
-                adaptadorEnfer = new AdaptadorListaEnfermedades(enfermedadesArrayList);
-                vistaListaEnferm.setAdapter(adaptadorEnfer);  //Asigna el adaptador al RecyclerView
+        if(opcionesExamenes != null) {
+            if (enfermedadesArrayList != null) {
+                if (enfermedadesArrayList.isEmpty()) {
+                    contSinEnferm.setVisibility(View.VISIBLE);
+                    contLista.setVisibility(View.INVISIBLE);
+                } else {
+                    contSinEnferm.setVisibility(View.INVISIBLE);
+                    contLista.setVisibility(View.VISIBLE);
+                    adaptadorEnfer = new AdaptadorListaEnfermedades(enfermedadesArrayList);
+                    vistaListaEnferm.setAdapter(adaptadorEnfer);  //Asigna el adaptador al RecyclerView
+                }
             }
+        }else{
+            textInputBuscarExamenEnferm.setHint("No hay Examenes registrados");
+            textInputBuscarExamenEnferm.setEnabled(false);
+            contBoton.setVisibility(View.VISIBLE);
+            contLista.setVisibility(View.INVISIBLE);
+            contSinEnferm.setVisibility(View.INVISIBLE);
         }
     }
 
