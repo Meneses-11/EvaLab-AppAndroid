@@ -25,8 +25,6 @@ import com.google.android.material.textfield.TextInputEditText;
 public class FuncionTiroidea extends MenuCategorias {
     //Declara la variable en la que se instanciara la clase UsuarioActivo
     UsuarioActivo userActv;
-    //Declara la variable en la que se instanciara la clase Opcion Elejida
-    OpcionElegida opcElegida;
     //Declara los componentes visuales
     private TextInputEditText txtT3Total, txtT3Libre, txtT4Total, txtT4Libre, txtTSH;
     private Button btnAnalizarTiroides;
@@ -48,9 +46,6 @@ public class FuncionTiroidea extends MenuCategorias {
         userActv = UsuarioActivo.getInstance();
         idUsuario = userActv.getIdUsuario();
 
-        //Instancia la clase OpcionElegida
-        opcElegida = OpcionElegida.getInstance();
-
         //Asigna los componentes a su variable correspondiente
         for (int j=0; j<idTextInputs.length; j++){
             textInputs[j] = findViewById(idTextInputs[j]);
@@ -60,8 +55,6 @@ public class FuncionTiroidea extends MenuCategorias {
         //Almacena el id del TipoExamen en este caso de Tiroides
         idTipExam = dbExamenTipo.obtenerIdTipExam(NAME_EXAM); //manda a llamar el metodo que retorna el id
 
-        llenadoTablaEnfermedades(enfermedades);
-        llenadoTablaEnfermedadesParam(enfermedades);
 
         if(dbExamenParametros.existeConIdTipExam(idTipExam)){
             Log.d(TAG, "Yafueron creados los registros en ExamenParametros de Tiroides");
@@ -78,6 +71,9 @@ public class FuncionTiroidea extends MenuCategorias {
                 llenadoTablaReferenciaValores(parametrosTiroides, idTipExam);
             }
         }
+
+        llenadoTablaEnfermedades(enfermedades);
+        llenadoTablaEnfermedadesParam(enfermedades);
 
         btnAnalizarTiroides.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -64,9 +64,6 @@ public class HemogramaCompleto extends MenuCategorias {
         //Almacena el id del TipoExamen en este caso, de Sangre
         idTipExam = dbExamenTipo.obtenerIdTipExam(NAME_EXAM); //manda a llamar el metodo que retorna el id
 
-        llenadoTablaEnfermedades(enfermedades);
-        llenadoTablaEnfermedadesParam(enfermedades);
-
         if (dbExamenParametros.existeConIdTipExam(idTipExam)){
             Log.d(TAG, "Ya fueron creados los registros en ExamenParametros de Hemograma");
             if(dbReferenciaValores.existeConIdTipExam(idTipExam)){
@@ -82,6 +79,9 @@ public class HemogramaCompleto extends MenuCategorias {
                 llenadoTablaReferenciaValores(parametro2, idTipExam);
             }
         }
+
+        llenadoTablaEnfermedades(enfermedades);
+        llenadoTablaEnfermedadesParam(enfermedades);
 
         btnAnalizarHemograma.setOnClickListener(new View.OnClickListener() {
             @Override
