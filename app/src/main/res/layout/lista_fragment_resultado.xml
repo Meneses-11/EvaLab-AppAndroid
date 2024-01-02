@@ -51,37 +51,72 @@
                     />
             </LinearLayout>
 
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:gravity="center">
+            <FrameLayout
+                android:layout_width="240dp"
+                android:layout_height="100dp">
 
-                <TableRow
-                    android:layout_height="40dp">
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:gravity="center"
+                    android:visibility="visible">
+
+                    <TableRow
+                        android:layout_height="40dp">
+                        <TextView
+                            style="@style/listResultTextoFijoCard"
+                            android:text="@string/strListResResult"
+                            />
+                        <TextView
+                            style="@style/listResultTextoFijoCard"
+                            android:text="@string/strListResValores"
+                            />
+                    </TableRow>
+                    <TableRow
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+                        <TextView
+                            android:id="@+id/textViewResultadoParametro"
+                            style="@style/listResultTextoVariaCard"
+                            android:text="15 X10^3/uL"
+                            />
+                        <TextView
+                            android:id="@+id/textViewReferenciaParametro"
+                            style="@style/listResultTextoVariaCard"
+                            android:text="20-25"
+                            />
+                    </TableRow>
+                </TableLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="invisible">
                     <TextView
-                        style="@style/listResultTextoFijoCard"
+                        android:layout_width="150dp"
+                        android:layout_height="40dp"
+                        android:textSize="25dp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/varelaround_regular"
+                        android:gravity="center"
+                        android:layout_gravity="center"
                         android:text="@string/strListResResult"
                         />
                     <TextView
-                        style="@style/listResultTextoFijoCard"
-                        android:text="@string/strListResValores"
+                        android:id="@+id/textViewResultadoParametro2"
+                        android:layout_width="150dp"
+                        android:layout_height="60dp"
+                        android:textSize="25dp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/gabarito_variablefont"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:text="Acetona / Fruta"
                         />
-                </TableRow>
-                <TableRow
-                    android:layout_height="0dp"
-                    android:layout_weight="1">
-                    <TextView
-                        android:id="@+id/textViewResultadoParametro"
-                        style="@style/listResultTextoVariaCard"
-                        android:text="15 X10^3/uL"
-                        />
-                    <TextView
-                        android:id="@+id/textViewReferenciaParametro"
-                        style="@style/listResultTextoVariaCard"
-                        android:text="20-25"
-                        />
-                </TableRow>
-            </TableLayout>
+                </LinearLayout>
+
+            </FrameLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

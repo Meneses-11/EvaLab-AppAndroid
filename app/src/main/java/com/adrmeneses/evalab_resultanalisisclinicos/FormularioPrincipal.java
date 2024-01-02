@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBUsuarios;
+import com.adrmeneses.evalab_resultanalisisclinicos.contenedore.OpcionElegida;
 import com.adrmeneses.evalab_resultanalisisclinicos.contenedore.UsuarioActivo;
 import com.adrmeneses.evalab_resultanalisisclinicos.usuarios.InformacionPerfil;
 import com.google.android.material.datepicker.MaterialDatePicker;
@@ -51,6 +53,7 @@ public class FormularioPrincipal extends AppCompatActivity {
     //Variable para el Intent
     Intent activityMenuPrin;
     private Boolean primero = true;
+    private OpcionElegida opcElegida;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -62,6 +65,7 @@ public class FormularioPrincipal extends AppCompatActivity {
         dbUsuarios = new DBUsuarios(this);
         //Instancia la clase UsuarioActivo
         userActv = UsuarioActivo.getInstance();
+        opcElegida = OpcionElegida.getInstance();
         //Asigna la activity MenuPrincipal al Intent
         activityMenuPrin = new Intent(FormularioPrincipal.this, MenuPrincipal.class);
 
@@ -251,6 +255,10 @@ public class FormularioPrincipal extends AppCompatActivity {
                 Intent intent = new Intent(this, InformacionPerfil.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
+                opcElegida.setNombreExamen("");
+                opcElegida.setExamenId(0);
+                opcElegida.setExamenTipId(0);
+                Toast.makeText(this, "Bienveido "+nombreUsr, Toast.LENGTH_SHORT).show();
                 finish();
 
             }

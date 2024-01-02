@@ -86,11 +86,7 @@ public class HemogramaCompleto extends MenuCategorias {
         btnAnalizarHemograma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(CamposLLenos(textInputs)){
-                    analizarExamen(textInputs,parametro2,idTipExam,idUsuario);
-                }else {
-                    ventanaDialogo("Datos Erroneos", "Introduzca la información solicitada");
-                }
+                analizarExamen(textInputs,parametro2,idTipExam,idUsuario);
             }
         });
 

@@ -25,7 +25,7 @@ public class DBResultadosTabla extends MyDBHelper{
     }
 
     //Método para insertar un registro en la tabla ResultadosTabla
-    public long insertarResultado(int idUser, int idTipExam, int idParameter, double value, int idExamen){
+    public long insertarResultado(int idUser, int idTipExam, int idParameter, String value, int idExamen){
         long id = 0;
 
         try{
@@ -55,28 +55,61 @@ public class DBResultadosTabla extends MyDBHelper{
         ArrayList<Resultados> listaResultados = new ArrayList<>();
         Resultados resultado = null;
 
-        //String query = "SELECT * FROM "+TABLE_RESULTADOS+" WHERE idTipExam = ? AND idExamen = ?";
-        String query = "SELECT ExamenParametros.nombreParametro, ResultadosTabla.valorObtenido, ReferenciaValores.valorMin, " +
-                       "ReferenciaValores.valorMax, ReferenciaValores.unidadMedida " +
-                       "From ((ResultadosTabla NATURAL JOIN ExamenParametros) NATURAL JOIN ReferenciaValores) " +
-                       "WHERE idTipExam = ? AND idExamen = ? AND idUsuario = ?";
+        String query;
+        Cursor cursor;
 
-        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idTipExamen), String.valueOf(idExamen), String.valueOf(idUser)});
+        switch (idTipExamen) {
+            case 2:
+                query = "SELECT ExamenParametros.nombreParametro, ResultadosTabla.valorObtenido " +
+                        "FROM (ResultadosTabla NATURAL JOIN ExamenParametros) " +
+                        "WHERE idTipExam = ? AND idExamen = ? AND idUsuario = ?";
 
-        if(cursor.moveToFirst()){
-            do{
-                resultado = new Resultados();
-                resultado.setParametroNombre(cursor.getString(0));
-                resultado.setValorObtenido(cursor.getDouble(1));
-                resultado.setMinValor(cursor.getString(2));
-                resultado.setMaxValor(cursor.getString(3));
-                resultado.setMedidaUnidad(cursor.getString(4));
+                cursor = db.rawQuery(query, new String[]{String.valueOf(idTipExamen), String.valueOf(idExamen), String.valueOf(idUser)});
 
-                listaResultados.add(resultado);
-            }while (cursor.moveToNext());
+                if (cursor.moveToFirst()) {
+                    do {
+                        resultado = new Resultados();
+                        resultado.setParametroNombre(cursor.getString(0));
+                        resultado.setValorObtenido(cursor.getDouble(1));
+
+                        listaResultados.add(resultado);
+                    } while (cursor.moveToNext());
+                }
+
+                cursor.close();
+                break;
+            default:
+                //String query = "SELECT * FROM "+TABLE_RESULTADOS+" WHERE idTipExam = ? AND idExamen = ?";
+                query = "SELECT ExamenParametros.nombreParametro, ResultadosTabla.valorObtenido, ReferenciaValores.valorMin, " +
+                        "ReferenciaValores.valorMax, ReferenciaValores.unidadMedida " +
+                        "From ((ResultadosTabla NATURAL JOIN ExamenParametros) NATURAL JOIN ReferenciaValores) " +
+                        "WHERE idTipExam = ? AND idExamen = ? AND idUsuario = ?";
+
+                cursor = db.rawQuery(query, new String[]{String.valueOf(idTipExamen), String.valueOf(idExamen), String.valueOf(idUser)});
+
+                if (cursor.moveToFirst()) {
+                    do {
+                        resultado = new Resultados();
+                        resultado.setParametroNombre(cursor.getString(0));
+
+                        // Verifica si el valor es nulo antes de intentar obtenerlo
+                        if (!cursor.isNull(1)) {
+                            resultado.setValorObtenido(cursor.getDouble(1));
+                        } else {
+                            resultado.setValorObtenido(null);
+                        }
+
+                        resultado.setMinValor(cursor.getString(2));
+                        resultado.setMaxValor(cursor.getString(3));
+                        resultado.setMedidaUnidad(cursor.getString(4));
+
+                        listaResultados.add(resultado);
+                    } while (cursor.moveToNext());
+                }
+
+                cursor.close();
         }
 
-        cursor.close();
         return listaResultados;
     }
 

@@ -12,8 +12,8 @@ public class EvaluadorEnfermedad {
     private String[][] datosResultados;
     private double valMin, valMax, valObten, puntMedio, porcentRef, acumPorcent;
     private int contador, porcentaje;
-    private int[][] rangoPorcentajesMax= {{100,95,20,10},{110,101,40,21},{120,111,65,45},{130,120,70,66},{140,130,85,71},{150,141,90,86}};
-    private int[][] rangoPorcentajesMin= {{105,100,20,10},{99,90,40,21},{89,80,65,45},{79,70,70,66},{69,60,85,71},{59,50,90,86}};
+    private int[][] rangoPorcentajesMax= {{100,95,20,10},{110,101,40,21},{120,111,55,41},{130,120,65,56},{140,130,75,66},{150,141,85,76}};
+    private int[][] rangoPorcentajesMin= {{105,100,20,10},{99,90,40,21},{89,80,55,41},{79,70,65,56},{69,60,75,66},{59,50,85,76}};
 /*
          150 + 95            |          50 - 95
 Porcentaje      Porcentaje   | Porcentaje      Porcentaje
@@ -37,8 +37,7 @@ al valor max   probabilidad  | al valor min   probabilidad
         enfermedad.setMostrar(true); //Le mandamos true para que se muestre en la vista
 
         reference = enfermedad.getReferencia();
-        datosResultados = enfermedad.getValObtenidos();
-        //[20,12,18][20,4.5,6.5][20,15,18]
+        datosResultados = enfermedad.getValObtenidos();//[12,20,18][4.5,20,6.5][15,20,22]
         switch (reference){
             case "alto":
                 for (String[] resultAlt: datosResultados) {
@@ -88,7 +87,7 @@ al valor max   probabilidad  | al valor min   probabilidad
 
     private void analizarArribaValMax(){
         if(porcentRef > 150){//95
-            acumPorcent += 95;
+            acumPorcent += 86;
         }else if(porcentRef > 140){//86-90
             acumPorcent += calcularPorcentaje(rangoPorcentajesMax[5][0],rangoPorcentajesMax[5][1],rangoPorcentajesMax[5][2],rangoPorcentajesMax[5][3],porcentRef);
         } else if (porcentRef > 130) {//71-85
@@ -105,7 +104,7 @@ al valor max   probabilidad  | al valor min   probabilidad
     }
     private void analizarAbajoValMin(){
         if (porcentRef < 50){//95
-            acumPorcent += 95;
+            acumPorcent += 86;
         }else if (porcentRef < 60){//86-90
             acumPorcent += calcularPorcentaje(rangoPorcentajesMin[5][0],rangoPorcentajesMin[5][1],rangoPorcentajesMin[5][2],rangoPorcentajesMin[5][3],porcentRef);
         }else if (porcentRef < 70){//71-85

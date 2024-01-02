@@ -6,7 +6,7 @@ import com.adrmeneses.evalab_resultanalisisclinicos.entidades.Resultados;
 public class EvaluadorResultado {
     private static final float PORC_MUY_BAJO = 0.788f;
     private static final float PORC_MUY_ALTO = 1.165f;
-    private int verde, amarillo, rojo;
+    private int verde, amarillo, rojo, gris;
     private float valorRefMin, valorRefMax;
 
     public void evaluarResult(Resultados resultado) {
@@ -14,16 +14,21 @@ public class EvaluadorResultado {
         valorRefMin = Float.valueOf(resultado.getMinValor());
         valorRefMax = Float.valueOf(resultado.getMaxValor());
 
-        verde = R.drawable.verd_semaf;
-        amarillo = R.drawable.amar_semaf;
-        rojo = R.drawable.rojo_semaf;
+        verde = R.drawable.semaf_verd;
+        amarillo = R.drawable.semaf_amar;
+        rojo = R.drawable.semaf_rojo;
+        gris = R.drawable.semaf_gris;
 
         float muyBajo = valorRefMin * PORC_MUY_BAJO;
         float muyAlto = valorRefMax * PORC_MUY_ALTO;
 
-        float valorObtenido = (float)resultado.getValorObtenido();
+        Double valorObtenido = resultado.getValorObtenido();
 
-        if(valorObtenido < muyBajo) {
+        if(valorObtenido == null){
+            resultado.setEstado("Sin Informacion");
+            resultado.setSemaf(gris);
+            resultado.setMedidaUnidad("");
+        }else if(valorObtenido < muyBajo) {
             resultado.setEstado("Valor Muy Bajo");
             resultado.setSemaf(rojo);
         } else if (valorObtenido < valorRefMin) {

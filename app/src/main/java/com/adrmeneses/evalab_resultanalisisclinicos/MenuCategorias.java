@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -173,9 +174,29 @@ public class MenuCategorias extends AppCompatActivity {
     public void analizarExamen(TextInputEditText[] textInputs, String[][] parametros, long idTipExam, long idUsuario){
         int identExamen = ((int) dbResultadosTabla.ultimoIdExamen((int)idTipExam, (int)idUsuario))+1;
         for(int a=0; a<textInputs.length; a++){
+            Double valorObten = null;
+            if (!textInputs[a].getText().toString().trim().isEmpty()){
+                valorObten = Double.parseDouble(textInputs[a].getText().toString());
+            }
             llenarTablaResultados((int)idUsuario,
-                    (int)idTipExam, (int)dbExamenParametros.obtenerIdParametro(parametros[a][0]),
-                    Double.parseDouble(textInputs[a].getText().toString()), identExamen);
+                    (int)idTipExam, (int)dbExamenParametros.obtenerIdParametro(parametros[a][0]), ""+valorObten, identExamen);
+        }
+        Intent lanzar = new Intent(this, VentanaResultados.class);
+        opcElegida.setExamenId(identExamen);
+        opcElegida.setExamenTipId((int) idTipExam);
+        opcElegida.setNombreExamen(dbExamenTipo.obtenerNombreTipExam((int) idTipExam));
+        startActivity(lanzar);
+        finish();
+
+    }
+    //Se ejcuta al presionar el boton Analizar del EGO
+    public void analizarExamenOrina(AutoCompleteTextView[] autoCompleteTxt, Object[] parametros, long idTipExam, long idUsuario){
+        int identExamen = ((int) dbResultadosTabla.ultimoIdExamen((int)idTipExam, (int)idUsuario))+1;
+        for(int a=0; a<autoCompleteTxt.length; a++){
+            Object[] elemento = (Object[]) parametros[a];
+            llenarTablaResultados((int)idUsuario,
+                    (int)idTipExam, (int)dbExamenParametros.obtenerIdParametro((String) elemento[0]),
+                    (String) elemento[5], identExamen);
         }
         Intent lanzar = new Intent(this, VentanaResultados.class);
         opcElegida.setExamenId(identExamen);
@@ -186,7 +207,7 @@ public class MenuCategorias extends AppCompatActivity {
 
     }
     //Método que agregará datos a la tabla Resultados
-    public void llenarTablaResultados(int usuarioId, int examenTipId, int parameterId, double valor, int examenId){
+    public void llenarTablaResultados(int usuarioId, int examenTipId, int parameterId, String valor, int examenId){
         long id;
 
         //Todos los registros que tendrá nuestra tabla

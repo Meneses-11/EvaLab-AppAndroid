@@ -70,7 +70,7 @@
     <!-- Sangre -->
     <string name="strHemoglobina">Hemoglobina</string>
     <string name="strHematocrito">Hematocrito</string>
-    <string name="strGloRojos">Globulos Rojos (Eritrocitos)</string>
+    <string name="strGloRojos">Eritrocitos (Globulos Rojos)</string>
     <string name="strVMG">Volumen Globular/Corpuscular Medio (VMG / VCM)</string>
     <string name="strHCM">Hemoglobina Corpuscular Media (HCM)</string>
     <string name="strReticulocitos">Cuenta Correjida de Reticulocitos</string>
