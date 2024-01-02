@@ -15,6 +15,7 @@ import com.adrmeneses.evalab_resultanalisisclinicos.entidades.Enfermedades;
 import com.adrmeneses.evalab_resultanalisisclinicos.entidades.Resultados;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DBResultadosTabla extends MyDBHelper{
     Context context;
@@ -151,16 +152,36 @@ public class DBResultadosTabla extends MyDBHelper{
                 enfermedad.setReferencia(cursor.getString(1));
                 enfermedad.setInformacion(cursor.getString(2));
 
-                String[] valores = cursor.getString(3).split(",");
-                String[] valMin = cursor.getString(4).split(",");
-                String[] valMax = cursor.getString(5).split(",");
-                datos = new String[valores.length][3];
-                for(int i=0; i<valores.length; i++){
-                    datos[i][0] = valores[i];
-                    datos[i][1] = valMin[i];
-                    datos[i][2] = valMax[i];
+                // Verifica si el valor es nulo antes de intentar obtenerlo
+                if (!cursor.isNull(3)) {
+                    int contadorNull = 0;
+                    String[] valores = cursor.getString(3).split(",");
+                    String[] valMin = cursor.getString(4).split(",");
+                    String[] valMax = cursor.getString(5).split(",");
+                    //datos = new String[valores.length][3];
+                    List<String[]> datosList = new ArrayList<>();
+                    for(int i=0; i<valores.length; i++){
+                        if(!valores[i].equals("null")) {
+                            Log.d(TAG, "leerEnfermedades: Si entro y es "+valores[i]);
+                            /*datos[i-contadorNull][0] = valores[i];
+                            datos[i-contadorNull][1] = valMin[i];
+                            datos[i-contadorNull][2] = valMax[i];*/
+                            String[] dato = {valores[i], valMin[i], valMax[i]};
+                            datosList.add(dato);
+                        }else{
+                            contadorNull += 1;
+                        }
+                    }
+                    if(contadorNull == valores.length){
+                        enfermedad.setValObtenidos(null);
+                    }else {
+                        // Convierte la lista a un arreglo bidimensional
+                        datos = datosList.toArray(new String[datosList.size()][]);
+                        enfermedad.setValObtenidos(datos);
+                    }
+                } else {
+                    enfermedad.setValObtenidos(null);
                 }
-                enfermedad.setValObtenidos(datos);
 
                 listaEnfermedades.add(enfermedad);
             }while(cursor.moveToNext());

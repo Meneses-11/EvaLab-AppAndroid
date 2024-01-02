@@ -36,53 +36,61 @@ al valor max   probabilidad  | al valor min   probabilidad
         textoPorcentaje = "";
         enfermedad.setMostrar(true); //Le mandamos true para que se muestre en la vista
 
-        reference = enfermedad.getReferencia();
-        datosResultados = enfermedad.getValObtenidos();//[12,20,18][4.5,20,6.5][15,20,22]
-        switch (reference){
-            case "alto":
-                for (String[] resultAlt: datosResultados) {
-                    valObten = Double.parseDouble(resultAlt[0]);
-                    valMax = Double.valueOf(resultAlt[2]);
-                    contador += 1;
-                    porcentRef = valObten * 100 / valMax;
-                    analizarArribaValMax();
-                }
-                break;
-            case "bajo":
-                for (String[] resultBaj: datosResultados) {
-                    valObten = Double.valueOf(resultBaj[0]);
-                    valMin = Double.valueOf(resultBaj[1]);
-                    contador += 1;
-                    porcentRef = valObten * 100 / valMin;
-                    analizarAbajoValMin();
-                }
-                break;
-            case "ambos":
-                for (String[] resultAm: datosResultados) {
-                    valObten = Double.valueOf(resultAm[0]);
-                    valMin = Double.valueOf(resultAm[1]);
-                    valMax = Double.valueOf(resultAm[2]);
-                    contador += 1;
-
-                    puntMedio = valMin + ((valMax-valMin)/2);
-
-                    if (valObten > puntMedio){
+        if(enfermedad.getValObtenidos() != null) {
+            reference = enfermedad.getReferencia();
+            datosResultados = enfermedad.getValObtenidos();//[12,20,18][4.5,20,6.5][15,20,22]
+            for (String[] info: datosResultados) {
+                Log.d(TAG, "evaluarEnferm: datos: "+info[0]+" "+info[1]+" "+info[2]);
+            }
+            switch (reference) {
+                case "alto":
+                    for (String[] resultAlt : datosResultados) {
+                        valObten = Double.parseDouble(resultAlt[0]);
+                        valMax = Double.valueOf(resultAlt[2]);
+                        contador += 1;
                         porcentRef = valObten * 100 / valMax;
                         analizarArribaValMax();
-                    }else {
+                    }
+                    break;
+                case "bajo":
+                    for (String[] resultBaj : datosResultados) {
+                        valObten = Double.valueOf(resultBaj[0]);
+                        valMin = Double.valueOf(resultBaj[1]);
+                        contador += 1;
                         porcentRef = valObten * 100 / valMin;
                         analizarAbajoValMin();
                     }
-                }
-                break;
-            default:
-                Log.e(TAG, "evaluarEnferm: Hubo un error con la referencia de: "+enfermedad.getNombreEnf());
-        }
-        porcentaje = (int)(acumPorcent/contador);
-        textoPorcentaje = evaluarInfoPorcentaje(porcentaje, enfermedad);
+                    break;
+                case "ambos":
+                    for (String[] resultAm : datosResultados) {
+                        valObten = Double.valueOf(resultAm[0]);
+                        valMin = Double.valueOf(resultAm[1]);
+                        valMax = Double.valueOf(resultAm[2]);
+                        contador += 1;
 
-        enfermedad.setPorcentaje(porcentaje);
-        enfermedad.setInfoPorcentaje(textoPorcentaje);
+                        puntMedio = valMin + ((valMax - valMin) / 2);
+
+                        if (valObten > puntMedio) {
+                            porcentRef = valObten * 100 / valMax;
+                            analizarArribaValMax();
+                        } else {
+                            porcentRef = valObten * 100 / valMin;
+                            analizarAbajoValMin();
+                        }
+                    }
+                    break;
+                default:
+                    Log.e(TAG, "evaluarEnferm: Hubo un error con la referencia de: " + enfermedad.getNombreEnf());
+            }
+            porcentaje = (int) (acumPorcent / contador);
+            textoPorcentaje = evaluarInfoPorcentaje(porcentaje, enfermedad);
+
+            enfermedad.setPorcentaje(porcentaje);
+            enfermedad.setInfoPorcentaje(textoPorcentaje);
+        }else{
+            enfermedad.setMostrar(false);
+            textoPorcentaje = "";
+        }
     }
 
     private void analizarArribaValMax(){
