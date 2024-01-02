@@ -51,38 +51,21 @@ public class DBResultadosTabla extends MyDBHelper{
     public ArrayList<Resultados> leerResultados(int idTipExamen, int idExamen, int idUser){
         MyDBHelper myDBhelper = new MyDBHelper(context);
         SQLiteDatabase db = myDBhelper.getReadableDatabase();
-
+        DBExamenTipo dbExamenTipo = new DBExamenTipo(context);
+        String nombreExamen = "";
+        if(idTipExamen != 0) {
+            nombreExamen = dbExamenTipo.obtenerNombreTipExam(idTipExamen);
+        }
         ArrayList<Resultados> listaResultados = new ArrayList<>();
         Resultados resultado = null;
 
         String query;
         Cursor cursor;
 
-        switch (idTipExamen) {
-            case 2:
+        switch (nombreExamen) {
+            case "Examen de Orina":
                 query = "SELECT ExamenParametros.nombreParametro, ResultadosTabla.valorObtenido " +
-                        "FROM (ResultadosTabla NATURAL JOIN ExamenParametros) " +
-                        "WHERE idTipExam = ? AND idExamen = ? AND idUsuario = ?";
-
-                cursor = db.rawQuery(query, new String[]{String.valueOf(idTipExamen), String.valueOf(idExamen), String.valueOf(idUser)});
-
-                if (cursor.moveToFirst()) {
-                    do {
-                        resultado = new Resultados();
-                        resultado.setParametroNombre(cursor.getString(0));
-                        resultado.setValorObtenido(cursor.getDouble(1));
-
-                        listaResultados.add(resultado);
-                    } while (cursor.moveToNext());
-                }
-
-                cursor.close();
-                break;
-            default:
-                //String query = "SELECT * FROM "+TABLE_RESULTADOS+" WHERE idTipExam = ? AND idExamen = ?";
-                query = "SELECT ExamenParametros.nombreParametro, ResultadosTabla.valorObtenido, ReferenciaValores.valorMin, " +
-                        "ReferenciaValores.valorMax, ReferenciaValores.unidadMedida " +
-                        "From ((ResultadosTabla NATURAL JOIN ExamenParametros) NATURAL JOIN ReferenciaValores) " +
+                        "FROM ("+TABLE_RESULTADOS+" NATURAL JOIN "+TABLE_PARAMETROS_EXAMEN+") " +
                         "WHERE idTipExam = ? AND idExamen = ? AND idUsuario = ?";
 
                 cursor = db.rawQuery(query, new String[]{String.valueOf(idTipExamen), String.valueOf(idExamen), String.valueOf(idUser)});
@@ -94,7 +77,36 @@ public class DBResultadosTabla extends MyDBHelper{
 
                         // Verifica si el valor es nulo antes de intentar obtenerlo
                         if (!cursor.isNull(1)) {
-                            resultado.setValorObtenido(cursor.getDouble(1));
+                            String[] valObten = cursor.getString(1).split(",");
+                            resultado.setValorObtenido(valObten[0]);
+                            resultado.setMedidaUnidad(valObten[1]);
+                        } else {
+                            resultado.setValorObtenido(null);
+                        }
+
+                        listaResultados.add(resultado);
+                    } while (cursor.moveToNext());
+                }
+
+                cursor.close();
+                break;
+            default:
+                //String query = "SELECT * FROM "+TABLE_RESULTADOS+" WHERE idTipExam = ? AND idExamen = ?";
+                query = "SELECT ExamenParametros.nombreParametro, ResultadosTabla.valorObtenido, ReferenciaValores.valorMin, " +
+                        "ReferenciaValores.valorMax, ReferenciaValores.unidadMedida " +
+                        "From (("+TABLE_RESULTADOS+" NATURAL JOIN "+TABLE_PARAMETROS_EXAMEN+") NATURAL JOIN "+TABLE_VALORES_REFERENCIA+") " +
+                        "WHERE idTipExam = ? AND idExamen = ? AND idUsuario = ?";
+
+                cursor = db.rawQuery(query, new String[]{String.valueOf(idTipExamen), String.valueOf(idExamen), String.valueOf(idUser)});
+
+                if (cursor.moveToFirst()) {
+                    do {
+                        resultado = new Resultados();
+                        resultado.setParametroNombre(cursor.getString(0));
+
+                        // Verifica si el valor es nulo antes de intentar obtenerlo
+                        if (!cursor.isNull(1)) {
+                            resultado.setValorObtenido(cursor.getString(1));
                         } else {
                             resultado.setValorObtenido(null);
                         }

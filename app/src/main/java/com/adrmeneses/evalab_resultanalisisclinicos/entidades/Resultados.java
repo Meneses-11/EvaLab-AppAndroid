@@ -1,7 +1,7 @@
 package com.adrmeneses.evalab_resultanalisisclinicos.entidades;
 
 public class Resultados {
-    private Double valorObtenido;
+    private String valorObtenido;
     private String parametroNombre;
     private String minValor;
     private String maxValor;
@@ -11,11 +11,10 @@ public class Resultados {
 
 
 
-    public Double getValorObtenido() {
+    public String getValorObtenido() {
         return valorObtenido;
     }
-
-    public void setValorObtenido(Double valorObtenido) {
+    public void setValorObtenido(String valorObtenido) {
         this.valorObtenido = valorObtenido;
     }
 

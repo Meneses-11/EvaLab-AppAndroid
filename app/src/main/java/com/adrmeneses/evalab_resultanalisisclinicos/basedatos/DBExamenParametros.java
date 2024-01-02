@@ -77,4 +77,21 @@ public class DBExamenParametros extends MyDBHelper{
         return parametroId;
     }
 
+    //Método que obtiene el id del TipoExamen al que corresponde el parametro
+    public long obtenerIdDeTipExamDelParametro(String parametro){
+        long idTipExamParametro = 0;
+        MyDBHelper myDBHelper = new MyDBHelper(context);
+        SQLiteDatabase db = myDBHelper.getReadableDatabase();
+        if(db != null){
+            String query = "SELECT idTipExam FROM "+TABLE_PARAMETROS_EXAMEN+" WHERE nombreParametro = ?";
+            Cursor cursor = db.rawQuery(query, new String[]{parametro});
+            if (cursor != null){
+                cursor.moveToFirst();
+                idTipExamParametro = cursor.getInt(0);
+            }
+        }
+
+        return idTipExamParametro;
+    }
+
 }

@@ -101,22 +101,12 @@ public class MenuPrincipal extends AppCompatActivity {
         long id, id1, id2, id3, id4;//, id5, id6, id7, id8, id9, id10, id11, id12, id13, id14, id15;
 
         //Todos los registros que tendrá nuestra tabla
-        id = dbExamenTipo.insertaExamenTipo("hemograma", "Sangre");             //Recibe como parámetro un objeto de tipo DBExamenTipo (clase donde se realiza el CRUD)
-        id1 = dbExamenTipo.insertaExamenTipo("EGO", "Orina");      //Llama al método de la clase que se encarga de insertar un registro
-        id2 = dbExamenTipo.insertaExamenTipo("Funcion Hepatica", "Funcion Hepática");              //Manda el/los dato/s que se insertará/n en el registro
-        id3 = dbExamenTipo.insertaExamenTipo("Tiroides", "Tiroides"); //Retorna un valor de tipo long con el id de la acción
+        id = dbExamenTipo.insertaExamenTipo("hemograma", "Sangre");                    //Recibe como parámetro un objeto de tipo DBExamenTipo (clase donde se realiza el CRUD)
+        id1 = dbExamenTipo.insertaExamenTipo("Examen de Orina", "Orina");              //Llama al método de la clase que se encarga de insertar un registro
+        id2 = dbExamenTipo.insertaExamenTipo("Funcion Hepatica", "Funcion Hepática");  //Manda el/los dato/s que se insertará/n en el registro
+        id3 = dbExamenTipo.insertaExamenTipo("Tiroides", "Tiroides");                  //Retorna un valor de tipo long con el id de la acción
         id4 = dbExamenTipo.insertaExamenTipo("Funcion Renal", "Funcion Renal");
-        /*id5 = dbExamenTipo.insertaExamenTipo("urocultivo", "orina");
-        id6 = dbExamenTipo.insertaExamenTipo("alt", "funcion_hepatica");
-        id7 = dbExamenTipo.insertaExamenTipo("ast", "funcion_hepatica");
-        id8 = dbExamenTipo.insertaExamenTipo("bilirrubina", "funcion_hepatica");
-        id9 = dbExamenTipo.insertaExamenTipo("tsh", "tiroides");
-        id10 = dbExamenTipo.insertaExamenTipo("t4", "tiroides");
-        id11 = dbExamenTipo.insertaExamenTipo("bun", "funcion_renal");
-        id12 = dbExamenTipo.insertaExamenTipo("creatinina_serica", "funcion_renal");
-        id13 = dbExamenTipo.insertaExamenTipo("vih", "infecciones");
-        id14 = dbExamenTipo.insertaExamenTipo("hepatitis", "infecciones");
-        id15 = dbExamenTipo.insertaExamenTipo("sifilis", "infecciones");*/
+
 
         //Evalúa si todos los id son mayores que 0, es decir, que se hayan creado exitosamente
         if (id>0 && id1>0 && id2>0 && id3>0 && id4>0 /*&& id5>0 && id6>0 && id7>0 && id8>0 && id9>0 && id10>0 && id11>0 && id12>0 && id13>0 && id14>0 && id15>0*/){

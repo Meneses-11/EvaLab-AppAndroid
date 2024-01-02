@@ -174,12 +174,12 @@ public class MenuCategorias extends AppCompatActivity {
     public void analizarExamen(TextInputEditText[] textInputs, String[][] parametros, long idTipExam, long idUsuario){
         int identExamen = ((int) dbResultadosTabla.ultimoIdExamen((int)idTipExam, (int)idUsuario))+1;
         for(int a=0; a<textInputs.length; a++){
-            Double valorObten = null;
+            String valorObten = null;
             if (!textInputs[a].getText().toString().trim().isEmpty()){
-                valorObten = Double.parseDouble(textInputs[a].getText().toString());
+                valorObten = (textInputs[a].getText().toString());
             }
             llenarTablaResultados((int)idUsuario,
-                    (int)idTipExam, (int)dbExamenParametros.obtenerIdParametro(parametros[a][0]), ""+valorObten, identExamen);
+                    (int)idTipExam, (int)dbExamenParametros.obtenerIdParametro(parametros[a][0]), valorObten, identExamen);
         }
         Intent lanzar = new Intent(this, VentanaResultados.class);
         opcElegida.setExamenId(identExamen);
