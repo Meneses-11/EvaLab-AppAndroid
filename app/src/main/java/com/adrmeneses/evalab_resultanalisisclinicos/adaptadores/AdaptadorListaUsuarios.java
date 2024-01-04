@@ -52,7 +52,7 @@ public class AdaptadorListaUsuarios extends RecyclerView.Adapter<AdaptadorListaU
         holder.contentOpcion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                holder.userActivo.setIdUsuario((long) usuarios.getId());
+                holder.userActivo.setIdUsuario(usuarios.getId());
                 holder.opcElegida.setNombreExamen("");
                 holder.opcElegida.setExamenId(0);
                 holder.opcElegida.setExamenTipId(0);

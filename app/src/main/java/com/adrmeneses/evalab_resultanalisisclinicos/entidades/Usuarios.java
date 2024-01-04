@@ -12,6 +12,7 @@ public class Usuarios {
     private Double altura;
     private Double peso;
     private Date fechaDate;
+    private Boolean embarazada;
 
 
     public int getId() {
@@ -75,5 +76,12 @@ public class Usuarios {
     }
     public void setFechaDate(Date fechaDate) {
         this.fechaDate = fechaDate;
+    }
+
+    public Boolean getEmbarazada() {
+        return embarazada;
+    }
+    public void setEmbarazada(Boolean embarazada) {
+        this.embarazada = embarazada;
     }
 }

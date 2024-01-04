@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,16 +38,18 @@ public class EditarUsuario extends AppCompatActivity {
     private int idUsr;
     private TextInputEditText txtFieldNombre, txtFieldApellido, txtFieldEstatura, txtFieldPeso;
     private TextView txtViewFecha;
-    private LinearLayout contSexMasc, contSexFem, contFecha;
+    private LinearLayout contSexMasc, contSexFem, contFecha, contEmbarazo;
     private Button btnCancelar, btnAcept;
+    private CheckBox checkBoxEmbarazo;
     String sexo, fechaNacimien;
-    Boolean editado;
+    Boolean editado, embarazo;
     DBUsuarios dbUsuarios;
     SimpleDateFormat formatoFecha;
     Date fechaNaciDate;
 
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +69,8 @@ public class EditarUsuario extends AppCompatActivity {
         contSexFem = findViewById(R.id.editarUsuarioLayoutSexoFeme);
         btnCancelar = findViewById(R.id.editarUsuarioBotonCancelar);
         btnAcept = findViewById(R.id.editarUsuarioBotonAceptar);
+        contEmbarazo = findViewById(R.id.editarUsuarioLayoutEmbarazo);
+        checkBoxEmbarazo = findViewById(R.id.editarUsuarioCheckBoxEmbarazo);
 
         mostrarDatos(dbUsuarios.verUsuario(idUsr));
 
@@ -77,6 +82,9 @@ public class EditarUsuario extends AppCompatActivity {
                 contSexFem.setBackgroundResource(R.drawable.fondo_usuario_perfil);
                 contSexFem.setElevation(0);
                 sexo = "Masculino";
+                contEmbarazo.setVisibility(View.GONE);
+                checkBoxEmbarazo.setEnabled(false);
+                embarazo = false;
             }
         });
         contSexFem.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +95,14 @@ public class EditarUsuario extends AppCompatActivity {
                 contSexMasc.setBackgroundResource(R.drawable.fondo_usuario_perfil);
                 contSexMasc.setElevation(0);
                 sexo = "Femenino";
+                contEmbarazo.setVisibility(View.VISIBLE);
+                checkBoxEmbarazo.setEnabled(true);
+            }
+        });
+        checkBoxEmbarazo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                embarazo = checkBoxEmbarazo.isChecked();
             }
         });
 
@@ -101,8 +117,6 @@ public class EditarUsuario extends AppCompatActivity {
             public void onClick(View view) {
                 if(!txtFieldNombre.getText().toString().equals("") && !txtFieldApellido.getText().toString().equals("") && !txtFieldEstatura.getText().toString().equals("") && !txtFieldPeso.getText().toString().equals("") && !txtViewFecha.getText().toString().equals("")) {
 
-                    //Date fechaDate = null;
-
                     TimeZone zonaHoraria = TimeZone.getTimeZone("UTC");
                     formatoFecha = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
                     formatoFecha.setTimeZone(zonaHoraria);
@@ -113,8 +127,9 @@ public class EditarUsuario extends AppCompatActivity {
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
-
-                    editado = dbUsuarios.editaUsuario(idUsr, txtFieldNombre.getText().toString(), txtFieldApellido.getText().toString(), sexo, fechaNaciDate, Double.parseDouble(txtFieldEstatura.getText().toString()), Double.parseDouble(txtFieldPeso.getText().toString()));
+                    //embarazo = checkBoxEmbarazo.isChecked();
+                    //Log.d(TAG, "onClick: embarazo: "+embarazo);
+                    editado = dbUsuarios.editaUsuario(idUsr, txtFieldNombre.getText().toString(), txtFieldApellido.getText().toString(), sexo, fechaNaciDate, Double.parseDouble(txtFieldEstatura.getText().toString()), Double.parseDouble(txtFieldPeso.getText().toString()), embarazo);
 
                     if (editado){
                         Toast.makeText(EditarUsuario.this, "Guardado con Éxito", Toast.LENGTH_SHORT).show();
@@ -180,10 +195,18 @@ public class EditarUsuario extends AppCompatActivity {
                 contSexMasc.setBackgroundResource(R.drawable.fondo_usuario_perfil_obscuro);
                 contSexFem.setElevation(0);
                 sexo = "Masculino";
+                contEmbarazo.setVisibility(View.GONE);
+                checkBoxEmbarazo.setChecked(false);
+                checkBoxEmbarazo.setEnabled(false);
+                embarazo = false;
             }else{
                 contSexMasc.setElevation(0);
                 contSexFem.setBackgroundResource(R.drawable.fondo_usuario_perfil_obscuro);
                 sexo = "Femenino";
+                contEmbarazo.setVisibility(View.VISIBLE);
+                checkBoxEmbarazo.setEnabled(true);
+                checkBoxEmbarazo.setChecked(usuario.getEmbarazada());
+                embarazo = usuario.getEmbarazada();
             }
             fechaNacimien = convertirFecha(usuario.getFecha());
             txtViewFecha.setText(convertirFecha(usuario.getFecha()));

@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.adrmeneses.evalab_resultanalisisclinicos.FormularioPrincipal;
@@ -37,8 +39,10 @@ public class InformacionPerfil extends AppCompatActivity {
     private ImageView imgViewSexo;
     private Button btnEditar, btnCambiar;
     private int imgMasculino, imgFemenino;
+    private LinearLayout contenedorEmbarazo;
     DBUsuarios dbUsuarios;
 
+    @SuppressLint("MissingInflatedId")
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +63,7 @@ public class InformacionPerfil extends AppCompatActivity {
         imgViewSexo = findViewById(R.id.infPerfilImgViewSexo);
         btnEditar = findViewById(R.id.infPerfilBotonEditar);
         btnCambiar = findViewById(R.id.infPerfilBotonCambiar);
+        contenedorEmbarazo = findViewById(R.id.perfilUserContEmbarazo);
 
         imgMasculino = R.drawable.hombre;
         imgFemenino = R.drawable.mujer;
@@ -97,9 +102,15 @@ public class InformacionPerfil extends AppCompatActivity {
             if ("Masculino".equals(usuario.getSexo())){
                 imgViewSexo.setImageResource(imgMasculino);
                 txtViewSexo.setText(usuario.getSexo());
+                contenedorEmbarazo.setVisibility(View.GONE);
             }else{
                 imgViewSexo.setImageResource(imgFemenino);
                 txtViewSexo.setText(usuario.getSexo());
+                if(usuario.getEmbarazada()){
+                    contenedorEmbarazo.setVisibility(View.VISIBLE);
+                }else {
+                    contenedorEmbarazo.setVisibility(View.GONE);
+                }
             }
             txtViewFecha.setText(convertirFecha(usuario.getFecha()));
             txtViewEdad.setText(obtenerAnios(convertirFecha(usuario.getFecha())));

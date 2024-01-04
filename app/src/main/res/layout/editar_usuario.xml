@@ -326,38 +326,35 @@
 
                 </LinearLayout>
 
-            <!--    <LinearLayout
-                    style="@style/editarUserFondoContenedorCorto"
-                    android:orientation="vertical"
-                    android:gravity="center">
+            </LinearLayout>
 
-                    <TextView
-                        style="@style/perfilUserTxtNormal"
-                        android:layout_marginBottom="25dp"
-                        android:text="@string/strInfUserPeso"/>
+            <LinearLayout
+                android:id="@+id/editarUsuarioLayoutEmbarazo"
+                style="@style/editarUserFondoContenedorLargo"
+                android:layout_height="140dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="gone">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:gravity="center">
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/bascula"
-                            android:layout_marginRight="10dp"/>
-                        <TextView
-                            android:id="@+id/infPerfilTextViewPeso"
-                            style="@style/editarUserTxtNumeros"
-                            android:layout_width="40dp"
-                            android:layout_marginRight="5dp"
-                            android:textAlignment="textEnd"
-                            android:text="64"/>
-                        <TextView
-                            style="@style/perfilUserTxtNumeros"
-                            android:text="@string/strKilogramo"/>
-                    </LinearLayout>
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/embarazada"
+                    android:layout_marginRight="10dp"/>
 
-                </LinearLayout>  -->
+                <CheckBox
+                    android:id="@+id/editarUsuarioCheckBoxEmbarazo"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="25dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/robotoslab_variablefont"
+                    android:text="@string/strInfUserEmbarazada"
+                    android:enabled="false"
+                    />
 
             </LinearLayout>
 

@@ -51,7 +51,7 @@ public class DBUsuarios extends MyDBHelper{
     }
 
     //Método que edita en la tabla Usuario
-    public boolean editaUsuario(int id, String nombreUsuario, String apellidoUsuario, String sexoUsuario, Date fechaNacimiento, Double alturaUsuario, Double pesoUsuario){
+    public boolean editaUsuario(int id, String nombreUsuario, String apellidoUsuario, String sexoUsuario, Date fechaNacimiento, Double alturaUsuario, Double pesoUsuario, Boolean embarazoUsuario){
         boolean correcto = false;
 
         //Objeto de la clase MyDBHelper
@@ -59,7 +59,7 @@ public class DBUsuarios extends MyDBHelper{
         SQLiteDatabase db = myDBHelper.getWritableDatabase();  //crea un objeto y le pasa un metodo para escribir en la bd
 
         try{
-            db.execSQL("UPDATE "+TABLE_USUARIOS+" SET nombre = '"+nombreUsuario+"', apellido = '"+apellidoUsuario+"', fechaNacimiento = '"+fechaNacimiento.getTime()+"', sexo = '"+sexoUsuario+"', estatura = '"+alturaUsuario+"', peso = '"+pesoUsuario+"' WHERE idUsuario='"+id+"'");
+            db.execSQL("UPDATE "+TABLE_USUARIOS+" SET nombre = '"+nombreUsuario+"', apellido = '"+apellidoUsuario+"', fechaNacimiento = '"+fechaNacimiento.getTime()+"', sexo = '"+sexoUsuario+"', estatura = '"+alturaUsuario+"', peso = '"+pesoUsuario+"', embarazada = "+embarazoUsuario+" WHERE idUsuario='"+id+"'");
             correcto = true;
         }catch (Exception ex){
             ex.toString();
@@ -123,6 +123,7 @@ public class DBUsuarios extends MyDBHelper{
                 usuario.setSexo(cursor.getString(4));
                 usuario.setAltura(cursor.getDouble(5));
                 usuario.setPeso(cursor.getDouble(6));
+                usuario.setEmbarazada(cursor.getInt(7) == 1);
             }
             cursor.close();
         }
