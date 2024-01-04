@@ -7,11 +7,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -42,6 +42,7 @@ public class FormularioPrincipal extends AppCompatActivity {
     SimpleDateFormat formatoFecha;
     Button btnAntes, btnNext;
     TextInputEditText txtNombre, txtApellido, txtEstatura, txtPeso;
+    CheckBox checkBoxEmbarazo;
     //Declara variables que sirven para almacenar el id de la opción en el RadioButton y una para llevar el control de la visibilidad de los componentes
     int checkRadioButtonId, nVentana = 1;
     //Decara las variables en las que se almacenará los datos que se introduciran en la bd
@@ -52,7 +53,7 @@ public class FormularioPrincipal extends AppCompatActivity {
     DBUsuarios dbUsuarios;
     //Variable para el Intent
     Intent activityMenuPrin;
-    private Boolean primero = true;
+    private Boolean primero = true, isEmbarazada = false;
     private OpcionElegida opcElegida;
 
     @SuppressLint("MissingInflatedId")
@@ -82,6 +83,7 @@ public class FormularioPrincipal extends AppCompatActivity {
         contenedorFechaNacimiento = findViewById(R.id.layoutFechaNacimiento);
         txtFechaNacimiento = findViewById(R.id.labelTxtFecha);
         radioGroupSexo = findViewById(R.id.radioGroupSex);
+        checkBoxEmbarazo = findViewById(R.id.checkBoxEmbarazada);
 
         checkRadioButtonId = radioGroupSexo.getCheckedRadioButtonId();  //Retorna el id del item seleccionado
 
@@ -115,11 +117,12 @@ public class FormularioPrincipal extends AppCompatActivity {
                 switch (i){
                     case R.id.radBtnM:
                         sexoUsr = "Masculino";  //Agrega a la variable la opción Masculino
-                        //Toast.makeText(FormularioPrincipal.this, "Selecciono Masculino", Toast.LENGTH_SHORT).show();
+                        checkBoxEmbarazo.setEnabled(false);
+                        checkBoxEmbarazo.setChecked(false);
                         break;
                     case R.id.radBtnF:
                         sexoUsr = "Femenino";  //Agrega a la variable la opción Femenino
-                        //Toast.makeText(FormularioPrincipal.this, "Seleccionó Femenino", Toast.LENGTH_SHORT).show();
+                        checkBoxEmbarazo.setEnabled(true);
                         break;
                     default:
                         Log.d(TAG, "El id es: "+i);
@@ -202,6 +205,7 @@ public class FormularioPrincipal extends AppCompatActivity {
                     btnAntes.setVisibility(View.VISIBLE);
                     btnNext.setVisibility(View.VISIBLE);
                     btnNext.setText("Aceptar");
+                    isEmbarazada = checkBoxEmbarazo.isChecked();
                 }
                 break;
             case 4:
@@ -242,7 +246,7 @@ public class FormularioPrincipal extends AppCompatActivity {
     public void llenarUsuario(DBUsuarios dbUsuarios){
         long id;
 
-        id = dbUsuarios.insertaUsuario(nombreUsr, apellidoUsr, sexoUsr, fechNaciUsr, alturaUsr, pesoUsr);
+        id = dbUsuarios.insertaUsuario(nombreUsr, apellidoUsr, sexoUsr, fechNaciUsr, alturaUsr, pesoUsr, isEmbarazada);
 
         if(id>0){
             //Toast.makeText(this, "Agregado con Éxito", Toast.LENGTH_SHORT).show();

@@ -27,7 +27,8 @@ public class MyDBHelper extends SQLiteOpenHelper {
                 "fechaNacimiento DATE NOT NULL," +
                 "sexo VARCHAR NOT NULL," +
                 "estatura DOUBLE NOT NULL," +
-                "peso DOUBLE NOT NULL)");
+                "peso DOUBLE NOT NULL," +
+                "embarazada BOOLEAN NOT NULL)");
 
         //Crea la tabla ExamenTipo
         sqLiteDatabase.execSQL("CREATE TABLE "+TABLE_TIPO_EXAMEN+" (" +

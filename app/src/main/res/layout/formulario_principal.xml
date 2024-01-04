@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:visibility="visible">
+            android:visibility="invisible">
             
             <LinearLayout
                 android:layout_width="match_parent"
@@ -125,7 +125,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center"
-            android:visibility="invisible">
+            android:visibility="visible">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -219,6 +219,18 @@
                     android:text="@string/strInfUserFechaHint"/>
 
             </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/checkBoxEmbarazada"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:checkedState="unchecked"
+                android:textSize="25dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/robotoslab_variablefont"
+                android:text="@string/strInfUserEmbarazada"
+                android:enabled="false"/>
 
         </LinearLayout>
 

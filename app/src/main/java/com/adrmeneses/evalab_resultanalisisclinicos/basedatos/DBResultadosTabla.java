@@ -92,7 +92,6 @@ public class DBResultadosTabla extends MyDBHelper{
                 cursor.close();
                 break;
             default:
-                //String query = "SELECT * FROM "+TABLE_RESULTADOS+" WHERE idTipExam = ? AND idExamen = ?";
                 query = "SELECT ExamenParametros.nombreParametro, ResultadosTabla.valorObtenido, ReferenciaValores.valorMin, " +
                         "ReferenciaValores.valorMax, ReferenciaValores.unidadMedida " +
                         "From (("+TABLE_RESULTADOS+" NATURAL JOIN "+TABLE_PARAMETROS_EXAMEN+") NATURAL JOIN "+TABLE_VALORES_REFERENCIA+") " +
@@ -145,13 +144,6 @@ public class DBResultadosTabla extends MyDBHelper{
         switch (nombreExamen) {
 
             case "Examen de Orina":
-                /*query = "SELECT enf.nombre, enf.referencia, enf.descripcion," +
-                        "GROUP_CONCAT(result.valorObtenido), GROUP_CONCAT(enfPar.refParametroEnfermedad) " +
-                        "FROM ((" + TABLE_RESULTADOS + " result " +
-                        "JOIN " + TABLE_PARAMETROS_ENFERMEDADES + " enfPar ON result.idParametro = enfPar.idParametro) " +
-                        "JOIN " + TABLE_ENFERMEDADES + " enf ON enfPar.idEnfermedad = enf.idEnfermedad) " +
-                        "WHERE result.idTipExam = ? AND result.idExamen = ? AND result.idUsuario = ? " +
-                        "GROUP BY enf.idEnfermedad, enf.nombre, enf.referencia, enf.descripcion";*/
                 query = "SELECT enf.nombre, enf.referencia, enf.descripcion, GROUP_CONCAT(result.valorObtenido), GROUP_CONCAT(enfPar.refParametroEnfermedad) " +
                         "FROM "+TABLE_RESULTADOS+" result " +
                         "JOIN "+TABLE_PARAMETROS_ENFERMEDADES+" enfPar ON result.idParametro = enfPar.idParametro " +

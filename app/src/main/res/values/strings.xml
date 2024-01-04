@@ -170,6 +170,7 @@
     <string name="strInfUserAltura">Estatura</string>
     <string name="strInfUserAlturaHint">Altura</string>
     <string name="strInfUserPeso">Peso</string>
+    <string name="strInfUserEmbarazada">Estoy Embarazada</string>
 
     <string name="strEditUsuarioTitulo">Editar Usuario</string>
 

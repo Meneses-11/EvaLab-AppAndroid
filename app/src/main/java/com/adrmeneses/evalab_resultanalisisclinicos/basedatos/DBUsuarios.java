@@ -22,7 +22,7 @@ public class DBUsuarios extends MyDBHelper{
     }
 
     //Método que inserta en la tabla Usuario
-    public long insertaUsuario(String nombreUsuario, String apellidoUsuario, String sexoUsuario, Date fechaNacimiento, Double alturaUsuario, Double pesoUsuario){
+    public long insertaUsuario(String nombreUsuario, String apellidoUsuario, String sexoUsuario, Date fechaNacimiento, Double alturaUsuario, Double pesoUsuario, Boolean embarazadaUsuario){
         long id = 0;
 
         try{
@@ -39,6 +39,7 @@ public class DBUsuarios extends MyDBHelper{
             datos.put("sexo", sexoUsuario);
             datos.put("estatura", alturaUsuario);
             datos.put("peso", pesoUsuario);
+            datos.put("embarazada", embarazadaUsuario);
 
             //Llama al método insert pasandole el nombre de la tabla y los datos
             id = db.insert(TABLE_USUARIOS, null, datos);//Retorna el id de la acción
