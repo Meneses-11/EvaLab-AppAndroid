@@ -78,7 +78,7 @@ public class DBResultadosTabla extends MyDBHelper{
 
                         // Verifica si el valor es nulo antes de intentar obtenerlo
                         if (!cursor.isNull(1)) {
-                            String[] valObten = cursor.getString(1).split(",");
+                            String[] valObten = cursor.getString(1).split("/");
                             resultado.setValorObtenido(valObten[0]);
                             resultado.setMedidaUnidad(valObten[1]);
                         } else {
@@ -130,63 +130,130 @@ public class DBResultadosTabla extends MyDBHelper{
         MyDBHelper myDBhelper = new MyDBHelper(context);
         SQLiteDatabase db = myDBhelper.getReadableDatabase();
         String[][] datos;
+        DBExamenTipo dbExamenTipo = new DBExamenTipo(context);
+        String nombreExamen = "";
+        if(idTipExamen != 0) {
+            nombreExamen = dbExamenTipo.obtenerNombreTipExam(idTipExamen);
+        }
 
         ArrayList<Enfermedades> listaEnfermedades = new ArrayList<>();
         Enfermedades enfermedad = null;
 
-        String query = "SELECT enf.nombre, enf.referencia, enf.descripcion," +
-                "GROUP_CONCAT(result.valorObtenido)," +
-                "GROUP_CONCAT(valRef.valorMin)," +
-                "GROUP_CONCAT(valRef.valorMax) " +
-                "FROM ((("+TABLE_RESULTADOS+" result JOIN "+TABLE_VALORES_REFERENCIA+" valRef ON result.idParametro = valRef.idParametro) " +
-                "JOIN "+TABLE_PARAMETROS_ENFERMEDADES+" enfPar ON result.idParametro = enfPar.idParametro) " +
-                "JOIN "+TABLE_ENFERMEDADES+" enf ON enfPar.idEnfermedad = enf.idEnfermedad) " +
-                "WHERE result.idTipExam = ? AND result.idExamen = ? AND result.idUsuario = ? " +
-                "GROUP BY enf.idEnfermedad, enf.nombre, enf.referencia, enf.descripcion";
-        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idTipExamen), String.valueOf(idExamen), String.valueOf(idUser)});
+        String query;
+        Cursor cursor;
 
-        if(cursor.moveToFirst()){
-            do{
-                enfermedad = new Enfermedades();
-                enfermedad.setNombreEnf(cursor.getString(0));
-                enfermedad.setReferencia(cursor.getString(1));
-                enfermedad.setInformacion(cursor.getString(2));
+        switch (nombreExamen) {
 
-                // Verifica si el valor es nulo antes de intentar obtenerlo
-                if (!cursor.isNull(3)) {
-                    int contadorNull = 0;
-                    String[] valores = cursor.getString(3).split(",");
-                    String[] valMin = cursor.getString(4).split(",");
-                    String[] valMax = cursor.getString(5).split(",");
-                    //datos = new String[valores.length][3];
-                    List<String[]> datosList = new ArrayList<>();
-                    for(int i=0; i<valores.length; i++){
-                        if(!valores[i].equals("null")) {
-                            Log.d(TAG, "leerEnfermedades: Si entro y es "+valores[i]);
-                            /*datos[i-contadorNull][0] = valores[i];
-                            datos[i-contadorNull][1] = valMin[i];
-                            datos[i-contadorNull][2] = valMax[i];*/
-                            String[] dato = {valores[i], valMin[i], valMax[i]};
-                            datosList.add(dato);
-                        }else{
-                            contadorNull += 1;
+            case "Examen de Orina":
+                /*query = "SELECT enf.nombre, enf.referencia, enf.descripcion," +
+                        "GROUP_CONCAT(result.valorObtenido), GROUP_CONCAT(enfPar.refParametroEnfermedad) " +
+                        "FROM ((" + TABLE_RESULTADOS + " result " +
+                        "JOIN " + TABLE_PARAMETROS_ENFERMEDADES + " enfPar ON result.idParametro = enfPar.idParametro) " +
+                        "JOIN " + TABLE_ENFERMEDADES + " enf ON enfPar.idEnfermedad = enf.idEnfermedad) " +
+                        "WHERE result.idTipExam = ? AND result.idExamen = ? AND result.idUsuario = ? " +
+                        "GROUP BY enf.idEnfermedad, enf.nombre, enf.referencia, enf.descripcion";*/
+                query = "SELECT enf.nombre, enf.referencia, enf.descripcion, GROUP_CONCAT(result.valorObtenido), GROUP_CONCAT(enfPar.refParametroEnfermedad) " +
+                        "FROM "+TABLE_RESULTADOS+" result " +
+                        "JOIN "+TABLE_PARAMETROS_ENFERMEDADES+" enfPar ON result.idParametro = enfPar.idParametro " +
+                        "JOIN "+TABLE_ENFERMEDADES+" enf ON enfPar.idEnfermedad = enf.idEnfermedad " +
+                        "JOIN "+TABLE_PARAMETROS_EXAMEN+" exPar ON exPar.idParametro = result.idParametro " +
+                        "WHERE result.idTipExam = ? AND result.idExamen = ? AND result.idUsuario = ? AND exPar.idTipExam = ? " +
+                        "GROUP BY enf.idEnfermedad, enf.nombre, enf.referencia, enf.descripcion " +
+                        "HAVING COUNT(result.idParametro) = COUNT(enfPar.idParametro)";
+                cursor = db.rawQuery(query, new String[]{String.valueOf(idTipExamen), String.valueOf(idExamen), String.valueOf(idUser), String.valueOf(idTipExamen)});
+
+                if (cursor.moveToFirst()) {
+                    do {
+                        enfermedad = new Enfermedades();
+                        enfermedad.setNombreEnf(cursor.getString(0));
+                        enfermedad.setReferencia(cursor.getString(1));
+                        enfermedad.setInformacion(cursor.getString(2));
+
+                        // Verifica si el valor es nulo antes de intentar obtenerlo
+                        if (!cursor.isNull(3)) {
+                            // 3 -> Amarillo (todos)/1,Lig. Ácido/1,1 - 6/1
+                            // 4 -> 2-3,3,2-3
+                            int contadorNull = 0;
+                            String[] valores = cursor.getString(3).split(",");
+                            String[] refParEnferm = cursor.getString(4).split(",");
+
+                            List<String[]> datosList = new ArrayList<>();
+                            for (int i = 0; i < valores.length; i++) {
+                                if (!valores[i].equals("null")) {
+                                    String[] dato = {valores[i], refParEnferm[i]};
+                                    datosList.add(dato);
+                                } else {
+                                    contadorNull += 1;
+                                }
+                            }
+                            if (contadorNull == valores.length) {
+                                enfermedad.setValObtenidos(null);
+                            } else {
+                                // Convierte la lista a un arreglo bidimensional
+                                datos = datosList.toArray(new String[datosList.size()][]);
+                                enfermedad.setValObtenidos(datos);
+                            }
+                        } else {
+                            enfermedad.setValObtenidos(null);
                         }
-                    }
-                    if(contadorNull == valores.length){
-                        enfermedad.setValObtenidos(null);
-                    }else {
-                        // Convierte la lista a un arreglo bidimensional
-                        datos = datosList.toArray(new String[datosList.size()][]);
-                        enfermedad.setValObtenidos(datos);
-                    }
-                } else {
-                    enfermedad.setValObtenidos(null);
-                }
 
-                listaEnfermedades.add(enfermedad);
-            }while(cursor.moveToNext());
+                        listaEnfermedades.add(enfermedad);
+                    } while (cursor.moveToNext());
+                }
+                cursor.close();
+                break;
+
+            default:
+                query = "SELECT enf.nombre, enf.referencia, enf.descripcion," +
+                        "GROUP_CONCAT(result.valorObtenido)," +
+                        "GROUP_CONCAT(valRef.valorMin)," +
+                        "GROUP_CONCAT(valRef.valorMax) " +
+                        "FROM (((" + TABLE_RESULTADOS + " result JOIN " + TABLE_VALORES_REFERENCIA + " valRef ON result.idParametro = valRef.idParametro) " +
+                        "JOIN " + TABLE_PARAMETROS_ENFERMEDADES + " enfPar ON result.idParametro = enfPar.idParametro) " +
+                        "JOIN " + TABLE_ENFERMEDADES + " enf ON enfPar.idEnfermedad = enf.idEnfermedad) " +
+                        "WHERE result.idTipExam = ? AND result.idExamen = ? AND result.idUsuario = ? " +
+                        "GROUP BY enf.idEnfermedad, enf.nombre, enf.referencia, enf.descripcion";
+                cursor = db.rawQuery(query, new String[]{String.valueOf(idTipExamen), String.valueOf(idExamen), String.valueOf(idUser)});
+
+                if (cursor.moveToFirst()) {
+                    do {
+                        enfermedad = new Enfermedades();
+                        enfermedad.setNombreEnf(cursor.getString(0));
+                        enfermedad.setReferencia(cursor.getString(1));
+                        enfermedad.setInformacion(cursor.getString(2));
+
+                        // Verifica si el valor es nulo antes de intentar obtenerlo
+                        if (!cursor.isNull(3)) {
+                            int contadorNull = 0;
+                            String[] valores = cursor.getString(3).split(",");
+                            String[] valMin = cursor.getString(4).split(",");
+                            String[] valMax = cursor.getString(5).split(",");
+                            List<String[]> datosList = new ArrayList<>();
+                            for (int i = 0; i < valores.length; i++) {
+                                if (!valores[i].equals("null")) {
+                                    Log.d(TAG, "leerEnfermedades: Si entro y es " + valores[i]);
+                                    String[] dato = {valores[i], valMin[i], valMax[i]};
+                                    datosList.add(dato);
+                                } else {
+                                    contadorNull += 1;
+                                }
+                            }
+                            if (contadorNull == valores.length) {
+                                enfermedad.setValObtenidos(null);
+                            } else {
+                                // Convierte la lista a un arreglo bidimensional
+                                datos = datosList.toArray(new String[datosList.size()][]);
+                                enfermedad.setValObtenidos(datos);
+                            }
+                        } else {
+                            enfermedad.setValObtenidos(null);
+                        }
+
+                        listaEnfermedades.add(enfermedad);
+                    } while (cursor.moveToNext());
+                }
+                cursor.close();
         }
-        cursor.close();
         return listaEnfermedades;
     }
 

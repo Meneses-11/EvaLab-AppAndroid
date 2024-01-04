@@ -24,6 +24,8 @@ import com.adrmeneses.evalab_resultanalisisclinicos.MenuCategorias;
 import com.adrmeneses.evalab_resultanalisisclinicos.R;
 import com.adrmeneses.evalab_resultanalisisclinicos.adaptadores.AdaptadorListaEnfermedades;
 import com.adrmeneses.evalab_resultanalisisclinicos.adaptadores.AdaptadorListaResultados;
+import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBEnfermedades;
+import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBExamenParametros;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBExamenTipo;
 import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBResultadosTabla;
 import com.adrmeneses.evalab_resultanalisisclinicos.contenedore.OpcionElegida;
@@ -270,11 +272,18 @@ public class ResultEnfermedades extends Fragment {
 
     private ArrayList<Enfermedades> acomodarListaEnfermedades(ArrayList<Enfermedades> listaEnfermedades){
         Iterator<Enfermedades> iterador = listaEnfermedades.iterator();
+        DBExamenTipo dbExamenTipo = new DBExamenTipo(getContext());
+        DBEnfermedades dbEnfermedades = new DBEnfermedades(getContext());
         while (iterador.hasNext()) {
             Enfermedades enferm = iterador.next();
+            //Condicional para ver si es de Orina
+            //if(dbExamenParametros.obtenerIdDeTipExamDelParametro(enferm.get) == holder.dbExamenTipo.obtenerIdTipExam("Examen de Orina")){
             evaEnferm = new EvaluadorEnfermedad();
-            evaEnferm.evaluarEnferm(enferm);
-
+            if(dbEnfermedades.saberIdTipExamenDeParametroDeEnfermedad(enferm.getNombreEnf()) == dbExamenTipo.obtenerIdTipExam("Examen de Orina")){
+                evaEnferm.evaluarEnfermOrina(enferm);
+            }else {
+                evaEnferm.evaluarEnferm(enferm);
+            }
             if (!enferm.isMostrar()) {
                 iterador.remove();  // Usa el método remove del iterador para eliminar de forma segura
             }

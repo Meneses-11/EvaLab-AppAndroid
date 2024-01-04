@@ -16,7 +16,7 @@ public class DBEnfermedadesParametros extends MyDBHelper{
     }
 
     //Método que inserta en la tabla EnferemedadesParametros
-    public long insertaEnfermParametro(int idParametro, int idEnfermedad){
+    public long insertaEnfermParametro(int idParametro, int idEnfermedad, String referencia){
         long id = 0;
 
         try{
@@ -27,6 +27,7 @@ public class DBEnfermedadesParametros extends MyDBHelper{
             ContentValues datos = new ContentValues();
             datos.put("idParametro", idParametro);
             datos.put("idEnfermedad", idEnfermedad);
+            datos.put("refParametroEnfermedad", referencia);
 
             id = db.insert(TABLE_PARAMETROS_ENFERMEDADES, null, datos);
         }catch (Exception ex){

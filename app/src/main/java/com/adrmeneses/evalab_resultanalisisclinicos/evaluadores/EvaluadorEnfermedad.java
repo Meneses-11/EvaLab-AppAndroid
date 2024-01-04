@@ -8,10 +8,10 @@ import com.adrmeneses.evalab_resultanalisisclinicos.entidades.Enfermedades;
 
 public class EvaluadorEnfermedad {
 
-    private String reference, textoPorcentaje;
+    private String reference, textoPorcentaje, opcionElegida;
     private String[][] datosResultados;
     private double valMin, valMax, valObten, puntMedio, porcentRef, acumPorcent;
-    private int contador, porcentaje;
+    private int contador, porcentaje, valorOpcionElegida;
     private int[][] rangoPorcentajesMax= {{100,95,20,10},{110,101,40,21},{120,111,55,41},{130,120,65,56},{140,130,75,66},{150,141,85,76}};
     private int[][] rangoPorcentajesMin= {{105,100,20,10},{99,90,40,21},{89,80,55,41},{79,70,65,56},{69,60,75,66},{59,50,85,76}};
 /*
@@ -39,9 +39,9 @@ al valor max   probabilidad  | al valor min   probabilidad
         if(enfermedad.getValObtenidos() != null) {
             reference = enfermedad.getReferencia();
             datosResultados = enfermedad.getValObtenidos();//[12,20,18][4.5,20,6.5][15,20,22]
-            for (String[] info: datosResultados) {
+            /*for (String[] info: datosResultados) {
                 Log.d(TAG, "evaluarEnferm: datos: "+info[0]+" "+info[1]+" "+info[2]);
-            }
+            }*/
             switch (reference) {
                 case "alto":
                     for (String[] resultAlt : datosResultados) {
@@ -146,6 +146,64 @@ al valor max   probabilidad  | al valor min   probabilidad
         } else {
             enfermedad.setMostrar(false);
             return "";
+        }
+    }
+
+
+    public void evaluarEnfermOrina(Enfermedades enfermedad){
+        acumPorcent = 0;
+        contador = 0;
+        textoPorcentaje = "";
+        enfermedad.setMostrar(true); //Le manda true para que se muestre en la vista
+
+        if(enfermedad.getValObtenidos() != null) {
+            datosResultados = enfermedad.getValObtenidos();//["Lig. Amoniaco/1","2"]["Negativo/1","3"]//////["Amarillo (todos)/1","2-3"]["Lig. Amoniaco/1","3"]["1 - 6/1","2-3"]
+
+            for (String[] datoResult : datosResultados) {
+                String[] datosOpcElegida = datoResult[0].split("/");
+                String[] valorReferencia = datoResult[1].split("-");
+
+                opcionElegida = datosOpcElegida[0];
+                valorOpcionElegida = Integer.parseInt(datosOpcElegida[1]);
+
+                switch (valorOpcionElegida){
+                    case 1:
+                        acumPorcent += 0;
+                        contador += 1;
+                        break;
+                    case 2:
+                        for (String numRef: valorReferencia) {
+                            if(numRef == "2"){
+                                acumPorcent += 60;
+                                contador += 1;
+                            }
+                        }
+                        break;
+                    case 3:
+                        for (String numRef: valorReferencia) {
+                            //Log.d(TAG, "evaluarEnfermOrina: "+numRef);
+                            if(numRef.equals("3")){
+                                acumPorcent += 80;
+                                contador += 1;
+                            }
+                        }
+                        break;
+                    default:
+                        Log.e(TAG, "evaluarEnferm: Hubo un error con la referencia de: " + enfermedad.getNombreEnf());
+                }
+                //Log.d(TAG, "evaluarEnfermOrina: cum: "+acumPorcent);
+            }
+            porcentaje = (int) (acumPorcent / contador);
+            //Log.d(TAG, "evaluarEnferm: porcentaje: "+porcentaje);
+            textoPorcentaje = evaluarInfoPorcentaje(porcentaje, enfermedad);
+
+            enfermedad.setPorcentaje(porcentaje);
+            enfermedad.setInfoPorcentaje(textoPorcentaje);
+
+
+        }else {
+            enfermedad.setMostrar(false);
+            textoPorcentaje = "";
         }
     }
 

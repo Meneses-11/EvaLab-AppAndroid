@@ -77,7 +77,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("CREATE TABLE "+TABLE_ENFERMEDADES+" (" +
                 "idEnfermedad INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "nombre VARCHAR NOT NULL," +
-                "referencia VARCHAR NOT NULL," +
+                "referencia VARCHAR," +
                 "descripcion VARCHAR)");
 
         //Crea la tabla EnfermedadesParametros
@@ -85,6 +85,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
                 "idEnfPar INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "idParametro INTEGER," +
                 "idEnfermedad INTEGER," +
+                "refParametroEnfermedad VARCHAR, " +
                 "FOREIGN KEY(idParametro) REFERENCES "+TABLE_PARAMETROS_EXAMEN+" (idParametro)," +
                 "FOREIGN KEY(idEnfermedad) REFERENCES "+TABLE_ENFERMEDADES+" (idEnfermedad))");
     }

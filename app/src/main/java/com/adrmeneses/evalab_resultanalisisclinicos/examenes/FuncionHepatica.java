@@ -2,8 +2,6 @@ package com.adrmeneses.evalab_resultanalisisclinicos.examenes;
 
 import static android.content.ContentValues.TAG;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,7 +9,6 @@ import android.widget.Button;
 
 import com.adrmeneses.evalab_resultanalisisclinicos.MenuCategorias;
 import com.adrmeneses.evalab_resultanalisisclinicos.R;
-import com.adrmeneses.evalab_resultanalisisclinicos.contenedore.OpcionElegida;
 import com.adrmeneses.evalab_resultanalisisclinicos.contenedore.UsuarioActivo;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -66,12 +63,12 @@ public class FuncionHepatica extends MenuCategorias {
         }
 
         llenadoTablaEnfermedades(enfermedades);
-        llenadoTablaEnfermedadesParam(enfermedades);
+        llenadoTablaEnfermedadesParam(enfermedades, (int) idTipExam);
 
         btnAnalizarFunHepatica.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(CamposLLenos(textInputs)){
+                if(camposLLenos(textInputs)){
                     analizarExamen(textInputs,parametrosFunHepatica,idTipExam,idUsuario);
                 }else {
                     ventanaDialogo("Datos Erroneos", "Introduzca la información solicitada");

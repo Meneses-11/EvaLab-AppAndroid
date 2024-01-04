@@ -73,4 +73,24 @@ public class DBEnfermedades extends MyDBHelper{
         return enfermedadId;
     }
 
+    public int saberIdTipExamenDeParametroDeEnfermedad(String enfermedad){
+        int idTipExamen = 0;
+        MyDBHelper myDBHelper = new MyDBHelper(context);
+        SQLiteDatabase db = myDBHelper.getReadableDatabase();
+        if(db != null){
+            String query = "SELECT DISTINCT e.idTipExam " +
+                    "FROM "+TABLE_PARAMETROS_ENFERMEDADES+" ep " +
+                    "JOIN "+TABLE_PARAMETROS_EXAMEN+" p ON ep.idParametro = p.idParametro " +
+                    "JOIN "+TABLE_TIPO_EXAMEN+" e ON p.idTipExam = e.idTipExam " +
+                    "WHERE ep.idEnfermedad = (SELECT idEnfermedad FROM Enfermedades WHERE nombre = ?);";
+            Cursor cursor = db.rawQuery(query, new String[]{enfermedad});
+            if(cursor != null){
+                cursor.moveToFirst();
+                idTipExamen = cursor.getInt(0);
+            }
+        }
+
+        return idTipExamen;
+    }
+
 }

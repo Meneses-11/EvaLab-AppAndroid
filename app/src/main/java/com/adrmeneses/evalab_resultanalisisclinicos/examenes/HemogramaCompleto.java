@@ -81,12 +81,16 @@ public class HemogramaCompleto extends MenuCategorias {
         }
 
         llenadoTablaEnfermedades(enfermedades);
-        llenadoTablaEnfermedadesParam(enfermedades);
+        llenadoTablaEnfermedadesParam(enfermedades, (int)idTipExam);
 
         btnAnalizarHemograma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                analizarExamen(textInputs,parametro2,idTipExam,idUsuario);
+                if(minimo3CamposLLenos(textInputs)) {
+                    analizarExamen(textInputs, parametro2, idTipExam, idUsuario);
+                }else{
+                    ventanaDialogo("Campos Vacíos", "Llene por lo menos 3 campos");
+                }
             }
         });
 

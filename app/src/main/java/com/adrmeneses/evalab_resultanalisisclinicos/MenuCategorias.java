@@ -148,7 +148,49 @@ public class MenuCategorias extends AppCompatActivity {
         }
     }
     //Método que agrega registros a la tabla EnfermedadesParametros
-    public void llenadoTablaEnfermedadesParam(String[][] enfermedades){
+    public void llenadoTablaEnfermedadesParam(String[][] enfermedades, int idTipExam){
+        long id = 0;
+        String nombreExamen = "";
+        if(idTipExam != 0) {
+            nombreExamen = dbExamenTipo.obtenerNombreTipExam(idTipExam);
+        }
+
+        for (String [] enfermedad : enfermedades) {
+            //Evalua si no ya hay registros con el idEnfermedad en la tabla EnfermedadesParametros
+            if(!dbEnfermedadesParametros.existeRegistrosConIdEnfermedad(dbEnfermedades.obtenerIdEnfermedad(enfermedad[0]))) {
+                int parametroId = 0, enfermedadId = 0;
+                switch (nombreExamen) {
+                    case "Examen de Orina":
+                        //String[] infEnferm;
+                        for (int j = 2; j < enfermedad.length; j++) {
+                            String[] infEnferm = enfermedad[j].split(",");
+                            String parametro = infEnferm[0];
+                            String infEnferParam = infEnferm[1];
+                            Log.d(TAG, "llenadoTablaEnfermedadesParam: parametro: "+enfermedad[j]);
+                            parametroId = (int) dbExamenParametros.obtenerIdParametro(parametro);
+                            enfermedadId = (int) dbEnfermedades.obtenerIdEnfermedad(enfermedad[0]);
+                            id = dbEnfermedadesParametros.insertaEnfermParametro(parametroId, enfermedadId, infEnferParam);
+                            if (id <= 0) {
+                                Log.e(TAG, "llenadoTablaEnferParam: Datos no registrads");
+                            }
+                        }
+                        break;
+                    default:
+                        for (int j = 2; j < enfermedad.length; j++) {
+                            parametroId = (int) dbExamenParametros.obtenerIdParametro(enfermedad[j]);
+                            enfermedadId = (int) dbEnfermedades.obtenerIdEnfermedad(enfermedad[0]);
+                            id = dbEnfermedadesParametros.insertaEnfermParametro(parametroId, enfermedadId, null);
+                            if (id <= 0) {
+                                Log.e(TAG, "llenadoTablaEnferParam: Datos no registrads");
+                            }
+                        }
+                }
+            }
+        }
+
+    }
+    //Método que agrega registros a la tabla EnfermedadesParametros
+    public void llenadoTablaEnfermedadesParamOrina(String[][] enfermedades){
         long id = 0;
 
         for (String [] enfermedad : enfermedades) {
@@ -158,7 +200,7 @@ public class MenuCategorias extends AppCompatActivity {
                     int parametroId = 0, enfermedadId = 0;
                     parametroId = (int) dbExamenParametros.obtenerIdParametro(enfermedad[j]);
                     enfermedadId = (int) dbEnfermedades.obtenerIdEnfermedad(enfermedad[0]);
-                    id = dbEnfermedadesParametros.insertaEnfermParametro(parametroId, enfermedadId);
+                    id = dbEnfermedadesParametros.insertaEnfermParametro(parametroId, enfermedadId, null);
                     if (id <= 0) {
                         Log.e(TAG, "llenadoTablaEnferParam: Datos no registrads");
                     }
@@ -224,7 +266,7 @@ public class MenuCategorias extends AppCompatActivity {
 
 
     //Método que verifica que todos los campos estén llenos
-    public boolean CamposLLenos(TextInputEditText[] txtInputs) {
+    public boolean camposLLenos(TextInputEditText[] txtInputs) {
         boolean todosCompletos = true;
         //For each que recorre el arreglo con todos los EditText
         for (TextInputEditText textInput : txtInputs) {
@@ -236,6 +278,38 @@ public class MenuCategorias extends AppCompatActivity {
             }
         }
         return todosCompletos;
+    }
+    //Método que verifica que al menos 3 campos estén llenos
+    public boolean minimo3CamposLLenos(View[] arregloViews) {
+        boolean minimo3 = true;
+        int contador = 0;
+        //For each que recorre el arreglo con todos los EditText
+        for (View componente : arregloViews) {
+            if (componente instanceof TextInputEditText) {
+                TextInputEditText editText = (TextInputEditText) componente;
+                //Asigna lo que hay en el editText a una variable
+                String texto = editText.getText().toString().trim();
+                if (!texto.isEmpty()) {      //Evalúa si la variable no está vacía
+                    contador += 1;
+                }
+            } else if (componente instanceof AutoCompleteTextView) {
+                AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) componente;
+                //Asigna lo que hay en el editText a una variable
+                String texto = autoCompleteTextView.getText().toString().trim();
+                if (!texto.isEmpty()) {      //Evalúa si la variable está vacía
+                    contador += 1;
+                }
+            }
+
+        }
+
+        if(contador > 2){
+            minimo3 = true;
+        }else {
+            minimo3 = false;
+        }
+
+        return minimo3;
     }
 
     //Método que arroja un mensaje de Error en la pantalla
