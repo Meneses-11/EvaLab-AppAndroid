@@ -11,7 +11,6 @@ public class Usuarios {
     private String sexo;
     private Double altura;
     private Double peso;
-    private Date fechaDate;
     private Boolean embarazada;
 
 
@@ -69,13 +68,6 @@ public class Usuarios {
     }
     public void setPeso(Double peso) {
         this.peso = peso;
-    }
-
-    public Date getFechaDate() {
-        return fechaDate;
-    }
-    public void setFechaDate(Date fechaDate) {
-        this.fechaDate = fechaDate;
     }
 
     public Boolean getEmbarazada() {

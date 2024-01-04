@@ -13,9 +13,14 @@ import androidx.annotation.Nullable;
 
 import com.adrmeneses.evalab_resultanalisisclinicos.entidades.Enfermedades;
 import com.adrmeneses.evalab_resultanalisisclinicos.entidades.Resultados;
+import com.adrmeneses.evalab_resultanalisisclinicos.entidades.Usuarios;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 public class DBResultadosTabla extends MyDBHelper{
     Context context;
@@ -53,6 +58,9 @@ public class DBResultadosTabla extends MyDBHelper{
         MyDBHelper myDBhelper = new MyDBHelper(context);
         SQLiteDatabase db = myDBhelper.getReadableDatabase();
         DBExamenTipo dbExamenTipo = new DBExamenTipo(context);
+        DBUsuarios dbUsuarios = new DBUsuarios(context);
+        Usuarios usuario = dbUsuarios.verUsuario(idUser);
+        Boolean estaEmbarazada;
         String nombreExamen = "";
         if(idTipExamen != 0) {
             nombreExamen = dbExamenTipo.obtenerNombreTipExam(idTipExamen);
@@ -91,6 +99,56 @@ public class DBResultadosTabla extends MyDBHelper{
 
                 cursor.close();
                 break;
+
+            case "Tiroides":
+                String valorMinX="ReferenciaValores.valorMinAdult", valorMaxX="ReferenciaValores.valorMaxAdult";
+                estaEmbarazada = usuario.getEmbarazada();
+                int dias = calcularDiasTranscurridos(Long.parseLong(usuario.getFecha()));
+                if(estaEmbarazada){
+                    valorMinX = "ReferenciaValores.valorMinMujer";
+                    valorMaxX = "ReferenciaValores.valorMaxMujer";
+                } else if (dias < 31) {
+                    valorMinX = "ReferenciaValores.valorMin";
+                    valorMaxX = "ReferenciaValores.valorMax";
+                } else if (dias < 6574) {//6574 es lo equivalente a 18 años
+                    valorMinX = "ReferenciaValores.valorMinCh";
+                    valorMaxX = "ReferenciaValores.valorMaxCh";
+                }else {
+                    valorMinX = "ReferenciaValores.valorMinAdult";
+                    valorMaxX = "ReferenciaValores.valorMaxAdult";
+                }
+
+                query = "SELECT ExamenParametros.nombreParametro, ResultadosTabla.valorObtenido, "+valorMinX+", " +
+                        ""+valorMaxX+", ReferenciaValores.unidadMedida " +
+                        "From (("+TABLE_RESULTADOS+" NATURAL JOIN "+TABLE_PARAMETROS_EXAMEN+") NATURAL JOIN "+TABLE_VALORES_REFERENCIA+") " +
+                        "WHERE idTipExam = ? AND idExamen = ? AND idUsuario = ?";
+
+                cursor = db.rawQuery(query, new String[]{String.valueOf(idTipExamen), String.valueOf(idExamen), String.valueOf(idUser)});
+
+                if (cursor.moveToFirst()) {
+                    do {
+                        resultado = new Resultados();
+                        resultado.setParametroNombre(cursor.getString(0));
+
+                        // Verifica si el valor es nulo antes de intentar obtenerlo
+                        if (!cursor.isNull(1)) {
+                            resultado.setValorObtenido(cursor.getString(1));
+                        } else {
+                            resultado.setValorObtenido(null);
+                        }
+
+                        resultado.setMinValor(cursor.getString(2));
+                        resultado.setMaxValor(cursor.getString(3));
+                        resultado.setMedidaUnidad(cursor.getString(4));
+
+                        listaResultados.add(resultado);
+                    } while (cursor.moveToNext());
+                }
+
+                cursor.close();
+
+                break;
+
             default:
                 query = "SELECT ExamenParametros.nombreParametro, ResultadosTabla.valorObtenido, ReferenciaValores.valorMin, " +
                         "ReferenciaValores.valorMax, ReferenciaValores.unidadMedida " +
@@ -347,6 +405,35 @@ public class DBResultadosTabla extends MyDBHelper{
             listaExamenes = new String[0][0];
         }
         return listaExamenes;
+    }
+
+    private String convertirFecha(String fechaNacimiento){
+
+        // Convierte el String a long (milisegundos)
+        long tiempoMilisegundos = Long.parseLong(fechaNacimiento);
+        // Crea un objeto Date usando el valor de tiempo en milisegundos
+        Date fechaNaci = new Date(tiempoMilisegundos);
+
+        // Especifica la zona horaria deseada
+        TimeZone zonaHoraria = TimeZone.getTimeZone("UTC");
+
+        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        formato.setTimeZone(zonaHoraria);
+
+        String fecha = formato.format(fechaNaci);
+
+        return fecha;
+
+    }
+
+    private static int calcularDiasTranscurridos(long fechaNacimientoMilis) {
+        long hoyEnMilis = System.currentTimeMillis();
+        long diferenciaEnMilis = hoyEnMilis - fechaNacimientoMilis;
+
+        // Convierte la diferencia de milisegundos a días
+        int diasTranscurridos = (int) (diferenciaEnMilis / (24 * 60 * 60 * 1000));
+
+        return diasTranscurridos;
     }
 
 }
