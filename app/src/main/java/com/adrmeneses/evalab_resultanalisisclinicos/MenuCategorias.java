@@ -81,8 +81,6 @@ public class MenuCategorias extends AppCompatActivity {
         btnExamenFunHepatica.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Intent lanzar2 = new Intent(MenuCategorias.this, ExamenesFunHepatica.class);
-                startActivity(lanzar2);*/
                 Intent lanzar2 = new Intent(MenuCategorias.this, FuncionHepatica.class);
                 startActivity(lanzar2);
             }
@@ -90,8 +88,6 @@ public class MenuCategorias extends AppCompatActivity {
         btnExamenTiroides.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Intent lanzar3 = new Intent(MenuCategorias.this, ExamenesTiroides.class);
-                startActivity(lanzar3);*/
                 Intent lanzar3 = new Intent(MenuCategorias.this, FuncionTiroidea.class);
                 startActivity(lanzar3);
             }
@@ -99,8 +95,7 @@ public class MenuCategorias extends AppCompatActivity {
         btnExamenFunRenal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Intent lanzar4 = new Intent(MenuCategorias.this, ExamenesFunRenal.class);
-                startActivity(lanzar4);*/
+                //
             }
         });
         
@@ -160,13 +155,12 @@ public class MenuCategorias extends AppCompatActivity {
             if(!dbEnfermedadesParametros.existeRegistrosConIdEnfermedad(dbEnfermedades.obtenerIdEnfermedad(enfermedad[0]))) {
                 int parametroId = 0, enfermedadId = 0;
                 switch (nombreExamen) {
+                    case "Tiroides":
                     case "Examen de Orina":
-                        //String[] infEnferm;
                         for (int j = 2; j < enfermedad.length; j++) {
                             String[] infEnferm = enfermedad[j].split(",");
                             String parametro = infEnferm[0];
                             String infEnferParam = infEnferm[1];
-                            Log.d(TAG, "llenadoTablaEnfermedadesParam: parametro: "+enfermedad[j]);
                             parametroId = (int) dbExamenParametros.obtenerIdParametro(parametro);
                             enfermedadId = (int) dbEnfermedades.obtenerIdEnfermedad(enfermedad[0]);
                             id = dbEnfermedadesParametros.insertaEnfermParametro(parametroId, enfermedadId, infEnferParam);
@@ -209,7 +203,6 @@ public class MenuCategorias extends AppCompatActivity {
         }
 
     }
-
 
 
     //Se ejcuta al presionar el boton Analizar
@@ -300,9 +293,7 @@ public class MenuCategorias extends AppCompatActivity {
                     contador += 1;
                 }
             }
-
         }
-
         if(contador > 2){
             minimo3 = true;
         }else {
@@ -319,7 +310,7 @@ public class MenuCategorias extends AppCompatActivity {
 
         //Crea el AertDialog
         AlertDialog dialogo = new AlertDialog.Builder(this).create(); //Crea un objeto de tipo AlertDialog
-        dialogo.setView(dialogoPersonalizado);                                       //Le asigna la ventana personalizada
+        dialogo.setView(dialogoPersonalizado);                               //Le asigna la ventana personalizada
 
         // Obtiene las vistas del diseño personalizado
         TextView tituloTextView = dialogoPersonalizado.findViewById(R.id.txtTituloDialogo);

@@ -99,9 +99,6 @@ public class ResultEnfermedades extends Fragment {
         dbResultadosTabla = new DBResultadosTabla(getContext());
         dbExamenTipo = new DBExamenTipo(getContext());
 
-        //Instancia del ArrayList tipo Enfermedades
-        //enfermedadesArrayList = new ArrayList<>();
-
         //Evalua si no existen registros en la bd
         if(dbResultadosTabla.noHayResultados(idUsuario)) {
 
@@ -144,7 +141,6 @@ public class ResultEnfermedades extends Fragment {
             contSinEnferm.setVisibility(View.INVISIBLE);
         }
 
-        //Instancia el adaptador de la Lista
         if (enfermedadesArrayList != null) {
             if(enfermedadesArrayList.isEmpty()){
                 contSinEnferm.setVisibility(View.VISIBLE);
@@ -154,7 +150,6 @@ public class ResultEnfermedades extends Fragment {
                 vistaListaEnferm.setAdapter(adaptadorEnfer);  //Asigna el adaptador al RecyclerView
             }
         }
-
 
 
         btnRegis.setOnClickListener(new View.OnClickListener() {
@@ -184,10 +179,7 @@ public class ResultEnfermedades extends Fragment {
                 int[] ides = obtenerIdOpcion(item);
                 identificadorTipExamen = ides[0];
                 identificadorExamen = ides[1];
-/*
-                //Instancia el adaptador de la Lista
-                adaptadorEnfer = new AdaptadorListaEnfermedades( acomodarListaEnfermedades(dbResultadosTabla.leerEnfermedades(identificadorTipExamen,identificadorExamen,idUsuario)));
-                vistaListaEnferm.setAdapter(adaptadorEnfer);  //Asigna el adaptador al RecyclerView */
+
                 enfermedadesArrayList = acomodarListaEnfermedades(dbResultadosTabla.leerEnfermedades(identificadorTipExamen,identificadorExamen,idUsuario));
                 if(enfermedadesArrayList.isEmpty()){
                     contSinEnferm.setVisibility(View.VISIBLE);
@@ -198,7 +190,6 @@ public class ResultEnfermedades extends Fragment {
                     adaptadorEnfer = new AdaptadorListaEnfermedades(enfermedadesArrayList);
                     vistaListaEnferm.setAdapter(adaptadorEnfer);  //Asigna el adaptador al RecyclerView
                 }
-
 
                 opcElegida.setExamenId(identificadorExamen);
                 opcElegida.setExamenTipId(identificadorTipExamen);
@@ -213,16 +204,9 @@ public class ResultEnfermedades extends Fragment {
         String acumNum = "", acumNombre = "";
         for (int j=0; j<opcionSelect.length(); j++) {
             char caracter = opcionSelect.charAt(j);
-
-            if (flag){
-                acumNum += caracter;
-            }
-            if(caracter == '-'){
-                flag = true;
-            }
-            if(!flag){
-                acumNombre += caracter;
-            }
+            if (flag){ acumNum += caracter;}
+            if(caracter == '-'){ flag = true;}
+            if(!flag){ acumNombre += caracter;}
         }
 
         idTipEx = (int)dbExamenTipo.obtenerIdTipExam(acumNombre);
@@ -238,17 +222,12 @@ public class ResultEnfermedades extends Fragment {
         identificadorTipExamen = opcElegida.getExamenTipId();
         nombreExaTip = opcElegida.getNombreExamen();
 
-        //Log.d(TAG, "ResulEnfermedades onResume: ex: "+identificadorExamen+" tipEx: "+identificadorTipExamen);
         //si los id's son diferente de 0 pone la lista que corresponda a los id's
         if(identificadorExamen != 0 || identificadorTipExamen != 0){
             autoCompletBuscarExamenEnferm.setText(nombreExaTip+"-"+identificadorExamen, false);
             enfermedadesArrayList = acomodarListaEnfermedades(dbResultadosTabla.leerEnfermedades(identificadorTipExamen,identificadorExamen,idUsuario));
         }
 
-        //Instancia el adaptador de la Lista
-        /*adaptadorEnfer = new AdaptadorListaEnfermedades( acomodarListaEnfermedades(dbResultadosTabla.leerEnfermedades(identificadorTipExamen,identificadorExamen,idUsuario)));
-        vistaListaEnferm.setAdapter(adaptadorEnfer);  //Asigna el adaptador al RecyclerView*/
-        //enfermedadesArrayList = acomodarListaEnfermedades(dbResultadosTabla.leerEnfermedades(identificadorTipExamen,identificadorExamen,idUsuario));
         if(opcionesExamenes != null) {
             if (enfermedadesArrayList != null) {
                 if (enfermedadesArrayList.isEmpty()) {
@@ -276,13 +255,20 @@ public class ResultEnfermedades extends Fragment {
         DBEnfermedades dbEnfermedades = new DBEnfermedades(getContext());
         while (iterador.hasNext()) {
             Enfermedades enferm = iterador.next();
-            //Condicional para ver si es de Orina
-            //if(dbExamenParametros.obtenerIdDeTipExamDelParametro(enferm.get) == holder.dbExamenTipo.obtenerIdTipExam("Examen de Orina")){
             evaEnferm = new EvaluadorEnfermedad();
-            if(dbEnfermedades.saberIdTipExamenDeParametroDeEnfermedad(enferm.getNombreEnf()) == dbExamenTipo.obtenerIdTipExam("Examen de Orina")){
-                evaEnferm.evaluarEnfermOrina(enferm);
-            }else {
-                evaEnferm.evaluarEnferm(enferm);
+            int idTipExamEnferm = dbEnfermedades.saberIdTipExamenDeParametroDeEnfermedad(enferm.getNombreEnf());
+            String nombreTipExamEnferm = dbExamenTipo.obtenerNombreTipExam(idTipExamEnferm);
+            //Condicional para ver a qué examen Corresponden las enfermedades
+            switch (nombreTipExamEnferm){
+                case "Examen de Orina":
+                    evaEnferm.evaluarEnfermOrina(enferm);
+                    break;
+                case "Tiroides":
+                    evaEnferm.evaluarEnfermTiroides(enferm);
+                    break;
+                default:
+                    evaEnferm.evaluarEnferm(enferm);
+                    break;
             }
             if (!enferm.isMostrar()) {
                 iterador.remove();  // Usa el método remove del iterador para eliminar de forma segura

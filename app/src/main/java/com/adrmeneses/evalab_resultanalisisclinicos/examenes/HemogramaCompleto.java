@@ -29,14 +29,11 @@ import com.google.android.material.textfield.TextInputEditText;
 public class HemogramaCompleto extends MenuCategorias {
     //Declara la variable en la que se instanciara la clase UsuarioActivo
     UsuarioActivo userActv;
-    //Declara la variable en la que se instanciara la clase Opcion Elejida
-    OpcionElegida opcElegida;
     //Declara los componentes visuales
     TextInputEditText txtHemoglobina, txtHematocrito, txtEritrocitos, txtVMG, txtHCM, txtReticulocitos, txtLeucocitos, txtNeutrofilos, txtLinfocitos, txtEosinofilos, txtBasofilos, txtMonocitos, txtPlaquetas, txtVolPlaquetario;
     final String NAME_EXAM = "hemograma";
     long idTipExam, idUsuario;
     //Arreglo que almacena todos los parámetros
-    String[] parametros= {"Hemoglobina","Hematocrito","Eritrocitos","VMG","HCM","Reticulocitos","Leocucitos","Neutrofilos","Linfocitos","Eosinofilos","Basofilos","Monocitos","Plaquetas","Volumen Plaquetario Medio"};
     String[][] parametro2 = {{"Hemoglobina","12","18",null,null,null,null,null,null,null,null,"g/dL"},{"Hematocrito","36","52",null,null,null,null,null,null,null,null,"%"},{"Eritrocitos", "4.5","6.5",null,null,null,null,null,null,null,null,"x10^6/uL"},{"VMG", "80","100",null,null,null,null,null,null,null,null,"fL"},{"HCM", "27","33",null,null,null,null,null,null,null,null,"pg"},{"Reticulocitos", "0.5","1.5",null,null,null,null,null,null,null,null,"%"},{"Leocucitos", "4","11",null,null,null,null,null,null,null,null,"x10^3/uL"}, {"Neutrofilos", "40","75",null,null,null,null,null,null,null,null,"%"}, {"Linfocitos", "20","45",null,null,null,null,null,null,null,null,"%"},{"Eosinofilos", "0","6",null,null,null,null,null,null,null,null,"%"}, {"Basofilos", "0","2",null,null,null,null,null,null,null,null,"%"}, {"Monocitos", "2","10",null,null,null,null,null,null,null,null,"%"}, {"Plaquetas", "150","450",null,null,null,null,null,null,null,null,"x10^3/uL"},{"Volumen Plaquetario Medio", "7.2","11.1",null,null,null,null,null,null,null,null,"fL"}};
     String[][] enfermedades = {{"Anemia","bajo","Hemoglobina","Eritrocitos"},{"Infeccion Bacteriana","alto","Leocucitos","Neutrofilos"},{"Infeccion Viral","alto","Leocucitos","Linfocitos"},{"Desordenes de Coagulacion","bajo","Plaquetas"},{"Problemas Renales","ambos","Hematocrito"},{ "Desordenes de la Medula Osea","ambos","Hemoglobina","Leocucitos","Plaquetas"},{ "Reacciones Alergicas o Asma","alto","Eosinofilos"},{"Infecciones Parasitarias","alto","Eosinofilos"}};
     //Arreglo que contiene todos los editText

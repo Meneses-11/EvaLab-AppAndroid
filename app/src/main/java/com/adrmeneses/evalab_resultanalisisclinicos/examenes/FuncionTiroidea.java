@@ -22,7 +22,7 @@ public class FuncionTiroidea extends MenuCategorias {
     //Arreglo que almacena todos los parámetros Nombre-Neonatos-Embarazadas-Adultos-Adolescentes
     private String[][] parametrosTiroides = {{"T4 Total","6.4","12.6",null,null,"4.4","11.6","4.4","11.6","4.2","13","ug/dL"},{"T3 Total","0.7","1.9",null,null,"0.52","1.85","0.52","1.85","0.8","2.1","ng/mL"},{"TSH","0.1","39",null,null,"0.1","3","0.28","5.6","0.28","5.6","mUI/L"},{"T4 Libre","0.9","2.2",null,null,".76","2.24",".8","2",".8","2","ng/dL"},{"T3 Libre","0.9","2.2",null,null,"1.8","4.2","1.4","4.2",".8","2","pg/mL"}};
     //Arreglo para almacenar los parametros de las Enfermedades {{"Nombre","Referencia",...Parametros...},{"Infeccion Bacteriana","alto","Leocucitos","Neutrofilos"}}
-    //String[][] enfermedades = {{"Anemia","bajo","Hemoglobina","Eritrocitos"},{"Infeccion Bacteriana","alto","Leocucitos","Neutrofilos"},{"Infeccion Viral","alto","Leocucitos","Linfocitos"},{"Desordenes de Coagulacion","bajo","Plaquetas"},{"Problemas Renales","ambos","Hematocrito"},{ "Desordenes de la Medula Osea","ambos","Hemoglobina","Leocucitos","Plaquetas"},{ "Reacciones Alergicas o Asma","alto","Eosinofilos"},{"Infecciones Parasitarias","alto","Eosinofilos"}};
+    String[][] enfermedades = {{"Hipertiroidismo",null,"T4 Total,alto","T3 Total,alto","TSH,bajo","T4 Libre,alto","T3 Libre,alto"},{"Hipotiroidismo",null,"T4 Total,bajo","T3 Total,bajo","TSH,alto","T4 Libre,bajo","T3 Libre,bajo"}};
     TextInputEditText[] textInputs = {txtT4Total, txtT3Total, txtTSH, txtT4Libre, txtT3Libre};
     int[] idTextInputs = {R.id.funTiroidesTextFieldT4T,R.id.funTiroidesTextFieldT3T,R.id.funTiroidesTextFieldTSH,R.id.funTiroidesTextFieldT4L,R.id.funTiroidesTextFieldT3L};
     //Variable para guardar el id del usuarios actual y del tipo de examen
@@ -62,8 +62,8 @@ public class FuncionTiroidea extends MenuCategorias {
             }
         }
 
-        //llenadoTablaEnfermedades(enfermedades);
-        //llenadoTablaEnfermedadesParam(enfermedades, (int) idTipExam);
+        llenadoTablaEnfermedades(enfermedades);
+        llenadoTablaEnfermedadesParam(enfermedades, (int) idTipExam);
 
         btnAnalizarTiroides.setOnClickListener(new View.OnClickListener() {
             @Override

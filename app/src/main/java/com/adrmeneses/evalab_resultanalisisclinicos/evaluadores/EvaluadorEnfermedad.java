@@ -34,14 +34,11 @@ al valor max   probabilidad  | al valor min   probabilidad
         acumPorcent = 0;
         contador = 0;
         textoPorcentaje = "";
-        enfermedad.setMostrar(true); //Le mandamos true para que se muestre en la vista
+        enfermedad.setMostrar(true); //Le manda true para que se muestre en la vista
 
         if(enfermedad.getValObtenidos() != null) {
             reference = enfermedad.getReferencia();
             datosResultados = enfermedad.getValObtenidos();//[12,20,18][4.5,20,6.5][15,20,22]
-            /*for (String[] info: datosResultados) {
-                Log.d(TAG, "evaluarEnferm: datos: "+info[0]+" "+info[1]+" "+info[2]);
-            }*/
             switch (reference) {
                 case "alto":
                     for (String[] resultAlt : datosResultados) {
@@ -181,7 +178,6 @@ al valor max   probabilidad  | al valor min   probabilidad
                         break;
                     case 3:
                         for (String numRef: valorReferencia) {
-                            //Log.d(TAG, "evaluarEnfermOrina: "+numRef);
                             if(numRef.equals("3")){
                                 acumPorcent += 80;
                                 contador += 1;
@@ -191,21 +187,82 @@ al valor max   probabilidad  | al valor min   probabilidad
                     default:
                         Log.e(TAG, "evaluarEnferm: Hubo un error con la referencia de: " + enfermedad.getNombreEnf());
                 }
-                //Log.d(TAG, "evaluarEnfermOrina: cum: "+acumPorcent);
             }
             porcentaje = (int) (acumPorcent / contador);
-            //Log.d(TAG, "evaluarEnferm: porcentaje: "+porcentaje);
             textoPorcentaje = evaluarInfoPorcentaje(porcentaje, enfermedad);
 
             enfermedad.setPorcentaje(porcentaje);
             enfermedad.setInfoPorcentaje(textoPorcentaje);
-
-
         }else {
             enfermedad.setMostrar(false);
             textoPorcentaje = "";
         }
     }
 
+
+    public void evaluarEnfermTiroides(Enfermedades enfermedad){
+        valMin = 0; valMax = 0; valObten = 0;
+        porcentaje = 0;
+        porcentRef = 0;
+        acumPorcent = 0;
+        contador = 0;
+        textoPorcentaje = "";
+        enfermedad.setMostrar(true); //Le mandamos true para que se muestre en la vista
+
+        if(enfermedad.getValObtenidos() != null) {
+            datosResultados = enfermedad.getValObtenidos();//[12,20,18,alto][4.5,20,6.5,bajo][15,20,22,alto]
+
+            for (String[] resultado: datosResultados) {
+                reference = resultado[3];
+
+                switch (reference) {
+                    case "alto":
+                        valObten = Double.parseDouble(resultado[0]);
+                        valMax = Double.valueOf(resultado[2]);
+                        contador += 1;
+                        porcentRef = valObten * 100 / valMax;
+                        analizarArribaValMax();
+
+                        break;
+                    case "bajo":
+                        valObten = Double.valueOf(resultado[0]);
+                        valMin = Double.valueOf(resultado[1]);
+                        contador += 1;
+                        porcentRef = valObten * 100 / valMin;
+                        analizarAbajoValMin();
+                        break;
+                    case "ambos":
+                        valObten = Double.valueOf(resultado[0]);
+                        valMin = Double.valueOf(resultado[1]);
+                        valMax = Double.valueOf(resultado[2]);
+                        contador += 1;
+
+                        puntMedio = valMin + ((valMax - valMin) / 2);
+
+                        if (valObten > puntMedio) {
+                            porcentRef = valObten * 100 / valMax;
+                            analizarArribaValMax();
+                        } else {
+                            porcentRef = valObten * 100 / valMin;
+                            analizarAbajoValMin();
+                        }
+                        break;
+                    default:
+                        Log.e(TAG, "evaluarEnferm: Hubo un error con la referencia de: " + enfermedad.getNombreEnf());
+                        break;
+                }
+
+            }
+
+            porcentaje = (int) (acumPorcent / contador);
+            textoPorcentaje = evaluarInfoPorcentaje(porcentaje, enfermedad);
+
+            enfermedad.setPorcentaje(porcentaje);
+            enfermedad.setInfoPorcentaje(textoPorcentaje);
+        }else{
+            enfermedad.setMostrar(false);
+            textoPorcentaje = "";
+        }
+    }
 
 }

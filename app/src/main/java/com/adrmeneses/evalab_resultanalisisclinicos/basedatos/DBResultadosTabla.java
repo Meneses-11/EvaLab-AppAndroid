@@ -253,6 +253,58 @@ public class DBResultadosTabla extends MyDBHelper{
                 cursor.close();
                 break;
 
+            case "Tiroides":
+                //["Hipertiroidismo",null,null,"15,1,25,2,2","6.4,0.7,0.1,0.9,0.9","12.6,1.9,39,2.2,2.2","alto,alto,bajo,alto,alto"]
+                query = "SELECT enf.nombre, enf.referencia, enf.descripcion, GROUP_CONCAT(result.valorObtenido), GROUP_CONCAT(valRef.valorMin), GROUP_CONCAT(valRef.valorMax), GROUP_CONCAT(enfPar.refParametroEnfermedad) " +
+                        "FROM "+TABLE_RESULTADOS+" result JOIN "+TABLE_PARAMETROS_ENFERMEDADES+" enfPar ON result.idParametro = enfPar.idParametro " +
+                        "JOIN "+TABLE_ENFERMEDADES+" enf ON enfPar.idEnfermedad = enf.idEnfermedad " +
+                        "JOIN "+TABLE_PARAMETROS_EXAMEN+" exPar ON exPar.idParametro = result.idParametro " +
+                        "LEFT JOIN "+TABLE_VALORES_REFERENCIA+" valRef ON result.idParametro = valRef.idParametro " +
+                        "WHERE result.idTipExam = ? AND result.idExamen = ? AND result.idUsuario = ? AND exPar.idTipExam = ? " +
+                        "GROUP BY enf.idEnfermedad, enf.nombre, enf.referencia, enf.descripcion";
+                cursor = db.rawQuery(query, new String[]{String.valueOf(idTipExamen), String.valueOf(idExamen), String.valueOf(idUser), String.valueOf(idTipExamen)});
+                if (cursor.moveToFirst()){
+                    do{
+                        enfermedad = new Enfermedades();
+                        enfermedad.setNombreEnf(cursor.getString(0));
+                        enfermedad.setReferencia(cursor.getString(1));
+                        enfermedad.setInformacion(cursor.getString(2));
+
+                        // Verifica si el valor es nulo antes de intentar obtenerlo
+                        if (!cursor.isNull(3)) {
+                            int contadorNull = 0;
+                            String[] valores = cursor.getString(3).split(",");
+                            String[] valMin = cursor.getString(4).split(",");
+                            String[] valMax = cursor.getString(5).split(",");
+                            String[] valRef = cursor.getString(6).split(",");
+                            List<String[]> datosList = new ArrayList<>();
+                            for (int i = 0; i < valores.length; i++) {
+                                if (!valores[i].equals("null")) {
+                                    Log.d(TAG, "leerEnfermedades: Si entro y es " + valores[i]);
+                                    String[] dato = {valores[i], valMin[i], valMax[i], valRef[i]};
+                                    datosList.add(dato);
+                                } else {
+                                    contadorNull += 1;
+                                }
+                            }
+                            if (contadorNull == valores.length) {
+                                enfermedad.setValObtenidos(null);
+                            } else {
+                                // Convierte la lista a un arreglo bidimensional
+                                datos = datosList.toArray(new String[datosList.size()][]);
+                                enfermedad.setValObtenidos(datos);
+                            }
+                        } else {
+                            enfermedad.setValObtenidos(null);
+                        }
+
+                        listaEnfermedades.add(enfermedad);
+
+                    }while(cursor.moveToNext());
+                }
+                cursor.close();
+                break;
+
             default:
                 query = "SELECT enf.nombre, enf.referencia, enf.descripcion," +
                         "GROUP_CONCAT(result.valorObtenido)," +
@@ -303,6 +355,7 @@ public class DBResultadosTabla extends MyDBHelper{
                     } while (cursor.moveToNext());
                 }
                 cursor.close();
+                break;
         }
         return listaEnfermedades;
     }
