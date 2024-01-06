@@ -119,6 +119,19 @@
     <string name="strHormonaT4L">T4 Libre</string>
     <string name="strHormonaT4T">T4 Total</string>
     <string name="strHormonaTSH">TSH</string>
+    <!-- Funcion Renal -->
+    <string name="strCreatininaSe">Creatinina Sérica</string>
+    <string name="strBUN">BUN</string>
+    <string name="strProteinuria">Proteinuria</string>
+    <string name="strMicroalabuminuria">Microalbuminuria</string>
+    <string name="strCreatininaUrina">Creatinina Urinaria</string>
+    <string name="strSodio">Sodio</string>
+    <string name="strPotasio">Potasio</string>
+    <string name="strCloro">Cloro</string>
+    <string name="strBicarbonato">Bicarbonato</string>
+    <string name="strAcidoUr">Ácido Úrico</string>
+    <string name="strFosfoSer">Fósforo Sérico</string>
+
 
     <!-- Todos las unidades de medidas de los datos que hay en los diferentes examenes -->
     <string name="strGramosDesilitros">gr/dL</string>
@@ -141,6 +154,9 @@
     <string name="strNanogramosDecilitro2">ng / dL</string>
     <string name="strNanogramosMililitro">ng / mL</string>
     <string name="strPicogramosMililitro">pg / mL</string>
+    <string name="strMiligramosDia">mg / día</string>
+    <string name="strMiliequivalenteLitro">mEq / L</string>
+    <string name="strMiligramosProteGramosCreati">mg/g</string>
 
     <!-- Opciones de la ventana de Resultados -->
     <string name="strResultResultados">Resultados</string>

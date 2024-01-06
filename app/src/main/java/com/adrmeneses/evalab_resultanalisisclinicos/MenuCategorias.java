@@ -25,6 +25,7 @@ import com.adrmeneses.evalab_resultanalisisclinicos.basedatos.DBResultadosTabla;
 import com.adrmeneses.evalab_resultanalisisclinicos.contenedore.OpcionElegida;
 import com.adrmeneses.evalab_resultanalisisclinicos.examenes.ExamenGeneralOrina;
 import com.adrmeneses.evalab_resultanalisisclinicos.examenes.FuncionHepatica;
+import com.adrmeneses.evalab_resultanalisisclinicos.examenes.FuncionRenal;
 import com.adrmeneses.evalab_resultanalisisclinicos.examenes.FuncionTiroidea;
 import com.adrmeneses.evalab_resultanalisisclinicos.examenes.HemogramaCompleto;
 import com.google.android.material.textfield.TextInputEditText;
@@ -95,7 +96,8 @@ public class MenuCategorias extends AppCompatActivity {
         btnExamenFunRenal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //
+                Intent lanzar4 = new Intent(MenuCategorias.this, FuncionRenal.class);
+                startActivity(lanzar4);
             }
         });
         
