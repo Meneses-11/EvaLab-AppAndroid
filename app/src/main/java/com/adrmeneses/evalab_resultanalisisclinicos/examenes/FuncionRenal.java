@@ -24,7 +24,8 @@ public class FuncionRenal extends MenuCategorias {
     long idTipExam, idUsuario;
     //Arreglo que almacena todos los parámetros // | Nombre | Normal | >13AñosHombres | >13 años Mujeres | Mayores 60 años | 1-13 años |
     String[][] parametros = {{"Creatinina Sérica","0.1","0.4","0.7","1.3","0.6","1.2","0.7","1.5","0.3","0.7","mg/dL"},{"Creatinina Orinaria","0","200","0","200","0","200","0","200","0","200","mg/g"},{"BUN","8","23","8","23","8","23","8","23","8","23","mg/dL"},{"Proteinuria","0","150","150","300","150","300","150","300","150","300","mg/día"},{"Microalbuminuria","0","30","0","30","0","30","0","30","0","30","mg/día"},{"Sodio","135","145","135","145","135","145","135","145","135","145","mEq/L"},{"Potasio","3.5","5","3.5","5","3.5","5","3.5","5","3.5","5","mEq/L"},{"Cloro","95","105","95","105","95","105","95","105","95","105","mEq/L"},{"Bicarbonato","22","29","22","29","22","29","22","29","22","29","mEq/L"},{"Ácido úrico","2","6","3.5","7.2","2.6","6.0","2.6","7.2","2.6","7.0","mg/dL"},{"Fósforo Sérico","3.8","6.5","2.5","4.5","2.5","4.5","2.5","4.5","2.5","4.5","mg/dL"}};
-    //String[][] enfermedades = {{"Anemia","bajo","Hemoglobina","Eritrocitos"},{"Infeccion Bacteriana","alto","Leocucitos","Neutrofilos"},{"Infeccion Viral","alto","Leocucitos","Linfocitos"},{"Desordenes de Coagulacion","bajo","Plaquetas"},{"Problemas Renales","ambos","Hematocrito"},{ "Desordenes de la Medula Osea","ambos","Hemoglobina","Leocucitos","Plaquetas"},{ "Reacciones Alergicas o Asma","alto","Eosinofilos"},{"Infecciones Parasitarias","alto","Eosinofilos"}};
+    // Arreglo que contiene toda la información de las enfermedades
+    String[][] enfermedades = {{"Insuficiencia renal crónica",null,"Creatinina Sérica,alto","Creatinina Orinaria,alto","BUN,alto"},{"Glomerulonefritis",null,"Proteinuria,alto","Microalbuminuria,alto"},{"Acidosis Tubular Renal",null,"Bicarbonato,bajo","Potasio,alto"},{"Insuficiencia renal aguda",null,"BUN,alto","Creatinina Sérica,alto","Creatinina Orinaria,alto"}};
     //Arreglo que contiene todos los editText
     TextInputEditText[] textInputs = { txtCreatininaSer, txtCreatininaUri, txtBUN, txtProteinuria, txtMicroalbuminuria, txtSodio, txtPotasio, txtCloro, txtBicarbonato, txtAcidoUri, txtFosfoSer };
     //Arreglo que contiene el id de todos los componentes
@@ -66,8 +67,8 @@ public class FuncionRenal extends MenuCategorias {
             }
         }
 
-        //llenadoTablaEnfermedades(enfermedades);
-        //llenadoTablaEnfermedadesParam(enfermedades, (int)idTipExam);
+        llenadoTablaEnfermedades(enfermedades);
+        llenadoTablaEnfermedadesParam(enfermedades, (int)idTipExam);
 
         btnAnalizarFunRenal.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -307,6 +307,7 @@ public class DBResultadosTabla extends MyDBHelper{
                 cursor.close();
                 break;
 
+            case "Funcion Renal":
             case "Tiroides":
                 //["Hipertiroidismo",null,null,"15,1,25,2,2","6.4,0.7,0.1,0.9,0.9","12.6,1.9,39,2.2,2.2","alto,alto,bajo,alto,alto"]
                 query = "SELECT enf.nombre, enf.referencia, enf.descripcion, GROUP_CONCAT(result.valorObtenido), GROUP_CONCAT(valRef.valorMin), GROUP_CONCAT(valRef.valorMax), GROUP_CONCAT(enfPar.refParametroEnfermedad) " +
@@ -334,7 +335,6 @@ public class DBResultadosTabla extends MyDBHelper{
                             List<String[]> datosList = new ArrayList<>();
                             for (int i = 0; i < valores.length; i++) {
                                 if (!valores[i].equals("null")) {
-                                    Log.d(TAG, "leerEnfermedades: Si entro y es " + valores[i]);
                                     String[] dato = {valores[i], valMin[i], valMax[i], valRef[i]};
                                     datosList.add(dato);
                                 } else {

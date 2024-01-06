@@ -157,6 +157,7 @@ public class MenuCategorias extends AppCompatActivity {
             if(!dbEnfermedadesParametros.existeRegistrosConIdEnfermedad(dbEnfermedades.obtenerIdEnfermedad(enfermedad[0]))) {
                 int parametroId = 0, enfermedadId = 0;
                 switch (nombreExamen) {
+                    case "Funcion Renal":
                     case "Tiroides":
                     case "Examen de Orina":
                         for (int j = 2; j < enfermedad.length; j++) {

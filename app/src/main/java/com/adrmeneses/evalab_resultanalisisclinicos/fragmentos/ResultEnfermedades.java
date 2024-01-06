@@ -263,6 +263,7 @@ public class ResultEnfermedades extends Fragment {
                 case "Examen de Orina":
                     evaEnferm.evaluarEnfermOrina(enferm);
                     break;
+                case "Funcion Renal":
                 case "Tiroides":
                     evaEnferm.evaluarEnfermTiroides(enferm);
                     break;
