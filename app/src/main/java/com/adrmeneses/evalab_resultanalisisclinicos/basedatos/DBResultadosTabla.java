@@ -60,8 +60,10 @@ public class DBResultadosTabla extends MyDBHelper{
         DBExamenTipo dbExamenTipo = new DBExamenTipo(context);
         DBUsuarios dbUsuarios = new DBUsuarios(context);
         Usuarios usuario = dbUsuarios.verUsuario(idUser);
+        String valorMinX, valorMaxX, sexo;
         Boolean estaEmbarazada;
         String nombreExamen = "";
+        int dias;
         if(idTipExamen != 0) {
             nombreExamen = dbExamenTipo.obtenerNombreTipExam(idTipExamen);
         }
@@ -101,9 +103,10 @@ public class DBResultadosTabla extends MyDBHelper{
                 break;
 
             case "Tiroides":
-                String valorMinX="ReferenciaValores.valorMinAdult", valorMaxX="ReferenciaValores.valorMaxAdult";
+                valorMinX="ReferenciaValores.valorMinAdult";
+                valorMaxX="ReferenciaValores.valorMaxAdult";
                 estaEmbarazada = usuario.getEmbarazada();
-                int dias = calcularDiasTranscurridos(Long.parseLong(usuario.getFecha()));
+                dias = calcularDiasTranscurridos(Long.parseLong(usuario.getFecha()));
                 if(estaEmbarazada){
                     valorMinX = "ReferenciaValores.valorMinMujer";
                     valorMaxX = "ReferenciaValores.valorMaxMujer";
@@ -144,9 +147,60 @@ public class DBResultadosTabla extends MyDBHelper{
                         listaResultados.add(resultado);
                     } while (cursor.moveToNext());
                 }
-
                 cursor.close();
+                break;
 
+            case "Funcion Renal":
+                valorMinX="ReferenciaValores.valorMinHombre";
+                valorMaxX="ReferenciaValores.valorMaxHombre";
+                sexo = usuario.getSexo();
+                dias = calcularDiasTranscurridos(Long.parseLong(usuario.getFecha()));
+                if(dias < 365){ //1 año  < 1 año
+                    valorMinX = "ReferenciaValores.valorMin";
+                    valorMaxX = "ReferenciaValores.valorMax";
+                } else if (dias < 4745) {//4745 es lo equivalente a 13 años (1-13 años)
+                    valorMinX = "ReferenciaValores.valorMinCh";
+                    valorMaxX = "ReferenciaValores.valorMaxCh";
+                }else if (dias < 21900){//21900 es lo equivalente a 60 años (13-60 años)
+                    if(sexo.equals("Masculino")){
+                        valorMinX = "ReferenciaValores.valorMinHombre";
+                        valorMaxX = "ReferenciaValores.valorMaxHombre";
+                    }else {
+                        valorMinX = "ReferenciaValores.valorMinMujer";
+                        valorMaxX = "ReferenciaValores.valorMaxMujer";
+                    }
+                }else{ // Mayores de 60 años
+                    valorMinX = "ReferenciaValores.valorMinAdult";
+                    valorMaxX = "ReferenciaValores.valorMaxAdult";
+                }
+
+                query = "SELECT ExamenParametros.nombreParametro, ResultadosTabla.valorObtenido, "+valorMinX+", " +
+                        ""+valorMaxX+", ReferenciaValores.unidadMedida " +
+                        "From (("+TABLE_RESULTADOS+" NATURAL JOIN "+TABLE_PARAMETROS_EXAMEN+") NATURAL JOIN "+TABLE_VALORES_REFERENCIA+") " +
+                        "WHERE idTipExam = ? AND idExamen = ? AND idUsuario = ?";
+
+                cursor = db.rawQuery(query, new String[]{String.valueOf(idTipExamen), String.valueOf(idExamen), String.valueOf(idUser)});
+
+                if (cursor.moveToFirst()) {
+                    do {
+                        resultado = new Resultados();
+                        resultado.setParametroNombre(cursor.getString(0));
+
+                        // Verifica si el valor es nulo antes de intentar obtenerlo
+                        if (!cursor.isNull(1)) {
+                            resultado.setValorObtenido(cursor.getString(1));
+                        } else {
+                            resultado.setValorObtenido(null);
+                        }
+
+                        resultado.setMinValor(cursor.getString(2));
+                        resultado.setMaxValor(cursor.getString(3));
+                        resultado.setMedidaUnidad(cursor.getString(4));
+
+                        listaResultados.add(resultado);
+                    } while (cursor.moveToNext());
+                }
+                cursor.close();
                 break;
 
             default:
