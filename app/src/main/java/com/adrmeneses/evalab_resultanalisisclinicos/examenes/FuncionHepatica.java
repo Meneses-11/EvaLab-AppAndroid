@@ -68,7 +68,7 @@ public class FuncionHepatica extends MenuCategorias {
         btnAnalizarFunHepatica.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(camposLLenos(textInputs)){
+                if(minimo3CamposLLenos(textInputs)){
                     analizarExamen(textInputs,parametrosFunHepatica,idTipExam,idUsuario);
                 }else {
                     ventanaDialogo("Datos Erroneos", "Introduzca la información solicitada");
