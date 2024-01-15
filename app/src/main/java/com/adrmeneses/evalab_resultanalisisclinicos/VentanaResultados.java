@@ -5,13 +5,11 @@ import static android.content.ContentValues.TAG;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.adrmeneses.evalab_resultanalisisclinicos.adaptadores.AdaptadorTabLayout;
 import com.adrmeneses.evalab_resultanalisisclinicos.contenedore.OpcionElegida;
-import com.adrmeneses.evalab_resultanalisisclinicos.contenedore.UsuarioActivo;
 import com.google.android.material.tabs.TabLayout;
 
 public class VentanaResultados extends AppCompatActivity {
@@ -60,8 +58,13 @@ public class VentanaResultados extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
-                tabLayout.getTabAt(position).select();
-            }
+                try {
+                    tabLayout.getTabAt(position).select();
+                }catch (java.lang.NullPointerException ex){
+                    Log.e(TAG, "onPageSelected: "+ex);
+                }
+
+        }
         });
     }
 }

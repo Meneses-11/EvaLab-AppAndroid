@@ -6,12 +6,12 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.adrmeneses.evalab_resultanalisisclinicos.fragmentos.ResultEnfermedades;
-import com.adrmeneses.evalab_resultanalisisclinicos.fragmentos.ResultEstado;
+//import com.adrmeneses.evalab_resultanalisisclinicos.fragmentos.ResultEstado;
 import com.adrmeneses.evalab_resultanalisisclinicos.fragmentos.ResultResultados;
 
 public class AdaptadorTabLayout extends FragmentStateAdapter {
 
-    public AdaptadorTabLayout(@NonNull FragmentActivity fragmentActivity/*, int idExamen, int idTipExamen*/) {
+    public AdaptadorTabLayout(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
     }
 
@@ -20,14 +20,14 @@ public class AdaptadorTabLayout extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position){
             case 0: return new ResultResultados();
-            case 1: return new ResultEnfermedades();
-            case 2: return new ResultEstado();
-            default: return new ResultResultados();
+            //case 1: return new ResultEnfermedades();
+            //case 2: return new ResultEstado();
+            default: return new ResultEnfermedades();
         }
     }
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 2;
     }
 }
