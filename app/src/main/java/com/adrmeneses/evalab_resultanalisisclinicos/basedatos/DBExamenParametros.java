@@ -17,7 +17,7 @@ public class DBExamenParametros extends MyDBHelper{
     }
 
     //Método que inserta en la tabla ExamenParametros
-    public long insertaParametro(int idTipoExamen, String nameParametro){
+    public long insertaParametro(int idTipoExamen, String nameParametro, String informacionParamtero){
         long id = 0;
 
         try{
@@ -30,6 +30,7 @@ public class DBExamenParametros extends MyDBHelper{
             //Le agregamos a la variable todos los datos que registraremos
             datos.put("idTipExam", idTipoExamen);                  //Se le agrega una llave y e valor
             datos.put("nombreParametro", nameParametro);           //La llave es el nombre que tiene la columna en la bd
+            datos.put("infoParametro", informacionParamtero);
 
             //Llama al método insert pasandole el nombre de la tabla y los datos
             id = db.insert(TABLE_PARAMETROS_EXAMEN, null, datos);//Retorna el id de la acción

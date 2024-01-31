@@ -190,4 +190,66 @@
 
     <string name="strEditUsuarioTitulo">Editar Usuario</string>
 
+    <!-- Información de todos los Parámetros -->
+    <!-- Hemgrama Completo -->
+    <string name="strInfHCHemoglobina">La hemoglobina es una proteína presente en los glóbulos rojos que desempeña un papel crucial en el transporte de oxígeno desde los pulmones hasta los tejidos del cuerpo. Facilita el intercambio de oxígeno y dióxido de carbono en los pulmones y tejidos. Valores bajos pueden indicar anemia, mientras que valores altos podrían sugerir deshidratación o problemas pulmonares.</string>
+    <string name="strInfHCHematocrito">El hematocrito es la proporción del volumen de sangre ocupado por los glóbulos rojos. Contribuye a la viscosidad de la sangre y afecta su capacidad para transportar oxígeno. Valores elevados pueden indicar deshidratación, y valores bajos podrían sugerir anemia o pérdida de sangre.</string>
+    <string name="strInfHCEritrocitos">Los eritrocitos son glóbulos rojos responsables del transporte de oxígeno y dióxido de carbono. Transportan oxígeno a los tejidos y ayudan a eliminar el dióxido de carbono. Valores anormales pueden indicar anemia, deshidratación o problemas de médula ósea.</string>
+    <string name="strInfHCHCM">Es la relación entre la cifra de Hgb (g/dl) y el número de eritrocitos por microlitro. Este resultado es de gran utilidad como prueba presuntiva de deficiencia de hierro, clasifica los eritrocitos como normocrómicos o hipocrómicos.</string>
+    <string name="strInfHCVGM">Mide el tamaño de los eritrocitos y se calcula por la relación entre el Hto y el recuento de eritrocitos. Con este valor, las anemias se clasifican en microcíticas (volumen corpuscular medio [VCM] disminuido) y macrocíticas (VCM aumentado).</string>
+    <string name="strInfHCReticulocitos">Mide la producción de glóbulos rojos. Los reticulocitos corresponden a los glóbulos rojos jóvenes con RNA residual.</string>
+    <string name="strInfHCLeucocitos">Los leucocitos son glóbulos blancos que forman parte del sistema inmunológico. Defienden contra infecciones y participan en respuestas inflamatorias. Valores elevados pueden indicar infección o inflamación, mientras que valores bajos podrían asociarse con algunas condiciones médicas.</string>
+    <string name="strInfHCNeutrofilo">Son leucocitos que responden rápidamente a infecciones bacterianas. Aumentan en respuesta a infecciones bacterianas agudas.</string>
+    <string name="strInfHCLinfocitos">Juegan un papel crucial en la respuesta inmunológica, incluidas las respuestas a infecciones virales. Variaciones pueden indicar infecciones virales, inmunodeficiencias o trastornos autoinmunitarios.</string>
+    <string name="strInfHCEosinofilos">Se asocian comúnmente con respuestas alérgicas y parasitarias. Aumentan en reacciones alérgicas y parasitosis.</string>
+    <string name="strInfHCBasofilos">Contienen sustancias involucradas en reacciones alérgicas e inflamación. Su aumento puede estar relacionado con alergias o procesos inflamatorios.</string>
+    <string name="strInfHCMonocitos">Se transforman en macrófagos que fagocitan y eliminan material extraño. Aumentan en infecciones crónicas y algunas enfermedades autoinmunitarias.</string>
+    <string name="strInfHCPlaquetas">Las plaquetas son fragmentos celulares que ayudan en la coagulación sanguínea. Esenciales para detener el sangrado al formar coágulos. Valores anormales pueden indicar trastornos de la coagulación.</string>
+    <string name="strInfHCVPM">El VPM mide el tamaño promedio de las plaquetas. Cambios pueden estar asociados con trastornos de la coagulación o problemas en la médula ósea.</string>
+    <!-- Examen General de Orina -->
+    <string name="strInfEGOColor">Este parámetro evalúa el tono del color de la orina, proporcionando información sobre la concentración de pigmentos. Valores normales varían entre tonos amarillos pálidos a más oscuros.</string>
+    <string name="strInfEGOOlor">La evaluación del olor de la orina puede indicar posibles problemas de salud. Un olor normal es leve y no desagradable.</string>
+    <string name="strInfEGOAspecto">Este parámetro se refiere a la apariencia visual de la orina, observando si está clara o turbia. La orina clara es típicamente normal, mientras que la turbia puede indicar presencia de sedimentos.</string>
+    <string name="strInfEGOPh">El pH mide la acidez o alcalinidad de la orina. Un rango normal está entre 4.6 y 8.0. Cambios pueden sugerir problemas en los riñones o vías urinarias.</string>
+    <string name="strInfEGODensidad">La densidad urinaria indica la concentración de solutos en la orina. Se mide en relación con el agua. La orina concentrada tiene una densidad mayor.</string>
+    <string name="strInfEGOProteinas">La presencia de proteínas en la orina puede ser un indicador de problemas renales. La orina normalmente contiene muy pocas proteínas.</string>
+    <string name="strInfEGOGlucosa">La presencia de glucosa en la orina puede sugerir diabetes u otros trastornos metabólicos. En condiciones normales, la orina debe ser negativa para glucosa.</string>
+    <string name="strInfEGOCetonicos">La detección de cuerpos cetónicos en la orina puede ser un signo de descomposición de grasas, típicamente asociada con la diabetes no controlada o ayuno prolongado.</string>
+    <string name="strInfEGOBilirrubina">La bilirrubina en la orina puede indicar problemas hepáticos. Normalmente, la bilirrubina se procesa en el hígado y no se encuentra en la orina.</string>
+    <string name="strInfEGOHemoglobina">La presencia de hemoglobina en la orina puede ser un indicador de sangrado en el tracto urinario. En condiciones normales, la orina no debe contener hemoglobina.</string>
+    <string name="strInfEGONitritos">La presencia de nitritos en la orina puede indicar infección bacteriana en el tracto urinario. La orina normal generalmente no contiene nitritos.</string>
+    <string name="strInfEGOLeucocitos">La cantidad de leucocitos en la orina puede indicar infección urinaria. En condiciones normales, la orina contiene pocos o ningún leucocito.</string>
+    <string name="strInfEGOEritrocitos">La presencia de glóbulos rojos en la orina puede indicar problemas en el tracto urinario. La orina normalmente no contiene eritrocitos.</string>
+    <string name="strInfEGOCelulas">La detección de células en la orina puede indicar problemas en el tracto urinario. La orina normalmente no contiene células.</string>
+    <string name="strInfEGOCilindros">La presencia de cilindros en la orina puede indicar enfermedad renal. La orina normalmente no contiene cilindros.</string>
+    <string name="strInfEGOBacterias">La presencia de bacterias en la orina puede indicar infección en el tracto urinario. La orina normal generalmente no contiene bacterias.</string>
+    <string name="strInfEGOFilamentos">La presencia de filamentos de mucina en la orina puede deberse a condiciones específicas y se observa mediante análisis microscópico. La orina normal generalmente no contiene filamentos de mucina.</string>
+    <!-- Función Hepática -->
+    <string name="strInfHepaticaALT">La ALT es una enzima que se encuentra principalmente en el hígado. Niveles elevados pueden indicar daño hepático, como el causado por hepatitis o cirrosis.</string>
+    <string name="strInfHepaticaAST">La AST es otra enzima hepática. Elevaciones en los niveles pueden ser indicativas de daño hepático, pero también puede estar relacionado con problemas cardíacos o musculares.</string>
+    <string name="strInfHepaticaFosAlc">Esta enzima se encuentra en varios tejidos, incluido el hígado. Niveles elevados pueden sugerir problemas hepáticos o biliares.</string>
+    <string name="strInfHepaticaGGT">La GGT es otra enzima del hígado. Niveles elevados pueden indicar daño hepático o problemas en las vías biliares.</string>
+    <string name="strInfHepaticaTiPro">El tiempo de protrombina mide la rapidez con la que la sangre coagula. Se utiliza para evaluar la función hepática y la eficacia de ciertos medicamentos anticoagulantes.</string>
+    <string name="strInfHepaticaAlbumina">La albumina es una proteína producida por el hígado. Niveles bajos pueden indicar problemas hepáticos o renales.</string>
+    <string name="strInfHepaticaBiliDirecta">La bilirrubina es un pigmento producido por la descomposición de los glóbulos rojos. La bilirrubina directa específicamente mide la forma conjugada. Niveles altos pueden indicar problemas hepáticos o biliares.</string>
+    <string name="strInfHepaticaBiliTotal">Esta medida incluye tanto la bilirrubina directa como la indirecta. Niveles elevados pueden ser indicativos de diversas condiciones hepáticas o problemas en la eliminación de bilirrubina.</string>
+    <!-- Tiroides -->
+    <string name="strInfTiroidesT4Total">El T4 total, o tiroxina total, es una medida de la cantidad total de hormona tiroidea circulante en la sangre. Se expresa en microgramos por decilitro (µg/dL). Este parámetro es crucial para evaluar la función general de la glándula tiroides y su capacidad para producir hormonas.</string>
+    <string name="strInfTiroidesT3Total">El T3 total, o triyodotironina total, es otra medida de las hormonas tiroideas en la sangre. Al igual que el T4 total, se expresa en microgramos por decilitro (µg/dL). Evalúa la concentración total de triyodotironina en el torrente sanguíneo.</string>
+    <string name="strInfTiroidesTSH">La TSH es una hormona producida por la glándula pituitaria que regula la función de la tiroides. Sus niveles se miden en microunidades internacionales por mililitro (µIU/mL). La TSH juega un papel crucial al estimular la producción de T4 y T3 por la tiroides.</string>
+    <string name="strInfTiroidesT4Libre">A diferencia del T4 total, el T4 libre mide la cantidad de tiroxina no unida a proteínas transportadoras en el torrente sanguíneo. Los resultados se expresan en nanogramos por decilitro (ng/dL). Este parámetro proporciona una visión más precisa de la cantidad de hormona tiroidea activa disponible para las células del cuerpo.</string>
+    <string name="strInfTiroidesT3Libre">Similar al T4 libre, el T3 libre mide la cantidad de triyodotironina no unida a proteínas transportadoras en la sangre. Se expresa en picogramos por decilitro (pg/dL). Este parámetro es esencial para evaluar la disponibilidad de triyodotironina activa en el cuerpo.</string>
+    <!-- Fun Renal -->
+    <string name="strInfRenalCreatSer">La creatinina sérica es un indicador de la función renal. Los niveles elevados pueden sugerir problemas en los riñones. Los valores normales varían según la edad, sexo y masa muscular.</string>
+    <string name="strInfRenalCreatUrin">La medición de creatinina en la orina ayuda a evaluar la eliminación de creatinina por los riñones, lo que puede proporcionar información sobre la función renal.</string>
+    <string name="strInfRenalBUN">El BUN mide la cantidad de nitrógeno en la sangre que proviene de la urea, un subproducto del metabolismo de las proteínas. Niveles altos pueden indicar problemas renales o hepáticos.</string>
+    <string name="strInfRenalProteinuria">La proteinuria detecta la presencia de proteínas en la orina. Puede indicar daño renal, ya que las proteínas suelen filtrarse y reabsorberse en los riñones.</string>
+    <string name="strInfRenalMicroalbuminuria">La microalbuminuria mide pequeñas cantidades de albúmina en la orina y puede ser un indicador temprano de daño renal, especialmente en personas con diabetes.</string>
+    <string name="strInfRenalSodio">Estos electrolitos son críticos para el equilibrio hídrico y la función renal. Cambios en sus niveles pueden indicar problemas en la regulación de fluidos.</string>
+    <string name="strInfRenalPotasio">Estos electrolitos son críticos para el equilibrio hídrico y la función renal. Cambios en sus niveles pueden indicar problemas en la regulación de fluidos.</string>
+    <string name="strInfRenalCloro">Estos electrolitos son críticos para el equilibrio hídrico y la función renal. Cambios en sus niveles pueden indicar problemas en la regulación de fluidos.</string>
+    <string name="strInfRenalBicarbonato">El bicarbonato está relacionado con el equilibrio ácido-base en el cuerpo y puede indicar la capacidad de los riñones para mantener el equilibrio.</string>
+    <string name="strInfRenalAcdUrico">El ácido úrico es un subproducto del metabolismo de las purinas. Niveles altos pueden indicar problemas renales o gota.</string>
+    <string name="strInfRenalFosfoSer">El fósforo es esencial para la formación de huesos y dientes. Niveles anormales pueden indicar problemas renales o trastornos metabólicos.</string>
+
 </resources>

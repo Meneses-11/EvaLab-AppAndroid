@@ -109,7 +109,13 @@ public class MenuCategorias extends AppCompatActivity {
 
         //For que recorre el arreglo y va llenando la tabla
         for(int i=0; i<parametros.length; i++){
-            id = dbExamenParametros.insertaParametro((int)idTipExam, parametros[i][0]);
+            String informacion = null;
+
+            if (parametros[i][parametros[i].length-1] != null) {
+                informacion = getResources().getString(Integer.parseInt(parametros[i][parametros[i].length - 1]));
+            }
+
+            id = dbExamenParametros.insertaParametro((int)idTipExam, parametros[i][0], informacion);
             //Evalúa si todos los id son mayores que 0, es decir, que se hayan creado exitosamente
             if(id <= 0){
                 Log.e(TAG, "Hubo un error en id:"+i+" del examen:"+(int)idTipExam);
