@@ -134,7 +134,7 @@ public class FormularioPrincipal extends AppCompatActivity {
         contenedorFechaNacimiento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                long fechaLimite = MaterialDatePicker.todayInUtcMilliseconds() - 31536000000L;
+                long fechaLimite = MaterialDatePicker.todayInUtcMilliseconds() - 86400000L;
                 // Obtiene la fecha de nacimiento actual del usuario o cualquier otra fecha que desees mostrar inicialmente
                 long fechaPredeterminada = obtenerFechaNacimiento();
 

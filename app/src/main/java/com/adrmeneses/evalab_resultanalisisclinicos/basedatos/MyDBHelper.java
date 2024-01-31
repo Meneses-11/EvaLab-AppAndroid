@@ -41,6 +41,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
                 "idParametro INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "idTipExam INTEGER," +
                 "nombreParametro VARCHAR NOT NULL," +
+                "infoParametro VARCHAR," +
                 "FOREIGN KEY(idTipExam) REFERENCES " + TABLE_TIPO_EXAMEN + "(idTipExam))");
 
         //Crea la tabla ReferenciaValores

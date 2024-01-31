@@ -147,7 +147,7 @@ public class EditarUsuario extends AppCompatActivity {
         contFecha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                long fechaLimite = MaterialDatePicker.todayInUtcMilliseconds() - 31536000000L;
+                long fechaLimite = MaterialDatePicker.todayInUtcMilliseconds() - 86400000L;
                 long fechaPredeterminada = obtenerFechaPredeterminada();
                 //Crea el calendario
                 MaterialDatePicker<Long> calendario = MaterialDatePicker.Builder.datePicker().setTitleText("Seleccione su Fecha de Nacimiento").setSelection(fechaPredeterminada).build();

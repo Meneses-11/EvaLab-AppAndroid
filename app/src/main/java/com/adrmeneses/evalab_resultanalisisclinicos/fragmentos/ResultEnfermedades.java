@@ -277,4 +277,6 @@ public class ResultEnfermedades extends Fragment {
         }
         return listaEnfermedades;
     }
+
+    
 }

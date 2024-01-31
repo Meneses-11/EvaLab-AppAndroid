@@ -35,11 +35,11 @@
         android:text="@string/strVerPerfil"
         />
 
-    <Button
+<!--    <Button
         android:id="@+id/menuPrincipalBtnInformación"
         style="@style/btnMenuPrincipal"
         android:text="@string/strInfo"
-        />
+        /> -->
 
 
 </LinearLayout>
