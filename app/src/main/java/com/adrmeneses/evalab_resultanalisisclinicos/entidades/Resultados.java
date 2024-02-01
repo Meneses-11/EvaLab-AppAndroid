@@ -8,6 +8,7 @@ public class Resultados {
     private String medidaUnidad;
     private String estado;
     private int semaf;
+    private String descripcion;
 
 
 
@@ -66,4 +67,10 @@ public class Resultados {
         this.semaf = semaf;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 }

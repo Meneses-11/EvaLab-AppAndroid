@@ -1,16 +1,18 @@
 package com.adrmeneses.evalab_resultanalisisclinicos.adaptadores;
 
-import static com.adrmeneses.evalab_resultanalisisclinicos.R.drawable.*;
+import static androidx.appcompat.content.res.AppCompatResources.getDrawable;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.adrmeneses.evalab_resultanalisisclinicos.R;
@@ -49,6 +51,8 @@ public class AdaptadorListaResultados extends RecyclerView.Adapter<AdaptadorList
             holder.viewSemafor.setImageResource(resultado.getSemaf());
             holder.viewNombreParametro.setText(String.valueOf(listaResultados.get(position).getParametroNombre()));
             holder.viewResultado2.setText(listaResultados.get(position).getValorObtenido());
+
+
         }else {
             EvaluadorResultado evaluador = new EvaluadorResultado();
             evaluador.evaluarResult(resultado);
@@ -61,6 +65,13 @@ public class AdaptadorListaResultados extends RecyclerView.Adapter<AdaptadorList
             holder.viewResultado.setText(String.valueOf(listaResultados.get(position).getValorObtenido()) + String.valueOf(listaResultados.get(position).getMedidaUnidad()));
             holder.viewValReferencia.setText(String.valueOf(listaResultados.get(position).getMinValor()) + "-" + String.valueOf(listaResultados.get(position).getMaxValor()));
         }
+
+        holder.viewImgInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                holder.ventanaDialogo(listaResultados.get(position).getParametroNombre(), listaResultados.get(position).getDescripcion());
+            }
+        });
     }
 
     @Override //Especifica el tamaño de la lista
@@ -70,7 +81,7 @@ public class AdaptadorListaResultados extends RecyclerView.Adapter<AdaptadorList
 
     public class ResultadoViewHolder extends RecyclerView.ViewHolder {
         TextView viewNombreParametro, viewResultado, viewValReferencia, viewEstado, viewResultado2;
-        ImageView viewSemafor;
+        ImageView viewSemafor, viewImgInfo;
         TableLayout viewContenedorValores1;
         LinearLayout viewContenedorValores2;
         DBExamenParametros dbExamenParametros;
@@ -86,8 +97,39 @@ public class AdaptadorListaResultados extends RecyclerView.Adapter<AdaptadorList
             viewSemafor = itemView.findViewById(R.id.imgViewIconResultado);
             viewContenedorValores1 = itemView.findViewById(R.id.listaResultadoContenedorValores1);
             viewContenedorValores2 = itemView.findViewById(R.id.listaResultadoContenedorValores2);
+            viewImgInfo = itemView.findViewById(R.id.imgViewDescripcionParametro);
             dbExamenParametros = new DBExamenParametros(itemView.getContext());
             dbExamenTipo = new DBExamenTipo(itemView.getContext());
         }
+
+        //Método que arroja un mensaje de Error en la pantalla
+        public void ventanaDialogo(String titulo, String texto){
+            //Infla el diseño personalizado
+            View dialogoPersonalizado = LayoutInflater.from(itemView.getContext()).inflate(R.layout.alert_dialog_descripcion_parametro, null);
+
+            //Crea el AertDialog
+            AlertDialog dialogo = new AlertDialog.Builder(itemView.getContext()).create(); //Crea un objeto de tipo AlertDialog
+            dialogo.setView(dialogoPersonalizado);                               //Le asigna la ventana personalizada
+            dialogo.getWindow().setBackgroundDrawableResource(R.drawable.fondo_informacion_parametro);
+
+            // Obtiene las vistas del diseño personalizado
+            TextView tituloTextView = dialogoPersonalizado.findViewById(R.id.txtTituloDialogoParametro);
+            TextView mensajeTextView = dialogoPersonalizado.findViewById(R.id.txtMensajeDialogoParametro);
+            Button aceptarButton = dialogoPersonalizado.findViewById(R.id.btnAceptarDialogoParametro);
+
+            //Configura la información a mostrar
+            tituloTextView.setText(""+titulo);
+            mensajeTextView.setText(""+texto);
+
+            //Agrega un boton y le pone el texto que llevara
+            aceptarButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialogo.dismiss();
+                }
+            });
+            dialogo.show();                        //Pone el Dialog en la pantalla
+        }
     }
+
 }

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/fondo_informacion_parametro"
+    >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="8dp">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/informacion"/>
+        <TextView
+            android:id="@+id/txtTituloDialogoParametro"
+            android:layout_gravity="center"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:text="Gamma glutamil transferasa"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:fontFamily="@font/onest_extrabold"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            />
+    </FrameLayout>
+
+<!--    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="@color/black"
+        /> -->
+
+    <TextView
+        android:id="@+id/txtMensajeDialogoParametro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_gravity="center"
+        android:text="La hemoglobina es una proteína presente en los glóbulos rojos que desempeña un papel crucial en el transporte de oxígeno desde los pulmones hasta los tejidos del cuerpo. Facilita el intercambio de oxígeno y dióxido de carbono en los pulmones y tejidos. Valores bajos pueden indicar anemia, mientras que valores altos podrían sugerir deshidratación o problemas pulmonares."
+        android:textColor="@color/black"
+        android:fontFamily="@font/onesans_medium"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        />
+
+<!--    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="@color/black"
+        /> -->
+
+    <Button
+        android:id="@+id/btnAceptarDialogoParametro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
+        android:layout_gravity="center"
+        android:text="Aceptar"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="8dp"
+        android:gravity="center"/>
+
+</LinearLayout>

@@ -75,7 +75,7 @@ public class DBResultadosTabla extends MyDBHelper{
 
         switch (nombreExamen) {
             case "Examen de Orina":
-                query = "SELECT ExamenParametros.nombreParametro, ResultadosTabla.valorObtenido " +
+                query = "SELECT ExamenParametros.nombreParametro, ResultadosTabla.valorObtenido, ExamenParametros.infoParametro " +
                         "FROM ("+TABLE_RESULTADOS+" NATURAL JOIN "+TABLE_PARAMETROS_EXAMEN+") " +
                         "WHERE idTipExam = ? AND idExamen = ? AND idUsuario = ?";
 
@@ -94,6 +94,7 @@ public class DBResultadosTabla extends MyDBHelper{
                         } else {
                             resultado.setValorObtenido(null);
                         }
+                        resultado.setDescripcion(cursor.getString(2));
 
                         listaResultados.add(resultado);
                     } while (cursor.moveToNext());
@@ -122,7 +123,7 @@ public class DBResultadosTabla extends MyDBHelper{
                 }
 
                 query = "SELECT ExamenParametros.nombreParametro, ResultadosTabla.valorObtenido, "+valorMinX+", " +
-                        ""+valorMaxX+", ReferenciaValores.unidadMedida " +
+                        ""+valorMaxX+", ReferenciaValores.unidadMedida, ExamenParametros.infoParametro " +
                         "From (("+TABLE_RESULTADOS+" NATURAL JOIN "+TABLE_PARAMETROS_EXAMEN+") NATURAL JOIN "+TABLE_VALORES_REFERENCIA+") " +
                         "WHERE idTipExam = ? AND idExamen = ? AND idUsuario = ?";
 
@@ -143,6 +144,7 @@ public class DBResultadosTabla extends MyDBHelper{
                         resultado.setMinValor(cursor.getString(2));
                         resultado.setMaxValor(cursor.getString(3));
                         resultado.setMedidaUnidad(cursor.getString(4));
+                        resultado.setDescripcion(cursor.getString(5));
 
                         listaResultados.add(resultado);
                     } while (cursor.moveToNext());
@@ -175,7 +177,7 @@ public class DBResultadosTabla extends MyDBHelper{
                 }
 
                 query = "SELECT ExamenParametros.nombreParametro, ResultadosTabla.valorObtenido, "+valorMinX+", " +
-                        ""+valorMaxX+", ReferenciaValores.unidadMedida " +
+                        ""+valorMaxX+", ReferenciaValores.unidadMedida, ExamenParametros.infoParametro " +
                         "From (("+TABLE_RESULTADOS+" NATURAL JOIN "+TABLE_PARAMETROS_EXAMEN+") NATURAL JOIN "+TABLE_VALORES_REFERENCIA+") " +
                         "WHERE idTipExam = ? AND idExamen = ? AND idUsuario = ?";
 
@@ -196,6 +198,7 @@ public class DBResultadosTabla extends MyDBHelper{
                         resultado.setMinValor(cursor.getString(2));
                         resultado.setMaxValor(cursor.getString(3));
                         resultado.setMedidaUnidad(cursor.getString(4));
+                        resultado.setDescripcion(cursor.getString(5));
 
                         listaResultados.add(resultado);
                     } while (cursor.moveToNext());
@@ -205,7 +208,7 @@ public class DBResultadosTabla extends MyDBHelper{
 
             default:
                 query = "SELECT ExamenParametros.nombreParametro, ResultadosTabla.valorObtenido, ReferenciaValores.valorMin, " +
-                        "ReferenciaValores.valorMax, ReferenciaValores.unidadMedida " +
+                        "ReferenciaValores.valorMax, ReferenciaValores.unidadMedida, ExamenParametros.infoParametro " +
                         "From (("+TABLE_RESULTADOS+" NATURAL JOIN "+TABLE_PARAMETROS_EXAMEN+") NATURAL JOIN "+TABLE_VALORES_REFERENCIA+") " +
                         "WHERE idTipExam = ? AND idExamen = ? AND idUsuario = ?";
 
@@ -226,6 +229,7 @@ public class DBResultadosTabla extends MyDBHelper{
                         resultado.setMinValor(cursor.getString(2));
                         resultado.setMaxValor(cursor.getString(3));
                         resultado.setMedidaUnidad(cursor.getString(4));
+                        resultado.setDescripcion(cursor.getString(5));
 
                         listaResultados.add(resultado);
                     } while (cursor.moveToNext());
