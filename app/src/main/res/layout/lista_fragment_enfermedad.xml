@@ -29,11 +29,14 @@
                 android:fontFamily="@font/gabarito_variablefont"
                 android:text="Probabilidad de tener:"/>
             <ImageView
+                android:id="@+id/imgViewDescripcionEnfermedad"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_gravity="end"
                 android:layout_marginRight="5dp"
-                android:src="@drawable/infor"/>
+                android:src="@drawable/infor"
+                android:clickable="true"
+                android:focusable="true"/>
         </FrameLayout>
 
         <LinearLayout

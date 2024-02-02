@@ -143,7 +143,11 @@ public class MenuCategorias extends AppCompatActivity {
 
         for (String[] enferm: enfermedades) {
             if(!dbEnfermedades.existeEnfermedad(enferm[0])){
-                id = dbEnfermedades.insertaEnfermedad(enferm[0],enferm[1],null);
+                String informacion = null;
+                if(enferm[2] != null){
+                    informacion = getResources().getString(Integer.parseInt(enferm[2]));
+                }
+                id = dbEnfermedades.insertaEnfermedad(enferm[0],enferm[1],informacion);
                 if(id <= 0) {
                     Log.e(TAG, "llenadoTablaEnferParam: Enfermedad no registrado");
                 }
@@ -166,7 +170,7 @@ public class MenuCategorias extends AppCompatActivity {
                     case "Funcion Renal":
                     case "Tiroides":
                     case "Examen de Orina":
-                        for (int j = 2; j < enfermedad.length; j++) {
+                        for (int j = 3; j < enfermedad.length; j++) {
                             String[] infEnferm = enfermedad[j].split(",");
                             String parametro = infEnferm[0];
                             String infEnferParam = infEnferm[1];
@@ -179,7 +183,7 @@ public class MenuCategorias extends AppCompatActivity {
                         }
                         break;
                     default:
-                        for (int j = 2; j < enfermedad.length; j++) {
+                        for (int j = 3; j < enfermedad.length; j++) {
                             parametroId = (int) dbExamenParametros.obtenerIdParametro(enfermedad[j]);
                             enfermedadId = (int) dbEnfermedades.obtenerIdEnfermedad(enfermedad[0]);
                             id = dbEnfermedadesParametros.insertaEnfermParametro(parametroId, enfermedadId, null);

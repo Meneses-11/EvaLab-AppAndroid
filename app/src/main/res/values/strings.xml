@@ -252,4 +252,31 @@
     <string name="strInfRenalAcdUrico">El ácido úrico es un subproducto del metabolismo de las purinas. Niveles altos pueden indicar problemas renales o gota.</string>
     <string name="strInfRenalFosfoSer">El fósforo es esencial para la formación de huesos y dientes. Niveles anormales pueden indicar problemas renales o trastornos metabólicos.</string>
 
+    <!-- Información de todas las Enfermedades -->
+    <string name="strInfEnfermAnemia"> La anemia se caracteriza por una disminución en la cantidad de glóbulos rojos o hemoglobina en la sangre, lo que puede causar fatiga y debilidad. Se asocia principalmente con bajos niveles de Hemoglobina, Hematocrito y Eritrocitos</string>
+    <string name="strInfEnfermInfeccBact">Las infecciones bacterianas son causadas por la presencia y proliferación de bacterias en el cuerpo. Los resultados de Leucocitos y la detección de bacterias en los análisis indican una posible infección bacteriana</string>
+    <string name="strInfEnfermInfeccViral">Las infecciones virales son provocadas por virus y pueden afectar diversas partes del cuerpo. Cambios en Leucocitos y marcadores específicos sugieren la presencia de infecciones virales</string>
+    <string name="strInfEnfermDesordCoag">Los desórdenes de coagulación afectan la capacidad de la sangre para coagularse. Parámetros como Tiempo de Protrombina y plaquetas se relacionan con estos trastornos</string>
+    <string name="strInfEnfermProbRen">Los problemas renales pueden incluir insuficiencia renal, infecciones, y más. Parámetros renales como Creatinina, BUN y Proteínas están asociados con estos problemas</string>
+    <string name="strInfEnfermDesordMedOsea">Estos desórdenes afectan la producción de células sanguíneas en la médula ósea. Parámetros sanguíneos como Eritrocitos y Leucocitos están relacionados</string>
+    <string name="strInfEnfermReacAlerg">Reacciones alérgicas y el asma son respuestas inmunológicas exageradas. La presencia de eosinófilos y marcadores alérgicos está vinculada a estas condiciones</string>
+    <string name="strInfEnfermInfeccPara">Las infecciones parasitarias son causadas por parásitos. Resultados anormales en diversos parámetros indican posibles infecciones parasitarias</string>
+    <string name="strInfEnfermHipertiroidismo">El hipertiroidismo es un trastorno tiroideo con una sobreproducción de hormonas. Desviaciones en T3, T4 y TSH están asociadas con este trastorno</string>
+    <string name="strInfEnfermHipotiroidismo">El hipotiroidismo es un trastorno tiroideo con una producción insuficiente de hormonas. Cambios en T3, T4 y TSH se relacionan con este trastorno</string>
+    <string name="strInfEnfermInsufRenCron">La insuficiencia renal crónica es una pérdida gradual de la función renal. Problemas en parámetros renales indican este trastorno</string>
+    <string name="strInfEnfermGlomerulonefritis">La glomerulonefritis afecta los glomérulos renales. Resultados anormales en parámetros renales, incluyendo la presencia de proteínas, están vinculados</string>
+    <string name="strInfEnfermAcidTubRen">La acidosis tubular renal implica una acumulación de ácido en los riñones. Anomalías en la eliminación de bicarbonato indican esta afección</string>
+    <string name="strInfEnfermInsuficRenAguda">La insuficiencia renal aguda es una pérdida repentina de la función renal. Cambios rápidos en parámetros renales sugieren esta condición</string>
+    <string name="strInfEnfermDiabetes">La diabetes se caracteriza por niveles elevados de glucosa en sangre. La Glucosa en sangre elevada es un indicador clave de esta enfermedad</string>
+    <string name="strInfEnfermInfeccUrin">Infecciones en el tracto urinario se indican con cambios en diversos parámetros urinarios, incluyendo Leucocitos y Bacterias</string>
+    <string name="strInfEnfermPresencBacte">Este resultado sugiere la presencia de bacterias o células anormales, indicando posibles infecciones u otros problemas</string>
+    <string name="strInfEnfermInfeccTracUrinario">Resultados anormales en parámetros urinarios pueden sugerir infecciones en el tracto urinario</string>
+    <string name="strInfEnfermAcidosis">La acidosis se refiere a desequilibrios en la eliminación de ácido, evidenciados en los resultados</string>
+    <string name="strInfEnfermAlcalosis">La alcalosis implica desequilibrios en los niveles de pH y otros parámetros ácido-base</string>
+    <string name="strInfEnfermDeshidratacion">Cambios en la concentración de electrolitos y otros parámetros pueden indicar deshidratación</string>
+    <string name="strInfEnfermProbHepaticos">Problemas hepáticos se vinculan con resultados anormales en pruebas como la ALT, AST y la Bilirrubina</string>
+    <string name="strInfEnfermDañoHepatico">La presencia de valores anormales en pruebas hepáticas sugiere daño en el hígado</string>
+    <string name="strInfEnfermProbHigado">Esta categoría general abarca una variedad de problemas hepáticos. Resultados anormales en pruebas como ALT, AST y Bilirrubina pueden indicar problemas generales en el hígado.</string>
+
+
 </resources>
